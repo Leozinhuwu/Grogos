@@ -34,7 +34,7 @@ public class TelaInicial extends JFrame {
 
 		// labels e botoes do jFrame
 		JPanel panel = new JPanel();
-		panel.setForeground(Color.BLACK);
+		panel.setForeground(Color.RED);
 		panel.setBackground(Color.WHITE);
 		frameMain = new JFrame();
 		frameMain.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\leo4_\\Desktop\\GrogosPesq.jpg"));
