@@ -50,6 +50,7 @@ public abstract class DefaultDAO<T extends IDBModel> {
 	public List<T> list(Class<T> classe) {
 		Query q = con.createQuery("select t from " + classe.getSimpleName().toString() + " t");
 		return q.getResultList();
+		
 	}
 
 	public boolean autenticarObj(T obj) {

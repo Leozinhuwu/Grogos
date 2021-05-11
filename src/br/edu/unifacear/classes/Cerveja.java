@@ -11,10 +11,19 @@ public class Cerveja implements IDBModel {
 
 	private String nome;
 	private String descricao;
-	private String tipo;
-	private String sabor;
-	private String nomeCriador;
-	private String paisOrigem;
+	
+	@ManyToOne
+	@JoinColumn(name="tipocerveja_id")
+	private TipoCerveja tipo;
+	
+	@ManyToOne
+	@JoinColumn(name="sabor_id")
+	private Sabor sabor;
+	
+	
+	@ManyToOne
+	@JoinColumn(name="pais_id")
+	private Pais paisOrigem;
 
 	@ManyToOne
 	@JoinColumn(name="usuario_id")
@@ -24,7 +33,7 @@ public class Cerveja implements IDBModel {
 	@JoinColumn(name="ingredientes_id")
 	private Ingredientes ingredientes;
 
-	public Cerveja(int id, String name, String description, String type, String flavor, String creatorName,
+	public Cerveja(int id, String name, String description, TipoCerveja type, Sabor flavor,
 			Usuario usuario, Ingredientes ingredientes) {
 		super();
 		this.setId(id);
@@ -34,7 +43,7 @@ public class Cerveja implements IDBModel {
 		this.tipo = type;
 		this.sabor = flavor;
 
-		this.nomeCriador = creatorName;
+
 		this.usuario = usuario;
 	}
 
@@ -66,29 +75,22 @@ public class Cerveja implements IDBModel {
 		this.descricao = description;
 	}
 
-	public String getType() {
+	public TipoCerveja getType() {
 		return tipo;
 	}
 
-	public void setType(String type) {
+	public void setType(TipoCerveja type) {
 		this.tipo = type;
 	}
 
-	public String getFlavor() {
+	public Sabor getFlavor() {
 		return sabor;
 	}
 
-	public void setFlavor(String flavor) {
+	public void setFlavor(Sabor flavor) {
 		this.sabor = flavor;
 	}
 
-	public String getCreatorName() {
-		return nomeCriador;
-	}
-
-	public void setCreatorName(String creatorName) {
-		this.nomeCriador = creatorName;
-	}
 
 	public Usuario getUsuario() {
 		return usuario;
@@ -98,11 +100,11 @@ public class Cerveja implements IDBModel {
 		this.usuario = usuario;
 	}
 
-	public String getCountryOrigin() {
+	public Pais getCountryOrigin() {
 		return paisOrigem;
 	}
 
-	public void setCountryOrigin(String countryOrigin) {
+	public void setCountryOrigin(Pais countryOrigin) {
 		this.paisOrigem = countryOrigin;
 	}
 
@@ -115,13 +117,13 @@ public class Cerveja implements IDBModel {
 	}
 
 	public String getEmail() {
-		return "uwu";
+		return null;
 	}
 
 	@Override
 	public String toString() {
 		return "Cerveja id = " + id + ", name = " + nome + ", description = " + descricao + ", type = " + tipo
-				+ ", flavor = " + sabor + "," + ", creatorName = " + nomeCriador + ", countryOrigin = " + paisOrigem
+				+ ", flavor = " + sabor + ","  + ", countryOrigin = " + paisOrigem
 				+ ", usuario = " + usuario;
 	}
 

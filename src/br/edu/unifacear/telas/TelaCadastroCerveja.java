@@ -20,6 +20,9 @@ import br.edu.unifacear.bo.CervejaBO;
 import br.edu.unifacear.bo.IngredientesBO;
 import br.edu.unifacear.classes.Cerveja;
 import br.edu.unifacear.classes.Ingredientes;
+import br.edu.unifacear.classes.Pais;
+import br.edu.unifacear.classes.Sabor;
+import br.edu.unifacear.classes.TipoCerveja;
 import br.edu.unifacear.classes.Usuario;
 import br.edu.unifacear.validators.CervejaValidator;
 import br.edu.unifacear.validators.IngredientesValidator;
@@ -308,6 +311,9 @@ public class TelaCadastroCerveja {
 			public void mouseClicked(MouseEvent e) {
 				Ingredientes ingredientes = new Ingredientes();
 				Cerveja cerveja = new Cerveja();
+				Pais pais = new Pais();
+				Sabor sabor  = new Sabor();
+				TipoCerveja tipoCerveja = new TipoCerveja();
 
 				CervejaBO cbo = new CervejaBO();
 				IngredientesBO ibo = new IngredientesBO();
@@ -346,10 +352,9 @@ public class TelaCadastroCerveja {
 				// cerveja - extrair metodo
 
 				cerveja.setNome(nameField.getText());
-				cerveja.setType(typeField.getText());
-				cerveja.setFlavor(flavorField.getText());
-				cerveja.setCountryOrigin(originField.getText());
-				cerveja.setCreatorName(creatorNameField.getText());
+				cerveja.setType(tipoCerveja);
+				cerveja.setFlavor(sabor);
+				cerveja.setCountryOrigin(pais);
 				cerveja.setDescription(descricaoPane.getText());
 				Usuario usuarioLogado = new Usuario();
 				usuarioLogado.setEmail(TelaInicial.usuarioLogado);
