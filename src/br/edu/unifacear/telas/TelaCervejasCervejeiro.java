@@ -15,12 +15,12 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import br.edu.unifacear.bo.CervejaBO;
-import br.edu.unifacear.bo.UsuarioBO;
+import br.edu.unifacear.bo.ApreciadorBO;
 import br.edu.unifacear.classes.Cerveja;
 import br.edu.unifacear.classes.Usuario;
 
 
-public class TelaPerfil {
+public class TelaCervejasCervejeiro {
 
 	private static final long serialVersionUID = 1L;
 	private static JFrame framePerfil;
@@ -36,9 +36,9 @@ public class TelaPerfil {
 	 */
 
 	public static void telaPerfil() throws Exception {
-		UsuarioBO userBo = new UsuarioBO();
+		ApreciadorBO userBo = new ApreciadorBO();
 		Usuario user = new Usuario();
-		user.setEmail(TelaInicial.usuarioLogado);
+		user.setEmail(TelaLogin.usuarioLogado);
 		user.setNome(userBo.findUserName(user));
 		
 		
@@ -62,7 +62,7 @@ public class TelaPerfil {
 		btnVolta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					TelaMenuUsuario.telaMenuUser();
+					TelaMenuCervejeiro.telaMenuUser();
 
 				} catch (Exception e1) {
 

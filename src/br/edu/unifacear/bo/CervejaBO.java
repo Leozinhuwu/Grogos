@@ -6,13 +6,13 @@ import br.edu.unifacear.classes.Cerveja;
 import br.edu.unifacear.classes.Usuario;
 import br.edu.unifacear.dao.CervejaDao;
 import br.edu.unifacear.dao.IngredientesDao;
-import br.edu.unifacear.dao.UsuarioDao;
+import br.edu.unifacear.dao.ApreciadorDao;
 
 public class CervejaBO {
 
 	private CervejaDao cervejaDao = new CervejaDao();
 	private IngredientesDao ingredientesDao = new IngredientesDao();
-	private UsuarioDao usuarioDao = new UsuarioDao();
+	private ApreciadorDao usuarioDao = new ApreciadorDao();
 
 	public boolean salvar(Cerveja cerveja) throws Exception {
 

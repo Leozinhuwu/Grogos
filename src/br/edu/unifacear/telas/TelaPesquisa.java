@@ -68,7 +68,7 @@ public class TelaPesquisa {
 		btnVolta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					TelaMenuUsuario.telaMenuUser();
+					TelaMenuCervejeiro.telaMenuUser();
 
 				} catch (Exception e1) {
 

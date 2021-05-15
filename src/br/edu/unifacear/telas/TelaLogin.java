@@ -11,7 +11,7 @@ import br.edu.unifacear.classes.Usuario;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class TelaInicial extends JFrame {
+public class TelaLogin extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private static JFrame frameMain;
@@ -77,7 +77,7 @@ public class TelaInicial extends JFrame {
 				if (auth == true) {
 					try {
 						usuarioLogado = user.getEmail();
-						TelaMenuUsuario.telaMenuUser();
+						TelaMenuCervejeiro.telaMenuUser();
 					} catch (Exception e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();

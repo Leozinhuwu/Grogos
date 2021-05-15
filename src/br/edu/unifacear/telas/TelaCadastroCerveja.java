@@ -19,7 +19,9 @@ import javax.swing.JTextField;
 import br.edu.unifacear.bo.CervejaBO;
 import br.edu.unifacear.bo.IngredientesBO;
 import br.edu.unifacear.classes.Cerveja;
+import br.edu.unifacear.classes.Fermento;
 import br.edu.unifacear.classes.Ingredientes;
+import br.edu.unifacear.classes.Lupulo;
 import br.edu.unifacear.classes.Pais;
 import br.edu.unifacear.classes.Sabor;
 import br.edu.unifacear.classes.TipoCerveja;
@@ -33,6 +35,7 @@ import javax.swing.JTextPane;
 import javax.swing.JCheckBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JEditorPane;
+import javax.swing.JComboBox;
 
 public class TelaCadastroCerveja {
 	private static final long serialVersionUID = 1L;
@@ -76,7 +79,7 @@ public class TelaCadastroCerveja {
 		btnVolta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					TelaMenuUsuario.telaMenuUser();
+					TelaMenuCervejeiro.telaMenuUser();
 
 				} catch (Exception e1) {
 
@@ -115,7 +118,7 @@ public class TelaCadastroCerveja {
 		originField.setColumns(10);
 
 		creatorNameField = new JTextField();
-		creatorNameField.setBounds(145, 268, 178, 20);
+		creatorNameField.setBounds(145, 257, 178, 20);
 		panel.add(creatorNameField);
 		creatorNameField.setColumns(10);
 
@@ -141,12 +144,12 @@ public class TelaCadastroCerveja {
 
 		JLabel lblCreatorName = new JLabel("Criador:");
 		lblCreatorName.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblCreatorName.setBounds(84, 271, 51, 14);
+		lblCreatorName.setBounds(84, 260, 51, 14);
 		panel.add(lblCreatorName);
 
 		JLabel lblDescription = new JLabel("Descri\u00E7\u00E3o:");
 		lblDescription.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblDescription.setBounds(60, 319, 91, 14);
+		lblDescription.setBounds(62, 319, 89, 14);
 		panel.add(lblDescription);
 
 		JLabel lblCerveja = new JLabel("Sobre a sua Cerveja");
@@ -314,6 +317,8 @@ public class TelaCadastroCerveja {
 				Pais pais = new Pais();
 				Sabor sabor  = new Sabor();
 				TipoCerveja tipoCerveja = new TipoCerveja();
+				Lupulo lupulo = new Lupulo();
+				Fermento fermento = new Fermento();
 
 				CervejaBO cbo = new CervejaBO();
 				IngredientesBO ibo = new IngredientesBO();
@@ -329,23 +334,23 @@ public class TelaCadastroCerveja {
 				// ingredientes - extrair metodo
 				if (textAlchool.isEnabled() == true) {
 					float alchool = Float.parseFloat(textAlchool.getText());
-					ingredientes.setAlcool("sim");
+					ingredientes.setAlcool(true);
 					ingredientes.setTeorAlcoolico(alchool);
 				} else {
-					ingredientes.setAlcool("n�o");
+					ingredientes.setAlcool(false);
 					ingredientes.setTeorAlcoolico(0);
 				}
 
 				ingredientes.setCevada(Float.parseFloat(textCevada.getText()));
 
 				if (chckbxSim.isSelected() == true) {
-					ingredientes.setPuroMalte("sim");
+					ingredientes.setPuroMalte(true);
 				} else {
-					ingredientes.setPuroMalte("n�o");
+					ingredientes.setPuroMalte(false);
 				}
 
-				ingredientes.setLupulo(textFieldLupo.getText());
-				ingredientes.setFermento(textFieldFermento.getText());
+				ingredientes.setLupulo(lupulo);
+				ingredientes.setFermento(fermento);
 				ingredientes.setEspeciarias(especiariaPane.getText());
 				ingredientes.setNome(nameField.getText());
 
@@ -357,7 +362,7 @@ public class TelaCadastroCerveja {
 				cerveja.setCountryOrigin(pais);
 				cerveja.setDescription(descricaoPane.getText());
 				Usuario usuarioLogado = new Usuario();
-				usuarioLogado.setEmail(TelaInicial.usuarioLogado);
+				usuarioLogado.setEmail(TelaLogin.usuarioLogado);
 				cerveja.setUsuario(usuarioLogado);
 
 				boolean cadastrar = false;
@@ -391,6 +396,27 @@ public class TelaCadastroCerveja {
 		btnCadastrar.setForeground(Color.BLACK);
 		btnCadastrar.setBounds(168, 548, 124, 23);
 		panel.add(btnCadastrar);
+		TipoCerveja tipoCerveja = new TipoCerveja();
+		tipoCerveja.setNome("uwu");
+		tipoCerveja.setId(1);
+		JComboBox<TipoCerveja> comboBoxTipo = new JComboBox<TipoCerveja>();
+		comboBoxTipo.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			
+			}
+		});
+		comboBoxTipo.addItem(tipoCerveja);
+		comboBoxTipo.setBounds(338, 153, 112, 22);
+		panel.add(comboBoxTipo);
+		
+		JComboBox<TipoCerveja> comboBoxSabor = new JComboBox<TipoCerveja>();
+		comboBoxSabor.setBounds(338, 190, 112, 22);
+		panel.add(comboBoxSabor);
+		
+		JComboBox<TipoCerveja> comboBoxPais = new JComboBox<TipoCerveja>();
+		comboBoxPais.setBounds(338, 221, 112, 22);
+		panel.add(comboBoxPais);
 		
 		
 

@@ -13,6 +13,10 @@ public class Usuario implements IDBModel {
 	private String senha;
 	private int idade;
 	private String email;
+	
+//	@ManyToMany
+//	@JoinColumn(name="tipocerveja_id")
+//	private TipoCerveja tipoCerveja;
 
 	// constructors
 	public Usuario(int id, String nome, String senha, int idade, String email) {

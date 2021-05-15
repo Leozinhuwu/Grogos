@@ -9,19 +9,31 @@ public class Ingredientes implements IDBModel {
 	private int id;
 
 	private String nome;
-	private String alcool;
+	private Boolean alcool;
 	private float teorAlcoolico;
 	private float cevada;
-	private String puroMalte;
-	private String lupulo;
-	private String fermento;
+	private Boolean puroMalte;
+	
+	@ManyToOne
+	@JoinColumn(name="malte_id")
+	private Malte malte;
+	
+	
+	@ManyToOne
+	@JoinColumn(name="lupulo_id")
+	private Lupulo lupulo;
+	
+	@ManyToOne
+	@JoinColumn(name="fermento_id")
+	private Fermento fermento;
+	
 	private String especiarias;
 
 	@OneToOne(mappedBy = "ingredientes")
 	private Cerveja cerveja;
 
-	public Ingredientes(int id, String alcool, float teorAlcoolico, float cevada, String puroMalte, String lupulo,
-			String fermento, String especiarias, Cerveja cerveja) {
+	public Ingredientes(int id, Boolean alcool, float teorAlcoolico, float cevada, Boolean puroMalte, Lupulo lupulo,
+			Fermento fermento, String especiarias, Cerveja cerveja, Malte malte) {
 
 		this.id = id;
 		this.alcool = alcool;
@@ -46,11 +58,11 @@ public class Ingredientes implements IDBModel {
 		this.id = id;
 	}
 
-	public String getAlcool() {
+	public Boolean getAlcool() {
 		return alcool;
 	}
 
-	public void setAlcool(String alcool) {
+	public void setAlcool(Boolean alcool) {
 		this.alcool = alcool;
 	}
 
@@ -70,27 +82,27 @@ public class Ingredientes implements IDBModel {
 		this.cevada = cevada;
 	}
 
-	public String getPuroMalte() {
+	public Boolean getPuroMalte() {
 		return puroMalte;
 	}
 
-	public void setPuroMalte(String puroMalte) {
+	public void setPuroMalte(Boolean puroMalte) {
 		this.puroMalte = puroMalte;
 	}
 
-	public String getLupulo() {
+	public Lupulo getLupulo() {
 		return lupulo;
 	}
 
-	public void setLupulo(String lupulo) {
+	public void setLupulo(Lupulo lupulo) {
 		this.lupulo = lupulo;
 	}
 
-	public String getFermento() {
+	public Fermento getFermento() {
 		return fermento;
 	}
 
-	public void setFermento(String fermento) {
+	public void setFermento(Fermento fermento) {
 		this.fermento = fermento;
 	}
 
@@ -117,6 +129,14 @@ public class Ingredientes implements IDBModel {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+	
+	public Malte getMalte() {
+		return malte;
+	}
+
+	public void setMalte(Malte malte) {
+		this.malte = malte;
+	}
 
 	public String getEmail() {
 		return "uwu";
@@ -124,9 +144,11 @@ public class Ingredientes implements IDBModel {
 
 	@Override
 	public String toString() {
-		return "Ingredientes [id=" + id + ", alcool=" + alcool + ", teorAlcoolico=" + teorAlcoolico + ", cevada="
-				+ cevada + ", puroMalte=" + puroMalte + ", lupulo=" + lupulo + ", fermento=" + fermento
-				+ ", especiarias=" + especiarias + ", cerveja=" + cerveja + "]";
+		return "Ingredientes [id=" + id + ", nome=" + nome + ", alcool=" + alcool + ", teorAlcoolico=" + teorAlcoolico
+				+ ", cevada=" + cevada + ", puroMalte=" + puroMalte + ", malte=" + malte + ", lupulo=" + lupulo
+				+ ", fermento=" + fermento + ", especiarias=" + especiarias + ", cerveja=" + cerveja + "]";
 	}
+
+
 
 }

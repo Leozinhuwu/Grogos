@@ -5,7 +5,7 @@ import javax.persistence.Query;
 
 import br.edu.unifacear.classes.Usuario;
 
-public class UsuarioDao extends DefaultDAO<Usuario> {
+public class ApreciadorDao extends DefaultDAO<Usuario> {
 
 	@Override
 	protected Query getFindIdQuery(EntityManager con, Usuario obj) {

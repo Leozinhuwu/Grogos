@@ -20,6 +20,9 @@ public class Cerveja implements IDBModel {
 	@JoinColumn(name="sabor_id")
 	private Sabor sabor;
 	
+	@ManyToOne
+	@JoinColumn(name="coloracao_id")
+	private Coloracao coloracao;
 	
 	@ManyToOne
 	@JoinColumn(name="pais_id")

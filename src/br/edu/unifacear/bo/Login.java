@@ -1,11 +1,11 @@
 package br.edu.unifacear.bo;
 
 import br.edu.unifacear.classes.Usuario;
-import br.edu.unifacear.dao.UsuarioDao;
+import br.edu.unifacear.dao.ApreciadorDao;
 
 public class Login {
 
-	private static UsuarioDao userCrud = new UsuarioDao();
+	private static ApreciadorDao userCrud = new ApreciadorDao();
 
 	public boolean login(Usuario user) {
 

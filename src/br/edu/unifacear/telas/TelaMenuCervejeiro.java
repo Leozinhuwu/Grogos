@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
-public class TelaMenuUsuario extends JFrame {
+public class TelaMenuCervejeiro extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private static JFrame frameMenuUser;
@@ -35,7 +35,7 @@ public class TelaMenuUsuario extends JFrame {
 		btnPerfil.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					TelaPerfil.telaPerfil();
+					TelaCervejasCervejeiro.telaPerfil();
 				} catch (Exception e1) {
 				
 					e1.printStackTrace();
@@ -74,7 +74,7 @@ public class TelaMenuUsuario extends JFrame {
 		btnLogout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					TelaInicial.telaInicial();
+					TelaLogin.telaInicial();
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();

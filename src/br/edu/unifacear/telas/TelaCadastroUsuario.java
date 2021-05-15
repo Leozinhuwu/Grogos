@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
-import br.edu.unifacear.bo.UsuarioBO;
+import br.edu.unifacear.bo.ApreciadorBO;
 import br.edu.unifacear.classes.Usuario;
 import br.edu.unifacear.validators.UsuarioValidator;
 
@@ -29,7 +29,7 @@ public class TelaCadastroUsuario extends JFrame {
 
 	public static void telaCadastro() throws Exception {
 
-		UsuarioBO cadastro = new UsuarioBO();
+		ApreciadorBO cadastro = new ApreciadorBO();
 
 		// labels e botoes do jFrame
 		JPanel panel = new JPanel();
@@ -104,7 +104,7 @@ public class TelaCadastroUsuario extends JFrame {
 		btnVolta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					TelaInicial.telaInicial();
+					TelaLogin.telaInicial();
 
 				} catch (Exception e1) {
 

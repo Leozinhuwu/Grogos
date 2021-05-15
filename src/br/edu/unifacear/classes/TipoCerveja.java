@@ -46,13 +46,12 @@ public class TipoCerveja implements IDBModel {
 
 	@Override
 	public String toString() {
-		return "TipoCerveja [id=" + id + ", nome=" + nome + "]";
+		return  nome;
 	}
 
 
 	@Override
 	public String getEmail() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 	

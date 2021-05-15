@@ -4,8 +4,8 @@ import br.edu.unifacear.classes.Usuario;
 
 import br.edu.unifacear.dao.*;
 
-public class UsuarioBO {
-	private static UsuarioDao userCrud = new UsuarioDao();
+public class ApreciadorBO {
+	private static ApreciadorDao userCrud = new ApreciadorDao();
 
 	public boolean registerUser(Usuario user) throws Exception {
 
