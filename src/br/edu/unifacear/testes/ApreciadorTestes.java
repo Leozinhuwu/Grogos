@@ -3,7 +3,7 @@ package br.edu.unifacear.testes;
 import br.edu.unifacear.bo.ApreciadorBO;
 import br.edu.unifacear.classes.Apreciador;
 
-public class UsuarioTestes {
+public class ApreciadorTestes {
 	
 	
 	

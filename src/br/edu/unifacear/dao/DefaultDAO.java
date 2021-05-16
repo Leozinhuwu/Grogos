@@ -26,20 +26,18 @@ public abstract class DefaultDAO<T extends IDBModel> {
 	}
 
 	// remove
-	public void delete(Class<T> classe, int id) throws Exception {
-		T t = findById(classe, id);
-		if (t == null) {
-			System.out.println("ta nulo essa merda");
-		} else {
+	public void delete(T obj) throws Exception {
+		
+	
 			try {
 				con.getTransaction().begin();
-				con.remove(t);
+				con.remove(obj);
 				con.getTransaction().commit();
 
 			} catch (Exception e) {
 				throw new Exception("Erro deletando : " + e.getMessage());
 			}
-		}
+		
 
 	}
 
@@ -60,7 +58,7 @@ public abstract class DefaultDAO<T extends IDBModel> {
 	protected abstract Query getAutenticarObj(EntityManager con, T obj);
 
 	public int findId(T obj) throws Exception {
-
+		
 		List a = getFindIdQuery(con, obj).getResultList();
 		Object b = a.get(0);
 		int id = Integer.parseInt(b.toString());
@@ -78,4 +76,19 @@ public abstract class DefaultDAO<T extends IDBModel> {
 		return name;
 	}
 	protected abstract Query getFindName(EntityManager con, T obj);
+	
+	public Object findSingleObj(T obj) {
+		Object b;
+		if(getFindSingleObj(con, obj).getResultList().size() > 0) {
+			List a = getFindSingleObj(con, obj).getResultList();
+			b = a.get(0);
+			return b;
+		}else {
+			return null;
+		}
+		
+		
+	}
+	
+	protected abstract Query getFindSingleObj(EntityManager con, T obj);
 }

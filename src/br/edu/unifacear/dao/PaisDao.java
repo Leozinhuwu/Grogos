@@ -29,4 +29,10 @@ public class PaisDao extends DefaultDAO<Pais> {
 		return null;
 	}
 
+	@Override
+	protected Query getFindSingleObj(EntityManager con, Pais obj) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

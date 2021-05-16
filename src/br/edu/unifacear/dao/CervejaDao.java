@@ -40,4 +40,10 @@ public class CervejaDao extends DefaultDAO<Cerveja> {
 		return cervejas;
 	
 	}
+
+	@Override
+	protected Query getFindSingleObj(EntityManager con, Cerveja obj) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

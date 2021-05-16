@@ -27,4 +27,10 @@ public class IngredientesDao extends DefaultDAO<Ingredientes> {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	protected Query getFindSingleObj(EntityManager con, Ingredientes obj) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

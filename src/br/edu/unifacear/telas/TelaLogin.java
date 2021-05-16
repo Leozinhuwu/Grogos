@@ -84,7 +84,7 @@ public class TelaLogin extends JFrame {
 					}
 					frameMain.dispose();
 				} else {
-					lblLoginFail.setText("email ou senha incorreto/a");
+					lblLoginFail.setText("email ou senha incorretos");
 				}
 			}
 		});

@@ -26,4 +26,10 @@ public class TipoCervejaDao extends DefaultDAO<TipoCerveja> {
 		return null;
 	}
 
+	@Override
+	protected Query getFindSingleObj(EntityManager con, TipoCerveja obj) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

@@ -26,4 +26,10 @@ public class SaborDao extends DefaultDAO<Sabor> {
 		return null;
 	}
 
+	@Override
+	protected Query getFindSingleObj(EntityManager con, Sabor obj) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

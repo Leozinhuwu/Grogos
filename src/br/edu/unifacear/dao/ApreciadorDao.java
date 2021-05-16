@@ -30,4 +30,11 @@ public class ApreciadorDao extends DefaultDAO<Apreciador> {
 		return q;
 	}
 
+	@Override
+	protected Query getFindSingleObj(EntityManager con, Apreciador obj) {
+		Query q = con.createQuery("select a from Apreciador a" + " where email = :nome");
+		q.setParameter("nome", obj.getEmail());
+		return q;
+	}
+
 }
