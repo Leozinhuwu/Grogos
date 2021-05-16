@@ -1,7 +1,7 @@
 package br.edu.unifacear.testes;
 
 import br.edu.unifacear.bo.ApreciadorBO;
-import br.edu.unifacear.classes.Usuario;
+import br.edu.unifacear.classes.Apreciador;
 
 public class UsuarioTestes {
 	
@@ -9,7 +9,7 @@ public class UsuarioTestes {
 	
 	public static void saveUsuario() throws Exception {
 		ApreciadorBO userbo = new ApreciadorBO();
-		Usuario usuario = new Usuario();
+		Apreciador usuario = new Apreciador();
 		
 		usuario.setEmail("1@1.com");
 		usuario.setSenha("1");

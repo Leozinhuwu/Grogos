@@ -24,7 +24,7 @@ import br.edu.unifacear.bo.CervejaBO;
 import br.edu.unifacear.bo.IngredientesBO;
 import br.edu.unifacear.classes.Cerveja;
 import br.edu.unifacear.classes.Ingredientes;
-import br.edu.unifacear.classes.Usuario;
+import br.edu.unifacear.classes.Apreciador;
 import br.edu.unifacear.validators.CervejaValidator;
 import br.edu.unifacear.validators.IngredientesValidator;
 

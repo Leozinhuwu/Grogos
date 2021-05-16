@@ -3,7 +3,7 @@ package br.edu.unifacear.bo;
 import java.util.List;
 
 import br.edu.unifacear.classes.Cerveja;
-import br.edu.unifacear.classes.Usuario;
+import br.edu.unifacear.classes.Apreciador;
 import br.edu.unifacear.dao.CervejaDao;
 import br.edu.unifacear.dao.IngredientesDao;
 import br.edu.unifacear.dao.ApreciadorDao;
@@ -26,7 +26,7 @@ public class CervejaBO {
 		return true;
 	}
 
-	public List findByUser(Usuario user) throws Exception {
+	public List findByUser(Apreciador user) throws Exception {
 		user.setId(usuarioDao.findId(user));
 		
 		return cervejaDao.findCerveja(user);

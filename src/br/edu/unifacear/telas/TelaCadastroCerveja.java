@@ -25,7 +25,7 @@ import br.edu.unifacear.classes.Lupulo;
 import br.edu.unifacear.classes.Pais;
 import br.edu.unifacear.classes.Sabor;
 import br.edu.unifacear.classes.TipoCerveja;
-import br.edu.unifacear.classes.Usuario;
+import br.edu.unifacear.classes.Apreciador;
 import br.edu.unifacear.validators.CervejaValidator;
 import br.edu.unifacear.validators.IngredientesValidator;
 
@@ -361,7 +361,7 @@ public class TelaCadastroCerveja {
 				cerveja.setFlavor(sabor);
 				cerveja.setCountryOrigin(pais);
 				cerveja.setDescription(descricaoPane.getText());
-				Usuario usuarioLogado = new Usuario();
+				Apreciador usuarioLogado = new Apreciador();
 				usuarioLogado.setEmail(TelaLogin.usuarioLogado);
 				cerveja.setUsuario(usuarioLogado);
 

@@ -1,9 +1,11 @@
 package br.edu.unifacear.classes;
 
+import java.util.List;
+
 import javax.persistence.*;
 
 @Entity
-public class Usuario implements IDBModel {
+public class Apreciador implements IDBModel {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,12 +16,17 @@ public class Usuario implements IDBModel {
 	private int idade;
 	private String email;
 	
-//	@ManyToMany
-//	@JoinColumn(name="tipocerveja_id")
-//	private TipoCerveja tipoCerveja;
+
+	@ManyToMany
+    @JoinTable(name="Apreciador_TipoCerveja", joinColumns=
+    {@JoinColumn(name="apreciador_id")}, inverseJoinColumns=
+      {@JoinColumn(name="TipoCerveja_id")})
+	private List<TipoCerveja> tipoCerveja;
+
+
 
 	// constructors
-	public Usuario(int id, String nome, String senha, int idade, String email) {
+	public Apreciador(int id, String nome, String senha, int idade, String email) {
 		super();
 		this.setId(id);
 		this.nome = nome;
@@ -28,7 +35,7 @@ public class Usuario implements IDBModel {
 		this.email = email;
 	}
 
-	public Usuario() {
+	public Apreciador() {
 
 	}
 
@@ -38,7 +45,14 @@ public class Usuario implements IDBModel {
 		System.out.println(id);
 		return id;
 	}
+	
+	public List<TipoCerveja> getTipoCerveja() {
+		return tipoCerveja;
+	}
 
+	public void setTipoCerveja(List<TipoCerveja> tipoCerveja) {
+		this.tipoCerveja = tipoCerveja;
+	}
 	public void setId(int id) {
 
 		this.id = id;
@@ -96,7 +110,7 @@ public class Usuario implements IDBModel {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Usuario other = (Usuario) obj;
+		Apreciador other = (Apreciador) obj;
 		if (email == null) {
 			if (other.email != null)
 				return false;

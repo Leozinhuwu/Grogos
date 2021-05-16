@@ -1,5 +1,7 @@
 package br.edu.unifacear.classes;
 
+import java.util.List;
+
 import javax.persistence.*;
 
 @Entity
@@ -10,6 +12,8 @@ public class TipoCerveja implements IDBModel {
 	
 	
 	private String nome;
+	
+	
 
 
 	public TipoCerveja(int id, String nome) {

@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 import br.edu.unifacear.bo.ApreciadorBO;
-import br.edu.unifacear.classes.Usuario;
+import br.edu.unifacear.classes.Apreciador;
 import br.edu.unifacear.validators.UsuarioValidator;
 
 import java.awt.event.MouseAdapter;
@@ -69,7 +69,7 @@ public class TelaCadastroUsuario extends JFrame {
 						return;
 					}
 					
-					Usuario newUser = new Usuario();
+					Apreciador newUser = new Apreciador();
 					newUser.setEmail(email);
 					newUser.setIdade(idade);
 					newUser.setNome(nome);

@@ -30,14 +30,14 @@ public class Cerveja implements IDBModel {
 
 	@ManyToOne
 	@JoinColumn(name="usuario_id")
-	private Usuario usuario;
+	private Apreciador usuario;
 
 	@OneToOne
 	@JoinColumn(name="ingredientes_id")
 	private Ingredientes ingredientes;
 
 	public Cerveja(int id, String name, String description, TipoCerveja type, Sabor flavor,
-			Usuario usuario, Ingredientes ingredientes) {
+			Apreciador usuario, Ingredientes ingredientes) {
 		super();
 		this.setId(id);
 
@@ -95,11 +95,11 @@ public class Cerveja implements IDBModel {
 	}
 
 
-	public Usuario getUsuario() {
+	public Apreciador getUsuario() {
 		return usuario;
 	}
 
-	public void setUsuario(Usuario usuario) {
+	public void setUsuario(Apreciador usuario) {
 		this.usuario = usuario;
 	}
 

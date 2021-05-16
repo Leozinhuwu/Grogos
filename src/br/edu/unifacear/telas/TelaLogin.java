@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 import br.edu.unifacear.bo.Login;
-import br.edu.unifacear.classes.Usuario;
+import br.edu.unifacear.classes.Apreciador;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -69,7 +69,7 @@ public class TelaLogin extends JFrame {
 		JButton btnLogar = new JButton("Logar");
 		btnLogar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Usuario user = new Usuario();
+				Apreciador user = new Apreciador();
 				user.setEmail(txtEmail.getText());
 				user.setSenha(passwordField.getText());
 				boolean auth = login.login(user);
