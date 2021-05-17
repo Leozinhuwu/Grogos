@@ -18,9 +18,11 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import br.edu.unifacear.bo.ApreciadorBO;
+import br.edu.unifacear.bo.CervejeiroBO;
 import br.edu.unifacear.bo.Login;
 import br.edu.unifacear.bo.TokenBO;
 import br.edu.unifacear.classes.Apreciador;
+import br.edu.unifacear.classes.Cervejeiro;
 import br.edu.unifacear.classes.Token;
 
 public class TelaAdm {
@@ -139,7 +141,35 @@ public class TelaAdm {
 		textEmailCervejeiro.setBounds(148, 247, 148, 20);
 		panel.add(textEmailCervejeiro);
 		
+		JLabel lblMsgCervejeiro = new JLabel("");
+		lblMsgCervejeiro.setBounds(39, 322, 204, 14);
+		panel.add(lblMsgCervejeiro);
+		
+		
 		JButton btnDeletarCervejeiro = new JButton("Deletar");
+		btnDeletarCervejeiro.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Cervejeiro cervejeiro = new Cervejeiro();
+				CervejeiroBO cbo = new CervejeiroBO();
+				cervejeiro.setEmail(textEmailCervejeiro.getText());
+				Cervejeiro cerv = (Cervejeiro) cbo.findCervejeiro(cervejeiro);
+				
+				if(cerv == null) {
+					lblMsgCervejeiro.setText("Cervejeiro não encontrado");
+				}else {
+					try {
+						
+						cbo.deletar(cerv);
+						lblMsgCervejeiro.setText("Cervejeiro deletado");
+					} catch (Exception e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				}
+				
+			}
+		});
 		btnDeletarCervejeiro.setBounds(78, 289, 124, 23);
 		panel.add(btnDeletarCervejeiro);
 		
@@ -187,15 +217,6 @@ public class TelaAdm {
 		lblDeletarContaApreciador.setBounds(78, 337, 177, 14);
 		panel.add(lblDeletarContaApreciador);
 		
-		
-		JLabel lblMsgCervejeiro = new JLabel("");
-		lblMsgCervejeiro.setBounds(39, 322, 204, 14);
-		panel.add(lblMsgCervejeiro);
-		
-		
-		
-		
-
 		frameMain.setVisible(true);
 
 	}

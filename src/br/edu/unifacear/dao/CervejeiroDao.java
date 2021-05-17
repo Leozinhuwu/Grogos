@@ -28,8 +28,9 @@ public class CervejeiroDao extends DefaultDAO<Cervejeiro>{
 
 	@Override
 	protected Query getFindSingleObj(EntityManager con, Cervejeiro obj) {
-		// TODO Auto-generated method stub
-		return null;
+		Query q = con.createQuery("select a from Cervejeiro a" + " where email = :nome");
+		q.setParameter("nome", obj.getEmail());
+		return q;
 	}
 
 }

@@ -10,13 +10,13 @@ public class Cervejaria implements IDBModel{
 	
 	private String nome;
 	private String email;
-	private int telefone;
+	private String telefone;
 	
 	@ManyToOne
 	@JoinColumn(name="endereco_id")
 	private Endereco endereco;
 
-	public Cervejaria(int id, String email, int telefone, Endereco endereco, String nome) {
+	public Cervejaria(int id, String email, String telefone, Endereco endereco, String nome) {
 		super();
 		this.id = id;
 		this.email = email;
@@ -46,11 +46,11 @@ public class Cervejaria implements IDBModel{
 		this.email = email;
 	}
 
-	public int getTelefone() {
+	public String getTelefone() {
 		return telefone;
 	}
 
-	public void setTelefone(int telefone) {
+	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
 

@@ -14,7 +14,7 @@ public class Cervejeiro implements IDBModel{
 	private String senha;
 	private int idade;
 	private String email;
-	private int telefone;
+	private String telefone;
 	
 	@ManyToOne
 	@JoinColumn(name="cervejaria_id")
@@ -26,7 +26,7 @@ public class Cervejeiro implements IDBModel{
 	private List<Token> token;
 	
 	
-	public Cervejeiro(int id, String nome, String senha, int idade, String email, int telefone, Cervejaria cervejaria) {
+	public Cervejeiro(int id, String nome, String senha, int idade, String email, String telefone, Cervejaria cervejaria) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -70,10 +70,10 @@ public class Cervejeiro implements IDBModel{
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public int getTelefone() {
+	public String getTelefone() {
 		return telefone;
 	}
-	public void setTelefone(int telefone) {
+	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
 	public Cervejaria getCervejaria() {

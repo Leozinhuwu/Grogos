@@ -24,18 +24,22 @@ import javax.swing.SwingConstants;
 import javax.swing.JCheckBox;
 import javax.swing.JToggleButton;
 import javax.swing.JScrollBar;
+import javax.swing.JComboBox;
 
 public class TelaCadastroCervejeiro {
 	
 	private static final long serialVersionUID = 1L;
 	private static JFrame frameCadastro;
-	private static JTextField emailField;
+	private static JTextField textFieldEmail;
 	private static JPasswordField passwordField;
-	private static JTextField ageField;
-	private static JTextField nameField;
+	private static JTextField textFieldIdade;
+	private static JTextField textFieldNome;
 	private static JTextField textFieldTelefone;
 	private static JTextField textToken;
 	private static JTextField textNomeCervejaria;
+	private static JTextField textFieldEmailCervejaria;
+	private static JTextField textField;
+	private static JTextField textFieldTelefoneCervejaria;
 
 	/**
 	 * @throws Exception
@@ -70,15 +74,15 @@ public class TelaCadastroCervejeiro {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String nome = nameField.getText();
-				String email = emailField.getText();
+				String nome = textFieldNome.getText();
+				String email = textFieldEmail.getText();
 				String senha = passwordField.getText();
-				String idadeS = ageField.getText();
+				String idadeS = textFieldIdade.getText();
 
 				int idade = 0;
 				boolean cadastrar = false;
 				if (UsuarioValidator.validar(nome, idadeS, email, senha)) {
-					idade = Integer.parseInt(ageField.getText());
+					idade = Integer.parseInt(textFieldIdade.getText());
 					if(idade < 18) {
 						lblCadastroMsg.setText("Aplicativo destinado a usúarios maiores de 18 anos");
 						return;
@@ -137,19 +141,19 @@ public class TelaCadastroCervejeiro {
 		lblTitle.setBounds(292, 25, 46, 14);
 		panel.add(lblTitle);
 
-		emailField = new JTextField();
-		emailField.addMouseListener(new MouseAdapter() {
+		textFieldEmail = new JTextField();
+		textFieldEmail.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				lblCadastroMsg.setText("");
 			}
 		});
-		emailField.setToolTipText("email");
-		emailField.setForeground(Color.BLACK);
-		emailField.setBackground(new Color(255, 255, 255));
-		emailField.setBounds(146, 186, 175, 20);
-		panel.add(emailField);
-		emailField.setColumns(10);
+		textFieldEmail.setToolTipText("email");
+		textFieldEmail.setForeground(Color.BLACK);
+		textFieldEmail.setBackground(new Color(255, 255, 255));
+		textFieldEmail.setBounds(146, 186, 175, 20);
+		panel.add(textFieldEmail);
+		textFieldEmail.setColumns(10);
 
 		JLabel lblEmail = new JLabel("Email:");
 		lblEmail.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -177,34 +181,34 @@ public class TelaCadastroCervejeiro {
 		lblGrogosImg.setBounds(643, 46, 204, 263);
 		panel.add(lblGrogosImg);
 
-		ageField = new JTextField();
-		ageField.addMouseListener(new MouseAdapter() {
+		textFieldIdade = new JTextField();
+		textFieldIdade.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				lblCadastroMsg.setText("");
 			}
 		});
 
-		ageField.setToolTipText("idade");
-		ageField.setForeground(Color.BLACK);
-		ageField.setColumns(10);
-		ageField.setBackground(Color.WHITE);
-		ageField.setBounds(146, 153, 46, 20);
-		panel.add(ageField);
+		textFieldIdade.setToolTipText("idade");
+		textFieldIdade.setForeground(Color.BLACK);
+		textFieldIdade.setColumns(10);
+		textFieldIdade.setBackground(Color.WHITE);
+		textFieldIdade.setBounds(146, 153, 46, 20);
+		panel.add(textFieldIdade);
 
-		nameField = new JTextField();
-		nameField.addMouseListener(new MouseAdapter() {
+		textFieldNome = new JTextField();
+		textFieldNome.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				lblCadastroMsg.setText("");
 			}
 		});
-		nameField.setToolTipText("nome");
-		nameField.setForeground(Color.BLACK);
-		nameField.setColumns(10);
-		nameField.setBackground(Color.WHITE);
-		nameField.setBounds(146, 122, 175, 20);
-		panel.add(nameField);
+		textFieldNome.setToolTipText("nome");
+		textFieldNome.setForeground(Color.BLACK);
+		textFieldNome.setColumns(10);
+		textFieldNome.setBackground(Color.WHITE);
+		textFieldNome.setBounds(146, 122, 175, 20);
+		panel.add(textFieldNome);
 
 		JLabel lblAge = new JLabel("Idade:");
 		lblAge.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -238,7 +242,7 @@ public class TelaCadastroCervejeiro {
 		panel.add(textToken);
 		
 		JLabel lblToken = new JLabel("Passe:");
-		lblToken.setBounds(587, 532, 46, 14);
+		lblToken.setBounds(596, 532, 46, 14);
 		panel.add(lblToken);
 		
 		JLabel lblAutonomo = new JLabel("Caso n\u00E3o tenha/trabalhe em uma cervejaria, selecione a op\u00E7\u00E3o Aut\u00F4nomo");
@@ -269,6 +273,60 @@ public class TelaCadastroCervejeiro {
 		textNomeCervejaria.setBackground(Color.WHITE);
 		textNomeCervejaria.setBounds(113, 466, 175, 20);
 		panel.add(textNomeCervejaria);
+		
+		JLabel lblEmailCervejaria = new JLabel("Email:");
+		lblEmailCervejaria.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblEmailCervejaria.setBounds(49, 500, 46, 14);
+		panel.add(lblEmailCervejaria);
+		
+		textFieldEmailCervejaria = new JTextField();
+		textFieldEmailCervejaria.setToolTipText("email");
+		textFieldEmailCervejaria.setForeground(Color.BLACK);
+		textFieldEmailCervejaria.setColumns(10);
+		textFieldEmailCervejaria.setBackground(Color.WHITE);
+		textFieldEmailCervejaria.setBounds(113, 497, 175, 20);
+		panel.add(textFieldEmailCervejaria);
+		
+		JLabel lblEstado = new JLabel("Estado:");
+		lblEstado.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblEstado.setBounds(53, 558, 46, 14);
+		panel.add(lblEstado);
+		
+		JComboBox comboBox = new JComboBox();
+		comboBox.setBounds(113, 554, 175, 22);
+		panel.add(comboBox);
+		
+		JLabel lblCidade = new JLabel("Cidade:");
+		lblCidade.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblCidade.setBounds(53, 590, 46, 14);
+		panel.add(lblCidade);
+		
+		JComboBox comboBox_1 = new JComboBox();
+		comboBox_1.setBounds(113, 586, 175, 22);
+		panel.add(comboBox_1);
+		
+		JLabel lblEndereco = new JLabel("Endere\u00E7o:");
+		lblEndereco.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblEndereco.setBounds(28, 615, 71, 14);
+		panel.add(lblEndereco);
+		
+		textField = new JTextField();
+		textField.setBounds(113, 612, 359, 20);
+		panel.add(textField);
+		textField.setColumns(10);
+		
+		JLabel lblTelefoneCervejaria = new JLabel("Telefone:");
+		lblTelefoneCervejaria.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblTelefoneCervejaria.setBounds(24, 528, 71, 14);
+		panel.add(lblTelefoneCervejaria);
+		
+		textFieldTelefoneCervejaria = new JTextField();
+		textFieldTelefoneCervejaria.setToolTipText("telefone");
+		textFieldTelefoneCervejaria.setForeground(Color.BLACK);
+		textFieldTelefoneCervejaria.setColumns(10);
+		textFieldTelefoneCervejaria.setBackground(Color.WHITE);
+		textFieldTelefoneCervejaria.setBounds(113, 525, 175, 20);
+		panel.add(textFieldTelefoneCervejaria);
 
 		frameCadastro.setVisible(true);
 
