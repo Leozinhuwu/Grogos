@@ -30,14 +30,14 @@ public class Cerveja implements IDBModel {
 
 	@ManyToOne
 	@JoinColumn(name="usuario_id")
-	private Apreciador usuario;
+	private Cervejeiro cervejeiro;
 
 	@OneToOne
 	@JoinColumn(name="ingredientes_id")
 	private Ingredientes ingredientes;
 
 	public Cerveja(int id, String name, String description, TipoCerveja type, Sabor flavor,
-			Apreciador usuario, Ingredientes ingredientes) {
+			Cervejeiro cervejeiro, Ingredientes ingredientes) {
 		super();
 		this.setId(id);
 
@@ -47,7 +47,7 @@ public class Cerveja implements IDBModel {
 		this.sabor = flavor;
 
 
-		this.usuario = usuario;
+		this.cervejeiro = cervejeiro;
 	}
 
 	public Cerveja() {
@@ -95,12 +95,12 @@ public class Cerveja implements IDBModel {
 	}
 
 
-	public Apreciador getUsuario() {
-		return usuario;
+	public Cervejeiro getCervejeiro() {
+		return cervejeiro;
 	}
 
-	public void setUsuario(Apreciador usuario) {
-		this.usuario = usuario;
+	public void setCervejeiro(Cervejeiro cervejeiro) {
+		this.cervejeiro = cervejeiro;
 	}
 
 	public Pais getCountryOrigin() {
@@ -125,9 +125,11 @@ public class Cerveja implements IDBModel {
 
 	@Override
 	public String toString() {
-		return "Cerveja id = " + id + ", name = " + nome + ", description = " + descricao + ", type = " + tipo
-				+ ", flavor = " + sabor + ","  + ", countryOrigin = " + paisOrigem
-				+ ", usuario = " + usuario;
+		return "Cerveja [id=" + id + ", nome=" + nome + ", descricao=" + descricao + ", tipo=" + tipo + ", sabor="
+				+ sabor + ", coloracao=" + coloracao + ", paisOrigem=" + paisOrigem + ", cervejeiro=" + cervejeiro
+				+ ", ingredientes=" + ingredientes + "]";
 	}
+
+	
 
 }

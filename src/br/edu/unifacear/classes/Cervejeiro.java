@@ -25,6 +25,7 @@ public class Cervejeiro implements IDBModel{
       {@JoinColumn(name="token_id")})
 	private List<Token> token;
 	
+	
 	public Cervejeiro(int id, String nome, String senha, int idade, String email, int telefone, Cervejaria cervejaria) {
 		super();
 		this.id = id;

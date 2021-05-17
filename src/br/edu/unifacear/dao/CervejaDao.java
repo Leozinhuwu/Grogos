@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import br.edu.unifacear.classes.Cerveja;
+import br.edu.unifacear.classes.Cervejeiro;
 import br.edu.unifacear.classes.Apreciador;
 
 public class CervejaDao extends DefaultDAO<Cerveja> {
@@ -31,9 +32,9 @@ public class CervejaDao extends DefaultDAO<Cerveja> {
 		return null;
 	}
 	
-	public List<Cerveja> findCerveja(Apreciador user) {
+	public List<Cerveja> findCerveja(Cervejeiro user) {
 		Query q = con.createQuery("select c from Cerveja c" +
-				" where usuario_id = :id");
+				" where cervejeiro_id = :id");
 		q.setParameter("id", user.getId());
 		List<Cerveja> cervejas = q.getResultList();
 		System.out.println(cervejas);

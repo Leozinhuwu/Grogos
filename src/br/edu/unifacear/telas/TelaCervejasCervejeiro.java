@@ -15,8 +15,10 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import br.edu.unifacear.bo.CervejaBO;
+import br.edu.unifacear.bo.CervejeiroBO;
 import br.edu.unifacear.bo.ApreciadorBO;
 import br.edu.unifacear.classes.Cerveja;
+import br.edu.unifacear.classes.Cervejeiro;
 import br.edu.unifacear.classes.Apreciador;
 
 
@@ -36,8 +38,8 @@ public class TelaCervejasCervejeiro {
 	 */
 
 	public static void telaPerfil() throws Exception {
-		ApreciadorBO userBo = new ApreciadorBO();
-		Apreciador user = new Apreciador();
+		CervejeiroBO userBo = new CervejeiroBO();
+		Cervejeiro user = new Cervejeiro();
 		user.setEmail(TelaLogin.usuarioLogado);
 		user.setNome(userBo.findUserName(user));
 		
@@ -148,7 +150,7 @@ public class TelaCervejasCervejeiro {
 
 	}
 
-	private static List<Cerveja> getCervejas(Apreciador user) throws Exception {
+	private static List<Cerveja> getCervejas(Cervejeiro user) throws Exception {
 		CervejaBO cbo = new CervejaBO();
 		
 		return cbo.findByUser(user);

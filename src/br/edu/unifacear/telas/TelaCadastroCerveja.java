@@ -51,6 +51,7 @@ public class TelaCadastroCerveja {
 	private static JTextField textFieldLupo;
 	private static JTextField textFieldFermento;
 	private static JCheckBox chckbxNao;
+	private static JTextField textFieldMalte;
 
 	/**
 	 * @throws Exception
@@ -253,7 +254,7 @@ public class TelaCadastroCerveja {
 
 		JLabel lblEspeciariasAdicionais = new JLabel("Especiarias Adicionais:");
 		lblEspeciariasAdicionais.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblEspeciariasAdicionais.setBounds(513, 319, 145, 14);
+		lblEspeciariasAdicionais.setBounds(539, 378, 145, 14);
 		panel.add(lblEspeciariasAdicionais);
 		
 		JEditorPane descricaoPane = new JEditorPane();
@@ -264,14 +265,14 @@ public class TelaCadastroCerveja {
 		
 		JEditorPane especiariaPane = new JEditorPane();
 		especiariaPane.setBackground(Color.WHITE);
-		especiariaPane.setBounds(550, 344, 269, 141);
+		especiariaPane.setBounds(576, 403, 269, 141);
 		especiariaPane.setBorder(BorderFactory.createLineBorder(Color.black));
 		panel.add(especiariaPane);
 
 		JTextPane txtpnTodosOuCampos = new JTextPane();
 		txtpnTodosOuCampos.setText(
 				"Forjar informa\u00E7\u00F5es ou atribuir informa\u00E7\u00F5es n\u00E3o relacionadas a cerveja ou ingredientes podem levar ao banimento da plataforma!!!\r\n\r\nCADASTRE CONSCIENTE!\r\n\r\n");
-		txtpnTodosOuCampos.setBounds(546, 509, 277, 93);
+		txtpnTodosOuCampos.setBounds(572, 568, 277, 93);
 		panel.add(txtpnTodosOuCampos);
 
 		JLabel lblMalte = new JLabel("Puro Malte:");
@@ -363,7 +364,7 @@ public class TelaCadastroCerveja {
 				cerveja.setDescription(descricaoPane.getText());
 				Apreciador usuarioLogado = new Apreciador();
 				usuarioLogado.setEmail(TelaLogin.usuarioLogado);
-				cerveja.setUsuario(usuarioLogado);
+				
 
 				boolean cadastrar = false;
 				boolean cadastrarIngredientes = false;
@@ -417,6 +418,28 @@ public class TelaCadastroCerveja {
 		JComboBox<TipoCerveja> comboBoxPais = new JComboBox<TipoCerveja>();
 		comboBoxPais.setBounds(338, 221, 112, 22);
 		panel.add(comboBoxPais);
+		
+		JComboBox<TipoCerveja> comboBoxLupulo = new JComboBox<TipoCerveja>();
+		comboBoxLupulo.setBounds(791, 256, 112, 22);
+		panel.add(comboBoxLupulo);
+		
+		JComboBox<TipoCerveja> comboBoxFermento = new JComboBox<TipoCerveja>();
+		comboBoxFermento.setBounds(791, 287, 112, 22);
+		panel.add(comboBoxFermento);
+		
+		JLabel lblTipoDeMalte = new JLabel("Tipo de Malte:");
+		lblTipoDeMalte.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblTipoDeMalte.setBounds(550, 325, 109, 14);
+		panel.add(lblTipoDeMalte);
+		
+		textFieldMalte = new JTextField();
+		textFieldMalte.setColumns(10);
+		textFieldMalte.setBounds(671, 322, 109, 20);
+		panel.add(textFieldMalte);
+		
+		JComboBox<TipoCerveja> comboBoxMalte = new JComboBox<TipoCerveja>();
+		comboBoxMalte.setBounds(791, 321, 112, 22);
+		panel.add(comboBoxMalte);
 		
 		
 
