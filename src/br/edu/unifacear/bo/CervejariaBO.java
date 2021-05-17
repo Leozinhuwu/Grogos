@@ -11,4 +11,8 @@ public class CervejariaBO {
 
 		cervejariaCrud.save(cerveja);
 	}
+
+	public void deletar(Cervejaria cervejaria) throws Exception {
+		cervejariaCrud.delete(cervejaria);
+	}
 }
