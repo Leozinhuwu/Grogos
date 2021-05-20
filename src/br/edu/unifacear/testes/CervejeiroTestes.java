@@ -20,11 +20,20 @@ public class CervejeiroTestes {
 		estado.setNome("Parana");
 		estadobo.saveEstado(estado);
 		
+		Estado estado2 = new Estado();
+		estado2.setNome("SaoPaulo");
+		estadobo.saveEstado(estado2);
+		
 		CidadeBO cidadebo = new CidadeBO();
 		Cidade cidade = new Cidade();
 		cidade.setNome("Araucaria");
 		cidade.setEstado(estado);
 		cidadebo.saveCidade(cidade);
+		
+		Cidade cidade2 = new Cidade();
+		cidade2.setNome("Rio Preto");
+		cidade2.setEstado(estado2);
+		cidadebo.saveCidade(cidade2);
 		
 		EnderecoBO enderecobo = new EnderecoBO();
 		Endereco endereco = new Endereco();

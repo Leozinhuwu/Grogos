@@ -9,8 +9,9 @@ public class TipoCervejaDao extends DefaultDAO<TipoCerveja> {
 
 	@Override
 	protected Query getAutenticarObj(EntityManager con, TipoCerveja obj) {
-		// TODO Auto-generated method stub
-		return null;
+		Query q = con.createQuery("select tc from TipoCerveja tc" + " where nome = :nome");
+		q.setParameter("nome", obj.getNome());
+		return q;
 	}
 
 	@Override

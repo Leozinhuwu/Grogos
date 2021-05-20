@@ -9,8 +9,10 @@ public class EstadoDao extends DefaultDAO<Estado>{
 
 	@Override
 	protected Query getAutenticarObj(EntityManager con, Estado obj) {
-		// TODO Auto-generated method stub
-		return null;
+		Query q = con.createQuery("select e from Estado e" + " where nome = :nome");
+		q.setParameter("nome", obj.getNome());
+		return q;
+		
 	}
 
 	@Override

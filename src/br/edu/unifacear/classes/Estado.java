@@ -39,7 +39,7 @@ public class Estado implements IDBModel{
 
 	@Override
 	public String toString() {
-		return "Estado [id=" + id + ", nome=" + nome + "]";
+		return nome ;
 	}
 
 	@Override

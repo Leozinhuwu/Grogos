@@ -7,13 +7,17 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 import br.edu.unifacear.bo.ApreciadorBO;
+import br.edu.unifacear.bo.TipoCervejaBO;
 import br.edu.unifacear.classes.Apreciador;
-import br.edu.unifacear.validators.UsuarioValidator;
+import br.edu.unifacear.classes.Estado;
+import br.edu.unifacear.classes.TipoCerveja;
+import br.edu.unifacear.validators.ApreciadorValidator;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
-public class TelaCadastroUsuario extends JFrame {
+public class TelaCadastroApreciador extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private static JFrame frameCadastro;
@@ -30,6 +34,8 @@ public class TelaCadastroUsuario extends JFrame {
 	public static void telaCadastro() throws Exception {
 
 		ApreciadorBO cadastro = new ApreciadorBO();
+		TipoCervejaBO tipocervejabo = new TipoCervejaBO();
+		ArrayList<TipoCerveja> tipos = new ArrayList<TipoCerveja>();
 
 		// labels e botoes do jFrame
 		JPanel panel = new JPanel();
@@ -37,7 +43,7 @@ public class TelaCadastroUsuario extends JFrame {
 		panel.setBackground(Color.WHITE);
 		frameCadastro = new JFrame();
 		frameCadastro.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\leo4_\\Desktop\\GrogosPesq.jpg"));
-		frameCadastro.setSize(750, 500);
+		frameCadastro.setSize(918, 686);
 		frameCadastro.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frameCadastro.setLocation(500, 250);
 
@@ -62,13 +68,13 @@ public class TelaCadastroUsuario extends JFrame {
 
 				int idade = 0;
 				boolean cadastrar = false;
-				if (UsuarioValidator.validar(nome, idadeS, email, senha)) {
+				if (ApreciadorValidator.validar(nome, idadeS, email, senha)) {
 					idade = Integer.parseInt(ageField.getText());
-					if(idade < 18) {
+					if (idade < 18) {
 						lblCadastroMsg.setText("Aplicativo destinado a usúarios maiores de 18 anos");
 						return;
 					}
-					
+
 					Apreciador newUser = new Apreciador();
 					newUser.setEmail(email);
 					newUser.setIdade(idade);
@@ -197,8 +203,48 @@ public class TelaCadastroUsuario extends JFrame {
 		lblName.setBounds(90, 125, 46, 14);
 		panel.add(lblName);
 
+		List list = new List();
+		list.setBounds(104, 461, 247, 119);
+		panel.add(list);
+
+		JLabel lbltipomsg = new JLabel("");
+		lbltipomsg.setBounds(104, 437, 247, 14);
+		panel.add(lbltipomsg);
+
+		JComboBox<TipoCerveja> comboBoxTipoCerveja = new JComboBox<TipoCerveja>();
+		comboBoxTipoCerveja.setBounds(105, 404, 148, 22);
+		panel.add(comboBoxTipoCerveja);
+
+		JButton btnAddTipoCerveja = new JButton("Adicionar");
+		btnAddTipoCerveja.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				TipoCerveja tc = (TipoCerveja) comboBoxTipoCerveja.getSelectedItem();
+
+				if (!tipos.contains(tc)) {
+					tipos.add(tc);
+					list.add(tc.getNome());
+				} else {
+					lbltipomsg.setText("item ja adicionado");
+				}
+
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				lbltipomsg.setText("");
+			}
+		});
+		btnAddTipoCerveja.setBounds(263, 404, 89, 23);
+		panel.add(btnAddTipoCerveja);
+
+		for (TipoCerveja tc : tipocervejabo.tipos()) {
+
+			comboBoxTipoCerveja.addItem(tc);
+
+		}
+
 		frameCadastro.setVisible(true);
 
 	}
-
 }

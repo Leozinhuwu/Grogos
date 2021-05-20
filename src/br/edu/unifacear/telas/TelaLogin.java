@@ -38,18 +38,18 @@ public class TelaLogin extends JFrame {
 		panel.setBackground(Color.WHITE);
 		frameMain = new JFrame();
 		frameMain.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\leo4_\\Desktop\\GrogosPesq.jpg"));
-		frameMain.setSize(750, 500);
+		frameMain.setSize(931, 537);
 		frameMain.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frameMain.setLocation(500, 250);
 
 		frameMain.getContentPane().add(panel);
 		panel.setLayout(null);
 
-		JButton btnCadastrar = new JButton("Cadastrar");
-		btnCadastrar.addActionListener(new ActionListener() {
+		JButton btnCadastrarApreciador = new JButton("Cadastrar");
+		btnCadastrarApreciador.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					TelaCadastroUsuario.telaCadastro();
+					TelaCadastroApreciador.telaCadastro();
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -59,8 +59,8 @@ public class TelaLogin extends JFrame {
 
 		});
 
-		btnCadastrar.setBounds(513, 346, 131, 23);
-		panel.add(btnCadastrar);
+		btnCadastrarApreciador.setBounds(35, 436, 131, 23);
+		panel.add(btnCadastrarApreciador);
 
 		JLabel lblLoginFail = new JLabel("");
 		lblLoginFail.setBounds(146, 194, 196, 45);
@@ -88,7 +88,7 @@ public class TelaLogin extends JFrame {
 				}
 			}
 		});
-		btnLogar.setBounds(172, 160, 89, 23);
+		btnLogar.setBounds(197, 160, 89, 23);
 		panel.add(btnLogar);
 
 		JLabel lblTitle = new JLabel("Grogos");
@@ -110,9 +110,9 @@ public class TelaLogin extends JFrame {
 		panel.add(txtEmail);
 		txtEmail.setColumns(10);
 
-		JLabel lblCadastrar = new JLabel("Caso nao tenha conta cadastre aqui");
-		lblCadastrar.setBounds(488, 321, 236, 14);
-		panel.add(lblCadastrar);
+		JLabel lblCadastrarApreciador = new JLabel("Novo Apreciador?  Cadastre aqui");
+		lblCadastrarApreciador.setBounds(10, 410, 237, 14);
+		panel.add(lblCadastrarApreciador);
 
 		JLabel lblEmail = new JLabel("Email:");
 		lblEmail.setBounds(105, 87, 46, 14);
@@ -128,8 +128,42 @@ public class TelaLogin extends JFrame {
 
 		JLabel lblGrogosImg = new JLabel("");
 		lblGrogosImg.setIcon(new ImageIcon("C:\\Users\\leo4_\\Desktop\\gragas.png"));
-		lblGrogosImg.setBounds(453, 37, 204, 263);
+		lblGrogosImg.setBounds(644, 25, 204, 263);
 		panel.add(lblGrogosImg);
+		
+		JLabel lblJPossuiPasse = new JLabel("J\u00E1 possui passe de Cervejeiro?  Cadastre aqui");
+		lblJPossuiPasse.setBounds(590, 411, 300, 14);
+		panel.add(lblJPossuiPasse);
+		
+		JButton btnCadastrarCervejeiro = new JButton("Cadastrar");
+		btnCadastrarCervejeiro.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				try {
+					TelaCadastroCervejeiro.telaCadastro();
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+				frameMain.dispose();
+				
+			}
+		});
+		btnCadastrarCervejeiro.setBounds(708, 436, 131, 23);
+		panel.add(btnCadastrarCervejeiro);
+		
+		JTextPane txtpnVocUm = new JTextPane();
+		txtpnVocUm.setEditable(false);
+		txtpnVocUm.setFont(new Font("Tahoma", Font.BOLD, 11));
+		txtpnVocUm.setText("Voc\u00EA \u00E9 um novo Cervejeiro?\r\nEntre em contato via email \r\npara solicitar\r\nseu Passe Cervejeiro!\r\n\r\nemail: grogosadm@email.com");
+		txtpnVocUm.setBounds(668, 267, 217, 128);
+		panel.add(txtpnVocUm);
+		
+		
+		JEditorPane editorPane = new JEditorPane();
+		editorPane.setBounds(668, 272, 217, 134);
+		panel.add(editorPane);
 
 		frameMain.setVisible(true);
 

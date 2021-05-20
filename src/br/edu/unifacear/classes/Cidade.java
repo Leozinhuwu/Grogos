@@ -44,7 +44,7 @@ public class Cidade implements IDBModel{
 	
 	@Override
 	public String toString() {
-		return "Cidade [id=" + id + ", estado=" + estado + ", nome=" + nome + "]";
+		return  nome;
 	}
 	@Override
 	public String getEmail() {

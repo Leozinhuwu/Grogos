@@ -17,9 +17,15 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-import br.edu.unifacear.bo.ApreciadorBO;
-import br.edu.unifacear.classes.Apreciador;
-import br.edu.unifacear.validators.UsuarioValidator;
+
+import br.edu.unifacear.bo.CervejeiroBO;
+import br.edu.unifacear.bo.CidadeBO;
+import br.edu.unifacear.bo.EstadoBO;
+import br.edu.unifacear.classes.Cervejeiro;
+import br.edu.unifacear.classes.Cidade;
+import br.edu.unifacear.classes.Estado;
+import br.edu.unifacear.validators.CervejeiroValidator;
+
 import javax.swing.SwingConstants;
 import javax.swing.JCheckBox;
 import javax.swing.JToggleButton;
@@ -38,7 +44,7 @@ public class TelaCadastroCervejeiro {
 	private static JTextField textToken;
 	private static JTextField textNomeCervejaria;
 	private static JTextField textFieldEmailCervejaria;
-	private static JTextField textField;
+	private static JTextField textFieldEndereco;
 	private static JTextField textFieldTelefoneCervejaria;
 
 	/**
@@ -48,7 +54,9 @@ public class TelaCadastroCervejeiro {
 
 	public static void telaCadastro() throws Exception {
 
-		ApreciadorBO cadastro = new ApreciadorBO();
+		CervejeiroBO cadastro = new CervejeiroBO();
+		EstadoBO estadobo = new EstadoBO();
+		CidadeBO cidadebo = new CidadeBO();
 
 		// labels e botoes do jFrame
 		JPanel panel = new JPanel();
@@ -64,9 +72,36 @@ public class TelaCadastroCervejeiro {
 		panel.setLayout(null);
 
 		JLabel lblCadastroMsg = new JLabel("");
-		lblCadastroMsg.setBounds(125, 303, 488, 50);
+		lblCadastroMsg.setBounds(482, 594, 415, 23);
 		panel.add(lblCadastroMsg);
+		
+		JComboBox<Cidade> comboBoxCidade = new JComboBox();
+		comboBoxCidade.setBounds(113, 586, 175, 22);
+		panel.add(comboBoxCidade);
+		
+		
+		
+		JComboBox<Estado> comboBoxEstado = new JComboBox<Estado>();
+		comboBoxEstado.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					comboBoxCidade.removeAllItems();
+					for(Cidade c: cidadebo.cidades((Estado) comboBoxEstado.getSelectedItem())) {
+						comboBoxCidade.addItem(c);
+					}
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
+		comboBoxEstado.setBounds(113, 554, 175, 22);
+		panel.add(comboBoxEstado);
+		
+		for(Estado e: estadobo.estados()) {
+			comboBoxEstado.addItem(e);
 
+		}
+		
 		JButton btnCadastrar = new JButton("Cadastrar");
 		btnCadastrar.setForeground(Color.BLACK);
 		btnCadastrar.setBackground(Color.LIGHT_GRAY);
@@ -78,23 +113,29 @@ public class TelaCadastroCervejeiro {
 				String email = textFieldEmail.getText();
 				String senha = passwordField.getText();
 				String idadeS = textFieldIdade.getText();
-
+				String telefone = textFieldTelefone.getText();
+				
+				String nomeCervejaria = textNomeCervejaria.getText();
+				String telefoneCervejaria = textFieldTelefoneCervejaria.getText();
+				String enderecoCervejaria = textFieldEndereco.getText();
+				
+				Estado estado = (Estado) comboBoxEstado.getSelectedItem();
 				int idade = 0;
 				boolean cadastrar = false;
-				if (UsuarioValidator.validar(nome, idadeS, email, senha)) {
+				if (CervejeiroValidator.validar(nome, idadeS, email, senha, telefone) ) {
 					idade = Integer.parseInt(textFieldIdade.getText());
 					if(idade < 18) {
 						lblCadastroMsg.setText("Aplicativo destinado a usúarios maiores de 18 anos");
 						return;
 					}
 					
-					Apreciador newUser = new Apreciador();
-					newUser.setEmail(email);
-					newUser.setIdade(idade);
-					newUser.setNome(nome);
-					newUser.setSenha(senha);
+					Cervejeiro newCervejeiro = new Cervejeiro();
+					newCervejeiro.setEmail(email);
+					newCervejeiro.setIdade(idade);
+					newCervejeiro.setNome(nome);
+					newCervejeiro.setSenha(senha);
 					try {
-						cadastrar = cadastro.registerUser(newUser);
+						cadastrar = cadastro.registerCervejeiro(newCervejeiro);
 					} catch (Exception e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
@@ -292,28 +333,24 @@ public class TelaCadastroCervejeiro {
 		lblEstado.setBounds(53, 558, 46, 14);
 		panel.add(lblEstado);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(113, 554, 175, 22);
-		panel.add(comboBox);
+		
 		
 		JLabel lblCidade = new JLabel("Cidade:");
 		lblCidade.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblCidade.setBounds(53, 590, 46, 14);
 		panel.add(lblCidade);
 		
-		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setBounds(113, 586, 175, 22);
-		panel.add(comboBox_1);
+		
 		
 		JLabel lblEndereco = new JLabel("Endere\u00E7o:");
 		lblEndereco.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblEndereco.setBounds(28, 615, 71, 14);
 		panel.add(lblEndereco);
 		
-		textField = new JTextField();
-		textField.setBounds(113, 612, 359, 20);
-		panel.add(textField);
-		textField.setColumns(10);
+		textFieldEndereco = new JTextField();
+		textFieldEndereco.setBounds(113, 612, 359, 20);
+		panel.add(textFieldEndereco);
+		textFieldEndereco.setColumns(10);
 		
 		JLabel lblTelefoneCervejaria = new JLabel("Telefone:");
 		lblTelefoneCervejaria.setHorizontalAlignment(SwingConstants.RIGHT);

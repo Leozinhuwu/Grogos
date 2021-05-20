@@ -8,9 +8,11 @@ import br.edu.unifacear.dao.CervejeiroDao;
 public class CervejeiroBO {
 	private static CervejeiroDao cervejeiroCrud = new CervejeiroDao();
 	
-	public void registerCervejeiro(Cervejeiro usuario) throws Exception {
+	public Boolean registerCervejeiro(Cervejeiro cervejeiro) throws Exception {
 	
-		cervejeiroCrud.save(usuario);
+			cervejeiroCrud.save(cervejeiro);
+	
+		return true;
 	}
 	
 	public String findUserName(Cervejeiro user) throws Exception{

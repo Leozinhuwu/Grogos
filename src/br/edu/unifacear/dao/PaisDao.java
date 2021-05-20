@@ -10,8 +10,9 @@ public class PaisDao extends DefaultDAO<Pais> {
 	
 	@Override
 	protected Query getAutenticarObj(EntityManager con, Pais obj) {
-		// TODO Auto-generated method stub
-		return null;
+		Query q = con.createQuery("select p from Pais p" + " where nome = :nome");
+		q.setParameter("nome", obj.getNome());
+		return q;
 	}
 
 	@Override
