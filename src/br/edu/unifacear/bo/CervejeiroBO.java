@@ -9,10 +9,14 @@ public class CervejeiroBO {
 	private static CervejeiroDao cervejeiroCrud = new CervejeiroDao();
 	
 	public Boolean registerCervejeiro(Cervejeiro cervejeiro) throws Exception {
-	
+		if (cervejeiroCrud.autenticarObj(cervejeiro)) {
+			return false;
+
+		} else {
 			cervejeiroCrud.save(cervejeiro);
-	
+		}
 		return true;
+		
 	}
 	
 	public String findUserName(Cervejeiro user) throws Exception{

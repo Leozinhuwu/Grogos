@@ -10,8 +10,9 @@ public class CervejeiroDao extends DefaultDAO<Cervejeiro>{
 
 	@Override
 	protected Query getAutenticarObj(EntityManager con, Cervejeiro obj) {
-		// TODO Auto-generated method stub
-		return null;
+		Query q = con.createQuery("select id from Cervejeiro where email = :email");
+		q.setParameter("email", obj.getEmail());
+		return q;
 	}
 
 	@Override
