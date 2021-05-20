@@ -30,7 +30,7 @@ import br.edu.unifacear.validators.IngredientesValidator;
 
 public class TelaPesquisa {
 	
-	private static final long serialVersionUID = 1L;
+
 	private static JFrame framePesquisa;
 	private static JTextField textNome;
 	private static JTextField textPais;

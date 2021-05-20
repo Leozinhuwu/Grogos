@@ -17,8 +17,8 @@ public class Main {
 		ApreciadorTestes.saveUsuario();
 		CervejaTestes.saveCerveja();
 		//TelaCadastroApreciador.telaCadastro();
-		TelaCadastroCervejeiro.telaCadastro();
-		//TelaLogin.telaInicial();
+		//TelaCadastroCervejeiro.telaCadastro();
+		TelaLogin.telaInicial();
 		//TelaCadastroCerveja.telaCadastro();
 		//TelaAdm.telaAdm();
 		

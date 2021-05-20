@@ -24,7 +24,14 @@ public class ApreciadorBO {
 		String name = userCrud.findName(user);
 		return name;
 	}
-
+	
+	public Boolean login(Apreciador apreciador) {
+		if (userCrud.autenticarObj(apreciador)) {
+			return true;
+		}
+		return false;
+		
+	}
 	public Object findApreciador(Apreciador apreciador) {
 		// TODO Auto-generated method stub
 		return userCrud.findSingleObj(apreciador);

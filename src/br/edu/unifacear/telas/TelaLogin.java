@@ -6,8 +6,11 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
-import br.edu.unifacear.bo.Login;
+import br.edu.unifacear.bo.ApreciadorBO;
+import br.edu.unifacear.bo.CervejeiroBO;
 import br.edu.unifacear.classes.Apreciador;
+import br.edu.unifacear.classes.Cervejeiro;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -25,8 +28,6 @@ public class TelaLogin extends JFrame {
 	 */
 
 	public static void telaInicial() throws Exception {
-
-		Login login = new Login();
 
 //		cadastro.registerUser(nome, senha, idade, email);
 
@@ -70,21 +71,43 @@ public class TelaLogin extends JFrame {
 		btnLogar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Apreciador user = new Apreciador();
+				ApreciadorBO aprebo = new ApreciadorBO();
 				user.setEmail(txtEmail.getText());
 				user.setSenha(passwordField.getText());
-				boolean auth = login.login(user);
 
-				if (auth == true) {
-					try {
-						usuarioLogado = user.getEmail();
-						TelaMenuCervejeiro.telaMenuUser();
-					} catch (Exception e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
+				Cervejeiro usercer = new Cervejeiro();
+				CervejeiroBO cerbo = new CervejeiroBO();
+				usercer.setEmail(txtEmail.getText());
+				usercer.setSenha(passwordField.getText());
+
+				boolean authapre = aprebo.login(user);
+				boolean authcerv = cerbo.login(usercer);
+			
+				if (authapre == true || authcerv == true) {
+					System.out.println("apre: "+authapre+ " cerv: " +authcerv);
+					if (authapre == true) {
+						try {
+							usuarioLogado = user.getEmail();
+							TelaPrincipalApreciador.telaPrincipal();
+						} catch (Exception e1) {
+							lblLoginFail.setText("Erro ao logar, tente novamente");
+							return;
+						}
+						frameMain.dispose();
 					}
-					frameMain.dispose();
+					if (authcerv == true) {
+						usuarioLogado = usercer.getEmail();
+						try {
+							TelaMenuCervejeiro.telaMenuUser();
+						} catch (Exception e1) {
+							// TODO Auto-generated catch block
+							lblLoginFail.setText("Erro ao logar, tente novamente");
+							return;
+						}
+						frameMain.dispose();
+					}
 				} else {
-					lblLoginFail.setText("email ou senha incorretos");
+					lblLoginFail.setText("Dados invalidos");
 				}
 			}
 		});
@@ -130,11 +153,11 @@ public class TelaLogin extends JFrame {
 		lblGrogosImg.setIcon(new ImageIcon("C:\\Users\\leo4_\\Desktop\\gragas.png"));
 		lblGrogosImg.setBounds(644, 25, 204, 263);
 		panel.add(lblGrogosImg);
-		
+
 		JLabel lblJPossuiPasse = new JLabel("J\u00E1 possui passe de Cervejeiro?  Cadastre aqui");
 		lblJPossuiPasse.setBounds(590, 411, 300, 14);
 		panel.add(lblJPossuiPasse);
-		
+
 		JButton btnCadastrarCervejeiro = new JButton("Cadastrar");
 		btnCadastrarCervejeiro.addMouseListener(new MouseAdapter() {
 			@Override
@@ -145,22 +168,22 @@ public class TelaLogin extends JFrame {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				
+
 				frameMain.dispose();
-				
+
 			}
 		});
 		btnCadastrarCervejeiro.setBounds(708, 436, 131, 23);
 		panel.add(btnCadastrarCervejeiro);
-		
+
 		JTextPane txtpnVocUm = new JTextPane();
 		txtpnVocUm.setEditable(false);
 		txtpnVocUm.setFont(new Font("Tahoma", Font.BOLD, 11));
-		txtpnVocUm.setText("Voc\u00EA \u00E9 um novo Cervejeiro?\r\nEntre em contato via email \r\npara solicitar\r\nseu Passe Cervejeiro!\r\n\r\nemail: grogosadm@email.com");
+		txtpnVocUm.setText(
+				"Voc\u00EA \u00E9 um novo Cervejeiro?\r\nEntre em contato via email \r\npara solicitar\r\nseu Passe Cervejeiro!\r\n\r\nemail: grogosadm@email.com");
 		txtpnVocUm.setBounds(668, 267, 217, 128);
 		panel.add(txtpnVocUm);
-		
-		
+
 		JEditorPane editorPane = new JEditorPane();
 		editorPane.setBounds(668, 272, 217, 134);
 		panel.add(editorPane);

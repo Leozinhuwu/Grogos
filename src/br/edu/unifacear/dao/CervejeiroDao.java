@@ -10,8 +10,9 @@ public class CervejeiroDao extends DefaultDAO<Cervejeiro>{
 
 	@Override
 	protected Query getAutenticarObj(EntityManager con, Cervejeiro obj) {
-		Query q = con.createQuery("select id from Cervejeiro where email = :email");
+		Query q = con.createQuery("select id from Cervejeiro where email = :email" + " and senha = :senha");
 		q.setParameter("email", obj.getEmail());
+		q.setParameter("senha", obj.getSenha());
 		return q;
 	}
 

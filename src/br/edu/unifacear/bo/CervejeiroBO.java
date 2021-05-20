@@ -34,4 +34,11 @@ public class CervejeiroBO {
 		
 	}
 
+	public boolean login(Cervejeiro usercer) {
+		if (cervejeiroCrud.autenticarObj(usercer)){
+			return true;
+		}
+		return false;
+	}
+
 }
