@@ -11,6 +11,8 @@ public class Token implements IDBModel {
 	private String nome;
 	private String status;
 	
+	
+	
 	public Token(int id, String nome, String status) {
 		super();
 		this.id = id;

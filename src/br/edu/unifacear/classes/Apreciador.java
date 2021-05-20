@@ -1,8 +1,13 @@
 package br.edu.unifacear.classes;
 
-import java.util.List;
+
+import java.util.HashSet;
+
+import java.util.Set;
 
 import javax.persistence.*;
+
+
 
 @Entity
 public class Apreciador implements IDBModel {
@@ -21,7 +26,7 @@ public class Apreciador implements IDBModel {
     @JoinTable(name="Apreciador_TipoCerveja", joinColumns=
     {@JoinColumn(name="apreciador_id")}, inverseJoinColumns=
       {@JoinColumn(name="TipoCerveja_id")})
-	private List<TipoCerveja> tipoCerveja;
+	private Set<TipoCerveja> tipoCerveja =  new HashSet<TipoCerveja>();
 
 
 
@@ -46,12 +51,18 @@ public class Apreciador implements IDBModel {
 		return id;
 	}
 	
-	public List<TipoCerveja> getTipoCerveja() {
+	public Set<TipoCerveja> getTipoCerveja() {
 		return tipoCerveja;
 	}
 
-	public void setTipoCerveja(List<TipoCerveja> tipoCerveja) {
+	public void setTipoCerveja(Set<TipoCerveja> tipoCerveja) {
 		this.tipoCerveja = tipoCerveja;
+		
+	}
+	
+	public void addTipoCerveja(TipoCerveja tipoCerveja) {
+		this.tipoCerveja.add(tipoCerveja);
+		tipoCerveja.getApreciador().add(this);
 	}
 	public void setId(int id) {
 

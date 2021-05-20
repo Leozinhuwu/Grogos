@@ -13,8 +13,8 @@ public class Main {
 
 	public static void main(String[] args) throws Exception {
 		CBanco.getConnection();
-		ApreciadorTestes.saveUsuario();
 		CervejeiroTestes.saveCervejeiro();
+		ApreciadorTestes.saveUsuario();
 		CervejaTestes.saveCerveja();
 		TelaCadastroApreciador.telaCadastro();
 		//TelaCadastroCervejeiro.telaCadastro();

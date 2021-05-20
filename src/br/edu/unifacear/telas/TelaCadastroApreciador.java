@@ -203,9 +203,13 @@ public class TelaCadastroApreciador extends JFrame {
 		lblName.setBounds(90, 125, 46, 14);
 		panel.add(lblName);
 
-		List list = new List();
-		list.setBounds(104, 461, 247, 119);
-		panel.add(list);
+		List listTipos = new List();
+		listTipos.setForeground(Color.BLACK);
+		listTipos.setFont(new Font("Arial Black", Font.BOLD, 12));
+		listTipos.setBounds(104, 461, 149, 119);
+		panel.add(listTipos);
+		listTipos.setEnabled(false);
+		
 
 		JLabel lbltipomsg = new JLabel("");
 		lbltipomsg.setBounds(104, 437, 247, 14);
@@ -223,7 +227,7 @@ public class TelaCadastroApreciador extends JFrame {
 
 				if (!tipos.contains(tc)) {
 					tipos.add(tc);
-					list.add(tc.getNome());
+					listTipos.add(tc.getNome());
 				} else {
 					lbltipomsg.setText("item ja adicionado");
 				}
@@ -237,6 +241,26 @@ public class TelaCadastroApreciador extends JFrame {
 		});
 		btnAddTipoCerveja.setBounds(263, 404, 89, 23);
 		panel.add(btnAddTipoCerveja);
+		
+		JButton btnRemoverTipo = new JButton("Remover");
+		btnRemoverTipo.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				TipoCerveja tc = (TipoCerveja) comboBoxTipoCerveja.getSelectedItem();
+				if (tipos.contains(tc)) {
+					tipos.remove(tc);
+					listTipos.remove(tc.getNome());
+				} else {
+					lbltipomsg.setText("Item não está na lista");
+				}
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				lbltipomsg.setText("");
+			}
+		});
+		btnRemoverTipo.setBounds(262, 437, 89, 23);
+		panel.add(btnRemoverTipo);
 
 		for (TipoCerveja tc : tipocervejabo.tipos()) {
 

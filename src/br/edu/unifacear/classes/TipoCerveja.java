@@ -1,6 +1,8 @@
 package br.edu.unifacear.classes;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.*;
 
@@ -13,7 +15,8 @@ public class TipoCerveja implements IDBModel {
 	
 	private String nome;
 	
-	
+	@ManyToMany(mappedBy="tipoCerveja", cascade = CascadeType.ALL)
+	private Set<Apreciador> apreciador = new HashSet<Apreciador>();
 
 
 	public TipoCerveja(int id, String nome) {
@@ -45,6 +48,16 @@ public class TipoCerveja implements IDBModel {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+
+	public Set<Apreciador> getApreciador() {
+		return apreciador;
+	}
+
+
+	public void setApreciador(Set<Apreciador> apreciador) {
+		this.apreciador = apreciador;
 	}
 
 
