@@ -20,7 +20,7 @@ public class Main {
 		//TelaCadastroCervejeiro.telaCadastro();
 		TelaLogin.telaInicial();
 		//TelaCadastroCerveja.telaCadastro();
-		//TelaAdm.telaAdm();
+		TelaAdm.telaAdm();
 		
 
 	}

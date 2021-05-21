@@ -23,23 +23,21 @@ import javax.swing.SwingConstants;
 import br.edu.unifacear.bo.CervejaBO;
 import br.edu.unifacear.bo.IngredientesBO;
 import br.edu.unifacear.classes.Cerveja;
+import br.edu.unifacear.classes.Coloracao;
 import br.edu.unifacear.classes.Ingredientes;
+import br.edu.unifacear.classes.Pais;
+import br.edu.unifacear.classes.Sabor;
+import br.edu.unifacear.classes.TipoCerveja;
 import br.edu.unifacear.classes.Apreciador;
 import br.edu.unifacear.validators.CervejaValidator;
 import br.edu.unifacear.validators.IngredientesValidator;
+import javax.swing.JComboBox;
 
 public class TelaPesquisa {
 	
 
 	private static JFrame framePesquisa;
-	private static JTextField textNome;
-	private static JTextField textPais;
-	private static JTextField textField_2;
-	private static JTextField textField_3;
-	private static JTextField textField;
-	private static JTextField textField_1;
-	private static JTextField textField_4;
-	private static JTextField textField_5;
+	private static JTextField textFieldNome;
 
 	/**
 	 * @throws Exception
@@ -68,7 +66,7 @@ public class TelaPesquisa {
 		btnVolta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					TelaMenuCervejeiro.telaMenuUser();
+					TelaPrincipalApreciador.telaPrincipal();
 
 				} catch (Exception e1) {
 
@@ -86,85 +84,81 @@ public class TelaPesquisa {
 		lblTitle.setBounds(457, 25, 46, 14);
 		panel.add(lblTitle);
 		
-		JLabel lblPorNome = new JLabel("Por Nome");
-		lblPorNome.setBounds(26, 163, 60, 14);
-		panel.add(lblPorNome);
+		JLabel lblNome = new JLabel("Nome:");
+		lblNome.setBounds(44, 154, 60, 14);
+		panel.add(lblNome);
 		
-		JRadioButton rdbtnCerveja = new JRadioButton("Pesquisar Por Cerveja");
-		rdbtnCerveja.setBounds(80, 107, 146, 23);
-		panel.add(rdbtnCerveja);
+		JRadioButton rdbtnPorNome = new JRadioButton("Por Nome");
+		rdbtnPorNome.setBounds(80, 107, 113, 23);
+		panel.add(rdbtnPorNome);
 		
-		textNome = new JTextField();
-		textNome.setBounds(96, 160, 130, 20);
-		panel.add(textNome);
-		textNome.setColumns(10);
+		JRadioButton rdbtnPorTipo = new JRadioButton("Por Tipo");
+		rdbtnPorTipo.setBounds(329, 107, 108, 23);
+		panel.add(rdbtnPorTipo);
 		
-		textPais = new JTextField();
-		textPais.setColumns(10);
-		textPais.setBounds(96, 194, 130, 20);
-		panel.add(textPais);
+		JLabel lblTipo = new JLabel("Tipo:");
+		lblTipo.setBounds(288, 154, 60, 14);
+		panel.add(lblTipo);
 		
-		JLabel lblPorNome_1 = new JLabel("Por Nome");
-		lblPorNome_1.setBounds(26, 197, 60, 14);
-		panel.add(lblPorNome_1);
+		JRadioButton rdbtnPorPais = new JRadioButton("Por Pa\u00EDs");
+		rdbtnPorPais.setBounds(661, 107, 108, 23);
+		panel.add(rdbtnPorPais);
 		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(96, 225, 130, 20);
-		panel.add(textField_2);
+		textFieldNome = new JTextField();
+		textFieldNome.setBounds(80, 151, 113, 20);
+		panel.add(textFieldNome);
+		textFieldNome.setColumns(10);
 		
-		JLabel lblPorNome_2 = new JLabel("Por Nome");
-		lblPorNome_2.setBounds(26, 228, 60, 14);
-		panel.add(lblPorNome_2);
+		JComboBox<TipoCerveja> comboBoxTipo = new JComboBox<TipoCerveja>();
+		comboBoxTipo.setBounds(329, 150, 118, 22);
+		panel.add(comboBoxTipo);
 		
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
-		textField_3.setBounds(96, 256, 130, 20);
-		panel.add(textField_3);
+		JComboBox<Pais> comboBoxPais = new JComboBox<Pais>();
+		comboBoxPais.setBounds(661, 146, 118, 22);
+		panel.add(comboBoxPais);
 		
-		JLabel lblPorNome_3 = new JLabel("Por Nome");
-		lblPorNome_3.setBounds(26, 259, 60, 14);
-		panel.add(lblPorNome_3);
+		JLabel lblPais = new JLabel("Pa\u00EDs:");
+		lblPais.setBounds(620, 150, 60, 14);
+		panel.add(lblPais);
 		
-		JRadioButton rdbtnIngrediente = new JRadioButton("Pesquisar Por Ingrediente");
-		rdbtnIngrediente.setBounds(601, 107, 165, 23);
-		panel.add(rdbtnIngrediente);
+		JRadioButton rdbtnPorSabor = new JRadioButton("Por Sabor");
+		rdbtnPorSabor.setBounds(85, 201, 108, 23);
+		panel.add(rdbtnPorSabor);
 		
-		JLabel lblPorNome_4 = new JLabel("Por Nome");
-		lblPorNome_4.setBounds(588, 163, 60, 14);
-		panel.add(lblPorNome_4);
+		JComboBox<Sabor> comboBoxSabor = new JComboBox<Sabor>();
+		comboBoxSabor.setBounds(85, 240, 118, 22);
+		panel.add(comboBoxSabor);
 		
-		textField = new JTextField();
-		textField.setColumns(10);
-		textField.setBounds(658, 160, 130, 20);
-		panel.add(textField);
+		JLabel lblSabor = new JLabel("Sabor:");
+		lblSabor.setBounds(44, 244, 60, 14);
+		panel.add(lblSabor);
 		
-		JLabel lblPorNome_1_1 = new JLabel("Por Nome");
-		lblPorNome_1_1.setBounds(588, 197, 60, 14);
-		panel.add(lblPorNome_1_1);
+		JLabel lblColoracao = new JLabel("Colora\u00E7\u00E3o:");
+		lblColoracao.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblColoracao.setBounds(259, 244, 60, 14);
+		panel.add(lblColoracao);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(658, 225, 130, 20);
-		panel.add(textField_1);
+		JComboBox<Coloracao> comboBoxColoracao = new JComboBox<Coloracao>();
+		comboBoxColoracao.setBounds(329, 240, 118, 22);
+		panel.add(comboBoxColoracao);
 		
-		textField_4 = new JTextField();
-		textField_4.setColumns(10);
-		textField_4.setBounds(658, 194, 130, 20);
-		panel.add(textField_4);
+		JRadioButton rdbtnPorColoracao = new JRadioButton("Por Colora\u00E7\u00E3o");
+		rdbtnPorColoracao.setBounds(329, 201, 108, 23);
+		panel.add(rdbtnPorColoracao);
 		
-		JLabel lblPorNome_2_1 = new JLabel("Por Nome");
-		lblPorNome_2_1.setBounds(588, 228, 60, 14);
-		panel.add(lblPorNome_2_1);
+		JButton btnPesquisar = new JButton("Pesquisar");
+		btnPesquisar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				//TelaResultadoPesquisa.telaResultado(parametros);
+			}
+		});
+		btnPesquisar.setBounds(196, 375, 89, 23);
+		panel.add(btnPesquisar);
 		
-		JLabel lblPorNome_3_1 = new JLabel("Por Nome");
-		lblPorNome_3_1.setBounds(588, 259, 60, 14);
-		panel.add(lblPorNome_3_1);
-		
-		textField_5 = new JTextField();
-		textField_5.setColumns(10);
-		textField_5.setBounds(658, 256, 130, 20);
-		panel.add(textField_5);
+		JLabel lblMsgPesquisar = new JLabel("Selecione no m\u00EDnimo 1 campo realizar a pesquisa\r");
+		lblMsgPesquisar.setBounds(84, 429, 363, 14);
+		panel.add(lblMsgPesquisar);
 		
 		
 

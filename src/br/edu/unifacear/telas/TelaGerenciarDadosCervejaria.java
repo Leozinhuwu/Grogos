@@ -9,25 +9,17 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import br.edu.unifacear.classes.Cerveja;
-
-public class TelaDetalhesCerveja {
+public class TelaGerenciarDadosCervejaria {
 	private static JFrame framePrincipal;
 	public static String usuarioLogado;
 
-	
 	/**
 	 * @throws Exception
 	 * @wbp.parser.entryPoint
 	 */
 
-	public static void telaDetalhesCerveja(Cerveja cerveja) throws Exception {
+	public static void telaGerenciarDadosCervejaria() throws Exception {
 
-//		cadastro.registerUser(nome, senha, idade, email);
-
-		// imagem
-
-		// labels e botoes do jFrame
 		JPanel panel = new JPanel();
 		panel.setForeground(Color.RED);
 		panel.setBackground(Color.WHITE);
@@ -39,7 +31,7 @@ public class TelaDetalhesCerveja {
 
 		framePrincipal.getContentPane().add(panel);
 		panel.setLayout(null);
-		
+
 		JButton btnVoltar = new JButton("Voltar");
 		btnVoltar.addMouseListener(new MouseAdapter() {
 			@Override

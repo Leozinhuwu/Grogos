@@ -7,11 +7,10 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import br.edu.unifacear.classes.Cerveja;
-
-public class TelaDetalhesCerveja {
+public class TelaLimpaBotaoVoltar {
 	private static JFrame framePrincipal;
 	public static String usuarioLogado;
 
@@ -21,13 +20,9 @@ public class TelaDetalhesCerveja {
 	 * @wbp.parser.entryPoint
 	 */
 
-	public static void telaDetalhesCerveja(Cerveja cerveja) throws Exception {
+	public static void telaPrincipal() throws Exception {
 
-//		cadastro.registerUser(nome, senha, idade, email);
 
-		// imagem
-
-		// labels e botoes do jFrame
 		JPanel panel = new JPanel();
 		panel.setForeground(Color.RED);
 		panel.setBackground(Color.WHITE);
