@@ -29,7 +29,7 @@ public class Cerveja implements IDBModel {
 	private Pais paisOrigem;
 
 	@ManyToOne
-	@JoinColumn(name="usuario_id")
+	@JoinColumn(name="cervejeiro_id")
 	private Cervejeiro cervejeiro;
 
 	@OneToOne
@@ -37,14 +37,14 @@ public class Cerveja implements IDBModel {
 	private Ingredientes ingredientes;
 
 	public Cerveja(int id, String name, String description, TipoCerveja type, Sabor flavor,
-			Cervejeiro cervejeiro, Ingredientes ingredientes) {
+			Cervejeiro cervejeiro, Coloracao coloracao, Ingredientes ingredientes) {
 		super();
 		this.setId(id);
-
 		this.nome = name;
 		this.descricao = description;
 		this.tipo = type;
 		this.sabor = flavor;
+		this.coloracao = coloracao;
 
 
 		this.cervejeiro = cervejeiro;
@@ -109,6 +109,14 @@ public class Cerveja implements IDBModel {
 
 	public void setCountryOrigin(Pais countryOrigin) {
 		this.paisOrigem = countryOrigin;
+	}
+
+	public Coloracao getColoracao() {
+		return coloracao;
+	}
+
+	public void setColoracao(Coloracao coloracao) {
+		this.coloracao = coloracao;
 	}
 
 	public Ingredientes getIngredientes() {

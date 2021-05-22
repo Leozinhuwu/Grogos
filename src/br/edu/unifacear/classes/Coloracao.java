@@ -39,7 +39,7 @@ public class Coloracao implements IDBModel{
 
 	@Override
 	public String toString() {
-		return "Coloracao [id=" + id + ", nome=" + nome + "]";
+		return nome;
 	}
 
 	@Override

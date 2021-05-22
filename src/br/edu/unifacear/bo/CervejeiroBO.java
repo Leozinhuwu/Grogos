@@ -25,7 +25,7 @@ public class CervejeiroBO {
 	}
 	
 	public Object findCervejeiro(Cervejeiro cervejeiro) {
-		// TODO Auto-generated method stub
+	
 		return cervejeiroCrud.findSingleObj(cervejeiro);
 	}
 

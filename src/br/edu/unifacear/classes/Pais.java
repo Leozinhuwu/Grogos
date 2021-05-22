@@ -38,7 +38,7 @@ public class Pais implements IDBModel {
 
 	@Override
 	public String toString() {
-		return "Pais [id=" + id + ", nome=" + nome + "]";
+		return nome;
 	}
 
 	@Override

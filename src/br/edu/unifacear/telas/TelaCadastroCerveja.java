@@ -17,11 +17,23 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import br.edu.unifacear.bo.CervejaBO;
+import br.edu.unifacear.bo.CervejeiroBO;
+import br.edu.unifacear.bo.ColoracaoBO;
+import br.edu.unifacear.bo.FermentoBO;
 import br.edu.unifacear.bo.IngredientesBO;
+import br.edu.unifacear.bo.LupuloBO;
+import br.edu.unifacear.bo.MalteBO;
+import br.edu.unifacear.bo.PaisBO;
+import br.edu.unifacear.bo.SaborBO;
+import br.edu.unifacear.bo.TipoCervejaBO;
 import br.edu.unifacear.classes.Cerveja;
+import br.edu.unifacear.classes.Cervejeiro;
+import br.edu.unifacear.classes.Coloracao;
+import br.edu.unifacear.classes.Estado;
 import br.edu.unifacear.classes.Fermento;
 import br.edu.unifacear.classes.Ingredientes;
 import br.edu.unifacear.classes.Lupulo;
+import br.edu.unifacear.classes.Malte;
 import br.edu.unifacear.classes.Pais;
 import br.edu.unifacear.classes.Sabor;
 import br.edu.unifacear.classes.TipoCerveja;
@@ -41,14 +53,14 @@ public class TelaCadastroCerveja {
 	private static final long serialVersionUID = 1L;
 	private static JFrame frameCadastro;
 	private static JTextField nameField;
-	private static JTextField typeField;
-	private static JTextField flavorField;
-	private static JTextField originField;
-	private static JTextField creatorNameField;
+	private static JTextField textFieldTipoCerveja;
+	private static JTextField textFieldSabor;
+	private static JTextField textFieldPais;
+	private static JTextField textFieldColoracao;
 	private static JTextField textCevada;
 	private static JTextField textAlchool;
 	private static JRadioButton rdbtnComAlchool;
-	private static JTextField textFieldLupo;
+	private static JTextField textFieldLupulo;
 	private static JTextField textFieldFermento;
 	private static JCheckBox chckbxNao;
 	private static JTextField textFieldMalte;
@@ -59,6 +71,7 @@ public class TelaCadastroCerveja {
 	 */
 
 	public static void telaCadastro() throws Exception {
+		TipoCervejaBO tipocervejabo = new TipoCervejaBO();
 
 		// labels e botoes do jFrame
 		JPanel panel = new JPanel();
@@ -103,25 +116,33 @@ public class TelaCadastroCerveja {
 		panel.add(nameField);
 		nameField.setColumns(10);
 
-		typeField = new JTextField();
-		typeField.setBounds(145, 154, 178, 20);
-		panel.add(typeField);
-		typeField.setColumns(10);
+		textFieldTipoCerveja = new JTextField();
+		textFieldTipoCerveja.setHorizontalAlignment(SwingConstants.LEFT);
+		textFieldTipoCerveja.setEditable(false);
+		textFieldTipoCerveja.setBounds(145, 154, 178, 20);
+		panel.add(textFieldTipoCerveja);
+		textFieldTipoCerveja.setColumns(10);
 
-		flavorField = new JTextField();
-		flavorField.setBounds(145, 191, 178, 20);
-		panel.add(flavorField);
-		flavorField.setColumns(10);
+		textFieldSabor = new JTextField();
+		textFieldSabor.setHorizontalAlignment(SwingConstants.LEFT);
+		textFieldSabor.setEditable(false);
+		textFieldSabor.setBounds(145, 191, 178, 20);
+		panel.add(textFieldSabor);
+		textFieldSabor.setColumns(10);
 
-		originField = new JTextField();
-		originField.setBounds(145, 222, 178, 20);
-		panel.add(originField);
-		originField.setColumns(10);
+		textFieldPais = new JTextField();
+		textFieldPais.setHorizontalAlignment(SwingConstants.LEFT);
+		textFieldPais.setEditable(false);
+		textFieldPais.setBounds(145, 222, 178, 20);
+		panel.add(textFieldPais);
+		textFieldPais.setColumns(10);
 
-		creatorNameField = new JTextField();
-		creatorNameField.setBounds(145, 257, 178, 20);
-		panel.add(creatorNameField);
-		creatorNameField.setColumns(10);
+		textFieldColoracao = new JTextField();
+		textFieldColoracao.setHorizontalAlignment(SwingConstants.LEFT);
+		textFieldColoracao.setEditable(false);
+		textFieldColoracao.setBounds(145, 257, 178, 20);
+		panel.add(textFieldColoracao);
+		textFieldColoracao.setColumns(10);
 
 		JLabel lblName = new JLabel("Nome:");
 		lblName.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -143,10 +164,10 @@ public class TelaCadastroCerveja {
 		lblOrigin.setBounds(26, 225, 109, 14);
 		panel.add(lblOrigin);
 
-		JLabel lblCreatorName = new JLabel("Criador:");
-		lblCreatorName.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblCreatorName.setBounds(84, 260, 51, 14);
-		panel.add(lblCreatorName);
+		JLabel lblColoracao = new JLabel("Colora\u00E7\u00E3o:");
+		lblColoracao.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblColoracao.setBounds(62, 260, 73, 14);
+		panel.add(lblColoracao);
 
 		JLabel lblDescription = new JLabel("Descri\u00E7\u00E3o:");
 		lblDescription.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -180,16 +201,10 @@ public class TelaCadastroCerveja {
 		rdbtnAlchool.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-
-				if (rdbtnComAlchool.isSelected() == true) {
-					textAlchool.disable();
-					rdbtnComAlchool.setSelected(false);
-					textAlchool.setText("");
-				} else if (textAlchool.isEnabled() == false && rdbtnComAlchool.isSelected() == false) {
-					rdbtnComAlchool.setSelected(true);
-					textAlchool.enable();
-					rdbtnAlchool.setSelected(false);
-				}
+				rdbtnComAlchool.setSelected(false);
+				textAlchool.setText("0");
+				textAlchool.disable();
+		
 			}
 		});
 
@@ -206,6 +221,7 @@ public class TelaCadastroCerveja {
 		textAlchool.setColumns(10);
 		textAlchool.setBounds(669, 153, 46, 20);
 		panel.add(textAlchool);
+		textAlchool.setText("0");
 
 		JLabel lblPorcentagem_1 = new JLabel("%");
 		lblPorcentagem_1.setBounds(725, 156, 22, 14);
@@ -216,16 +232,9 @@ public class TelaCadastroCerveja {
 		rdbtnComAlchool.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-
-				if (textAlchool.isEnabled() == true) {
-					textAlchool.setText("");
-					textAlchool.disable();
-					rdbtnAlchool.setSelected(true);
-
-				} else if (textAlchool.isEnabled() == false && rdbtnAlchool.isSelected() == true) {
-					textAlchool.enable();
-					rdbtnAlchool.setSelected(false);
-				}
+				rdbtnAlchool.setSelected(false);
+				textAlchool.enable();
+				
 			}
 		});
 
@@ -237,10 +246,12 @@ public class TelaCadastroCerveja {
 		lblLupo.setBounds(570, 260, 89, 14);
 		panel.add(lblLupo);
 
-		textFieldLupo = new JTextField();
-		textFieldLupo.setBounds(671, 257, 109, 20);
-		panel.add(textFieldLupo);
-		textFieldLupo.setColumns(10);
+		textFieldLupulo = new JTextField();
+		textFieldLupulo.setHorizontalAlignment(SwingConstants.LEFT);
+		textFieldLupulo.setEditable(false);
+		textFieldLupulo.setBounds(671, 257, 167, 20);
+		panel.add(textFieldLupulo);
+		textFieldLupulo.setColumns(10);
 
 		JLabel lblTipoDeFermento = new JLabel("Tipo de Fermento:");
 		lblTipoDeFermento.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -248,21 +259,23 @@ public class TelaCadastroCerveja {
 		panel.add(lblTipoDeFermento);
 
 		textFieldFermento = new JTextField();
+		textFieldFermento.setHorizontalAlignment(SwingConstants.LEFT);
+		textFieldFermento.setEditable(false);
 		textFieldFermento.setColumns(10);
-		textFieldFermento.setBounds(671, 288, 109, 20);
+		textFieldFermento.setBounds(671, 288, 167, 20);
 		panel.add(textFieldFermento);
 
 		JLabel lblEspeciariasAdicionais = new JLabel("Especiarias Adicionais:");
 		lblEspeciariasAdicionais.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblEspeciariasAdicionais.setBounds(539, 378, 145, 14);
 		panel.add(lblEspeciariasAdicionais);
-		
+
 		JEditorPane descricaoPane = new JEditorPane();
 		descricaoPane.setBackground(Color.WHITE);
 		descricaoPane.setBounds(101, 344, 252, 141);
 		descricaoPane.setBorder(BorderFactory.createLineBorder(Color.black));
 		panel.add(descricaoPane);
-		
+
 		JEditorPane especiariaPane = new JEditorPane();
 		especiariaPane.setBackground(Color.WHITE);
 		especiariaPane.setBounds(576, 403, 269, 141);
@@ -306,8 +319,133 @@ public class TelaCadastroCerveja {
 		chckbxNao.setSelected(true);
 
 		JLabel lblCadastro = new JLabel("");
-		lblCadastro.setBounds(26, 598, 459, 14);
+		lblCadastro.setBounds(10, 598, 552, 14);
 		panel.add(lblCadastro);
+
+		
+		JComboBox<TipoCerveja> comboBoxTipo = new JComboBox<TipoCerveja>();
+		comboBoxTipo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textFieldTipoCerveja.setText(((TipoCerveja) comboBoxTipo.getSelectedItem()).getNome());
+			}
+		});
+		
+		comboBoxTipo.setBounds(338, 153, 112, 22);
+		panel.add(comboBoxTipo);
+
+		for (TipoCerveja tc : tipocervejabo.tipos()) {
+
+			comboBoxTipo.addItem(tc);
+
+		}
+
+		JComboBox<Sabor> comboBoxSabor = new JComboBox<Sabor>();
+		comboBoxSabor.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textFieldSabor.setText(((Sabor) comboBoxSabor.getSelectedItem()).getNome());
+			}
+		});
+		comboBoxSabor.setBounds(338, 190, 112, 22);
+		panel.add(comboBoxSabor);
+
+		SaborBO saborbo = new SaborBO();
+		for (Sabor s : saborbo.sabores()) {
+
+			comboBoxSabor.addItem(s);
+
+		}
+
+		JComboBox<Pais> comboBoxPais = new JComboBox<Pais>();
+		comboBoxPais.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textFieldPais.setText(((Pais) comboBoxPais.getSelectedItem()).getNome());
+			}
+		});
+		comboBoxPais.setBounds(338, 221, 112, 22);
+		panel.add(comboBoxPais);
+		
+		PaisBO paisbo = new PaisBO();
+		for (Pais p : paisbo.paises()) {
+
+			comboBoxPais.addItem(p);
+
+		}
+		
+		JComboBox<Coloracao> comboBoxColoracao = new JComboBox<Coloracao>();
+		comboBoxColoracao.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textFieldColoracao.setText(((Coloracao) comboBoxColoracao.getSelectedItem()).getNome());
+			}
+		});
+		comboBoxColoracao.setBounds(338, 256, 112, 22);
+		panel.add(comboBoxColoracao);
+		
+		ColoracaoBO coloracaobo = new ColoracaoBO();
+		for (Coloracao c : coloracaobo.cores()) {
+
+			comboBoxColoracao.addItem(c);
+
+		}
+
+		JComboBox<Lupulo> comboBoxLupulo = new JComboBox<Lupulo>();
+		comboBoxLupulo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textFieldLupulo.setText(((Lupulo) comboBoxLupulo.getSelectedItem()).getNome());
+			}
+		});
+		comboBoxLupulo.setBounds(848, 256, 112, 22);
+		panel.add(comboBoxLupulo);
+		
+		LupuloBO lupulobo = new LupuloBO();
+		for (Lupulo l : lupulobo.lupulos()) {
+
+			comboBoxLupulo.addItem(l);
+
+		}
+
+		JComboBox<Fermento> comboBoxFermento = new JComboBox<Fermento>();
+		comboBoxFermento.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textFieldFermento.setText(((Fermento) comboBoxFermento.getSelectedItem()).getNome());
+			}
+		});
+		comboBoxFermento.setBounds(848, 287, 112, 22);
+		panel.add(comboBoxFermento);
+		
+		FermentoBO fermentobo = new FermentoBO();
+		for (Fermento f : fermentobo.fermentos()) {
+
+			comboBoxFermento.addItem(f);
+
+		}
+
+		JLabel lblTipoDeMalte = new JLabel("Tipo de Malte:");
+		lblTipoDeMalte.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblTipoDeMalte.setBounds(550, 325, 109, 14);
+		panel.add(lblTipoDeMalte);
+
+		textFieldMalte = new JTextField();
+		textFieldMalte.setHorizontalAlignment(SwingConstants.LEFT);
+		textFieldMalte.setEditable(false);
+		textFieldMalte.setColumns(10);
+		textFieldMalte.setBounds(671, 322, 167, 20);
+		panel.add(textFieldMalte);
+
+		JComboBox<Malte> comboBoxMalte = new JComboBox<Malte>();
+		comboBoxMalte.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textFieldMalte.setText(((Malte) comboBoxMalte.getSelectedItem()).getNome());
+			}
+		});
+		comboBoxMalte.setBounds(848, 315, 112, 22);
+		panel.add(comboBoxMalte);
+		
+		MalteBO maltebo = new MalteBO();
+		for (Malte m : maltebo.maltes()) {
+
+			comboBoxMalte.addItem(m);
+
+		}
 
 		JButton btnCadastrar = new JButton("Cadastrar");
 		btnCadastrar.addMouseListener(new MouseAdapter() {
@@ -315,21 +453,19 @@ public class TelaCadastroCerveja {
 			public void mouseClicked(MouseEvent e) {
 				Ingredientes ingredientes = new Ingredientes();
 				Cerveja cerveja = new Cerveja();
-				Pais pais = new Pais();
-				Sabor sabor  = new Sabor();
-				TipoCerveja tipoCerveja = new TipoCerveja();
-				Lupulo lupulo = new Lupulo();
-				Fermento fermento = new Fermento();
+			
 
 				CervejaBO cbo = new CervejaBO();
 				IngredientesBO ibo = new IngredientesBO();
-				if (!CervejaValidator.validar(nameField.getText(), typeField.getText(), flavorField.getText(),
-						originField.getText(), creatorNameField.getText(), descricaoPane.getText())) {
-					lblCadastro.setText("Dados invalidos, verifique se todos os campos foram preenchidos e tente novamente");
+				if (!CervejaValidator.validar(nameField.getText(), descricaoPane.getText())) {
+					lblCadastro.setText(
+							"Dados invalidos, verifique se todos os campos foram preenchidos e tente novamente");
 					return;
 				}
-				if(!IngredientesValidator.validar( textAlchool.getText(), textCevada.getText(), textFieldLupo.getText(), textFieldFermento.getText(), especiariaPane.getText())) {
-					lblCadastro.setText("Dados invalidos, verifique se todos os campos foram preenchidos e tente novamente");
+				if (!IngredientesValidator.validar(textAlchool.getText(), textCevada.getText(),
+						especiariaPane.getText())) {
+					lblCadastro.setText(
+							"Dados invalidos, verifique se todos os campos foram preenchidos e tente novamente");
 					return;
 				}
 				// ingredientes - extrair metodo
@@ -350,21 +486,24 @@ public class TelaCadastroCerveja {
 					ingredientes.setPuroMalte(false);
 				}
 
-				ingredientes.setLupulo(lupulo);
-				ingredientes.setFermento(fermento);
+				ingredientes.setLupulo((Lupulo) comboBoxLupulo.getSelectedItem());
+				ingredientes.setFermento((Fermento) comboBoxFermento.getSelectedItem());
+				ingredientes.setMalte((Malte) comboBoxMalte.getSelectedItem());
 				ingredientes.setEspeciarias(especiariaPane.getText());
 				ingredientes.setNome(nameField.getText());
 
 				// cerveja - extrair metodo
 
 				cerveja.setNome(nameField.getText());
-				cerveja.setType(tipoCerveja);
-				cerveja.setFlavor(sabor);
-				cerveja.setCountryOrigin(pais);
+				cerveja.setType((TipoCerveja) comboBoxTipo.getSelectedItem());
+				cerveja.setFlavor((Sabor) comboBoxSabor.getSelectedItem());
+				cerveja.setCountryOrigin((Pais) comboBoxPais.getSelectedItem());
+				cerveja.setColoracao((Coloracao) comboBoxColoracao.getSelectedItem());
 				cerveja.setDescription(descricaoPane.getText());
-				Apreciador usuarioLogado = new Apreciador();
-				usuarioLogado.setEmail(TelaLogin.usuarioLogado);
-				
+				CervejeiroBO cervejeirobo = new CervejeiroBO();
+				Cervejeiro cervejeiro = new Cervejeiro();
+				cervejeiro.setEmail(TelaLogin.usuarioLogado);
+				cerveja.setCervejeiro((Cervejeiro) cervejeirobo.findCervejeiro(cervejeiro));
 
 				boolean cadastrar = false;
 				boolean cadastrarIngredientes = false;
@@ -382,6 +521,7 @@ public class TelaCadastroCerveja {
 					} catch (Exception e1) {
 
 						e1.printStackTrace();
+
 					}
 				}
 
@@ -397,51 +537,7 @@ public class TelaCadastroCerveja {
 		btnCadastrar.setForeground(Color.BLACK);
 		btnCadastrar.setBounds(168, 548, 124, 23);
 		panel.add(btnCadastrar);
-		TipoCerveja tipoCerveja = new TipoCerveja();
-		tipoCerveja.setNome("uwu");
-		tipoCerveja.setId(1);
-		JComboBox<TipoCerveja> comboBoxTipo = new JComboBox<TipoCerveja>();
-		comboBoxTipo.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-			
-			}
-		});
-		comboBoxTipo.addItem(tipoCerveja);
-		comboBoxTipo.setBounds(338, 153, 112, 22);
-		panel.add(comboBoxTipo);
-		
-		JComboBox<TipoCerveja> comboBoxSabor = new JComboBox<TipoCerveja>();
-		comboBoxSabor.setBounds(338, 190, 112, 22);
-		panel.add(comboBoxSabor);
-		
-		JComboBox<TipoCerveja> comboBoxPais = new JComboBox<TipoCerveja>();
-		comboBoxPais.setBounds(338, 221, 112, 22);
-		panel.add(comboBoxPais);
-		
-		JComboBox<TipoCerveja> comboBoxLupulo = new JComboBox<TipoCerveja>();
-		comboBoxLupulo.setBounds(791, 256, 112, 22);
-		panel.add(comboBoxLupulo);
-		
-		JComboBox<TipoCerveja> comboBoxFermento = new JComboBox<TipoCerveja>();
-		comboBoxFermento.setBounds(791, 287, 112, 22);
-		panel.add(comboBoxFermento);
-		
-		JLabel lblTipoDeMalte = new JLabel("Tipo de Malte:");
-		lblTipoDeMalte.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblTipoDeMalte.setBounds(550, 325, 109, 14);
-		panel.add(lblTipoDeMalte);
-		
-		textFieldMalte = new JTextField();
-		textFieldMalte.setColumns(10);
-		textFieldMalte.setBounds(671, 322, 109, 20);
-		panel.add(textFieldMalte);
-		
-		JComboBox<TipoCerveja> comboBoxMalte = new JComboBox<TipoCerveja>();
-		comboBoxMalte.setBounds(791, 321, 112, 22);
-		panel.add(comboBoxMalte);
-		
-		
+
 
 		frameCadastro.setVisible(true);
 

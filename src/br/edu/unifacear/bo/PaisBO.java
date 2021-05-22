@@ -1,6 +1,9 @@
 package br.edu.unifacear.bo;
 
+import java.util.List;
+
 import br.edu.unifacear.classes.Pais;
+
 import br.edu.unifacear.dao.PaisDao;
 
 public class PaisBO {
@@ -18,4 +21,7 @@ public class PaisBO {
 		
 	}
 	
+	public List<Pais> paises()throws Exception {
+		return paisCrud.list(Pais.class);
+	}
 }

@@ -39,7 +39,7 @@ public class Fermento implements IDBModel {
 
 	@Override
 	public String toString() {
-		return "Fermento [id=" + id + ", nome=" + nome + "]";
+		return nome ;
 	}
 
 	@Override

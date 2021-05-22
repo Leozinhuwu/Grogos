@@ -39,7 +39,7 @@ public class Lupulo implements IDBModel {
 
 	@Override
 	public String toString() {
-		return "Lupulo [id=" + id + ", nome=" + nome + "]";
+		return nome;
 	}
 
 	@Override

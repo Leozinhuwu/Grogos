@@ -1,6 +1,9 @@
 package br.edu.unifacear.bo;
 
+import java.util.List;
+
 import br.edu.unifacear.classes.Coloracao;
+import br.edu.unifacear.classes.Lupulo;
 import br.edu.unifacear.dao.ColoracaoDao;
 
 
@@ -17,5 +20,9 @@ private static ColoracaoDao  coloracaoCrud = new ColoracaoDao();
 		}
 		return true;
 		
+	}
+
+	public List<Coloracao> cores()throws Exception {
+		return coloracaoCrud.list(Coloracao.class);
 	}
 }

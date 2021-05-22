@@ -39,7 +39,7 @@ public class Malte implements IDBModel {
 
 	@Override
 	public String toString() {
-		return "Malte [id=" + id + ", nome=" + nome + "]";
+		return  nome;
 	}
 
 	@Override

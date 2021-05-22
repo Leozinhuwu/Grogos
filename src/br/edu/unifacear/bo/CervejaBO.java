@@ -22,7 +22,7 @@ public class CervejaBO {
 			return false;
 		} else {
 			cerveja.getIngredientes().setId(ingredientesDao.findId(cerveja.getIngredientes()));
-			cerveja.getCervejeiro().setId(usuarioDao.findId(cerveja.getCervejeiro()));
+
 			cervejaDao.save(cerveja);
 		}
 		return true;

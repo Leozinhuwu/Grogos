@@ -41,7 +41,7 @@ public class Sabor implements IDBModel {
 	
 	@Override
 	public String toString() {
-		return "Sabor [id=" + id + ", nome=" + nome + "]";
+		return  nome;
 	}
 
 
