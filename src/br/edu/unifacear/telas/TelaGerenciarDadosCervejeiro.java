@@ -34,10 +34,12 @@ public class TelaGerenciarDadosCervejeiro {
 	private static JPasswordField textFieldSenhaAtual;
 	private static JPasswordField textFieldSenhaNova;
 	private static JPasswordField textFieldASenhaConfirmar;
-	private static JLabel lblMsgErroSenha = new JLabel("");
-	private static JLabel lblMsgErroTelefone = new JLabel("");
-	private static JLabel lblMsgErroEmail = new JLabel("");
-	private static JLabel lblMsgErroSenhaDeletarConta = new JLabel("");
+	private static JLabel lblMsgErroSenha;
+	private static JLabel lblMsgErroTelefone;
+	private static JLabel lblMsgErroEmail;
+	private static JLabel lblMsgErroSenhaDeletarConta;
+	private static JPasswordField passwordFieldTelefone;
+	private static JPasswordField passwordFieldEmail;
 
 	/**
 	 * @throws Exception
@@ -69,6 +71,7 @@ public class TelaGerenciarDadosCervejeiro {
 					e1.printStackTrace();
 					return;
 				}
+				clearMsg();
 				framePrincipal.dispose();
 			}
 		});
@@ -115,19 +118,9 @@ public class TelaGerenciarDadosCervejeiro {
 		lblEndereco.setBounds(39, 294, 71, 14);
 		panel.add(lblEndereco);
 
-		JLabel lblCidade = new JLabel("cidade");
-		lblCidade.setHorizontalAlignment(SwingConstants.LEFT);
-		lblCidade.setBounds(120, 317, 103, 14);
-		panel.add(lblCidade);
-
-		JLabel lblEstado = new JLabel("Estado");
-		lblEstado.setHorizontalAlignment(SwingConstants.LEFT);
-		lblEstado.setBounds(227, 317, 103, 14);
-		panel.add(lblEstado);
-
 		JLabel lblCervejariaEndereco = new JLabel("");
 		lblCervejariaEndereco.setHorizontalAlignment(SwingConstants.LEFT);
-		lblCervejariaEndereco.setBounds(120, 294, 257, 14);
+		lblCervejariaEndereco.setBounds(120, 294, 386, 14);
 		panel.add(lblCervejariaEndereco);
 
 		JLabel lblCervejariaTelefone = new JLabel("");
@@ -155,6 +148,8 @@ public class TelaGerenciarDadosCervejeiro {
 					return;
 
 				}
+			
+				framePrincipal.dispose();
 			}
 		});
 		btnDadosCervejaria.setBounds(39, 342, 272, 23);
@@ -164,16 +159,15 @@ public class TelaGerenciarDadosCervejeiro {
 			lblCervejariaEmail.setText(cervLogado.getCervejaria().getEmail());
 			lblCervejariaNome.setText(cervLogado.getCervejaria().getNome());
 			lblCervejariaTelefone.setText(cervLogado.getCervejaria().getTelefone());
-			lblCervejariaEndereco.setText(cervLogado.getCervejaria().getEndereco().getNome());
-			lblEstado.setText(cervLogado.getCervejaria().getEndereco().getCidade().getEstado().getNome());
-			lblCidade.setText(cervLogado.getCervejaria().getEndereco().getCidade().getNome());
+			lblCervejariaEndereco.setText(cervLogado.getCervejaria().getEndereco().getNome() + ", "
+					+ cervLogado.getCervejaria().getEndereco().getCidade().getNome() + ", "
+					+ cervLogado.getCervejaria().getEndereco().getCidade().getEstado().getNome());
+			
 		} else {
 			lblEmailCervejaria.setVisible(false);
 			lblNomeCervejaria.setVisible(false);
 			lblTelefoneCervejaria.setVisible(false);
 			lblEndereco.setVisible(false);
-			lblEstado.setVisible(false);
-			lblCidade.setVisible(false);
 			btnDadosCervejaria.setVisible(false);
 			lblDadosCervejaria.setText("");
 		}
@@ -303,7 +297,7 @@ public class TelaGerenciarDadosCervejeiro {
 
 		JLabel lblNovoEmail = new JLabel("Novo Email:");
 		lblNovoEmail.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblNovoEmail.setBounds(591, 112, 89, 14);
+		lblNovoEmail.setBounds(591, 106, 89, 14);
 		panel.add(lblNovoEmail);
 
 		textFieldEmailNovo = new JTextField();
@@ -311,10 +305,12 @@ public class TelaGerenciarDadosCervejeiro {
 		textFieldEmailNovo.setForeground(Color.BLACK);
 		textFieldEmailNovo.setColumns(10);
 		textFieldEmailNovo.setBackground(Color.WHITE);
-		textFieldEmailNovo.setBounds(698, 109, 175, 20);
+		textFieldEmailNovo.setBounds(698, 103, 175, 20);
 		panel.add(textFieldEmailNovo);
-
-		lblMsgErroEmail.setBounds(698, 174, 175, 14);
+		
+		lblMsgErroEmail = new JLabel("");
+		lblMsgErroEmail.setHorizontalAlignment(SwingConstants.CENTER);
+		lblMsgErroEmail.setBounds(641, 198, 265, 14);
 		panel.add(lblMsgErroEmail);
 
 		JButton btnEmailAlterar = new JButton("Alterar Email");
@@ -322,11 +318,17 @@ public class TelaGerenciarDadosCervejeiro {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				String regexEmail = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$";
-				System.out.println(textFieldEmailAtual.getText());
 				String emaillogado = ((Cervejeiro) TelaLogin.usuarioLogado).getEmail();
 
 				if (textFieldEmailAtual.getText().equalsIgnoreCase(emaillogado)) {
-
+					
+					if(!passwordFieldEmail.getText().equals(cervLogado.getSenha())) {
+						lblMsgErroEmail.setForeground(Color.RED);
+						lblMsgErroEmail.setText("Senha incorreta");
+						return;
+					}
+					
+					
 					if (!textFieldEmailNovo.getText().matches(regexEmail)) {
 						lblMsgErroEmail.setForeground(Color.RED);
 						lblMsgErroEmail.setText("Dados Invalidos");
@@ -361,12 +363,12 @@ public class TelaGerenciarDadosCervejeiro {
 				clearMsg();
 			}
 		});
-		btnEmailAlterar.setBounds(708, 140, 153, 23);
+		btnEmailAlterar.setBounds(710, 164, 153, 23);
 		panel.add(btnEmailAlterar);
 
 		JLabel lblAlterarTelefone = new JLabel("Voc\u00EA deseja alterar seu Telefone?");
 		lblAlterarTelefone.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblAlterarTelefone.setBounds(666, 191, 279, 14);
+		lblAlterarTelefone.setBounds(666, 236, 279, 14);
 		panel.add(lblAlterarTelefone);
 
 		textFieldTelefoneNovo = new JTextField();
@@ -374,17 +376,17 @@ public class TelaGerenciarDadosCervejeiro {
 		textFieldTelefoneNovo.setForeground(Color.BLACK);
 		textFieldTelefoneNovo.setColumns(10);
 		textFieldTelefoneNovo.setBackground(Color.WHITE);
-		textFieldTelefoneNovo.setBounds(698, 225, 175, 20);
+		textFieldTelefoneNovo.setBounds(698, 270, 175, 20);
 		panel.add(textFieldTelefoneNovo);
 
 		JLabel lblNovoTelefone = new JLabel("Novo Telefone:");
 		lblNovoTelefone.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblNovoTelefone.setBounds(546, 228, 134, 14);
+		lblNovoTelefone.setBounds(546, 273, 134, 14);
 		panel.add(lblNovoTelefone);
 
 		JLabel lblConfirmarTelefone = new JLabel("Confirmar novo Telefone:");
 		lblConfirmarTelefone.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblConfirmarTelefone.setBounds(482, 259, 198, 14);
+		lblConfirmarTelefone.setBounds(482, 304, 198, 14);
 		panel.add(lblConfirmarTelefone);
 
 		textFieldTelefoneNovoConfirmar = new JTextField();
@@ -392,11 +394,12 @@ public class TelaGerenciarDadosCervejeiro {
 		textFieldTelefoneNovoConfirmar.setForeground(Color.BLACK);
 		textFieldTelefoneNovoConfirmar.setColumns(10);
 		textFieldTelefoneNovoConfirmar.setBackground(Color.WHITE);
-		textFieldTelefoneNovoConfirmar.setBounds(698, 256, 175, 20);
+		textFieldTelefoneNovoConfirmar.setBounds(698, 301, 175, 20);
 		panel.add(textFieldTelefoneNovoConfirmar);
-
-		lblMsgErroTelefone.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblMsgErroTelefone.setBounds(534, 317, 327, 14);
+		
+		lblMsgErroTelefone = new JLabel("");
+		lblMsgErroTelefone.setHorizontalAlignment(SwingConstants.CENTER);
+		lblMsgErroTelefone.setBounds(618, 396, 327, 14);
 		panel.add(lblMsgErroTelefone);
 
 		JButton btnTelefoneAlterar = new JButton("Alterar Telefone");
@@ -404,6 +407,11 @@ public class TelaGerenciarDadosCervejeiro {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				String regexN = "[0-9]+";
+				if(!passwordFieldTelefone.getText().equals(cervLogado.getSenha())) {
+					lblMsgErroTelefone.setForeground(Color.RED);
+					lblMsgErroTelefone.setText("Senha incorreta");
+					return;
+				}
 				if (!textFieldTelefoneNovo.getText().matches(regexN)
 						&& !textFieldTelefoneNovoConfirmar.getText().matches(regexN)) {
 					lblMsgErroTelefone.setForeground(Color.RED);
@@ -416,15 +424,16 @@ public class TelaGerenciarDadosCervejeiro {
 					lblMsgErroTelefone.setText("Telefones devem ser iguais");
 					return;
 				}
-
-				cervLogado.setTelefone(textFieldTelefoneNovo.getText());
+				Cervejeiro cervejeiro = cervLogado;
+				cervejeiro.setTelefone(textFieldTelefoneNovo.getText());
 				try {
-					cbo.alterar(cervLogado);
+					cbo.alterar(cervejeiro);
 				} catch (Exception e1) {
 					lblMsgErroTelefone.setForeground(Color.RED);
 					lblMsgErroTelefone.setText("Erro ao Alterar Telefone");
 					return;
 				}
+				cervLogado.setTelefone(textFieldTelefoneNovo.getText());
 				lblMsgErroTelefone.setForeground(Color.GREEN);
 				lblMsgErroTelefone.setText("Telefone Alterado com Sucesso!");
 				lblCervejeiroTelefone.setText(cervLogado.getTelefone());
@@ -436,17 +445,17 @@ public class TelaGerenciarDadosCervejeiro {
 				clearMsg();
 			}
 		});
-		btnTelefoneAlterar.setBounds(708, 287, 153, 23);
+		btnTelefoneAlterar.setBounds(708, 362, 153, 23);
 		panel.add(btnTelefoneAlterar);
 
 		JLabel lblAlterarSenha = new JLabel("Voc\u00EA deseja alterar sua Senha?");
 		lblAlterarSenha.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblAlterarSenha.setBounds(666, 346, 279, 14);
+		lblAlterarSenha.setBounds(666, 421, 279, 14);
 		panel.add(lblAlterarSenha);
 
 		JLabel lblSenhaAtual = new JLabel("Senha atual:");
 		lblSenhaAtual.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblSenhaAtual.setBounds(577, 379, 103, 14);
+		lblSenhaAtual.setBounds(577, 464, 103, 14);
 		panel.add(lblSenhaAtual);
 
 		textFieldSenhaAtual = new JPasswordField();
@@ -454,7 +463,7 @@ public class TelaGerenciarDadosCervejeiro {
 		textFieldSenhaAtual.setForeground(Color.BLACK);
 		textFieldSenhaAtual.setColumns(10);
 		textFieldSenhaAtual.setBackground(Color.WHITE);
-		textFieldSenhaAtual.setBounds(698, 376, 175, 20);
+		textFieldSenhaAtual.setBounds(698, 461, 175, 20);
 		panel.add(textFieldSenhaAtual);
 
 		textFieldSenhaNova = new JPasswordField();
@@ -462,16 +471,17 @@ public class TelaGerenciarDadosCervejeiro {
 		textFieldSenhaNova.setForeground(Color.BLACK);
 		textFieldSenhaNova.setColumns(10);
 		textFieldSenhaNova.setBackground(Color.WHITE);
-		textFieldSenhaNova.setBounds(698, 407, 175, 20);
+		textFieldSenhaNova.setBounds(698, 492, 175, 20);
 		panel.add(textFieldSenhaNova);
 
 		JLabel lblNovaSenha = new JLabel("Nova Senha:");
 		lblNovaSenha.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblNovaSenha.setBounds(546, 410, 134, 14);
+		lblNovaSenha.setBounds(546, 495, 134, 14);
 		panel.add(lblNovaSenha);
-
-		lblMsgErroSenha.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblMsgErroSenha.setBounds(546, 502, 327, 14);
+		
+		lblMsgErroSenha = new JLabel("");
+		lblMsgErroSenha.setHorizontalAlignment(SwingConstants.CENTER);
+		lblMsgErroSenha.setBounds(546, 587, 327, 14);
 		panel.add(lblMsgErroSenha);
 
 		JButton btnAlterarSenha = new JButton("Alterar Senha");
@@ -517,7 +527,7 @@ public class TelaGerenciarDadosCervejeiro {
 				clearMsg();
 			}
 		});
-		btnAlterarSenha.setBounds(708, 469, 153, 23);
+		btnAlterarSenha.setBounds(708, 554, 153, 23);
 		panel.add(btnAlterarSenha);
 
 		textFieldASenhaConfirmar = new JPasswordField();
@@ -525,17 +535,44 @@ public class TelaGerenciarDadosCervejeiro {
 		textFieldASenhaConfirmar.setForeground(Color.BLACK);
 		textFieldASenhaConfirmar.setColumns(10);
 		textFieldASenhaConfirmar.setBackground(Color.WHITE);
-		textFieldASenhaConfirmar.setBounds(698, 438, 175, 20);
+		textFieldASenhaConfirmar.setBounds(698, 523, 175, 20);
 		panel.add(textFieldASenhaConfirmar);
 
 		JLabel lblConfirmarNovaSenha = new JLabel("Confirmar nova Senha:");
 		lblConfirmarNovaSenha.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblConfirmarNovaSenha.setBounds(546, 441, 134, 14);
+		lblConfirmarNovaSenha.setBounds(546, 526, 134, 14);
 		panel.add(lblConfirmarNovaSenha);
-
+		
+		lblMsgErroSenhaDeletarConta = new JLabel("");
 		lblMsgErroSenhaDeletarConta.setHorizontalAlignment(SwingConstants.CENTER);
 		lblMsgErroSenhaDeletarConta.setBounds(22, 578, 327, 14);
 		panel.add(lblMsgErroSenhaDeletarConta);
+		
+		JLabel lblSenhaAtualTelefone = new JLabel("Senha atual:");
+		lblSenhaAtualTelefone.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblSenhaAtualTelefone.setBounds(577, 336, 103, 14);
+		panel.add(lblSenhaAtualTelefone);
+		
+		passwordFieldTelefone = new JPasswordField();
+		passwordFieldTelefone.setToolTipText("email");
+		passwordFieldTelefone.setForeground(Color.BLACK);
+		passwordFieldTelefone.setColumns(10);
+		passwordFieldTelefone.setBackground(Color.WHITE);
+		passwordFieldTelefone.setBounds(698, 333, 175, 20);
+		panel.add(passwordFieldTelefone);
+		
+		JLabel lblSenhaAtualEmail = new JLabel("Senha atual:");
+		lblSenhaAtualEmail.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblSenhaAtualEmail.setBounds(577, 136, 103, 14);
+		panel.add(lblSenhaAtualEmail);
+		
+		passwordFieldEmail = new JPasswordField();
+		passwordFieldEmail.setToolTipText("email");
+		passwordFieldEmail.setForeground(Color.BLACK);
+		passwordFieldEmail.setColumns(10);
+		passwordFieldEmail.setBackground(Color.WHITE);
+		passwordFieldEmail.setBounds(698, 133, 175, 20);
+		panel.add(passwordFieldEmail);
 
 		framePrincipal.setVisible(true);
 

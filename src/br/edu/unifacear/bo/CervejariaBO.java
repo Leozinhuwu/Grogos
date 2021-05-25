@@ -15,4 +15,13 @@ public class CervejariaBO {
 	public void deletar(Cervejaria cervejaria) throws Exception {
 		cervejariaCrud.delete(cervejaria);
 	}
+
+	public boolean alterar(Cervejaria cervejaria) throws Exception {
+		if(!cervejariaCrud.alterar(cervejaria)) {
+			return false;
+		}
+		return true;
+	}
+
+
 }

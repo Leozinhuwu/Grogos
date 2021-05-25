@@ -2,7 +2,7 @@ package br.edu.unifacear.validators;
 
 public class IngredientesValidator {
 
-	private static String regex = "[0-9]+";
+	private static String regex = "[0-9.]+";
 
 	public static boolean validar(String teorAlcoolico, String cevada, String especiarias) {
 

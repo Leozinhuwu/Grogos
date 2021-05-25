@@ -17,16 +17,16 @@ public class CervejeiroTestes {
 	public static void saveCervejeiro() throws Exception {
 		EstadoBO estadobo = new EstadoBO();
 		Estado estado = new Estado();
-		estado.setNome("Parana");
+		estado.setNome("Paraná");
 		estadobo.saveEstado(estado);
 		
 		Estado estado2 = new Estado();
-		estado2.setNome("SaoPaulo");
+		estado2.setNome("São Paulo");
 		estadobo.saveEstado(estado2);
 		
 		CidadeBO cidadebo = new CidadeBO();
 		Cidade cidade = new Cidade();
-		cidade.setNome("Araucaria");
+		cidade.setNome("Araucária");
 		cidade.setEstado(estado);
 		cidadebo.saveCidade(cidade);
 		
