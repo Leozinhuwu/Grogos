@@ -514,13 +514,13 @@ public class TelaCadastroCerveja {
 
 				} catch (Exception e1) {
 
-					e1.printStackTrace();
+					lblCadastro.setText("Erro Ao salvar ingredientes");
 				} finally {
 					try {
 						cadastrar = cbo.salvar(cerveja);
 					} catch (Exception e1) {
 
-						e1.printStackTrace();
+						lblCadastro.setText("Erro Ao salvar cervejas");
 
 					}
 				}

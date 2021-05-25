@@ -2,7 +2,7 @@ package br.edu.unifacear.validators;
 
 public class CervejariaValidator {
 	private static String regexNumeros = "[0-9]+";
-	private static String regexFields = "^[a-zA-Z0-9_.-]+$";
+	private static String regexFields = "^[a-zA-Z0-9 ]+$";
 	private static String regexEmail = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$";
 
 	public static boolean validar(String nome, String email, String telefone, String endereco) {
@@ -20,7 +20,7 @@ public class CervejariaValidator {
 			return false;
 		}
 		
-		if(endereco == null || !endereco.matches(regexFields)) {
+		if(endereco == null) {
 			return false;
 		}
 
