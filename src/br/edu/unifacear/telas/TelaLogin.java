@@ -20,7 +20,7 @@ public class TelaLogin extends JFrame {
 	private static JFrame frameMain;
 	private static JTextField txtEmail;
 	private static JPasswordField passwordField;
-	public static String usuarioLogado;
+	public static Object usuarioLogado;
 
 	/**
 	 * @throws Exception
@@ -87,7 +87,7 @@ public class TelaLogin extends JFrame {
 					System.out.println("apre: "+authapre+ " cerv: " +authcerv);
 					if (authapre == true) {
 						try {
-							usuarioLogado = user.getEmail();
+							usuarioLogado = aprebo.findApreciador(user);
 							TelaPrincipalApreciador.telaPrincipal();
 						} catch (Exception e1) {
 							lblLoginFail.setText("Erro ao logar, tente novamente");
@@ -96,9 +96,10 @@ public class TelaLogin extends JFrame {
 						frameMain.dispose();
 					}
 					if (authcerv == true) {
-						usuarioLogado = usercer.getEmail();
+						usuarioLogado = cerbo.findCervejeiro(usercer);
 						try {
-							TelaMenuCervejeiro.telaMenuUser();
+							
+							TelaMenuCervejeiro.telaMenuCervejeiro();
 						} catch (Exception e1) {
 							// TODO Auto-generated catch block
 							lblLoginFail.setText("Erro ao logar, tente novamente");

@@ -16,7 +16,7 @@ public class TelaMenuCervejeiro extends JFrame {
 	 * @wbp.parser.entryPoint
 	 */
 
-	public static void telaMenuUser() throws Exception {
+	public static void telaMenuCervejeiro() throws Exception {
 
 		// labels e botoes do jFrame
 		JPanel panel = new JPanel();
@@ -35,7 +35,7 @@ public class TelaMenuCervejeiro extends JFrame {
 		btnGerenciarDados.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					TelaCervejasCervejeiro.telaPerfil();
+					TelaGerenciarDadosCervejeiro.telaGerenciarDadosCervejeiro();
 				} catch (Exception e1) {
 				
 					e1.printStackTrace();

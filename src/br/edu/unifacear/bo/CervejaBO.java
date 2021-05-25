@@ -28,10 +28,14 @@ public class CervejaBO {
 		return true;
 	}
 
-	public List findByUser(Cervejeiro user) throws Exception {
-		user.setId(usuarioDao.findId(user));
+	public List<Cerveja> findByUser(Cervejeiro user) throws Exception {
+	
 		
 		return cervejaDao.findCerveja(user);
+	}
+
+	public void deletar(Cerveja c) throws Exception {
+		cervejaDao.delete(c);	
 	}
 
 }

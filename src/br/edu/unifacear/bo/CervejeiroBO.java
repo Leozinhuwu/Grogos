@@ -41,4 +41,15 @@ public class CervejeiroBO {
 		return false;
 	}
 
+	public boolean alterar(Cervejeiro novocerv) throws Exception {
+		
+		
+		if(!cervejeiroCrud.alterar(novocerv)) {
+			return false;
+		}
+		return true;
+		
+		
+	}
+
 }

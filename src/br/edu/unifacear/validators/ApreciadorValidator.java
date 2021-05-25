@@ -18,7 +18,7 @@ public class ApreciadorValidator {
 		if(email == null || !email.matches(regexEmail)) {
 			return false;
 		}
-		if(senha == null || !senha.matches(regexFields)) {
+		if(senha == null || !senha.matches(regexFields) || senha.length() < 6) {
 			return false;
 		}
 		

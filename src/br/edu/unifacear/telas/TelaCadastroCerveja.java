@@ -93,7 +93,7 @@ public class TelaCadastroCerveja {
 		btnVolta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					TelaMenuCervejeiro.telaMenuUser();
+					TelaMenuCervejeiro.telaMenuCervejeiro();
 
 				} catch (Exception e1) {
 
@@ -502,7 +502,7 @@ public class TelaCadastroCerveja {
 				cerveja.setDescription(descricaoPane.getText());
 				CervejeiroBO cervejeirobo = new CervejeiroBO();
 				Cervejeiro cervejeiro = new Cervejeiro();
-				cervejeiro.setEmail(TelaLogin.usuarioLogado);
+				cervejeiro.setEmail(((Cervejeiro) TelaLogin.usuarioLogado).getEmail());
 				cerveja.setCervejeiro((Cervejeiro) cervejeirobo.findCervejeiro(cervejeiro));
 
 				boolean cadastrar = false;

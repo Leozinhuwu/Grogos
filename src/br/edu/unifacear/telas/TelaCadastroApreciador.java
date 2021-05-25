@@ -51,7 +51,7 @@ public class TelaCadastroApreciador extends JFrame {
 		panel.setLayout(null);
 
 		JLabel lblCadastroMsg = new JLabel("");
-		lblCadastroMsg.setBounds(125, 303, 488, 50);
+		lblCadastroMsg.setBounds(404, 586, 488, 50);
 		panel.add(lblCadastroMsg);
 
 		JButton btnCadastrar = new JButton("Cadastrar");
@@ -100,7 +100,7 @@ public class TelaCadastroApreciador extends JFrame {
 
 		});
 
-		btnCadastrar.setBounds(146, 269, 154, 23);
+		btnCadastrar.setBounds(678, 564, 154, 23);
 		panel.add(btnCadastrar);
 
 		JButton btnVolta = new JButton("Voltar");
@@ -261,6 +261,18 @@ public class TelaCadastroApreciador extends JFrame {
 		});
 		btnRemoverTipo.setBounds(262, 437, 89, 23);
 		panel.add(btnRemoverTipo);
+		
+		JLabel lblCadastrar = new JLabel("Cadastrar Conta e Preferencias");
+		lblCadastrar.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblCadastrar.setHorizontalAlignment(SwingConstants.CENTER);
+		lblCadastrar.setBounds(628, 539, 230, 14);
+		panel.add(lblCadastrar);
+		
+		JLabel lblAdicionarTipos = new JLabel("Escolha alguns Tipos de Cerveja de sua Preferencia");
+		lblAdicionarTipos.setHorizontalAlignment(SwingConstants.CENTER);
+		lblAdicionarTipos.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblAdicionarTipos.setBounds(10, 377, 430, 14);
+		panel.add(lblAdicionarTipos);
 
 		for (TipoCerveja tc : tipocervejabo.tipos()) {
 

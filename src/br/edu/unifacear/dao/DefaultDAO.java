@@ -24,7 +24,25 @@ public abstract class DefaultDAO<T extends IDBModel> {
 			throw new Exception("Erro salvando : " + e.getMessage());
 		}
 	}
+	
+	public boolean alterar(T obj) throws Exception {
 
+		try {
+			con.getTransaction().begin();
+
+			con.merge(obj);
+
+			con.getTransaction().commit();
+			return true;
+
+		} catch (Exception e) {
+			throw new Exception("Erro alterando : " + e.getMessage());
+			
+		}
+		
+	}
+	
+	
 	// remove
 	public void delete(T obj) throws Exception {
 		

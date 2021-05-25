@@ -40,7 +40,7 @@ public class TelaCervejasCervejeiro {
 	public static void telaPerfil() throws Exception {
 		CervejeiroBO userBo = new CervejeiroBO();
 		Cervejeiro user = new Cervejeiro();
-		user.setEmail(TelaLogin.usuarioLogado);
+		user.setEmail(((Cerveja) TelaLogin.usuarioLogado).getEmail());
 		user.setNome(userBo.findUserName(user));
 		
 		
@@ -64,7 +64,7 @@ public class TelaCervejasCervejeiro {
 		btnVolta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					TelaMenuCervejeiro.telaMenuUser();
+					TelaMenuCervejeiro.telaMenuCervejeiro();
 
 				} catch (Exception e1) {
 

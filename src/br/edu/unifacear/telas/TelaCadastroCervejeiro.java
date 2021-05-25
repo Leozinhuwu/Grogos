@@ -415,6 +415,8 @@ public class TelaCadastroCervejeiro {
 					} else {
 						lblCadastroMsg.setText("Esse email já existe");
 					}
+				}else {
+					lblCadastroMsg.setText("Dados de Cervejeiro Inválidos");
 				}
 			}
 
