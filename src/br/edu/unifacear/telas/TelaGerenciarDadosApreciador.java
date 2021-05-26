@@ -10,9 +10,11 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import br.edu.unifacear.classes.Apreciador;
+
 public class TelaGerenciarDadosApreciador {
 	private static JFrame framePrincipal;
-	public static String usuarioLogado;
+	
 
 	
 	/**
@@ -22,11 +24,8 @@ public class TelaGerenciarDadosApreciador {
 
 	public static void telaGerenciarDadosApreciador() throws Exception {
 
-//		cadastro.registerUser(nome, senha, idade, email);
-
-		// imagem
-
-		// labels e botoes do jFrame
+		Apreciador apreLogado = (Apreciador) TelaLogin.usuarioLogado;
+		
 		JPanel panel = new JPanel();
 		panel.setForeground(Color.RED);
 		panel.setBackground(Color.WHITE);
@@ -56,13 +55,9 @@ public class TelaGerenciarDadosApreciador {
 		btnVoltar.setBounds(21, 11, 89, 23);
 		panel.add(btnVoltar);
 		
-		JLabel lblBemVindo = new JLabel("Bem vindo ");
-		lblBemVindo.setBounds(72, 55, 76, 14);
+		JLabel lblBemVindo = new JLabel("Bem vindo " + apreLogado.getNome() );
+		lblBemVindo.setBounds(72, 55, 323, 14);
 		panel.add(lblBemVindo);
-		
-		JLabel lblNomeApreciadorLogado = new JLabel("Nome Apreciador");
-		lblNomeApreciadorLogado.setBounds(132, 55, 148, 14);
-		panel.add(lblNomeApreciadorLogado);
 
 		framePrincipal.setVisible(true);
 

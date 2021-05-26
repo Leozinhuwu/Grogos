@@ -4,6 +4,9 @@ import java.awt.Color;
 import java.awt.Toolkit;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
+import br.edu.unifacear.classes.Apreciador;
+
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -22,12 +25,10 @@ public class TelaPrincipalApreciador {
 	 */
 
 	public static void telaPrincipal() throws Exception {
-
-//		cadastro.registerUser(nome, senha, idade, email);
-
-		// imagem
-
-		// labels e botoes do jFrame
+		
+		Apreciador apreLogado = (Apreciador) TelaLogin.usuarioLogado;
+		
+		
 		JPanel panel = new JPanel();
 		panel.setForeground(Color.RED);
 		panel.setBackground(Color.WHITE);
@@ -57,13 +58,10 @@ public class TelaPrincipalApreciador {
 		btnLogout.setBounds(21, 11, 89, 23);
 		panel.add(btnLogout);
 		
-		JLabel lblBemVindo = new JLabel("Bem vindo ");
-		lblBemVindo.setBounds(72, 55, 76, 14);
+		JLabel lblBemVindo = new JLabel("Bem vindo " + apreLogado.getNome() );
+		lblBemVindo.setBounds(72, 55, 362, 14);
 		panel.add(lblBemVindo);
 		
-		JLabel lblNomeApreciadorLogado = new JLabel("Nome Apreciador");
-		lblNomeApreciadorLogado.setBounds(132, 55, 148, 14);
-		panel.add(lblNomeApreciadorLogado);
 		
 		JButton btnPesquisar = new JButton("Realizar uma pesquisa");
 		btnPesquisar.addMouseListener(new MouseAdapter() {

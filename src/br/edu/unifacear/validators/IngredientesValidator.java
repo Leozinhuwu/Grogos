@@ -13,7 +13,7 @@ public class IngredientesValidator {
 			return false;
 		}
 		
-		if(especiarias == null) {
+		if(especiarias == null || especiarias.isBlank()) {
 			return false;
 		}
 

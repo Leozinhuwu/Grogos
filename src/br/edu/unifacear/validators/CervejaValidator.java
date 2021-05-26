@@ -13,7 +13,7 @@ public class CervejaValidator {
 		}
 	
 		
-		if (descricao == null) {
+		if (descricao == null || descricao.isBlank()) {
 			return false;
 		}
 

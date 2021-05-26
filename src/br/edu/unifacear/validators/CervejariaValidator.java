@@ -20,7 +20,7 @@ public class CervejariaValidator {
 			return false;
 		}
 		
-		if(endereco == null) {
+		if(endereco == null || endereco.isBlank()) {
 			return false;
 		}
 

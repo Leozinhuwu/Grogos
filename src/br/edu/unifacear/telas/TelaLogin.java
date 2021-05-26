@@ -84,7 +84,6 @@ public class TelaLogin extends JFrame {
 				boolean authcerv = cerbo.login(usercer);
 			
 				if (authapre == true || authcerv == true) {
-					System.out.println("apre: "+authapre+ " cerv: " +authcerv);
 					if (authapre == true) {
 						try {
 							usuarioLogado = aprebo.findApreciador(user);
@@ -101,7 +100,6 @@ public class TelaLogin extends JFrame {
 							
 							TelaMenuCervejeiro.telaMenuCervejeiro();
 						} catch (Exception e1) {
-							// TODO Auto-generated catch block
 							lblLoginFail.setText("Erro ao logar, tente novamente");
 							return;
 						}
@@ -166,7 +164,7 @@ public class TelaLogin extends JFrame {
 				try {
 					TelaCadastroCervejeiro.telaCadastro();
 				} catch (Exception e1) {
-					// TODO Auto-generated catch block
+				
 					e1.printStackTrace();
 				}
 

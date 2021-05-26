@@ -17,10 +17,12 @@ import javax.swing.SwingConstants;
 
 import br.edu.unifacear.bo.CervejariaBO;
 import br.edu.unifacear.bo.CidadeBO;
+import br.edu.unifacear.bo.EnderecoBO;
 import br.edu.unifacear.bo.EstadoBO;
 import br.edu.unifacear.classes.Cervejaria;
 import br.edu.unifacear.classes.Cervejeiro;
 import br.edu.unifacear.classes.Cidade;
+import br.edu.unifacear.classes.Endereco;
 import br.edu.unifacear.classes.Estado;
 
 import javax.swing.JTextField;
@@ -39,6 +41,7 @@ public class TelaGerenciarDadosCervejaria {
 	private static JPasswordField passwordFieldTelefone;
 	private static JTextField textFieldEndereco;
 	private static JPasswordField passwordFieldEndereco;
+	private static JLabel lblMsgErroEndereco;
 
 	/**
 	 * @throws Exception
@@ -50,7 +53,7 @@ public class TelaGerenciarDadosCervejaria {
 		CervejariaBO cbo = new CervejariaBO();
 		CidadeBO cidadebo = new CidadeBO();
 		EstadoBO estadobo = new EstadoBO();
-		
+
 		JPanel panel = new JPanel();
 		panel.setForeground(Color.RED);
 		panel.setBackground(Color.WHITE);
@@ -156,7 +159,7 @@ public class TelaGerenciarDadosCervejaria {
 		lblNovoEmail.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblNovoEmail.setBounds(55, 352, 89, 14);
 		panel.add(lblNovoEmail);
-		
+
 		JComboBox<Cidade> comboBoxCidade = new JComboBox();
 		comboBoxCidade.setBounds(154, 569, 175, 22);
 		panel.add(comboBoxCidade);
@@ -203,42 +206,42 @@ public class TelaGerenciarDadosCervejaria {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				String regexEmail = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$";
-				String emaillogado = ((Cervejeiro) TelaLogin.usuarioLogado).getCervejaria().getEmail();
-				System.out.println(emaillogado + " / " + textFieldEmailAtual.getText());
-				if (textFieldEmailAtual.getText().equalsIgnoreCase(emaillogado)) {
-
-					if (!textFieldEmailNovo.getText().matches(regexEmail)) {
-
-						lblMsgErroEmail.setForeground(Color.RED);
-						lblMsgErroEmail.setText("Dados Invalidos");
-						return;
-					}
-
-					if (!passwordFieldEmail.getText().equals(cervLogado.getSenha())) {
-						lblMsgErroEmail.setForeground(Color.RED);
-						lblMsgErroEmail.setText("Senha incorreta");
-						return;
-					}
-
-					Cervejaria cervejaria = cervLogado.getCervejaria();
-					cervejaria.setEmail(textFieldEmailNovo.getText());
-					try {
-						cbo.alterar(cervejaria);
-					} catch (Exception e1) {
-						lblMsgErroEmail.setForeground(Color.RED);
-						lblMsgErroEmail.setText("Erro ao alterar Cervejaria");
-						return;
-					}
-					((Cervejeiro) TelaLogin.usuarioLogado).setEmail(textFieldEmailNovo.getText());
-					lblMsgErroEmail.setForeground(Color.GREEN);
-					lblMsgErroEmail.setText("Email Alterado com Sucesso!");
-					lblCervejariaEmail.setText(textFieldEmailNovo.getText());
-				} else {
+		
+				
+				if (!textFieldEmailAtual.getText().equalsIgnoreCase(cervLogado.getCervejaria().getEmail())) {
 					lblMsgErroEmail.setForeground(Color.RED);
 					lblMsgErroEmail.setText("Dados Invalidos");
-
 					return;
 				}
+				if (!textFieldEmailNovo.getText().matches(regexEmail)) {
+
+					lblMsgErroEmail.setForeground(Color.RED);
+					lblMsgErroEmail.setText("Dados Invalidos");
+					return;
+				}
+
+				if (!passwordFieldEmail.getText().equals(cervLogado.getSenha())) {
+					lblMsgErroEmail.setForeground(Color.RED);
+					lblMsgErroEmail.setText("Senha incorreta");
+					return;
+				}
+
+				Cervejaria cervejaria = cervLogado.getCervejaria();
+				cervejaria.setEmail(textFieldEmailNovo.getText());
+				try {
+					cbo.alterar(cervejaria);
+				} catch (Exception e1) {
+					lblMsgErroEmail.setForeground(Color.RED);
+					lblMsgErroEmail.setText("Erro ao alterar Cervejaria");
+					return;
+				}
+
+				cervLogado.setCervejaria(cervejaria);
+				((Cervejeiro) TelaLogin.usuarioLogado).setCervejaria(cervejaria);
+				lblMsgErroEmail.setForeground(Color.GREEN);
+				lblMsgErroEmail.setText("Email Alterado com Sucesso!");
+				lblCervejariaEmail.setText(textFieldEmailNovo.getText());
+
 			}
 
 			@Override
@@ -254,7 +257,7 @@ public class TelaGerenciarDadosCervejaria {
 		panel.add(lblMsgErroEmail);
 
 		lblMsgErroTelefone.setHorizontalAlignment(SwingConstants.CENTER);
-		lblMsgErroTelefone.setBounds(618, 216, 327, 14);
+		lblMsgErroTelefone.setBounds(586, 448, 327, 14);
 		panel.add(lblMsgErroTelefone);
 
 		JButton btnTelefoneAlterar = new JButton("Alterar Telefone");
@@ -290,7 +293,8 @@ public class TelaGerenciarDadosCervejaria {
 					lblMsgErroTelefone.setText("Erro ao Alterar Telefone");
 					return;
 				}
-				((Cervejeiro) TelaLogin.usuarioLogado).setTelefone(textFieldTelefoneNovo.getText());
+				cervLogado.setCervejaria(cervejaria);
+				((Cervejeiro) TelaLogin.usuarioLogado).setCervejaria(cervejaria);
 				lblMsgErroTelefone.setForeground(Color.GREEN);
 				lblMsgErroTelefone.setText("Telefone Alterado com Sucesso!");
 				lblCervejariaTelefone.setText(textFieldTelefoneNovo.getText());
@@ -305,7 +309,7 @@ public class TelaGerenciarDadosCervejaria {
 		panel.add(btnTelefoneAlterar);
 
 		textFieldTelefoneNovoConfirmar = new JTextField();
-		textFieldTelefoneNovoConfirmar.setToolTipText("telefone");
+		textFieldTelefoneNovoConfirmar.setToolTipText("Telefone");
 		textFieldTelefoneNovoConfirmar.setForeground(Color.BLACK);
 		textFieldTelefoneNovoConfirmar.setColumns(10);
 		textFieldTelefoneNovoConfirmar.setBackground(Color.WHITE);
@@ -323,7 +327,7 @@ public class TelaGerenciarDadosCervejaria {
 		panel.add(lblNovoTelefone);
 
 		textFieldTelefoneNovo = new JTextField();
-		textFieldTelefoneNovo.setToolTipText("email");
+		textFieldTelefoneNovo.setToolTipText("Telefone");
 		textFieldTelefoneNovo.setForeground(Color.BLACK);
 		textFieldTelefoneNovo.setColumns(10);
 		textFieldTelefoneNovo.setBackground(Color.WHITE);
@@ -341,7 +345,7 @@ public class TelaGerenciarDadosCervejaria {
 		panel.add(lblSenhaAtualEmail);
 
 		passwordFieldEmail = new JPasswordField();
-		passwordFieldEmail.setToolTipText("email");
+		passwordFieldEmail.setToolTipText("Sua senha");
 		passwordFieldEmail.setForeground(Color.BLACK);
 		passwordFieldEmail.setColumns(10);
 		passwordFieldEmail.setBackground(Color.WHITE);
@@ -354,56 +358,95 @@ public class TelaGerenciarDadosCervejaria {
 		panel.add(lblSenhaAtualTelefone);
 
 		passwordFieldTelefone = new JPasswordField();
-		passwordFieldTelefone.setToolTipText("email");
+		passwordFieldTelefone.setToolTipText("Sua senha");
 		passwordFieldTelefone.setForeground(Color.BLACK);
 		passwordFieldTelefone.setColumns(10);
 		passwordFieldTelefone.setBackground(Color.WHITE);
 		passwordFieldTelefone.setBounds(666, 382, 175, 20);
 		panel.add(passwordFieldTelefone);
-		
+
 		JLabel lblEstadoCervejaria = new JLabel("Estado:");
 		lblEstadoCervejaria.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblEstadoCervejaria.setBounds(98, 544, 46, 14);
 		panel.add(lblEstadoCervejaria);
-		
+
 		JLabel lblCidadeCervejaria = new JLabel("Cidade:");
 		lblCidadeCervejaria.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblCidadeCervejaria.setBounds(98, 572, 46, 14);
 		panel.add(lblCidadeCervejaria);
-		
+
 		JLabel lblEnderecoCervejaria = new JLabel("Endere\u00E7o:");
 		lblEnderecoCervejaria.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblEnderecoCervejaria.setBounds(73, 601, 71, 14);
 		panel.add(lblEnderecoCervejaria);
-		
+
 		textFieldEndereco = new JTextField();
+		textFieldEndereco.setToolTipText("Endere\u00E7o");
 		textFieldEndereco.setColumns(10);
 		textFieldEndereco.setBounds(154, 598, 359, 20);
 		panel.add(textFieldEndereco);
-		
+
 		JLabel lblSenhaAtualEndereco = new JLabel("Senha atual:");
 		lblSenhaAtualEndereco.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblSenhaAtualEndereco.setBounds(41, 626, 103, 14);
 		panel.add(lblSenhaAtualEndereco);
-		
+
 		passwordFieldEndereco = new JPasswordField();
-		passwordFieldEndereco.setToolTipText("email");
+		passwordFieldEndereco.setToolTipText("Sua senha");
 		passwordFieldEndereco.setForeground(Color.BLACK);
 		passwordFieldEndereco.setColumns(10);
 		passwordFieldEndereco.setBackground(Color.WHITE);
 		passwordFieldEndereco.setBounds(154, 623, 175, 20);
 		panel.add(passwordFieldEndereco);
-		
+
 		JLabel lblDesejaAlterarEndereo = new JLabel("Deseja alterar Endere\u00E7o da Cervejaria?");
 		lblDesejaAlterarEndereo.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblDesejaAlterarEndereo.setBounds(90, 515, 279, 14);
 		panel.add(lblDesejaAlterarEndereo);
-		
-		JButton btnEnderecoAlterar = new JButton("Alterar Email");
+
+		JButton btnEnderecoAlterar = new JButton("Alterar Endere\u00E7o");
 		btnEnderecoAlterar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+
+				if (!passwordFieldEndereco.getText().equals(cervLogado.getSenha())) {
+					lblMsgErroEndereco.setForeground(Color.RED);
+					lblMsgErroEndereco.setText("Senha incorreta");
+					return;
+				}
+
+				if (textFieldEndereco.getText().isBlank()) {
+					lblMsgErroEndereco.setForeground(Color.RED);
+					lblMsgErroEndereco.setText("O campo Endereço não pode ficar em branco");
+					return;
+				}
+
+				EnderecoBO enderecobo = new EnderecoBO();
+				Endereco endereco = cervLogado.getCervejaria().getEndereco();
+				endereco.setCidade((Cidade) comboBoxCidade.getSelectedItem());
+				endereco.getCidade().setEstado((Estado) comboBoxEstado.getSelectedItem());
+				endereco.setNome(textFieldEndereco.getText());
+				try {
+					enderecobo.alterar(endereco);
+				} catch (Exception e1) {
+					lblMsgErroEndereco.setForeground(Color.RED);
+					lblMsgErroEndereco.setText("Erro ao alterar Endereço");
+					return;
+				}
+
+				Cervejaria cervejaria = cervLogado.getCervejaria();
+				cervejaria.setEndereco(endereco);
+				cervLogado.setCervejaria(cervejaria);
+				((Cervejeiro) TelaLogin.usuarioLogado).setCervejaria(cervejaria);
+				lblMsgErroEndereco.setForeground(Color.GREEN);
+				lblMsgErroEndereco.setText("Endereço Alterado com Sucesso!");
+
+				lblCervejariaEndereco.setText(cervLogado.getCervejaria().getEndereco().getNome() + ", "
+						+ cervLogado.getCervejaria().getEndereco().getCidade().getNome() + ", "
+						+ cervLogado.getCervejaria().getEndereco().getCidade().getEstado().getNome());
+
 			}
+
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				clearMsg();
@@ -412,6 +455,11 @@ public class TelaGerenciarDadosCervejaria {
 		btnEnderecoAlterar.setBounds(164, 654, 153, 23);
 		panel.add(btnEnderecoAlterar);
 
+		lblMsgErroEndereco = new JLabel("");
+		lblMsgErroEndereco.setHorizontalAlignment(SwingConstants.CENTER);
+		lblMsgErroEndereco.setBounds(90, 688, 327, 14);
+		panel.add(lblMsgErroEndereco);
+
 		framePrincipal.setVisible(true);
 
 	}
@@ -419,6 +467,6 @@ public class TelaGerenciarDadosCervejaria {
 	private static void clearMsg() {
 		lblMsgErroTelefone.setText("");
 		lblMsgErroEmail.setText("");
-
+		lblMsgErroEndereco.setText("");
 	}
 }

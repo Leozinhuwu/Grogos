@@ -37,7 +37,6 @@ public class CervejaDao extends DefaultDAO<Cerveja> {
 				" where cervejeiro_id = :id");
 		q.setParameter("id", user.getId());
 		List<Cerveja> cervejas = q.getResultList();
-		System.out.println(cervejas);
 		return cervejas;
 	
 	}
