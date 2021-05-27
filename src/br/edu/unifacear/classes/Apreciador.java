@@ -1,8 +1,9 @@
 package br.edu.unifacear.classes;
 
 
+import java.util.ArrayList;
 import java.util.HashSet;
-
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.*;
@@ -26,7 +27,7 @@ public class Apreciador implements IDBModel {
     @JoinTable(name="Apreciador_TipoCerveja", joinColumns=
     {@JoinColumn(name="apreciador_id")}, inverseJoinColumns=
       {@JoinColumn(name="TipoCerveja_id")})
-	private Set<TipoCerveja> tipoCerveja =  new HashSet<TipoCerveja>();
+	private List<TipoCerveja> tipoCervejas;
 
 
 
@@ -38,32 +39,43 @@ public class Apreciador implements IDBModel {
 		this.senha = senha;
 		this.idade = idade;
 		this.email = email;
+		this.tipoCervejas = new ArrayList<TipoCerveja>();
+	}
+
+	public List<TipoCerveja> getTipoCervejas() {
+		return tipoCervejas;
+	}
+
+	public void setTipoCervejas(List<TipoCerveja> tipoCervejas) {
+		this.tipoCervejas = tipoCervejas;
 	}
 
 	public Apreciador() {
-
+		this.tipoCervejas = new ArrayList<TipoCerveja>();
 	}
 
 	// get and setters
 	@Override
 	public int getId() {
-		System.out.println(id);
+		
 		return id;
 	}
-	
-	public Set<TipoCerveja> getTipoCerveja() {
-		return tipoCerveja;
-	}
 
-	public void setTipoCerveja(Set<TipoCerveja> tipoCerveja) {
-		this.tipoCerveja = tipoCerveja;
+	
+	public void addTipoCerveja(TipoCerveja tipoCerveja) {
+		this.tipoCervejas.add(tipoCerveja);
 		
 	}
 	
-	public void addTipoCerveja(TipoCerveja tipoCerveja) {
-		this.tipoCerveja.add(tipoCerveja);
-		tipoCerveja.getApreciador().add(this);
+	public void removeTipoCerveja(TipoCerveja tipoCerveja) {
+		this.tipoCervejas.remove(tipoCerveja);
 	}
+	
+	public TipoCerveja getTipoCerveja(int id) {
+		return this.tipoCervejas.get(id);
+	}
+	
+	
 	public void setId(int id) {
 
 		this.id = id;

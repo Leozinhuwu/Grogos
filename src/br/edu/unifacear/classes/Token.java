@@ -1,5 +1,8 @@
 package br.edu.unifacear.classes;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.*;
 
 @Entity
@@ -11,6 +14,8 @@ public class Token implements IDBModel {
 	private String nome;
 	private String status;
 	
+	@ManyToMany(mappedBy="token", cascade = CascadeType.ALL)
+	private List<Cervejeiro> cervejeiros;
 	
 	
 	public Token(int id, String nome, String status) {
@@ -18,13 +23,36 @@ public class Token implements IDBModel {
 		this.id = id;
 		this.nome = nome;
 		this.status = status;
+		this.cervejeiros = new ArrayList<Cervejeiro>();
 	}
 
 	public Token() {
 		super();
-		// TODO Auto-generated constructor stub
+		this.cervejeiros = new ArrayList<Cervejeiro>();
+	}
+	
+	public List<Cervejeiro> getCervejeiro() {
+		return this.cervejeiros;
 	}
 
+
+	public void setCervejeiro(List<Cervejeiro> cervejeiros) {
+		this.cervejeiros = cervejeiros;
+	}
+	
+	public void addCervejeiro(Cervejeiro cervejeiro) {
+		this.cervejeiros.add(cervejeiro);
+		
+	}
+	
+	public void removeCervejeiro(Cervejeiro cervejeiro) {
+		this.cervejeiros.remove(cervejeiro);
+	}
+	
+	public Cervejeiro getCervejeiro(int id) {
+		return this.cervejeiros.get(id);
+	}
+	
 	public int getId() {
 		return id;
 	}

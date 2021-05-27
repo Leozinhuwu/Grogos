@@ -80,6 +80,7 @@ public class TelaCadastroApreciador extends JFrame {
 					newUser.setIdade(idade);
 					newUser.setNome(nome);
 					newUser.setSenha(senha);
+					newUser.setTipoCervejas(tipos);
 					try {
 						cadastrar = cadastro.registerUser(newUser);
 					} catch (Exception e1) {
@@ -87,7 +88,14 @@ public class TelaCadastroApreciador extends JFrame {
 						e1.printStackTrace();
 					}
 					if (cadastrar == true) {
-						lblCadastroMsg.setText("Cadastrado com Sucesso");
+						JOptionPane.showInternalMessageDialog(null, "Cadastrado com sucesso!");
+						try {
+							TelaLogin.telaInicial();
+						} catch (Exception e1) {
+							lblCadastroMsg.setText("Erro ao voltar a tela inicial, clique no botão voltar");
+							return;
+						}
+						frameCadastro.dispose();
 					} else {
 						lblCadastroMsg.setText("Esse email já existe");
 					}
@@ -228,6 +236,7 @@ public class TelaCadastroApreciador extends JFrame {
 				if (!tipos.contains(tc)) {
 					tipos.add(tc);
 					listTipos.add(tc.getNome());
+					
 				} else {
 					lbltipomsg.setText("item ja adicionado");
 				}

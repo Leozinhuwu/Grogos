@@ -14,8 +14,9 @@ public class Main {
 	public static void main(String[] args) throws Exception {
 		CBanco.getConnection();
 		CervejeiroTestes.saveCervejeiro();
-		ApreciadorTestes.saveUsuario();
 		CervejaTestes.saveCerveja();
+		ApreciadorTestes.saveUsuario();
+		
 		//TelaCadastroApreciador.telaCadastro();
 		//TelaCadastroCervejeiro.telaCadastro();
 		TelaLogin.telaInicial();

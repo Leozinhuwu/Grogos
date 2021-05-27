@@ -1,8 +1,9 @@
 package br.edu.unifacear.classes;
 
-import java.util.HashSet;
+import java.util.ArrayList;
+
 import java.util.List;
-import java.util.Set;
+
 
 import javax.persistence.*;
 
@@ -15,21 +16,45 @@ public class TipoCerveja implements IDBModel {
 	
 	private String nome;
 	
-	@ManyToMany(mappedBy="tipoCerveja", cascade = CascadeType.ALL)
-	private Set<Apreciador> apreciador = new HashSet<Apreciador>();
+	@ManyToMany(mappedBy="tipoCervejas", cascade = CascadeType.ALL)
+	private List<Apreciador> apreciadores;
 
 
 	public TipoCerveja(int id, String nome) {
 		super();
 		this.id = id;
 		this.nome = nome;
+		this.apreciadores = new ArrayList<Apreciador>();
 	}
 
 
 	public TipoCerveja() {
 		super();
+		this.apreciadores = new ArrayList<Apreciador>();
+	}
+	
+	public List<Apreciador> getApreciadores() {
+		return this.apreciadores;
 	}
 
+
+	public void setApreciadores(List<Apreciador> apreciadores) {
+		this.apreciadores = apreciadores;
+	}
+	
+	public void addApreciador(Apreciador apreciador) {
+		this.apreciadores.add(apreciador);
+		
+	}
+	
+	public void removeApreciador(Apreciador apreciador) {
+		this.apreciadores.remove(apreciador);
+	}
+	
+	public Apreciador getApreciador(int id) {
+		return this.apreciadores.get(id);
+	}
+	
 
 	public int getId() {
 		return id;
@@ -51,14 +76,7 @@ public class TipoCerveja implements IDBModel {
 	}
 
 
-	public Set<Apreciador> getApreciador() {
-		return apreciador;
-	}
-
-
-	public void setApreciador(Set<Apreciador> apreciador) {
-		this.apreciador = apreciador;
-	}
+	
 
 
 	@Override

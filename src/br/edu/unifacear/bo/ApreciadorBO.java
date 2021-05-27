@@ -33,12 +33,17 @@ public class ApreciadorBO {
 		
 	}
 	public Object findApreciador(Apreciador apreciador) {
-		// TODO Auto-generated method stub
+		
 		return userCrud.findSingleObj(apreciador);
 	}
 
 	public void deletar(Apreciador apre) throws Exception {
 		userCrud.delete(apre);
+		
+	}
+
+	public void alterar(Apreciador usuario) throws Exception {
+		userCrud.save(usuario);
 		
 	}
 

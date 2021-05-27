@@ -35,7 +35,6 @@ import javax.swing.JComboBox;
 public class TelaAdm {
 
 	private static JFrame frameMain;
-	public static String usuarioLogado;
 	private static JTextField textToken;
 	private static JTextField textEmailCervejeiro;
 	private static JTextField textEmailApreciador;
@@ -56,11 +55,7 @@ public class TelaAdm {
 	public static void telaAdm() throws Exception {
 		
 		EstadoBO estadobo = new EstadoBO();
-//		cadastro.registerUser(nome, senha, idade, email);
 
-		// imagem
-
-		// labels e botoes do jFrame
 		JPanel panel = new JPanel();
 		panel.setForeground(Color.RED);
 		panel.setBackground(Color.WHITE);

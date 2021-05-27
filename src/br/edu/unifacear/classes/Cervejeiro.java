@@ -1,5 +1,6 @@
 package br.edu.unifacear.classes;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
@@ -35,11 +36,32 @@ public class Cervejeiro implements IDBModel{
 		this.email = email;
 		this.telefone = telefone;
 		this.cervejaria = cervejaria;
+		this.token = new ArrayList<Token>();
 	}
 	public Cervejeiro() {
 		super();
-		// TODO Auto-generated constructor stub
+		this.token = new ArrayList<Token>();
 	}
+	public List<Token> getToken() {
+		return token;
+	}
+	public void setToken(List<Token> token) {
+		this.token = token;
+	}
+	
+	public void addToken(Token token) {
+		this.token.add(token);
+		
+	}
+	
+	public void removeToken(Token token) {
+		this.token.remove(token);
+	}
+	
+	public Token getToken(int id) {
+		return this.token.get(id);
+	}
+	
 	public int getId() {
 		return id;
 	}
@@ -85,12 +107,7 @@ public class Cervejeiro implements IDBModel{
 	}
 	
 	
-	public List<Token> getToken() {
-		return token;
-	}
-	public void setToken(List<Token> token) {
-		this.token = token;
-	}
+	
 	@Override
 	public String toString() {
 		return "Cervejeiro [id=" + id + ", nome=" + nome + ", senha=" + senha + ", idade=" + idade + ", email=" + email

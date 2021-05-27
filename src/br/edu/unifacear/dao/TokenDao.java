@@ -28,8 +28,9 @@ public class TokenDao extends DefaultDAO<Token> {
 
 	@Override
 	protected Query getFindSingleObj(EntityManager con, Token obj) {
-		// TODO Auto-generated method stub
-		return null;
+		Query q = con.createQuery("select t from Token t" + " where nome = :nome");
+		q.setParameter("nome", obj.getNome());
+		return q;
 	}
 
 }

@@ -13,6 +13,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -22,11 +23,13 @@ import br.edu.unifacear.bo.CervejeiroBO;
 import br.edu.unifacear.bo.CidadeBO;
 import br.edu.unifacear.bo.EnderecoBO;
 import br.edu.unifacear.bo.EstadoBO;
+import br.edu.unifacear.bo.TokenBO;
 import br.edu.unifacear.classes.Cervejaria;
 import br.edu.unifacear.classes.Cervejeiro;
 import br.edu.unifacear.classes.Cidade;
 import br.edu.unifacear.classes.Endereco;
 import br.edu.unifacear.classes.Estado;
+import br.edu.unifacear.classes.Token;
 import br.edu.unifacear.validators.CervejariaValidator;
 import br.edu.unifacear.validators.CervejeiroValidator;
 
@@ -320,10 +323,20 @@ public class TelaCadastroCervejeiro {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				Token token = new Token();
+				TokenBO tkbo = new TokenBO();
+				token.setNome(textToken.getText());
+				token = (Token) tkbo.findToken(token);
+				
+				if(token == null || token.getStatus() == "invalid") {
+					lblCadastroMsg.setText("Passe invalido");
+					return;
+				}
+				
 				if (chckbxAutonomo.isSelected()) {
-					cadastrarCervejeiro(cadastro, lblCadastroMsg, comboBoxEstado, null);
+					cadastrarCervejeiro(cadastro, lblCadastroMsg, comboBoxEstado, null, token);
 				} else {
-
+					
 					Estado estado = (Estado) comboBoxEstado.getSelectedItem();
 					Cidade cidade = (Cidade) comboBoxCidade.getSelectedItem();
 					String nomeCervejaria = textNomeCervejaria.getText();
@@ -349,17 +362,11 @@ public class TelaCadastroCervejeiro {
 						cidade.setEstado(estado);
 						endereco.setCidade(cidade);
 
-						EnderecoBO endbo = new EnderecoBO();
-						try {
-							endbo.saveEndereco(endereco);
-						} catch (Exception e1) {
-							lblCadastroMsg.setText("Endereço invalido");
-						}
 						newCervejaria.setNome(nomeCervejaria);
 						newCervejaria.setEmail(emailCervejaria);
 						newCervejaria.setTelefone(telefoneCervejaria);
 						newCervejaria.setEndereco(endereco);
-						cadastrarCervejeiro(cadastro, lblCadastroMsg, comboBoxEstado, newCervejaria);
+						cadastrarCervejeiro(cadastro, lblCadastroMsg, comboBoxEstado, newCervejaria, token);
 					} else {
 						lblCadastroMsg.setText("Dados da Cervejaria invalidos");
 					}
@@ -369,7 +376,7 @@ public class TelaCadastroCervejeiro {
 			}
 
 			private void cadastrarCervejeiro(CervejeiroBO cadastro, JLabel lblCadastroMsg,
-					JComboBox<Estado> comboBoxEstado, Cervejaria cervejaria) {
+					JComboBox<Estado> comboBoxEstado, Cervejaria cervejaria, Token token) {
 				String nome = textFieldNome.getText();
 				String email = textFieldEmail.getText();
 				String senha = passwordField.getText();
@@ -391,7 +398,14 @@ public class TelaCadastroCervejeiro {
 					newCervejeiro.setNome(nome);
 					newCervejeiro.setSenha(senha);
 					newCervejeiro.setTelefone(telefone);
+					
 					if (cervejaria != null) {
+						EnderecoBO endbo = new EnderecoBO();
+						try {
+							endbo.saveEndereco(cervejaria.getEndereco());
+						} catch (Exception e1) {
+							lblCadastroMsg.setText("Endereço invalido");
+						}
 
 						CervejariaBO cbo = new CervejariaBO();
 						try {
@@ -411,7 +425,28 @@ public class TelaCadastroCervejeiro {
 						return;
 					}
 					if (cadastrar == true) {
-						lblCadastroMsg.setText("Cadastrado com Sucesso");
+						
+						token.setStatus("invalid");
+						TokenBO tkbo = new TokenBO();
+						try {
+							tkbo.alterar(token);
+						} catch (Exception e1) {
+							
+						}
+						newCervejeiro.addToken(token);
+						try {
+							cadastro.alterar(newCervejeiro);
+						} catch (Exception e) {
+							
+						}
+						JOptionPane.showInternalMessageDialog(null, "Cadastrado com sucesso!");
+						try {
+							TelaLogin.telaInicial();
+						} catch (Exception e1) {
+							lblCadastroMsg.setText("Erro ao voltar a tela inicial, clique no botão voltar");
+							return;
+						}
+						frameCadastro.dispose();
 					} else {
 						lblCadastroMsg.setText("Esse email já existe");
 					}
