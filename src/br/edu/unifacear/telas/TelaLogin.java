@@ -29,11 +29,6 @@ public class TelaLogin extends JFrame {
 
 	public static void telaInicial() throws Exception {
 
-//		cadastro.registerUser(nome, senha, idade, email);
-
-		// imagem
-
-		// labels e botoes do jFrame
 		JPanel panel = new JPanel();
 		panel.setForeground(Color.RED);
 		panel.setBackground(new Color(255, 204, 153));
@@ -82,7 +77,7 @@ public class TelaLogin extends JFrame {
 
 				boolean authapre = aprebo.login(user);
 				boolean authcerv = cerbo.login(usercer);
-			
+
 				if (authapre == true || authcerv == true) {
 					if (authapre == true) {
 						try {
@@ -98,7 +93,7 @@ public class TelaLogin extends JFrame {
 					if (authcerv == true) {
 						usuarioLogado = cerbo.findCervejeiro(usercer);
 						try {
-							
+
 							TelaMenuCervejeiro.telaMenuCervejeiro();
 						} catch (Exception e1) {
 							e1.printStackTrace();
@@ -129,7 +124,7 @@ public class TelaLogin extends JFrame {
 		panel.add(txtEmail);
 		txtEmail.setColumns(10);
 
-		JLabel lblCadastrarApreciador = new JLabel("Novo Apreciador?  Cadastre aqui");
+		JLabel lblCadastrarApreciador = new JLabel("Novo Apreciador?  Cadastre-se aqui");
 		lblCadastrarApreciador.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblCadastrarApreciador.setBounds(10, 410, 237, 14);
 		panel.add(lblCadastrarApreciador);
@@ -147,11 +142,12 @@ public class TelaLogin extends JFrame {
 		panel.add(passwordField);
 
 		JLabel lblGrogosImg = new JLabel("");
+		lblGrogosImg.setBackground(new Color(255, 204, 153));
 		lblGrogosImg.setIcon(new ImageIcon("C:\\Users\\leo4_\\Desktop\\gragas.png"));
 		lblGrogosImg.setBounds(644, 25, 204, 263);
 		panel.add(lblGrogosImg);
 
-		JLabel lblJPossuiPasse = new JLabel("J\u00E1 possui passe de Cervejeiro?  Cadastre aqui");
+		JLabel lblJPossuiPasse = new JLabel("J\u00E1 possui passe de Cervejeiro?  Cadastre-se aqui");
 		lblJPossuiPasse.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblJPossuiPasse.setBounds(590, 411, 300, 14);
 		panel.add(lblJPossuiPasse);
@@ -163,7 +159,7 @@ public class TelaLogin extends JFrame {
 				try {
 					TelaCadastroCervejeiro.telaCadastro();
 				} catch (Exception e1) {
-				
+
 					e1.printStackTrace();
 				}
 
@@ -175,13 +171,14 @@ public class TelaLogin extends JFrame {
 		panel.add(btnCadastrarCervejeiro);
 
 		JTextPane txtpnVocUm = new JTextPane();
+		txtpnVocUm.setBackground(new Color(255, 204, 153));
 		txtpnVocUm.setEditable(false);
 		txtpnVocUm.setFont(new Font("Tahoma", Font.BOLD, 11));
 		txtpnVocUm.setText(
 				"Voc\u00EA \u00E9 um novo Cervejeiro?\r\nEntre em contato via email \r\npara solicitar\r\nseu Passe Cervejeiro!\r\n\r\nemail: grogosadm@email.com");
 		txtpnVocUm.setBounds(644, 256, 217, 128);
 		panel.add(txtpnVocUm);
-		
+
 		JLabel lblEfetueSeuLogin = new JLabel("Efetue seu Login");
 		lblEfetueSeuLogin.setForeground(new Color(255, 102, 51));
 		lblEfetueSeuLogin.setFont(new Font("Tahoma", Font.BOLD, 11));

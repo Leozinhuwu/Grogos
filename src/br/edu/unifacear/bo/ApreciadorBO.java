@@ -11,7 +11,7 @@ public class ApreciadorBO {
 
 	public boolean registerUser(Apreciador user) throws Exception {
 
-		if (userCrud.autenticarObj(user)) {
+		if (userCrud.autenticarEmail(user.getEmail())) {
 			return false;
 
 		} else {
@@ -41,10 +41,16 @@ public class ApreciadorBO {
 		userCrud.delete(apre);
 		
 	}
-
-	public void alterar(Apreciador usuario) throws Exception {
-		userCrud.save(usuario);
-		
+	
+	public boolean autenticarEmail(String email) {
+		return userCrud.autenticarEmail(email);
+	}
+	
+	
+	public void alterar(Apreciador user) throws Exception {
+	
+			userCrud.alterar(user);
+	
 	}
 
 }

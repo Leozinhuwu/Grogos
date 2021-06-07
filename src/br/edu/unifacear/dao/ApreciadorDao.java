@@ -36,5 +36,22 @@ public class ApreciadorDao extends DefaultDAO<Apreciador> {
 		q.setParameter("nome", obj.getEmail());
 		return q;
 	}
+	
+	public boolean autenticarEmail(String email) {
+		
+		Query q = con.createQuery("select a from Apreciador a" + " where email = :nome");
+		q.setParameter("nome", email);
+		
+		if(q.getResultList().size() > 0) {
+			return true;
+		}
+		
+		q = con.createQuery("select c from Cervejeiro c" + " where email = :nome");
+		q.setParameter("nome", email);
+		if(q.getResultList().size() > 0) {
+			return true;
+		}
+		return false;
+	}
 
 }

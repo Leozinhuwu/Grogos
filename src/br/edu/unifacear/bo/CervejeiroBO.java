@@ -39,16 +39,18 @@ public class CervejeiroBO {
 		return false;
 	}
 
-	public boolean alterar(Cervejeiro novocerv) throws Exception {
+	public void alterar(Cervejeiro novocerv) throws Exception {
 
-		if (!cervejeiroCrud.alterar(novocerv)) {
-			return false;
-		}
-		return true;
+		cervejeiroCrud.alterar(novocerv);
+
 	}
-	
-	public Cervejeiro findById(Cervejeiro cervejeiro) throws Exception{
+
+	public Cervejeiro findById(Cervejeiro cervejeiro) throws Exception {
 		return cervejeiroCrud.findById(Cervejeiro.class, cervejeiro.getId());
+	}
+
+	public boolean autenticarEmail(String email) {
+		return cervejeiroCrud.autenticarEmail(email);
 	}
 
 }

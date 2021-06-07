@@ -334,6 +334,12 @@ public class TelaGerenciarDadosCervejeiro {
 						lblMsgErroEmail.setText("Dados Invalidos");
 						return;
 					}
+					
+					if(cbo.autenticarEmail(textFieldEmailNovo.getText())) {
+						lblMsgErroEmail.setForeground(Color.RED);
+						lblMsgErroEmail.setText("Novo Email Inválido");
+						return;
+					}
 
 					Cervejeiro cervejeiro = new Cervejeiro();
 					cervejeiro.setEmail(textFieldEmailAtual.getText());
@@ -344,8 +350,9 @@ public class TelaGerenciarDadosCervejeiro {
 					try {
 						cbo.alterar(novocerv);
 					} catch (Exception e1) {
-						// TODO Auto-generated catch block
+						
 						e1.printStackTrace();
+						return;
 					}
 					((Cervejeiro) TelaLogin.usuarioLogado).setEmail(textFieldEmailNovo.getText());
 					lblMsgErroEmail.setForeground(Color.GREEN);
