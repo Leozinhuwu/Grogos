@@ -30,6 +30,8 @@ import br.edu.unifacear.classes.Estado;
 import br.edu.unifacear.classes.Pais;
 import br.edu.unifacear.classes.Token;
 import javax.swing.JComboBox;
+import javax.swing.SwingConstants;
+import java.awt.Font;
 
 public class TelaAdm {
 
@@ -69,7 +71,7 @@ public class TelaAdm {
 
 		JLabel lblTitle = new JLabel("Grogos");
 		lblTitle.setForeground(Color.RED);
-		lblTitle.setBounds(292, 25, 46, 14);
+		lblTitle.setBounds(367, 11, 46, 14);
 		panel.add(lblTitle);
 
 		JButton btnSair = new JButton("Sair");
@@ -82,8 +84,9 @@ public class TelaAdm {
 		btnSair.setBounds(21, 37, 89, 23);
 		panel.add(btnSair);
 
-		JLabel lblDeletarCervejeiro = new JLabel("Deletar conta cervejeiro");
-		lblDeletarCervejeiro.setBounds(78, 221, 177, 14);
+		JLabel lblDeletarCervejeiro = new JLabel("Deletar conta Cervejeiro");
+		lblDeletarCervejeiro.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblDeletarCervejeiro.setBounds(339, 97, 177, 14);
 		panel.add(lblDeletarCervejeiro);
 
 		textToken = new JTextField();
@@ -132,15 +135,18 @@ public class TelaAdm {
 		panel.add(btnGerar);
 
 		JLabel lblTokenText = new JLabel("Token:");
-		lblTokenText.setBounds(21, 156, 46, 14);
+		lblTokenText.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblTokenText.setBounds(22, 159, 46, 14);
 		panel.add(lblTokenText);
 
 		JLabel lblGerarPasse_1 = new JLabel("Gerar passe para Cervejeiro");
+		lblGerarPasse_1.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblGerarPasse_1.setBounds(78, 97, 177, 14);
 		panel.add(lblGerarPasse_1);
 
 		JLabel lblEmailCervejeiro = new JLabel("Email Cervejeiro:");
-		lblEmailCervejeiro.setBounds(21, 250, 106, 14);
+		lblEmailCervejeiro.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblEmailCervejeiro.setBounds(228, 126, 106, 14);
 		panel.add(lblEmailCervejeiro);
 
 		textEmailCervejeiro = new JTextField();
@@ -151,10 +157,10 @@ public class TelaAdm {
 			}
 		});
 		textEmailCervejeiro.setColumns(10);
-		textEmailCervejeiro.setBounds(148, 247, 148, 20);
+		textEmailCervejeiro.setBounds(339, 123, 148, 20);
 		panel.add(textEmailCervejeiro);
 
-		lblMsgCervejeiro.setBounds(39, 322, 204, 14);
+		lblMsgCervejeiro.setBounds(312, 189, 204, 14);
 		panel.add(lblMsgCervejeiro);
 
 		JButton btnDeletarCervejeiro = new JButton("Deletar");
@@ -190,10 +196,10 @@ public class TelaAdm {
 
 			}
 		});
-		btnDeletarCervejeiro.setBounds(78, 289, 124, 23);
+		btnDeletarCervejeiro.setBounds(349, 155, 124, 23);
 		panel.add(btnDeletarCervejeiro);
 
-		lblMsgApreciador.setBounds(51, 439, 204, 14);
+		lblMsgApreciador.setBounds(610, 189, 204, 14);
 		panel.add(lblMsgApreciador);
 
 		JButton btnDeletarApreciador = new JButton("Deletar");
@@ -220,7 +226,7 @@ public class TelaAdm {
 
 			}
 		});
-		btnDeletarApreciador.setBounds(78, 405, 124, 23);
+		btnDeletarApreciador.setBounds(638, 155, 124, 23);
 		panel.add(btnDeletarApreciador);
 
 		textEmailApreciador = new JTextField();
@@ -231,15 +237,17 @@ public class TelaAdm {
 			}
 		});
 		textEmailApreciador.setColumns(10);
-		textEmailApreciador.setBounds(148, 363, 148, 20);
+		textEmailApreciador.setBounds(628, 123, 148, 20);
 		panel.add(textEmailApreciador);
 
 		JLabel lblEmailApreciador = new JLabel("Email Apreciador:");
-		lblEmailApreciador.setBounds(21, 366, 106, 14);
+		lblEmailApreciador.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblEmailApreciador.setBounds(512, 126, 106, 14);
 		panel.add(lblEmailApreciador);
 
-		JLabel lblDeletarContaApreciador = new JLabel("Deletar conta apreciador");
-		lblDeletarContaApreciador.setBounds(78, 337, 177, 14);
+		JLabel lblDeletarContaApreciador = new JLabel("Deletar conta Apreciador");
+		lblDeletarContaApreciador.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblDeletarContaApreciador.setBounds(628, 97, 177, 14);
 		panel.add(lblDeletarContaApreciador);
 
 		textFieldNovoEstado = new JTextField();
@@ -249,11 +257,11 @@ public class TelaAdm {
 				clearmsg();
 			}
 		});
-		textFieldNovoEstado.setBounds(641, 123, 148, 20);
+		textFieldNovoEstado.setBounds(107, 304, 148, 20);
 		panel.add(textFieldNovoEstado);
 		textFieldNovoEstado.setColumns(10);
 
-		lblCadastroMsgEstado.setBounds(641, 190, 177, 14);
+		lblCadastroMsgEstado.setBounds(107, 371, 177, 14);
 		panel.add(lblCadastroMsgEstado);
 
 		JButton btnNovoEstado = new JButton("Cadastrar");
@@ -277,23 +285,29 @@ public class TelaAdm {
 				}
 			}
 		});
-		btnNovoEstado.setBounds(654, 156, 120, 23);
+		btnNovoEstado.setBounds(120, 337, 120, 23);
 		panel.add(btnNovoEstado);
 
-		JLabel lblCadastrarNoEstado = new JLabel("Cadastrar no estado");
-		lblCadastrarNoEstado.setBounds(654, 97, 177, 14);
+		JLabel lblCadastrarNoEstado = new JLabel("Cadastrar novo Estado");
+		lblCadastrarNoEstado.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblCadastrarNoEstado.setHorizontalAlignment(SwingConstants.CENTER);
+		lblCadastrarNoEstado.setBounds(89, 278, 177, 14);
 		panel.add(lblCadastrarNoEstado);
 
 		JLabel lblNovoEstado = new JLabel("Novo Estado:");
-		lblNovoEstado.setBounds(563, 126, 89, 14);
+		lblNovoEstado.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblNovoEstado.setBounds(10, 307, 89, 14);
 		panel.add(lblNovoEstado);
 
 		JLabel lblCadastrarNovaCidade = new JLabel("Cadastrar nova Cidade");
-		lblCadastrarNovaCidade.setBounds(641, 216, 177, 14);
+		lblCadastrarNovaCidade.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblCadastrarNovaCidade.setHorizontalAlignment(SwingConstants.CENTER);
+		lblCadastrarNovaCidade.setBounds(390, 278, 177, 14);
 		panel.add(lblCadastrarNovaCidade);
 
 		JLabel lblNovaCidade = new JLabel("Nova Cidade:");
-		lblNovaCidade.setBounds(563, 268, 89, 14);
+		lblNovaCidade.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblNovaCidade.setBounds(309, 331, 89, 14);
 		panel.add(lblNovaCidade);
 
 		JComboBox<Estado> comboBoxEstado = new JComboBox<Estado>();
@@ -313,7 +327,7 @@ public class TelaAdm {
 			}
 		});
 
-		comboBoxEstado.setBounds(641, 241, 148, 22);
+		comboBoxEstado.setBounds(408, 304, 148, 22);
 		panel.add(comboBoxEstado);
 
 		textFieldNovaCidade = new JTextField();
@@ -325,10 +339,10 @@ public class TelaAdm {
 			}
 		});
 		textFieldNovaCidade.setColumns(10);
-		textFieldNovaCidade.setBounds(641, 265, 148, 20);
+		textFieldNovaCidade.setBounds(408, 328, 148, 20);
 		panel.add(textFieldNovaCidade);
 
-		lblCadastroMsgCidade.setBounds(641, 337, 177, 14);
+		lblCadastroMsgCidade.setBounds(390, 393, 177, 14);
 		panel.add(lblCadastroMsgCidade);
 
 		for (Estado e : estadobo.estados()) {
@@ -358,11 +372,12 @@ public class TelaAdm {
 				}
 			}
 		});
-		btnNovaCidade.setBounds(667, 303, 107, 23);
+		btnNovaCidade.setBounds(429, 359, 107, 23);
 		panel.add(btnNovaCidade);
 
 		JLabel lblSelecioneEstado = new JLabel("Selecione Estado:");
-		lblSelecioneEstado.setBounds(527, 241, 106, 14);
+		lblSelecioneEstado.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblSelecioneEstado.setBounds(294, 304, 106, 14);
 		panel.add(lblSelecioneEstado);
 
 		JButton btnNovoPais = new JButton("Cadastrar");
@@ -387,23 +402,25 @@ public class TelaAdm {
 
 			}
 		});
-		btnNovoPais.setBounds(654, 430, 120, 23);
+		btnNovoPais.setBounds(124, 523, 120, 23);
 		panel.add(btnNovoPais);
 
 		textFieldNovoPais = new JTextField();
 		textFieldNovoPais.setColumns(10);
-		textFieldNovoPais.setBounds(641, 397, 148, 20);
+		textFieldNovoPais.setBounds(107, 492, 148, 20);
 		panel.add(textFieldNovoPais);
 
 		JLabel lblNovoPais = new JLabel("Novo Pa\u00EDs:");
-		lblNovoPais.setBounds(563, 400, 89, 14);
+		lblNovoPais.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblNovoPais.setBounds(10, 492, 89, 14);
 		panel.add(lblNovoPais);
 
 		JLabel lblCadastrarNovoPais = new JLabel("Cadastrar novo Pa\u00EDs");
-		lblCadastrarNovoPais.setBounds(654, 371, 177, 14);
+		lblCadastrarNovoPais.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblCadastrarNovoPais.setBounds(120, 466, 177, 14);
 		panel.add(lblCadastrarNovoPais);
 
-		lblCadastroMsgPais.setBounds(641, 462, 177, 14);
+		lblCadastroMsgPais.setBounds(107, 557, 177, 14);
 		panel.add(lblCadastroMsgPais);
 
 		frameMain.setVisible(true);
