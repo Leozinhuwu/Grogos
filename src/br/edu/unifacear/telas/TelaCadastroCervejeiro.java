@@ -128,9 +128,9 @@ public class TelaCadastroCervejeiro {
 		btnVolta.setBounds(10, 21, 89, 23);
 		panel.add(btnVolta);
 
-		JLabel lblTitle = new JLabel("Grogos");
+		JLabel lblTitle = new JLabel("Cadastrar-se ");
 		lblTitle.setForeground(Color.RED);
-		lblTitle.setBounds(292, 25, 46, 14);
+		lblTitle.setBounds(343, 25, 281, 14);
 		panel.add(lblTitle);
 
 		textFieldEmail = new JTextField();

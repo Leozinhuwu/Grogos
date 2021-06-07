@@ -84,8 +84,8 @@ public class TelaCadastroApreciador extends JFrame {
 					try {
 						cadastrar = cadastro.registerUser(newUser);
 					} catch (Exception e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
+						JOptionPane.showInternalMessageDialog(null, "Erro ao cadastrar, tente novamente!");
+						return;
 					}
 					if (cadastrar == true) {
 						JOptionPane.showInternalMessageDialog(null, "Cadastrado com sucesso!");
@@ -131,9 +131,10 @@ public class TelaCadastroApreciador extends JFrame {
 		btnVolta.setBounds(10, 21, 89, 23);
 		panel.add(btnVolta);
 
-		JLabel lblTitle = new JLabel("Grogos");
-		lblTitle.setForeground(Color.RED);
-		lblTitle.setBounds(292, 25, 46, 14);
+		JLabel lblTitle = new JLabel("Cadastrar-se");
+		lblTitle.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblTitle.setForeground(new Color(204, 102, 51));
+		lblTitle.setBounds(325, 25, 219, 14);
 		panel.add(lblTitle);
 
 		emailField = new JTextField();

@@ -1,6 +1,6 @@
 package br.edu.unifacear.bo;
 
-import java.util.List;
+
 
 import br.edu.unifacear.classes.Apreciador;
 

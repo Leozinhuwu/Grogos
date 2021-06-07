@@ -9,7 +9,6 @@ import java.awt.event.MouseEvent;
 import java.util.List;
 import java.util.Random;
 
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -53,7 +52,7 @@ public class TelaAdm {
 	 */
 
 	public static void telaAdm() throws Exception {
-		
+
 		EstadoBO estadobo = new EstadoBO();
 
 		JPanel panel = new JPanel();
@@ -61,7 +60,7 @@ public class TelaAdm {
 		panel.setBackground(Color.WHITE);
 		frameMain = new JFrame();
 		frameMain.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\leo4_\\Desktop\\GrogosPesq.jpg"));
-		frameMain.setSize(857, 557);
+		frameMain.setSize(900, 700);
 		frameMain.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frameMain.setLocation(500, 250);
 
@@ -155,7 +154,6 @@ public class TelaAdm {
 		textEmailCervejeiro.setBounds(148, 247, 148, 20);
 		panel.add(textEmailCervejeiro);
 
-		
 		lblMsgCervejeiro.setBounds(39, 322, 204, 14);
 		panel.add(lblMsgCervejeiro);
 
@@ -181,7 +179,7 @@ public class TelaAdm {
 							cbo.deletar(cerv);
 							cervejariabo.deletar(cerv.getCervejaria());
 							enderecobo.deletar(cerv.getCervejaria().getEndereco());
-						}else {
+						} else {
 							cbo.deletar(cerv);
 						}
 						lblMsgCervejeiro.setText("Cervejeiro deletado");
@@ -195,7 +193,6 @@ public class TelaAdm {
 		btnDeletarCervejeiro.setBounds(78, 289, 124, 23);
 		panel.add(btnDeletarCervejeiro);
 
-		
 		lblMsgApreciador.setBounds(51, 439, 204, 14);
 		panel.add(lblMsgApreciador);
 
@@ -244,7 +241,7 @@ public class TelaAdm {
 		JLabel lblDeletarContaApreciador = new JLabel("Deletar conta apreciador");
 		lblDeletarContaApreciador.setBounds(78, 337, 177, 14);
 		panel.add(lblDeletarContaApreciador);
-		
+
 		textFieldNovoEstado = new JTextField();
 		textFieldNovoEstado.addMouseListener(new MouseAdapter() {
 			@Override
@@ -255,17 +252,16 @@ public class TelaAdm {
 		textFieldNovoEstado.setBounds(641, 123, 148, 20);
 		panel.add(textFieldNovoEstado);
 		textFieldNovoEstado.setColumns(10);
-		
-		
+
 		lblCadastroMsgEstado.setBounds(641, 190, 177, 14);
 		panel.add(lblCadastroMsgEstado);
-		
+
 		JButton btnNovoEstado = new JButton("Cadastrar");
 		btnNovoEstado.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
-				Estado estado = new  Estado();
+
+				Estado estado = new Estado();
 				estado.setNome(textFieldNovoEstado.getText());
 				Boolean cadastrar = false;
 				try {
@@ -281,60 +277,65 @@ public class TelaAdm {
 				}
 			}
 		});
-		btnNovoEstado.setBounds(672, 156, 89, 23);
+		btnNovoEstado.setBounds(654, 156, 120, 23);
 		panel.add(btnNovoEstado);
-		
+
 		JLabel lblCadastrarNoEstado = new JLabel("Cadastrar no estado");
 		lblCadastrarNoEstado.setBounds(654, 97, 177, 14);
 		panel.add(lblCadastrarNoEstado);
-		
+
 		JLabel lblNovoEstado = new JLabel("Novo Estado:");
 		lblNovoEstado.setBounds(563, 126, 89, 14);
 		panel.add(lblNovoEstado);
-		
+
 		JLabel lblCadastrarNovaCidade = new JLabel("Cadastrar nova Cidade");
 		lblCadastrarNovaCidade.setBounds(641, 216, 177, 14);
 		panel.add(lblCadastrarNovaCidade);
-		
+
 		JLabel lblNovaCidade = new JLabel("Nova Cidade:");
 		lblNovaCidade.setBounds(563, 268, 89, 14);
 		panel.add(lblNovaCidade);
-		
+
 		JComboBox<Estado> comboBoxEstado = new JComboBox<Estado>();
+		comboBoxEstado.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				comboBoxEstado.removeAllItems();
+				try {
+					for (Estado ee : estadobo.estados()) {
+
+						comboBoxEstado.addItem(ee);
+
+					}
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
+
 		comboBoxEstado.setBounds(641, 241, 148, 22);
 		panel.add(comboBoxEstado);
-		
+
 		textFieldNovaCidade = new JTextField();
 		textFieldNovaCidade.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				clearmsg();
-				comboBoxEstado.removeAllItems();
-				try {
-					for(Estado ee: estadobo.estados()) {
-						
-						comboBoxEstado.addItem(ee);
 
-					}
-				} catch (Exception e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
 			}
 		});
 		textFieldNovaCidade.setColumns(10);
 		textFieldNovaCidade.setBounds(641, 265, 148, 20);
 		panel.add(textFieldNovaCidade);
-		
-		
+
 		lblCadastroMsgCidade.setBounds(641, 337, 177, 14);
 		panel.add(lblCadastroMsgCidade);
-		
-		for(Estado e: estadobo.estados()) {
+
+		for (Estado e : estadobo.estados()) {
 			comboBoxEstado.addItem(e);
 
 		}
-		
+
 		JButton btnNovaCidade = new JButton("Cadastrar");
 		btnNovaCidade.addMouseListener(new MouseAdapter() {
 			@Override
@@ -357,13 +358,13 @@ public class TelaAdm {
 				}
 			}
 		});
-		btnNovaCidade.setBounds(672, 302, 89, 23);
+		btnNovaCidade.setBounds(667, 303, 107, 23);
 		panel.add(btnNovaCidade);
-		
+
 		JLabel lblSelecioneEstado = new JLabel("Selecione Estado:");
 		lblSelecioneEstado.setBounds(527, 241, 106, 14);
 		panel.add(lblSelecioneEstado);
-		
+
 		JButton btnNovoPais = new JButton("Cadastrar");
 		btnNovoPais.addMouseListener(new MouseAdapter() {
 			@Override
@@ -383,30 +384,28 @@ public class TelaAdm {
 				} else {
 					lblCadastroMsgPais.setText("Esse Pais já existe");
 				}
-				
+
 			}
 		});
-		btnNovoPais.setBounds(672, 430, 89, 23);
+		btnNovoPais.setBounds(654, 430, 120, 23);
 		panel.add(btnNovoPais);
-		
+
 		textFieldNovoPais = new JTextField();
 		textFieldNovoPais.setColumns(10);
 		textFieldNovoPais.setBounds(641, 397, 148, 20);
 		panel.add(textFieldNovoPais);
-		
+
 		JLabel lblNovoPais = new JLabel("Novo Pa\u00EDs:");
 		lblNovoPais.setBounds(563, 400, 89, 14);
 		panel.add(lblNovoPais);
-		
+
 		JLabel lblCadastrarNovoPais = new JLabel("Cadastrar novo Pa\u00EDs");
 		lblCadastrarNovoPais.setBounds(654, 371, 177, 14);
 		panel.add(lblCadastrarNovoPais);
-		
-		
+
 		lblCadastroMsgPais.setBounds(641, 462, 177, 14);
 		panel.add(lblCadastroMsgPais);
-		
-		
+
 		frameMain.setVisible(true);
 
 	}
@@ -415,6 +414,6 @@ public class TelaAdm {
 		lblCadastroMsgCidade.setText("");
 		lblCadastroMsgEstado.setText("");
 		lblMsgApreciador.setText("");
-		lblMsgCervejeiro.setText("");	
+		lblMsgCervejeiro.setText("");
 	}
 }

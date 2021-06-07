@@ -459,6 +459,12 @@ public class TelaGerenciarDadosCervejaria {
 		lblMsgErroEndereco.setHorizontalAlignment(SwingConstants.CENTER);
 		lblMsgErroEndereco.setBounds(90, 688, 327, 14);
 		panel.add(lblMsgErroEndereco);
+		
+		JLabel lblNewLabel = new JLabel("Gerenciar Cervejaria!");
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblNewLabel.setForeground(new Color(255, 102, 51));
+		lblNewLabel.setBounds(420, 15, 228, 14);
+		panel.add(lblNewLabel);
 
 		framePrincipal.setVisible(true);
 

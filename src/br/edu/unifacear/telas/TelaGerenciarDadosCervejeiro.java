@@ -573,6 +573,12 @@ public class TelaGerenciarDadosCervejeiro {
 		passwordFieldEmail.setBackground(Color.WHITE);
 		passwordFieldEmail.setBounds(698, 133, 175, 20);
 		panel.add(passwordFieldEmail);
+		
+		JLabel lblGerenciarSeusDados = new JLabel("Gerenciar seus Dados!");
+		lblGerenciarSeusDados.setForeground(new Color(255, 102, 51));
+		lblGerenciarSeusDados.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblGerenciarSeusDados.setBounds(350, 15, 228, 14);
+		panel.add(lblGerenciarSeusDados);
 
 		framePrincipal.setVisible(true);
 

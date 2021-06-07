@@ -36,7 +36,7 @@ public class TelaLogin extends JFrame {
 		// labels e botoes do jFrame
 		JPanel panel = new JPanel();
 		panel.setForeground(Color.RED);
-		panel.setBackground(Color.WHITE);
+		panel.setBackground(new Color(255, 204, 153));
 		frameMain = new JFrame();
 		frameMain.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\leo4_\\Desktop\\GrogosPesq.jpg"));
 		frameMain.setSize(931, 537);
@@ -89,6 +89,7 @@ public class TelaLogin extends JFrame {
 							usuarioLogado = aprebo.findApreciador(user);
 							TelaPrincipalApreciador.telaPrincipal();
 						} catch (Exception e1) {
+							e1.printStackTrace();
 							lblLoginFail.setText("Erro ao logar, tente novamente");
 							return;
 						}
@@ -100,6 +101,7 @@ public class TelaLogin extends JFrame {
 							
 							TelaMenuCervejeiro.telaMenuCervejeiro();
 						} catch (Exception e1) {
+							e1.printStackTrace();
 							lblLoginFail.setText("Erro ao logar, tente novamente");
 							return;
 						}
@@ -112,11 +114,6 @@ public class TelaLogin extends JFrame {
 		});
 		btnLogar.setBounds(197, 160, 89, 23);
 		panel.add(btnLogar);
-
-		JLabel lblTitle = new JLabel("Grogos");
-		lblTitle.setForeground(Color.RED);
-		lblTitle.setBounds(292, 25, 46, 14);
-		panel.add(lblTitle);
 
 		txtEmail = new JTextField();
 		txtEmail.addMouseListener(new MouseAdapter() {
@@ -133,6 +130,7 @@ public class TelaLogin extends JFrame {
 		txtEmail.setColumns(10);
 
 		JLabel lblCadastrarApreciador = new JLabel("Novo Apreciador?  Cadastre aqui");
+		lblCadastrarApreciador.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblCadastrarApreciador.setBounds(10, 410, 237, 14);
 		panel.add(lblCadastrarApreciador);
 
@@ -154,6 +152,7 @@ public class TelaLogin extends JFrame {
 		panel.add(lblGrogosImg);
 
 		JLabel lblJPossuiPasse = new JLabel("J\u00E1 possui passe de Cervejeiro?  Cadastre aqui");
+		lblJPossuiPasse.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblJPossuiPasse.setBounds(590, 411, 300, 14);
 		panel.add(lblJPossuiPasse);
 
@@ -180,12 +179,14 @@ public class TelaLogin extends JFrame {
 		txtpnVocUm.setFont(new Font("Tahoma", Font.BOLD, 11));
 		txtpnVocUm.setText(
 				"Voc\u00EA \u00E9 um novo Cervejeiro?\r\nEntre em contato via email \r\npara solicitar\r\nseu Passe Cervejeiro!\r\n\r\nemail: grogosadm@email.com");
-		txtpnVocUm.setBounds(668, 267, 217, 128);
+		txtpnVocUm.setBounds(644, 256, 217, 128);
 		panel.add(txtpnVocUm);
-
-		JEditorPane editorPane = new JEditorPane();
-		editorPane.setBounds(668, 272, 217, 134);
-		panel.add(editorPane);
+		
+		JLabel lblEfetueSeuLogin = new JLabel("Efetue seu Login");
+		lblEfetueSeuLogin.setForeground(new Color(255, 102, 51));
+		lblEfetueSeuLogin.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblEfetueSeuLogin.setBounds(146, 50, 228, 14);
+		panel.add(lblEfetueSeuLogin);
 
 		frameMain.setVisible(true);
 

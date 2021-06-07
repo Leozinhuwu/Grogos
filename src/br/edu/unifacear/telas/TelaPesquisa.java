@@ -21,7 +21,11 @@ import javax.swing.JTextPane;
 import javax.swing.SwingConstants;
 
 import br.edu.unifacear.bo.CervejaBO;
+import br.edu.unifacear.bo.ColoracaoBO;
 import br.edu.unifacear.bo.IngredientesBO;
+import br.edu.unifacear.bo.PaisBO;
+import br.edu.unifacear.bo.SaborBO;
+import br.edu.unifacear.bo.TipoCervejaBO;
 import br.edu.unifacear.classes.Cerveja;
 import br.edu.unifacear.classes.Coloracao;
 import br.edu.unifacear.classes.Ingredientes;
@@ -78,29 +82,27 @@ public class TelaPesquisa {
 		});
 		btnVolta.setBounds(10, 21, 89, 23);
 		panel.add(btnVolta);
-
-		JLabel lblTitle = new JLabel("Grogos");
-		lblTitle.setForeground(Color.RED);
-		lblTitle.setBounds(457, 25, 46, 14);
-		panel.add(lblTitle);
 		
 		JLabel lblNome = new JLabel("Nome:");
-		lblNome.setBounds(44, 154, 60, 14);
+		lblNome.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblNome.setBounds(10, 154, 60, 14);
 		panel.add(lblNome);
 		
-		JRadioButton rdbtnPorNome = new JRadioButton("Por Nome");
+		JCheckBox rdbtnPorNome = new JCheckBox("Por Nome");
 		rdbtnPorNome.setBounds(80, 107, 113, 23);
 		panel.add(rdbtnPorNome);
 		
-		JRadioButton rdbtnPorTipo = new JRadioButton("Por Tipo");
+		JCheckBox rdbtnPorTipo = new JCheckBox("Por Tipo");
+		
 		rdbtnPorTipo.setBounds(329, 107, 108, 23);
 		panel.add(rdbtnPorTipo);
 		
 		JLabel lblTipo = new JLabel("Tipo:");
-		lblTipo.setBounds(288, 154, 60, 14);
+		lblTipo.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblTipo.setBounds(256, 154, 60, 14);
 		panel.add(lblTipo);
 		
-		JRadioButton rdbtnPorPais = new JRadioButton("Por Pa\u00EDs");
+		JCheckBox rdbtnPorPais = new JCheckBox("Por Pa\u00EDs");
 		rdbtnPorPais.setBounds(661, 107, 108, 23);
 		panel.add(rdbtnPorPais);
 		
@@ -113,15 +115,28 @@ public class TelaPesquisa {
 		comboBoxTipo.setBounds(329, 150, 118, 22);
 		panel.add(comboBoxTipo);
 		
+		TipoCervejaBO tipocervejabo = new TipoCervejaBO();
+		for (TipoCerveja tc : tipocervejabo.tipos()) {
+
+			comboBoxTipo.addItem(tc);
+
+		}
+		
 		JComboBox<Pais> comboBoxPais = new JComboBox<Pais>();
-		comboBoxPais.setBounds(661, 146, 118, 22);
+		comboBoxPais.setBounds(661, 150, 118, 22);
 		panel.add(comboBoxPais);
 		
+		PaisBO paisbo = new PaisBO();
+		for (Pais p : paisbo.paises()) {
+			comboBoxPais.addItem(p);
+		}
+		
 		JLabel lblPais = new JLabel("Pa\u00EDs:");
-		lblPais.setBounds(620, 150, 60, 14);
+		lblPais.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblPais.setBounds(589, 154, 60, 14);
 		panel.add(lblPais);
 		
-		JRadioButton rdbtnPorSabor = new JRadioButton("Por Sabor");
+		JCheckBox rdbtnPorSabor = new JCheckBox("Por Sabor");
 		rdbtnPorSabor.setBounds(85, 201, 108, 23);
 		panel.add(rdbtnPorSabor);
 		
@@ -129,38 +144,99 @@ public class TelaPesquisa {
 		comboBoxSabor.setBounds(85, 240, 118, 22);
 		panel.add(comboBoxSabor);
 		
+		SaborBO saborbo = new SaborBO();
+		for (Sabor s : saborbo.sabores()) {
+			comboBoxSabor.addItem(s);
+		}
+		
 		JLabel lblSabor = new JLabel("Sabor:");
-		lblSabor.setBounds(44, 244, 60, 14);
+		lblSabor.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblSabor.setBounds(10, 244, 60, 14);
 		panel.add(lblSabor);
 		
 		JLabel lblColoracao = new JLabel("Colora\u00E7\u00E3o:");
 		lblColoracao.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblColoracao.setBounds(259, 244, 60, 14);
+		lblColoracao.setBounds(230, 244, 89, 14);
 		panel.add(lblColoracao);
 		
 		JComboBox<Coloracao> comboBoxColoracao = new JComboBox<Coloracao>();
 		comboBoxColoracao.setBounds(329, 240, 118, 22);
 		panel.add(comboBoxColoracao);
 		
-		JRadioButton rdbtnPorColoracao = new JRadioButton("Por Colora\u00E7\u00E3o");
+		ColoracaoBO coloracaobo = new ColoracaoBO();
+		for (Coloracao c : coloracaobo.cores()) {
+			comboBoxColoracao.addItem(c);
+		}
+		
+		JCheckBox rdbtnPorColoracao = new JCheckBox("Por Colora\u00E7\u00E3o");
 		rdbtnPorColoracao.setBounds(329, 201, 108, 23);
 		panel.add(rdbtnPorColoracao);
+		
+		JLabel lblMsgPesquisar = new JLabel("Selecione no m\u00EDnimo 1 campo realizar a pesquisa\r");
+		lblMsgPesquisar.setHorizontalAlignment(SwingConstants.CENTER);
+		lblMsgPesquisar.setBounds(301, 424, 363, 14);
+		panel.add(lblMsgPesquisar);
+		
 		
 		JButton btnPesquisar = new JButton("Pesquisar");
 		btnPesquisar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				//TelaResultadoPesquisa.telaResultado(parametros);
+				String nome = null; 
+				String tipo = null; 
+				String sabor = null; 
+				String coloracao = null; 
+				String pais = null;
+				
+				if(textFieldNome.getText().isBlank() && rdbtnPorNome.isSelected()) {
+					lblMsgPesquisar.setForeground(Color.RED);
+					lblMsgPesquisar.setText("preencha o campo nome corretamente");
+					return;
+				}
+				
+				if(!textFieldNome.getText().isBlank() && rdbtnPorNome.isSelected()) {
+					nome = textFieldNome.getText();
+				}
+				
+				if(rdbtnPorTipo.isSelected()) {
+					 tipo = String.valueOf(((TipoCerveja) comboBoxTipo.getSelectedItem()).getId());
+				}
+				
+				if(rdbtnPorSabor.isSelected()) {
+					sabor = String.valueOf(((Sabor) comboBoxSabor.getSelectedItem()).getId());
+				}
+				
+				if(rdbtnPorColoracao.isSelected()) {
+					coloracao = String.valueOf(((Coloracao) comboBoxColoracao.getSelectedItem()).getId());
+				}
+				
+				if(rdbtnPorPais.isSelected()) {
+					pais = String.valueOf(((Pais) comboBoxPais.getSelectedItem()).getId());
+				}
+				
+				if(nome == null && tipo == null && sabor == null && coloracao == null && pais == null) {
+					lblMsgPesquisar.setForeground(Color.RED);
+					lblMsgPesquisar.setText("selecione pelo menos 1 campo para realizar a pesquisa");
+					return;
+				}
+				
+				try {
+					TelaResultadoPesquisa.telaResultadoPesquisa(nome, tipo, sabor, coloracao, pais);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				framePesquisa.dispose();
 			}
 		});
-		btnPesquisar.setBounds(196, 375, 89, 23);
+		btnPesquisar.setBounds(381, 377, 171, 23);
 		panel.add(btnPesquisar);
 		
-		JLabel lblMsgPesquisar = new JLabel("Selecione no m\u00EDnimo 1 campo realizar a pesquisa\r");
-		lblMsgPesquisar.setBounds(84, 429, 363, 14);
-		panel.add(lblMsgPesquisar);
-		
-		
+		JLabel lblPesquiseUmaCerveja = new JLabel("Pesquise uma Cerveja!");
+		lblPesquiseUmaCerveja.setForeground(new Color(255, 102, 51));
+		lblPesquiseUmaCerveja.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblPesquiseUmaCerveja.setBounds(329, 25, 228, 14);
+		panel.add(lblPesquiseUmaCerveja);
 
 		framePesquisa.setVisible(true);
 

@@ -7,14 +7,11 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class TelaLimpaBotaoVoltar {
 	private static JFrame framePrincipal;
-	public static String usuarioLogado;
 
-	
 	/**
 	 * @throws Exception
 	 * @wbp.parser.entryPoint

@@ -25,7 +25,7 @@ public class TelaMenuCervejeiro extends JFrame {
 		frameMenuUser = new JFrame();
 		frameMenuUser.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\leo4_\\Desktop\\GrogosPesq.jpg"));
 		frameMenuUser.setSize(750, 500);
-		frameMenuUser.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frameMenuUser.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frameMenuUser.setLocation(500, 250);
 
 		frameMenuUser.getContentPane().add(panel);
@@ -46,14 +46,22 @@ public class TelaMenuCervejeiro extends JFrame {
 		btnGerenciarDados.setBounds(98, 115, 172, 23);
 		panel.add(btnGerenciarDados);
 
-		JButton btnPesquisar = new JButton("Minhas Cervejas");
-		btnPesquisar.addActionListener(new ActionListener() {
+		JButton btnMinhasCerveja = new JButton("Minhas Cervejas");
+		btnMinhasCerveja.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// chamar tela de pesquisa de cervejas
+				try {
+					TelaCervejasCervejeiro.telaMinhasCervejas();
+				} catch (Exception e1) {
+					System.out.println("ye");
+					e1.printStackTrace();
+					return;
+				}
+				frameMenuUser.dispose();
+					
 			}
 		});
-		btnPesquisar.setBounds(98, 149, 172, 23);
-		panel.add(btnPesquisar);
+		btnMinhasCerveja.setBounds(98, 149, 172, 23);
+		panel.add(btnMinhasCerveja);
 
 		JButton btnCadastrarCerveja = new JButton("Cadastrar Cervejas");
 		btnCadastrarCerveja.addActionListener(new ActionListener() {
@@ -90,6 +98,12 @@ public class TelaMenuCervejeiro extends JFrame {
 		lblGrogosImg.setIcon(new ImageIcon("C:\\Users\\leo4_\\Desktop\\gragas.png"));
 		lblGrogosImg.setBounds(395, 100, 204, 263);
 		panel.add(lblGrogosImg);
+		
+		JLabel lblBemvindoCervejeiro = new JLabel("Bem-vindo Cervejeiro");
+		lblBemvindoCervejeiro.setForeground(new Color(255, 102, 51));
+		lblBemvindoCervejeiro.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblBemvindoCervejeiro.setBounds(431, 31, 228, 14);
+		panel.add(lblBemvindoCervejeiro);
 
 		frameMenuUser.setVisible(true);
 

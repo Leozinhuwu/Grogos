@@ -1,154 +1,213 @@
 package br.edu.unifacear.telas;
 
 import java.awt.Color;
-import java.awt.Font;
+
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import java.util.List;
 
-import javax.swing.ImageIcon;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+
+import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
 
 import br.edu.unifacear.bo.CervejaBO;
-import br.edu.unifacear.bo.CervejeiroBO;
-import br.edu.unifacear.bo.ApreciadorBO;
+
+
 import br.edu.unifacear.classes.Cerveja;
 import br.edu.unifacear.classes.Cervejeiro;
-import br.edu.unifacear.classes.Apreciador;
+import java.awt.Font;
+
+
+
 
 
 public class TelaCervejasCervejeiro {
 
-	private static final long serialVersionUID = 1L;
-	private static JFrame framePerfil;
-	private static JTextField textFieldDC1;
-	private static JTextField textDC2;
-	private static JTextField textFieldDC3;
-	private static JTextField textFieldDC4;
-	private static JLabel lblNomeCerveja1; 
+
+	private static JFrame frameMinhasCervejas;
+	private static JTable tblCervejas;
+	private static JLabel lblCerveja;
+	private static JButton btnVerDetalhes;
+	private static JButton btnExcluir;
 
 	/**
 	 * @throws Exception
 	 * @wbp.parser.entryPoint
 	 */
 
-	public static void telaPerfil() throws Exception {
-		CervejeiroBO userBo = new CervejeiroBO();
-		Cervejeiro user = new Cervejeiro();
-		user.setEmail(((Cerveja) TelaLogin.usuarioLogado).getEmail());
-		user.setNome(userBo.findUserName(user));
+	public static void telaMinhasCervejas() throws Exception {
+		
+		
 		
 		
 		// labels e botoes do jFrame
-		JPanel panel = new JPanel();
-		panel.setForeground(Color.RED);
-		panel.setBackground(Color.WHITE);
-		framePerfil = new JFrame();
-		framePerfil.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\leo4_\\Desktop\\GrogosPesq.jpg"));
-		framePerfil.setSize(1000, 700);
-		framePerfil.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		framePerfil.setLocation(500, 150);
+		JPanel contentPane = new JPanel();
+		contentPane.setForeground(Color.RED);
+		contentPane.setBackground(Color.WHITE);
+		frameMinhasCervejas = new JFrame();
+		frameMinhasCervejas.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\leo4_\\Desktop\\GrogosPesq.jpg"));
+		frameMinhasCervejas.setSize(1000, 700);
+		frameMinhasCervejas.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		frameMinhasCervejas.setLocation(500, 150);
+		frameMinhasCervejas.getContentPane().add(contentPane);
 
-		framePerfil.getContentPane().add(panel);
-		panel.setLayout(null);
+		
+		
+	
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setLayout(null);
+		
+		lblCerveja = new JLabel("Suas Cervejas");
+		lblCerveja.setBounds(40, 78, 206, 14);
+		contentPane.add(lblCerveja);
+		
+		tblCervejas = new JTable();
+		
+		
+		tblCervejas.setModel(new DefaultTableModel(
+				new Object[][] {
+				},
+				new String[] {
+						"Código", "Nome"
+				}
+			) {
+			/**
+				 * 
+				 */
+				private static final long serialVersionUID = 1L;
 
-		JButton btnVolta = new JButton("Voltar");
-		btnVolta.setForeground(Color.BLACK);
-		btnVolta.setFont(new Font("Trebuchet MS", Font.PLAIN, 11));
-		btnVolta.setBackground(Color.LIGHT_GRAY);
-		btnVolta.addActionListener(new ActionListener() {
+			@Override
+		    public boolean isCellEditable(int row, int column) {
+		       //all cells false
+		       return false;
+		    }
+		});
+		
+		
+		tblCervejas.setBounds(40, 121, 191, 112);
+		contentPane.add(tblCervejas);
+		JScrollPane scroll = new JScrollPane(tblCervejas);
+		scroll.setBounds(40, 103, 645, 410);
+		contentPane.add(scroll);
+
+		btnVerDetalhes = new JButton("Ver Detalhes");
+		btnVerDetalhes.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Cerveja cerveja = new Cerveja();
+				CervejaBO cbo = new CervejaBO();
+				if(tblCervejas.getSelectedRow() == -1) {
+					System.out.println("uwu");
+					return;
+				}
+				
+				int linha = tblCervejas.getSelectedRow();
+				int codigo = (int)tblCervejas.getValueAt(linha, 0);
+				
+				cerveja.setId(codigo);
+				cerveja = cbo.findById(cerveja);
+				try {
+					TelaDetalhesCerveja.telaDetalhesCerveja(cerveja);
+				} catch (Exception e1) {
+					
+					e1.printStackTrace();
+					return;
+				}
+			}
+		});
+		btnVerDetalhes.setBounds(695, 136, 115, 23);
+		contentPane.add(btnVerDetalhes);
+
+		btnExcluir = new JButton("Excluir");
+		btnExcluir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Cerveja cerveja = new Cerveja();
+				CervejaBO cbo = new CervejaBO();
+				if(tblCervejas.getSelectedRow() == -1) {
+					System.out.println("uwu");
+					return;
+				}
+				
+				int linha = tblCervejas.getSelectedRow();
+				int codigo = (int)tblCervejas.getValueAt(linha, 0);
+				
+				cerveja.setId(codigo);
+				cerveja = cbo.findById(cerveja);
+				try {
+					cbo.deletar(cerveja);
+				} catch (Exception e1) {
+					System.out.println("erro ao deletar cerveja");
+					e1.printStackTrace();
+				}
+				pesquisarGrupo();
+			}
+		});
+		btnExcluir.setBounds(695, 170, 115, 23);
+		contentPane.add(btnExcluir);
+		
+		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					TelaMenuCervejeiro.telaMenuCervejeiro();
-
 				} catch (Exception e1) {
-
+					System.out.println("erro ao voltar");
 					e1.printStackTrace();
+					return;
 				}
-				framePerfil.dispose();
-
+				frameMinhasCervejas.dispose();
 			}
 		});
-		btnVolta.setBounds(10, 21, 89, 23);
-		panel.add(btnVolta);
+		btnVoltar.setBounds(10, 11, 89, 23);
+		contentPane.add(btnVoltar);
 		
-		JLabel lblNomeUsuario = new JLabel("Nome do Usuario");
-		lblNomeUsuario.setBounds(389, 25, 129, 14);
-		lblNomeUsuario.setText(user.getNome());
-		panel.add(lblNomeUsuario);
+		JLabel lblNewLabel = new JLabel("Suas Cervejas");
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblNewLabel.setForeground(new Color(255, 102, 51));
+		lblNewLabel.setBounds(343, 20, 190, 14);
+		contentPane.add(lblNewLabel);
 		
-		JLabel lblMinhasCervejas = new JLabel("Minhas Cervejas");
-		lblMinhasCervejas.setBounds(62, 104, 122, 14);
-		panel.add(lblMinhasCervejas);
-		
-		lblNomeCerveja1 = new JLabel();
-		List <Cerveja> nomeCerveja1 = getCervejas(user);
-		lblNomeCerveja1.setText(nomeCerveja1.get(0).getNome());
-		lblNomeCerveja1.setBounds(62, 129, 101, 14);
-		panel.add(lblNomeCerveja1);
-		
-		JLabel lblDC1 = new JLabel("Descri\u00E7\u00E3o");
-		lblDC1.setBounds(62, 154, 62, 14);
-		panel.add(lblDC1);
-		
-		textFieldDC1 = new JTextField();
-		textFieldDC1.setText(nomeCerveja1.get(0).getDescription());
-		textFieldDC1.setBounds(62, 179, 261, 167);
-		panel.add(textFieldDC1);
-		textFieldDC1.setColumns(10);
-		
-		textDC2 = new JTextField();
-		textDC2.setColumns(10);
-		textDC2.setBounds(62, 442, 261, 167);
-		panel.add(textDC2);
-		
-		JLabel lblDC2 = new JLabel("Descri\u00E7\u00E3o");
-		lblDC2.setBounds(62, 417, 62, 14);
-		panel.add(lblDC2);
-		
-		JLabel lblNomeCerveja2 = new JLabel("nome Cerveja 2");
-		lblNomeCerveja2.setBounds(62, 395, 101, 14);
-		panel.add(lblNomeCerveja2);
-		
-		textFieldDC3 = new JTextField();
-		textFieldDC3.setColumns(10);
-		textFieldDC3.setBounds(668, 179, 261, 167);
-		panel.add(textFieldDC3);
-		
-		JLabel lblDC3 = new JLabel("Descri\u00E7\u00E3o");
-		lblDC3.setBounds(668, 154, 62, 14);
-		panel.add(lblDC3);
-		
-		JLabel lblNomeCerveja3 = new JLabel("nome Cerveja 3");
-		lblNomeCerveja3.setBounds(668, 129, 101, 14);
-		panel.add(lblNomeCerveja3);
-		
-		textFieldDC4 = new JTextField();
-		textFieldDC4.setColumns(10);
-		textFieldDC4.setBounds(668, 442, 261, 167);
-		panel.add(textFieldDC4);
-		
-		JLabel lblDC4 = new JLabel("Descri\u00E7\u00E3o");
-		lblDC4.setBounds(668, 417, 62, 14);
-		panel.add(lblDC4);
-		
-		JLabel lblNomeCerveja4 = new JLabel("nome Cerveja 4");
-		lblNomeCerveja4.setBounds(668, 395, 101, 14);
-		panel.add(lblNomeCerveja4);
-		
-		JLabel lblGrogosImg = new JLabel("");
-		lblGrogosImg.setIcon(new ImageIcon("C:\\Users\\leo4_\\Desktop\\gragas.png"));
-		lblGrogosImg.setBounds(374, 154, 235, 313);
-		panel.add(lblGrogosImg);
-
-		framePerfil.setVisible(true);
-
+		frameMinhasCervejas.setVisible(true);
+		pesquisarGrupo();
 	}
+	
+
+
+	private static void pesquisarGrupo() {
+	
+		Cervejeiro user = (Cervejeiro) TelaLogin.usuarioLogado;
+		DefaultTableModel modelo = (DefaultTableModel)tblCervejas.getModel();
+		modelo.setRowCount(0);
+		tblCervejas.setModel(modelo);
+		
+
+		try {
+			List<Cerveja>  lista  = getCervejas(user);
+			
+			for (Cerveja c : lista) {
+				modelo.addRow(
+						new Object[] {
+								c.getId(),
+								c.getNome()
+						}
+					);
+			}
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null,  "Erro consultando: "+e.getMessage());
+		}
+	}
+
+
+	
 
 	private static List<Cerveja> getCervejas(Cervejeiro user) throws Exception {
 		CervejaBO cbo = new CervejaBO();

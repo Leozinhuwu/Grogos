@@ -106,9 +106,10 @@ public class TelaCadastroCerveja {
 		btnVolta.setBounds(10, 21, 89, 23);
 		panel.add(btnVolta);
 
-		JLabel lblTitle = new JLabel("Grogos");
-		lblTitle.setForeground(Color.RED);
-		lblTitle.setBounds(457, 25, 46, 14);
+		JLabel lblTitle = new JLabel("Cadastre sua Cerveja");
+		lblTitle.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblTitle.setForeground(new Color(255, 102, 51));
+		lblTitle.setBounds(394, 25, 218, 14);
 		panel.add(lblTitle);
 
 		nameField = new JTextField();
@@ -332,7 +333,7 @@ public class TelaCadastroCerveja {
 		
 		comboBoxTipo.setBounds(338, 153, 112, 22);
 		panel.add(comboBoxTipo);
-
+		
 		for (TipoCerveja tc : tipocervejabo.tipos()) {
 
 			comboBoxTipo.addItem(tc);
