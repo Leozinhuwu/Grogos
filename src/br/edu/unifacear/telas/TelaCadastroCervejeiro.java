@@ -314,7 +314,6 @@ public class TelaCadastroCervejeiro {
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				lblCadastroMsg.setText("");
-
 			}
 		});
 		btnCadastrar.setForeground(Color.BLACK);

@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.List;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -14,11 +15,16 @@ import javax.swing.JCheckBox;
 import javax.swing.JEditorPane;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.SwingConstants;
+import javax.swing.border.LineBorder;
+import javax.swing.table.DefaultTableModel;
 
 import br.edu.unifacear.bo.CervejaBO;
 import br.edu.unifacear.bo.ColoracaoBO;
@@ -42,6 +48,9 @@ public class TelaPesquisa {
 
 	private static JFrame framePesquisa;
 	private static JTextField textFieldNome;
+	private static JTable tblCervejas;
+	private static JLabel lblCerveja;
+	private static JButton btnVerDetalhes;
 
 	/**
 	 * @throws Exception
@@ -56,7 +65,7 @@ public class TelaPesquisa {
 		panel.setBackground(Color.WHITE);
 		framePesquisa = new JFrame();
 		framePesquisa.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\leo4_\\Desktop\\GrogosPesq.jpg"));
-		framePesquisa.setSize(1000, 700);
+		framePesquisa.setSize(1000, 893);
 		framePesquisa.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		framePesquisa.setLocation(500, 150);
 
@@ -103,7 +112,7 @@ public class TelaPesquisa {
 		panel.add(lblTipo);
 		
 		JCheckBox rdbtnPorPais = new JCheckBox("Por Pa\u00EDs");
-		rdbtnPorPais.setBounds(661, 107, 108, 23);
+		rdbtnPorPais.setBounds(594, 107, 108, 23);
 		panel.add(rdbtnPorPais);
 		
 		textFieldNome = new JTextField();
@@ -123,7 +132,7 @@ public class TelaPesquisa {
 		}
 		
 		JComboBox<Pais> comboBoxPais = new JComboBox<Pais>();
-		comboBoxPais.setBounds(661, 150, 118, 22);
+		comboBoxPais.setBounds(594, 150, 118, 22);
 		panel.add(comboBoxPais);
 		
 		PaisBO paisbo = new PaisBO();
@@ -133,7 +142,7 @@ public class TelaPesquisa {
 		
 		JLabel lblPais = new JLabel("Pa\u00EDs:");
 		lblPais.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblPais.setBounds(589, 154, 60, 14);
+		lblPais.setBounds(522, 154, 60, 14);
 		panel.add(lblPais);
 		
 		JCheckBox rdbtnPorSabor = new JCheckBox("Por Sabor");
@@ -174,7 +183,7 @@ public class TelaPesquisa {
 		
 		JLabel lblMsgPesquisar = new JLabel("Selecione no m\u00EDnimo 1 campo realizar a pesquisa\r");
 		lblMsgPesquisar.setHorizontalAlignment(SwingConstants.CENTER);
-		lblMsgPesquisar.setBounds(301, 424, 363, 14);
+		lblMsgPesquisar.setBounds(298, 335, 363, 14);
 		panel.add(lblMsgPesquisar);
 		
 		
@@ -220,16 +229,10 @@ public class TelaPesquisa {
 					return;
 				}
 				
-				try {
-					TelaResultadoPesquisa.telaResultadoPesquisa(nome, tipo, sabor, coloracao, pais);
-				} catch (Exception e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				framePesquisa.dispose();
+				pesquisarGrupo(nome, tipo, sabor, coloracao, pais);
 			}
 		});
-		btnPesquisar.setBounds(381, 377, 171, 23);
+		btnPesquisar.setBounds(386, 301, 171, 23);
 		panel.add(btnPesquisar);
 		
 		JLabel lblPesquiseUmaCerveja = new JLabel("Pesquise uma Cerveja!");
@@ -237,8 +240,113 @@ public class TelaPesquisa {
 		lblPesquiseUmaCerveja.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblPesquiseUmaCerveja.setBounds(329, 25, 228, 14);
 		panel.add(lblPesquiseUmaCerveja);
+		
+		tblCervejas = new JTable();
+		tblCervejas.setBorder(new LineBorder(new Color(255, 102, 0)));
+		tblCervejas.setBackground(new Color(255, 204, 153));
+		tblCervejas.getTableHeader().setReorderingAllowed(false);
+		tblCervejas.getTableHeader().setBackground(new Color(255, 204, 153));
+		tblCervejas.getTableHeader().setForeground(Color.BLACK);
+		tblCervejas.setModel(new DefaultTableModel(
+				new Object[][] {
+				},
+				new String[] {
+						"Nome", "Tipo" , "Coloração", "Sabor" , "Pais"
+				}
+			) {
+			/**
+				 * 
+				 */
+				private static final long serialVersionUID = 1L;
+
+			@Override
+		    public boolean isCellEditable(int row, int column) {
+		       //all cells false
+		       return false;
+		    }
+		});
+
+		tblCervejas.setBounds(40, 121, 191, 112);
+		
+		panel.add(tblCervejas);
+		JScrollPane scroll = new JScrollPane(tblCervejas);
+		scroll.setViewportBorder(new LineBorder(new Color(255, 102, 0)));
+		scroll.setBounds(37, 416, 645, 410);
+		panel.add(scroll);
+
+		btnVerDetalhes = new JButton("Ver Detalhes");
+		btnVerDetalhes.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Cerveja cerveja = new Cerveja();
+				CervejaBO cbo = new CervejaBO();
+				if(tblCervejas.getSelectedRow() == -1) {
+					System.out.println("uwu");
+					return;
+				}
+				
+				int linha = tblCervejas.getSelectedRow();
+				String nome = (String)tblCervejas.getValueAt(linha, 0);
+				System.out.println(nome);
+				cerveja.setNome(nome);
+				try {
+					cerveja = cbo.findByName(nome);
+				} catch (Exception e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				}
+				try {
+					TelaDetalhesCerveja.telaDetalhesCerveja(cerveja);
+				} catch (Exception e1) {
+					
+					e1.printStackTrace();
+					return;
+				}
+			}
+		});
+		btnVerDetalhes.setBounds(692, 464, 115, 23);
+		panel.add(btnVerDetalhes);
+		
+
+		
 
 		framePesquisa.setVisible(true);
 
+	}
+	
+	private static void pesquisarGrupo(String nome, String tipo, String sabor, String coloracao, String pais) {
+		
+		
+		DefaultTableModel modelo = (DefaultTableModel)tblCervejas.getModel();
+		modelo.setRowCount(0);
+		tblCervejas.setModel(modelo);
+		
+
+		try {
+			List<Cerveja>  lista  = pesquisarCervejas(nome, tipo, sabor, coloracao, pais);
+			
+			for (Cerveja c : lista) {
+				modelo.addRow(
+						new Object[] {
+								c.getNome(),
+								c.getType(),
+								c.getColoracao(),
+								c.getFlavor(),
+								c.getCountryOrigin()
+								
+						}
+					);
+			}
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null,  "Erro consultando: "+e.getMessage());
+		}
+	}
+
+
+	
+
+	private static List<Cerveja> pesquisarCervejas(String nome, String tipo, String sabor, String coloracao, String pais) throws Exception {
+		CervejaBO cbo = new CervejaBO();
+		
+		return cbo.pesquisaCervejas(nome, tipo, sabor, coloracao, pais);
 	}
 }

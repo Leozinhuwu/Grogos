@@ -103,7 +103,7 @@ public class TelaLogin extends JFrame {
 						frameMain.dispose();
 					}
 				} else {
-					lblLoginFail.setText("Dados invalidos");
+					lblLoginFail.setText("Dados inválidos");
 				}
 			}
 		});
