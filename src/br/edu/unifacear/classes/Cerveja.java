@@ -1,5 +1,8 @@
 package br.edu.unifacear.classes;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.*;
 
 @Entity
@@ -35,6 +38,9 @@ public class Cerveja implements IDBModel {
 	@OneToOne
 	@JoinColumn(name="ingredientes_id")
 	private Ingredientes ingredientes;
+	
+	@ManyToMany(mappedBy="cervejasFavoritas", cascade = CascadeType.ALL)
+	private List<Apreciador> apreciadores;
 
 	public Cerveja(int id, String name, String description, TipoCerveja type, Sabor flavor,
 			Cervejeiro cervejeiro, Coloracao coloracao, Ingredientes ingredientes) {
@@ -48,10 +54,33 @@ public class Cerveja implements IDBModel {
 
 
 		this.cervejeiro = cervejeiro;
+		this.apreciadores = new ArrayList<Apreciador>();
 	}
 
 	public Cerveja() {
+		this.apreciadores = new ArrayList<Apreciador>();
+	}
+	
+	public List<Apreciador> getApreciadores() {
+		return this.apreciadores;
+	}
 
+
+	public void setApreciadores(List<Apreciador> apreciadores) {
+		this.apreciadores = apreciadores;
+	}
+	
+	public void addApreciador(Apreciador apreciador) {
+		this.apreciadores.add(apreciador);
+		
+	}
+	
+	public void removeApreciador(Apreciador apreciador) {
+		this.apreciadores.remove(apreciador);
+	}
+	
+	public Apreciador getApreciador(int id) {
+		return this.apreciadores.get(id);
 	}
 
 	public int getId() {

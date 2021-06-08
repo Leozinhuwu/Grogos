@@ -9,12 +9,19 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import br.edu.unifacear.bo.ApreciadorBO;
+import br.edu.unifacear.bo.CervejeiroBO;
+import br.edu.unifacear.classes.Apreciador;
 import br.edu.unifacear.classes.Cerveja;
+import br.edu.unifacear.classes.Cervejeiro;
+
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.JEditorPane;
 import javax.swing.BorderFactory;
 import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class TelaDetalhesCerveja {
 	private static JFrame framePrincipal;
@@ -26,6 +33,8 @@ public class TelaDetalhesCerveja {
 	 */
 
 	public static void telaDetalhesCerveja(Cerveja cerveja) throws Exception {
+		ApreciadorBO aprebo = new ApreciadorBO();
+	
 
 		JPanel panel = new JPanel();
 		panel.setForeground(Color.RED);
@@ -39,13 +48,10 @@ public class TelaDetalhesCerveja {
 		framePrincipal.getContentPane().add(panel);
 		panel.setLayout(null);
 
-		JLabel lblDetalhesCerveja = new JLabel("Detalhes da Cerveja");
-		lblDetalhesCerveja.setBounds(348, 44, 127, 14);
+		JLabel lblDetalhesCerveja = new JLabel("Detalhes " + cerveja.getNome());
+		lblDetalhesCerveja.setBounds(348, 44, 389, 14);
 		panel.add(lblDetalhesCerveja);
 
-		JLabel lblNomeCerveja = new JLabel(cerveja.getNome());
-		lblNomeCerveja.setBounds(485, 44, 180, 14);
-		panel.add(lblNomeCerveja);
 
 		JLabel lblTipo = new JLabel("Tipo:");
 		lblTipo.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -197,6 +203,54 @@ public class TelaDetalhesCerveja {
 		JLabel lblNomeCervejeiro = new JLabel(cerveja.getCervejeiro().getNome());
 		lblNomeCervejeiro.setBounds(120, 498, 226, 14);
 		panel.add(lblNomeCervejeiro);
+		
+		JLabel lblMsgFavoritar = new JLabel("");
+		lblMsgFavoritar.setHorizontalAlignment(SwingConstants.CENTER);
+		lblMsgFavoritar.setBounds(403, 486, 186, 14);
+		panel.add(lblMsgFavoritar);
+		
+
+	
+		
+		if(TelaLogin.usuarioLogado.getClass().getSimpleName().contentEquals("Apreciador")) {
+			JButton btnFavoritar = new JButton("Favoritar");
+			btnFavoritar.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					Apreciador apreLogado = (Apreciador) TelaLogin.usuarioLogado;
+					
+					if(apreLogado.getCervejasFavoritas().contains(cerveja)) {
+						lblMsgFavoritar.setForeground(Color.ORANGE);
+						lblMsgFavoritar.setText("Cerveja já favoritada");
+						return;
+					}
+					
+					apreLogado.addCervejaFavoritas(cerveja);
+					
+					try {
+						aprebo.alterar(apreLogado);
+					} catch (Exception e1) {
+						lblMsgFavoritar.setForeground(Color.RED);
+						lblMsgFavoritar.setText("erro ao favoritar");
+						e1.printStackTrace();
+						return;
+					}
+					
+					lblMsgFavoritar.setForeground(Color.GREEN);
+					lblMsgFavoritar.setText("Cerveja Favoritada");
+				
+					return;
+				}
+			});
+			btnFavoritar.setFont(new Font("Tahoma", Font.BOLD, 11));
+			btnFavoritar.setBackground(new Color(255, 255, 102));
+			btnFavoritar.setForeground(new Color(204, 51, 0));
+			btnFavoritar.setBounds(416, 452, 157, 23);
+			panel.add(btnFavoritar);
+		}
+		
+		
+		
+		
 		
 		if(cerveja.getCervejeiro().getCervejaria() != null) {
 			

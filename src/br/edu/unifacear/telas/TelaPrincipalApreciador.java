@@ -51,7 +51,7 @@ public class TelaPrincipalApreciador {
 		framePrincipal.getContentPane().add(panel);
 		panel.setLayout(null);
 		
-		JButton btnLogout = new JButton("Logout");
+		JButton btnLogout = new JButton("Sair");
 		btnLogout.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -275,6 +275,21 @@ public class TelaPrincipalApreciador {
 		panelCerveja3.setBackground(new Color(255, 218, 185));
 		panelCerveja3.setBounds(602, 212, 393, 253);
 		panel.add(panelCerveja3);
+		
+		JButton btnCervejasFavoritas = new JButton("Ver Cervejas Favoritas");
+		btnCervejasFavoritas.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					TelaCervejasFavoritas.telaCervejasFavoritas();
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+					return;
+				}
+			}
+		});
+		btnCervejasFavoritas.setBounds(72, 84, 208, 23);
+		panel.add(btnCervejasFavoritas);
 
 		framePrincipal.setVisible(true);
 

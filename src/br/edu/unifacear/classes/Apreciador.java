@@ -28,6 +28,12 @@ public class Apreciador implements IDBModel {
     {@JoinColumn(name="apreciador_id")}, inverseJoinColumns=
       {@JoinColumn(name="TipoCerveja_id")})
 	private List<TipoCerveja> tipoCervejas;
+	
+	@ManyToMany
+    @JoinTable(name="Apreciador_Cerveja", joinColumns=
+    {@JoinColumn(name="apreciador_id")}, inverseJoinColumns=
+      {@JoinColumn(name="Cerveja_id")})
+	private List<Cerveja> cervejasFavoritas;
 
 
 
@@ -40,6 +46,7 @@ public class Apreciador implements IDBModel {
 		this.idade = idade;
 		this.email = email;
 		this.tipoCervejas = new ArrayList<TipoCerveja>();
+		this.cervejasFavoritas = new ArrayList<Cerveja>();
 	}
 
 	public List<TipoCerveja> getTipoCervejas() {
@@ -49,9 +56,19 @@ public class Apreciador implements IDBModel {
 	public void setTipoCervejas(List<TipoCerveja> tipoCervejas) {
 		this.tipoCervejas = tipoCervejas;
 	}
+	
+	// cervejas
+	public List<Cerveja> getCervejasFavoritas() {
+		return cervejasFavoritas;
+	}
+
+	public void setCervejasFavoritas(List<Cerveja> cervejasFavoritas) {
+		this.cervejasFavoritas = cervejasFavoritas;
+	}
 
 	public Apreciador() {
 		this.tipoCervejas = new ArrayList<TipoCerveja>();
+		this.cervejasFavoritas = new ArrayList<Cerveja>();
 	}
 
 	// get and setters
@@ -61,6 +78,21 @@ public class Apreciador implements IDBModel {
 		return id;
 	}
 
+	//cervejas
+	public void addCervejaFavoritas(Cerveja cervejasFavorita) {
+		this.cervejasFavoritas.add(cervejasFavorita);
+		
+	}
+	
+	public void removeCervejaFavoritas(Cerveja cervejasFavorita) {
+		this.cervejasFavoritas.remove(cervejasFavorita);
+	}
+	
+	public Cerveja getCervejasFavorita(int id) {
+		return this.cervejasFavoritas.get(id);
+	}
+	
+	//tipos
 	
 	public void addTipoCerveja(TipoCerveja tipoCerveja) {
 		this.tipoCervejas.add(tipoCerveja);
@@ -74,7 +106,6 @@ public class Apreciador implements IDBModel {
 	public TipoCerveja getTipoCerveja(int id) {
 		return this.tipoCervejas.get(id);
 	}
-	
 	
 	public void setId(int id) {
 

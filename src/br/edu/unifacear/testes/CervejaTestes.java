@@ -38,7 +38,7 @@ public class CervejaTestes {
 		paisbo.savePais(pais1);
 		
 		Pais pais2 = new Pais();
-		pais2.setNome("Estado Unidos");
+		pais2.setNome("Estados Unidos");
 		paisbo.savePais(pais2);
 		
 		SaborBO saborbo = new SaborBO();

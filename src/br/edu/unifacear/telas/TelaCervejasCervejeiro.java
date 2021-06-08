@@ -72,7 +72,8 @@ public class TelaCervejasCervejeiro {
 		contentPane.add(lblCerveja);
 		
 		tblCervejas = new JTable();
-		
+		tblCervejas.getTableHeader().setReorderingAllowed(false);
+	
 		
 		tblCervejas.setModel(new DefaultTableModel(
 				new Object[][] {

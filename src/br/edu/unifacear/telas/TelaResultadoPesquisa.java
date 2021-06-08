@@ -22,6 +22,7 @@ import br.edu.unifacear.classes.Cervejeiro;
 import br.edu.unifacear.classes.TipoCerveja;
 
 import java.awt.Font;
+import javax.swing.border.LineBorder;
 
 public class TelaResultadoPesquisa {
 	private static JFrame frameResultadoPesquisa;
@@ -62,6 +63,11 @@ public class TelaResultadoPesquisa {
 		contentPane.add(lblCerveja);
 		
 		tblCervejas = new JTable();
+		tblCervejas.setBorder(new LineBorder(new Color(255, 102, 0)));
+		tblCervejas.setBackground(new Color(255, 204, 153));
+		tblCervejas.getTableHeader().setReorderingAllowed(false);
+		tblCervejas.getTableHeader().setBackground(new Color(255, 204, 153));
+		tblCervejas.getTableHeader().setForeground(Color.BLACK);
 		tblCervejas.setModel(new DefaultTableModel(
 				new Object[][] {
 				},
@@ -85,6 +91,7 @@ public class TelaResultadoPesquisa {
 		
 		contentPane.add(tblCervejas);
 		JScrollPane scroll = new JScrollPane(tblCervejas);
+		scroll.setViewportBorder(new LineBorder(new Color(255, 102, 0)));
 		scroll.setBounds(40, 103, 645, 410);
 		contentPane.add(scroll);
 
