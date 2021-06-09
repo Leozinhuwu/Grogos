@@ -24,4 +24,9 @@ public class PaisBO {
 	public List<Pais> paises()throws Exception {
 		return paisCrud.list(Pais.class);
 	}
+
+	public void deletar(Pais pais) throws Exception {
+		paisCrud.delete(pais);
+		
+	}
 }

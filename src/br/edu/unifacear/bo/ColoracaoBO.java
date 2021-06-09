@@ -25,4 +25,6 @@ private static ColoracaoDao  coloracaoCrud = new ColoracaoDao();
 	public List<Coloracao> cores()throws Exception {
 		return coloracaoCrud.list(Coloracao.class);
 	}
+
+
 }

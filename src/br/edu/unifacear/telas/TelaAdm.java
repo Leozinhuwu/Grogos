@@ -6,7 +6,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.List;
 import java.util.Random;
 
 import javax.swing.JButton;
@@ -19,15 +18,25 @@ import br.edu.unifacear.bo.ApreciadorBO;
 import br.edu.unifacear.bo.CervejariaBO;
 import br.edu.unifacear.bo.CervejeiroBO;
 import br.edu.unifacear.bo.CidadeBO;
+import br.edu.unifacear.bo.ColoracaoBO;
 import br.edu.unifacear.bo.EnderecoBO;
 import br.edu.unifacear.bo.EstadoBO;
+import br.edu.unifacear.bo.FermentoBO;
+import br.edu.unifacear.bo.LupuloBO;
+import br.edu.unifacear.bo.MalteBO;
 import br.edu.unifacear.bo.PaisBO;
+import br.edu.unifacear.bo.SaborBO;
 import br.edu.unifacear.bo.TokenBO;
 import br.edu.unifacear.classes.Apreciador;
 import br.edu.unifacear.classes.Cervejeiro;
 import br.edu.unifacear.classes.Cidade;
+import br.edu.unifacear.classes.Coloracao;
 import br.edu.unifacear.classes.Estado;
+import br.edu.unifacear.classes.Fermento;
+import br.edu.unifacear.classes.Lupulo;
+import br.edu.unifacear.classes.Malte;
 import br.edu.unifacear.classes.Pais;
+import br.edu.unifacear.classes.Sabor;
 import br.edu.unifacear.classes.Token;
 import javax.swing.JComboBox;
 import javax.swing.SwingConstants;
@@ -45,8 +54,18 @@ public class TelaAdm {
 	private static JLabel lblMsgApreciador = new JLabel("");
 	private static JLabel lblCadastroMsgEstado = new JLabel("");
 	private static JLabel lblCadastroMsgCidade = new JLabel("");
-	private static JTextField textFieldNovoPais;
+	private static JTextField textFieldPais;
 	private static JLabel lblCadastroMsgPais = new JLabel("");
+	private static JTextField textFieldColoracao;
+	private static JTextField textFieldSabor;
+	private static JTextField textFieldMalte;
+	private static JTextField textFieldFermento;
+	private static JTextField textFieldLupulo;
+	private static JLabel lblCadastroMsgColoracao = new JLabel("");
+	private static JLabel lblCadastroMsgLupulo = new JLabel("");
+	private static JLabel lblCadastroMsgFermento = new JLabel("");
+	private static JLabel lblCadastroMsgMalte = new JLabel("");
+	private static JLabel lblCadastroMsgSabor = new JLabel("");
 
 	/**
 	 * @throws Exception
@@ -62,31 +81,23 @@ public class TelaAdm {
 		panel.setBackground(Color.WHITE);
 		frameMain = new JFrame();
 		frameMain.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\leo4_\\Desktop\\GrogosPesq.jpg"));
-		frameMain.setSize(900, 700);
-		frameMain.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frameMain.setLocation(500, 250);
+		frameMain.setSize(977, 839);
+		frameMain.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		frameMain.setLocation(500, 100);
 
 		frameMain.getContentPane().add(panel);
 		panel.setLayout(null);
 
-		JLabel lblTitle = new JLabel("Grogos");
-		lblTitle.setForeground(Color.RED);
-		lblTitle.setBounds(367, 11, 46, 14);
+		JLabel lblTitle = new JLabel("Gerenciamento");
+		lblTitle.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTitle.setForeground(new Color(255, 102, 0));
+		lblTitle.setBounds(336, 11, 183, 14);
 		panel.add(lblTitle);
-
-		JButton btnSair = new JButton("Sair");
-		btnSair.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				frameMain.dispose();
-			}
-		});
-		btnSair.setBounds(21, 37, 89, 23);
-		panel.add(btnSair);
 
 		JLabel lblDeletarCervejeiro = new JLabel("Deletar conta Cervejeiro");
 		lblDeletarCervejeiro.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblDeletarCervejeiro.setBounds(339, 97, 177, 14);
+		lblDeletarCervejeiro.setBounds(385, 97, 177, 14);
 		panel.add(lblDeletarCervejeiro);
 
 		textToken = new JTextField();
@@ -96,7 +107,7 @@ public class TelaAdm {
 				clearmsg();
 			}
 		});
-		textToken.setBounds(78, 156, 148, 20);
+		textToken.setBounds(88, 122, 148, 20);
 		panel.add(textToken);
 		textToken.setColumns(10);
 
@@ -131,12 +142,12 @@ public class TelaAdm {
 
 			}
 		});
-		btnGerar.setBounds(78, 122, 124, 23);
+		btnGerar.setBounds(98, 153, 124, 23);
 		panel.add(btnGerar);
 
 		JLabel lblTokenText = new JLabel("Token:");
 		lblTokenText.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblTokenText.setBounds(22, 159, 46, 14);
+		lblTokenText.setBounds(21, 125, 46, 14);
 		panel.add(lblTokenText);
 
 		JLabel lblGerarPasse_1 = new JLabel("Gerar passe para Cervejeiro");
@@ -146,7 +157,7 @@ public class TelaAdm {
 
 		JLabel lblEmailCervejeiro = new JLabel("Email Cervejeiro:");
 		lblEmailCervejeiro.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblEmailCervejeiro.setBounds(228, 126, 106, 14);
+		lblEmailCervejeiro.setBounds(274, 126, 106, 14);
 		panel.add(lblEmailCervejeiro);
 
 		textEmailCervejeiro = new JTextField();
@@ -157,10 +168,10 @@ public class TelaAdm {
 			}
 		});
 		textEmailCervejeiro.setColumns(10);
-		textEmailCervejeiro.setBounds(339, 123, 148, 20);
+		textEmailCervejeiro.setBounds(385, 123, 148, 20);
 		panel.add(textEmailCervejeiro);
 
-		lblMsgCervejeiro.setBounds(312, 189, 204, 14);
+		lblMsgCervejeiro.setBounds(358, 189, 204, 14);
 		panel.add(lblMsgCervejeiro);
 
 		JButton btnDeletarCervejeiro = new JButton("Deletar");
@@ -196,10 +207,10 @@ public class TelaAdm {
 
 			}
 		});
-		btnDeletarCervejeiro.setBounds(349, 155, 124, 23);
+		btnDeletarCervejeiro.setBounds(395, 155, 124, 23);
 		panel.add(btnDeletarCervejeiro);
 
-		lblMsgApreciador.setBounds(610, 189, 204, 14);
+		lblMsgApreciador.setBounds(681, 189, 204, 14);
 		panel.add(lblMsgApreciador);
 
 		JButton btnDeletarApreciador = new JButton("Deletar");
@@ -226,7 +237,7 @@ public class TelaAdm {
 
 			}
 		});
-		btnDeletarApreciador.setBounds(638, 155, 124, 23);
+		btnDeletarApreciador.setBounds(709, 155, 124, 23);
 		panel.add(btnDeletarApreciador);
 
 		textEmailApreciador = new JTextField();
@@ -237,17 +248,17 @@ public class TelaAdm {
 			}
 		});
 		textEmailApreciador.setColumns(10);
-		textEmailApreciador.setBounds(628, 123, 148, 20);
+		textEmailApreciador.setBounds(699, 123, 148, 20);
 		panel.add(textEmailApreciador);
 
 		JLabel lblEmailApreciador = new JLabel("Email Apreciador:");
 		lblEmailApreciador.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblEmailApreciador.setBounds(512, 126, 106, 14);
+		lblEmailApreciador.setBounds(583, 126, 106, 14);
 		panel.add(lblEmailApreciador);
 
 		JLabel lblDeletarContaApreciador = new JLabel("Deletar conta Apreciador");
 		lblDeletarContaApreciador.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblDeletarContaApreciador.setBounds(628, 97, 177, 14);
+		lblDeletarContaApreciador.setBounds(699, 97, 177, 14);
 		panel.add(lblDeletarContaApreciador);
 
 		textFieldNovoEstado = new JTextField();
@@ -386,7 +397,7 @@ public class TelaAdm {
 			public void mouseClicked(MouseEvent e) {
 				PaisBO paisbo = new PaisBO();
 				Pais pais = new Pais();
-				pais.setNome(textFieldNovoPais.getText());
+				pais.setNome(textFieldPais.getText());
 				Boolean cadastrar = false;
 				try {
 					cadastrar = paisbo.savePais(pais);
@@ -405,10 +416,16 @@ public class TelaAdm {
 		btnNovoPais.setBounds(124, 523, 120, 23);
 		panel.add(btnNovoPais);
 
-		textFieldNovoPais = new JTextField();
-		textFieldNovoPais.setColumns(10);
-		textFieldNovoPais.setBounds(107, 492, 148, 20);
-		panel.add(textFieldNovoPais);
+		textFieldPais = new JTextField();
+		textFieldPais.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				clearmsg();
+			}
+		});
+		textFieldPais.setColumns(10);
+		textFieldPais.setBounds(107, 492, 148, 20);
+		panel.add(textFieldPais);
 
 		JLabel lblNovoPais = new JLabel("Novo Pa\u00EDs:");
 		lblNovoPais.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -419,18 +436,292 @@ public class TelaAdm {
 		lblCadastrarNovoPais.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblCadastrarNovoPais.setBounds(120, 466, 177, 14);
 		panel.add(lblCadastrarNovoPais);
+		lblCadastroMsgPais.setHorizontalAlignment(SwingConstants.CENTER);
 
-		lblCadastroMsgPais.setBounds(107, 557, 177, 14);
+		lblCadastroMsgPais.setBounds(89, 557, 177, 14);
 		panel.add(lblCadastroMsgPais);
 
-		frameMain.setVisible(true);
+		JLabel lblCadastrarNovaColoracao = new JLabel("Cadastrar nova Colora\u00E7\u00E3o");
+		lblCadastrarNovaColoracao.setHorizontalAlignment(SwingConstants.CENTER);
+		lblCadastrarNovaColoracao.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblCadastrarNovaColoracao.setBounds(367, 466, 204, 14);
+		panel.add(lblCadastrarNovaColoracao);
 
+		JLabel lblNovaColorao = new JLabel("Nova Colora\u00E7\u00E3o:");
+		lblNovaColorao.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblNovaColorao.setBounds(277, 492, 124, 14);
+		panel.add(lblNovaColorao);
+
+		textFieldColoracao = new JTextField();
+		textFieldColoracao.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				clearmsg();
+			}
+		});
+		textFieldColoracao.setColumns(10);
+		textFieldColoracao.setBounds(409, 492, 148, 20);
+		panel.add(textFieldColoracao);
+
+		JButton btnColoracao = new JButton("Cadastrar");
+		btnColoracao.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ColoracaoBO colorocaobo = new ColoracaoBO();
+				Coloracao coloracao = new Coloracao();
+				coloracao.setNome(textFieldColoracao.getText());
+				Boolean cadastrar = false;
+				try {
+					cadastrar = colorocaobo.saveColoracao(coloracao);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				if (cadastrar == true) {
+					lblCadastroMsgColoracao.setText("Cadastrado com Sucesso");
+				} else {
+					lblCadastroMsgColoracao.setText("Essa colacao já existe");
+				}
+			}
+		});
+		btnColoracao.setBounds(426, 523, 120, 23);
+		panel.add(btnColoracao);
+
+		lblCadastroMsgColoracao = new JLabel("");
+		lblCadastroMsgColoracao.setHorizontalAlignment(SwingConstants.CENTER);
+		lblCadastroMsgColoracao.setBounds(390, 557, 177, 14);
+		panel.add(lblCadastroMsgColoracao);
+
+		JLabel lblCadastrarNovoSabor = new JLabel("Cadastrar novo Sabor");
+		lblCadastrarNovoSabor.setHorizontalAlignment(SwingConstants.CENTER);
+		lblCadastrarNovoSabor.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblCadastrarNovoSabor.setBounds(670, 466, 204, 14);
+		panel.add(lblCadastrarNovoSabor);
+
+		JLabel lblNovoSabor = new JLabel("Novo Sabor:");
+		lblNovoSabor.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblNovoSabor.setBounds(580, 492, 124, 14);
+		panel.add(lblNovoSabor);
+
+		textFieldSabor = new JTextField();
+		textFieldSabor.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				clearmsg();
+			}
+		});
+		textFieldSabor.setColumns(10);
+		textFieldSabor.setBounds(712, 492, 148, 20);
+		panel.add(textFieldSabor);
+
+		JButton btnSabor = new JButton("Cadastrar");
+		btnSabor.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				SaborBO saborbo = new SaborBO();
+				Sabor sabor = new Sabor();
+				sabor.setNome(textFieldSabor.getText());
+				Boolean cadastrar = false;
+				try {
+					cadastrar = saborbo.saveSabor(sabor);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				if (cadastrar == true) {
+					lblCadastroMsgSabor.setText("Cadastrado com Sucesso");
+				} else {
+					lblCadastroMsgSabor.setText("Esse Sabor já existe");
+				}
+			}
+		});
+		btnSabor.setBounds(729, 523, 120, 23);
+		panel.add(btnSabor);
+
+		lblCadastroMsgSabor = new JLabel("");
+		lblCadastroMsgSabor.setHorizontalAlignment(SwingConstants.CENTER);
+		lblCadastroMsgSabor.setBounds(693, 557, 177, 14);
+		panel.add(lblCadastroMsgSabor);
+
+		JLabel lblDadosCerveja = new JLabel("Adicionar informa\u00E7\u00F5es para cadastro de Cerveja");
+		lblDadosCerveja.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblDadosCerveja.setHorizontalAlignment(SwingConstants.CENTER);
+		lblDadosCerveja.setBounds(203, 418, 433, 20);
+		panel.add(lblDadosCerveja);
+
+		JLabel lblDadosCervejaria = new JLabel("Adicionar informa\u00E7\u00F5es para cadastro de Cervejaria");
+		lblDadosCervejaria.setHorizontalAlignment(SwingConstants.CENTER);
+		lblDadosCervejaria.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblDadosCervejaria.setBounds(185, 226, 433, 20);
+		panel.add(lblDadosCervejaria);
+
+		JLabel lblDadosIngredientes = new JLabel("Adicionar informa\u00E7\u00F5es para cadastro de Ingredientes");
+		lblDadosIngredientes.setHorizontalAlignment(SwingConstants.CENTER);
+		lblDadosIngredientes.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblDadosIngredientes.setBounds(214, 615, 433, 20);
+		panel.add(lblDadosIngredientes);
+
+		JLabel lblCadastrarNovoTipo = new JLabel("Cadastrar novo Tipo L\u00FApulo ");
+		lblCadastrarNovoTipo.setHorizontalAlignment(SwingConstants.CENTER);
+		lblCadastrarNovoTipo.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblCadastrarNovoTipo.setBounds(107, 663, 177, 14);
+		panel.add(lblCadastrarNovoTipo);
+
+		JLabel lblCadastrarNovoFermento = new JLabel("Cadastrar novo Fermento");
+		lblCadastrarNovoFermento.setHorizontalAlignment(SwingConstants.CENTER);
+		lblCadastrarNovoFermento.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblCadastrarNovoFermento.setBounds(378, 663, 204, 14);
+		panel.add(lblCadastrarNovoFermento);
+
+		JLabel lblCadastrarNovoMalte = new JLabel("Cadastrar novo Malte");
+		lblCadastrarNovoMalte.setHorizontalAlignment(SwingConstants.CENTER);
+		lblCadastrarNovoMalte.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblCadastrarNovoMalte.setBounds(681, 663, 204, 14);
+		panel.add(lblCadastrarNovoMalte);
+
+		textFieldMalte = new JTextField();
+		textFieldMalte.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				clearmsg();
+			}
+		});
+		textFieldMalte.setColumns(10);
+		textFieldMalte.setBounds(723, 689, 148, 20);
+		panel.add(textFieldMalte);
+
+		JLabel lblNovoMalte = new JLabel("Novo Malte:");
+		lblNovoMalte.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblNovoMalte.setBounds(591, 689, 124, 14);
+		panel.add(lblNovoMalte);
+
+		textFieldFermento = new JTextField();
+		textFieldFermento.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				clearmsg();
+			}
+		});
+		textFieldFermento.setColumns(10);
+		textFieldFermento.setBounds(420, 689, 148, 20);
+		panel.add(textFieldFermento);
+
+		JLabel lblNovoFermento = new JLabel("Nova Fermento:");
+		lblNovoFermento.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblNovoFermento.setBounds(288, 689, 124, 14);
+		panel.add(lblNovoFermento);
+
+		textFieldLupulo = new JTextField();
+		textFieldLupulo.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				clearmsg();
+			}
+		});
+		textFieldLupulo.setColumns(10);
+		textFieldLupulo.setBounds(118, 689, 148, 20);
+		panel.add(textFieldLupulo);
+
+		JLabel lblNovoLupulo = new JLabel("Novo L\u00FApulo:");
+		lblNovoLupulo.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblNovoLupulo.setBounds(21, 689, 89, 14);
+		panel.add(lblNovoLupulo);
+
+		JButton btnNovoLupulo = new JButton("Cadastrar");
+		btnNovoLupulo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				LupuloBO lupulobo = new LupuloBO();
+				Lupulo lupulo = new Lupulo();
+				lupulo.setNome(textFieldLupulo.getText());
+				Boolean cadastrar = false;
+				try {
+					cadastrar = lupulobo.saveLupulo(lupulo);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				if (cadastrar == true) {
+					lblCadastroMsgLupulo.setText("Cadastrado com Sucesso");
+				} else {
+					lblCadastroMsgLupulo.setText("Esse Lúpulo já existe");
+				}
+			}
+		});
+		btnNovoLupulo.setBounds(135, 720, 120, 23);
+		panel.add(btnNovoLupulo);
+
+		lblCadastroMsgLupulo = new JLabel("");
+		lblCadastroMsgLupulo.setHorizontalAlignment(SwingConstants.CENTER);
+		lblCadastroMsgLupulo.setBounds(100, 754, 177, 14);
+		panel.add(lblCadastroMsgLupulo);
+
+		lblCadastroMsgFermento = new JLabel("");
+		lblCadastroMsgFermento.setHorizontalAlignment(SwingConstants.CENTER);
+		lblCadastroMsgFermento.setBounds(401, 754, 177, 14);
+		panel.add(lblCadastroMsgFermento);
+
+		lblCadastroMsgMalte = new JLabel("");
+		lblCadastroMsgMalte.setHorizontalAlignment(SwingConstants.CENTER);
+		lblCadastroMsgMalte.setBounds(704, 754, 177, 14);
+		panel.add(lblCadastroMsgMalte);
+
+		JButton btnFermento = new JButton("Cadastrar");
+		btnFermento.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				FermentoBO fermentobo = new FermentoBO();
+				Fermento fermento = new Fermento();
+				fermento.setNome(textFieldFermento.getText());
+				Boolean cadastrar = false;
+				try {
+					cadastrar = fermentobo.saveFermento(fermento);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				if (cadastrar == true) {
+					lblCadastroMsgFermento.setText("Cadastrado com Sucesso");
+				} else {
+					lblCadastroMsgFermento.setText("Esse Fermento já existe");
+				}
+			}
+		});
+		btnFermento.setBounds(437, 720, 120, 23);
+		panel.add(btnFermento);
+
+		JButton btnMalte = new JButton("Cadastrar");
+		btnMalte.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				MalteBO maltebo = new MalteBO();
+				Malte malte = new Malte();
+				malte.setNome(textFieldMalte.getText());
+				Boolean cadastrar = false;
+				try {
+					cadastrar = maltebo.saveMalte(malte);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				if (cadastrar == true) {
+					lblCadastroMsgMalte.setText("Cadastrado com Sucesso");
+				} else {
+					lblCadastroMsgMalte.setText("Esse Malte já existe");
+				}
+			}
+		});
+		btnMalte.setBounds(740, 720, 120, 23);
+		panel.add(btnMalte);
+		frameMain.setVisible(true);
 	}
 
 	protected static void clearmsg() {
+		
 		lblCadastroMsgCidade.setText("");
 		lblCadastroMsgEstado.setText("");
 		lblMsgApreciador.setText("");
 		lblMsgCervejeiro.setText("");
+		lblCadastroMsgColoracao.setText("");
+		lblCadastroMsgLupulo.setText("");
+		lblCadastroMsgFermento.setText("");
+		lblCadastroMsgMalte.setText("");
+		lblCadastroMsgSabor.setText("");
+		
 	}
 }
