@@ -4,8 +4,6 @@ import java.awt.Color;
 import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.List;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -13,11 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 
-import br.edu.unifacear.bo.CervejaBO;
-import br.edu.unifacear.bo.CervejariaBO;
 import br.edu.unifacear.bo.CervejeiroBO;
-import br.edu.unifacear.bo.EnderecoBO;
-import br.edu.unifacear.classes.Cerveja;
 import br.edu.unifacear.classes.Cervejeiro;
 
 import java.awt.Font;
@@ -148,7 +142,7 @@ public class TelaGerenciarDadosCervejeiro {
 					return;
 
 				}
-			
+
 				framePrincipal.dispose();
 			}
 		});
@@ -162,7 +156,7 @@ public class TelaGerenciarDadosCervejeiro {
 			lblCervejariaEndereco.setText(cervLogado.getCervejaria().getEndereco().getNome() + ", "
 					+ cervLogado.getCervejaria().getEndereco().getCidade().getNome() + ", "
 					+ cervLogado.getCervejaria().getEndereco().getCidade().getEstado().getNome());
-			
+
 		} else {
 			lblEmailCervejaria.setVisible(false);
 			lblNomeCervejaria.setVisible(false);
@@ -187,7 +181,7 @@ public class TelaGerenciarDadosCervejeiro {
 		panel.add(lblCervejeiroTelefone);
 		lblCervejeiroTelefone.setText(cervLogado.getTelefone());
 
-		JLabel lblDeletarConta = new JLabel("Voc\u00EA deseja deletar sua conta?");
+		JLabel lblDeletarConta = new JLabel("Voc\u00EA deseja Desativar sua conta?");
 		lblDeletarConta.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblDeletarConta.setBounds(51, 490, 279, 14);
 		panel.add(lblDeletarConta);
@@ -196,73 +190,11 @@ public class TelaGerenciarDadosCervejeiro {
 		lblSenha.setBounds(39, 515, 46, 14);
 		panel.add(lblSenha);
 
-		JButton btnDeletar = new JButton("Deletar");
+		JButton btnDeletar = new JButton("Desativar");
 		btnDeletar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-
-				if (!passwordField.getText().equals(cervLogado.getSenha())) {
-					lblMsgErroSenhaDeletarConta.setForeground(Color.RED);
-					lblMsgErroSenhaDeletarConta.setText("Senha incorreta");
-					return;
-				}
-				
-				int confirmar = JOptionPane.showConfirmDialog(null,
-						"Ao DELETAR sua conta, Você tambem DELETA todas as cervejas cadastradas no sistema. Deseja continuar mesmo assim?",
-						null, 0);
-				if (confirmar == 0) {
-					EnderecoBO enderecobo = new EnderecoBO();
-					CervejariaBO cervejariabo = new CervejariaBO();
-					CervejaBO cervejabo = new CervejaBO();
-			
-				
-
-					try {
-						if (cervLogado.getCervejaria() != null) {
-							List<Cerveja> cervejas = cervejabo.findByUser(cervLogado);
-		
-							if (cervejas == null) {
-								cbo.deletar(cervLogado);
-								cervejariabo.deletar(cervLogado.getCervejaria());
-								enderecobo.deletar(cervLogado.getCervejaria().getEndereco());
-								framePrincipal.dispose();
-								TelaLogin.telaInicial();
-							} else {
-								for (Cerveja c : cervejas) {
-									cervejabo.deletar(c);
-									
-								}
-								cbo.deletar(cervLogado);
-								cervejariabo.deletar(cervLogado.getCervejaria());
-								enderecobo.deletar(cervLogado.getCervejaria().getEndereco());
-								framePrincipal.dispose();
-								TelaLogin.telaInicial();
-							}
-
-						} else {
-							List<Cerveja> cervejas = cervejabo.findByUser(cervLogado);
-							if (cervejas == null) {
-								cbo.deletar(cervLogado);
-								framePrincipal.dispose();
-								TelaLogin.telaInicial();
-							}else {
-								for (Cerveja c : cervejas) {
-									cervejabo.deletar(c);
-								}
-								cbo.deletar(cervLogado);
-								framePrincipal.dispose();
-								TelaLogin.telaInicial();
-							}
-						}
-
-					} catch (Exception e1) {
-						lblMsgErroSenhaDeletarConta.setText("Erro ao Deletar sua Conta");
-						return;
-					}
-				}else {
-					lblMsgErroSenhaDeletarConta.setText("Erro ao Deletar sua Conta");
-					return;
-				}
+				desativarConta(cbo, cervLogado);
 			}
 
 			@Override
@@ -307,7 +239,7 @@ public class TelaGerenciarDadosCervejeiro {
 		textFieldEmailNovo.setBackground(Color.WHITE);
 		textFieldEmailNovo.setBounds(698, 103, 175, 20);
 		panel.add(textFieldEmailNovo);
-		
+
 		lblMsgErroEmail = new JLabel("");
 		lblMsgErroEmail.setHorizontalAlignment(SwingConstants.CENTER);
 		lblMsgErroEmail.setBounds(641, 198, 265, 14);
@@ -317,52 +249,7 @@ public class TelaGerenciarDadosCervejeiro {
 		btnEmailAlterar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				String regexEmail = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$";
-				String emaillogado = ((Cervejeiro) TelaLogin.usuarioLogado).getEmail();
-
-				if (textFieldEmailAtual.getText().equalsIgnoreCase(emaillogado)) {
-					
-					if(!passwordFieldEmail.getText().equals(cervLogado.getSenha())) {
-						lblMsgErroEmail.setForeground(Color.RED);
-						lblMsgErroEmail.setText("Senha incorreta");
-						return;
-					}
-					
-					
-					if (!textFieldEmailNovo.getText().matches(regexEmail)) {
-						lblMsgErroEmail.setForeground(Color.RED);
-						lblMsgErroEmail.setText("Dados Invalidos");
-						return;
-					}
-					
-					if(cbo.autenticarEmail(textFieldEmailNovo.getText())) {
-						lblMsgErroEmail.setForeground(Color.RED);
-						lblMsgErroEmail.setText("Novo Email Inválido");
-						return;
-					}
-
-					Cervejeiro cervejeiro = new Cervejeiro();
-					cervejeiro.setEmail(textFieldEmailAtual.getText());
-
-					Cervejeiro novocerv = (Cervejeiro) cbo.findCervejeiro(cervejeiro);
-
-					novocerv.setEmail(textFieldEmailNovo.getText());
-					try {
-						cbo.alterar(novocerv);
-					} catch (Exception e1) {
-						
-						e1.printStackTrace();
-						return;
-					}
-					((Cervejeiro) TelaLogin.usuarioLogado).setEmail(textFieldEmailNovo.getText());
-					lblMsgErroEmail.setForeground(Color.GREEN);
-					lblMsgErroEmail.setText("Email Alterado com Sucesso!");
-					lblCervejeiroEmail.setText(textFieldEmailNovo.getText());
-				} else {
-					lblMsgErroEmail.setForeground(Color.RED);
-					lblMsgErroEmail.setText("Dados Invalidos");
-					return;
-				}
+				alterarEmail(cbo, cervLogado, lblCervejeiroEmail);
 			}
 
 			@Override
@@ -403,7 +290,7 @@ public class TelaGerenciarDadosCervejeiro {
 		textFieldTelefoneNovoConfirmar.setBackground(Color.WHITE);
 		textFieldTelefoneNovoConfirmar.setBounds(698, 301, 175, 20);
 		panel.add(textFieldTelefoneNovoConfirmar);
-		
+
 		lblMsgErroTelefone = new JLabel("");
 		lblMsgErroTelefone.setHorizontalAlignment(SwingConstants.CENTER);
 		lblMsgErroTelefone.setBounds(618, 396, 327, 14);
@@ -413,37 +300,7 @@ public class TelaGerenciarDadosCervejeiro {
 		btnTelefoneAlterar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				String regexN = "[0-9]+";
-				if(!passwordFieldTelefone.getText().equals(cervLogado.getSenha())) {
-					lblMsgErroTelefone.setForeground(Color.RED);
-					lblMsgErroTelefone.setText("Senha incorreta");
-					return;
-				}
-				if (!textFieldTelefoneNovo.getText().matches(regexN)
-						&& !textFieldTelefoneNovoConfirmar.getText().matches(regexN)) {
-					lblMsgErroTelefone.setForeground(Color.RED);
-					lblMsgErroTelefone.setText("Telefones só podem conter números");
-					return;
-				}
-
-				if (!textFieldTelefoneNovo.getText().equals(textFieldTelefoneNovoConfirmar.getText())) {
-					lblMsgErroTelefone.setForeground(Color.RED);
-					lblMsgErroTelefone.setText("Telefones devem ser iguais");
-					return;
-				}
-				Cervejeiro cervejeiro = cervLogado;
-				cervejeiro.setTelefone(textFieldTelefoneNovo.getText());
-				try {
-					cbo.alterar(cervejeiro);
-				} catch (Exception e1) {
-					lblMsgErroTelefone.setForeground(Color.RED);
-					lblMsgErroTelefone.setText("Erro ao Alterar Telefone");
-					return;
-				}
-				cervLogado.setTelefone(textFieldTelefoneNovo.getText());
-				lblMsgErroTelefone.setForeground(Color.GREEN);
-				lblMsgErroTelefone.setText("Telefone Alterado com Sucesso!");
-				lblCervejeiroTelefone.setText(cervLogado.getTelefone());
+				alterarTelefone(cbo, cervLogado, lblCervejeiroTelefone);
 
 			}
 
@@ -485,7 +342,7 @@ public class TelaGerenciarDadosCervejeiro {
 		lblNovaSenha.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblNovaSenha.setBounds(546, 495, 134, 14);
 		panel.add(lblNovaSenha);
-		
+
 		lblMsgErroSenha = new JLabel("");
 		lblMsgErroSenha.setHorizontalAlignment(SwingConstants.CENTER);
 		lblMsgErroSenha.setBounds(546, 587, 327, 14);
@@ -495,38 +352,7 @@ public class TelaGerenciarDadosCervejeiro {
 		btnAlterarSenha.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if (!textFieldSenhaAtual.getText().equals(cervLogado.getSenha())) {
-					lblMsgErroSenha.setForeground(Color.RED);
-					lblMsgErroSenha.setText("Senha incorreta");
-					return;
-				}
-
-				if (textFieldSenhaNova.getText().length() < 6) {
-					lblMsgErroSenha.setForeground(Color.RED);
-					lblMsgErroSenha.setText("Senha deve conter no minimo 6 caracteries");
-					return;
-				}
-
-				if (!textFieldSenhaNova.getText().equals(textFieldASenhaConfirmar.getText())) {
-					lblMsgErroSenha.setForeground(Color.RED);
-					lblMsgErroSenha.setText("Erro ao confirmar nova senha");
-					return;
-				}
-
-				cervLogado.setSenha(textFieldSenhaNova.getText());
-				try {
-					cbo.alterar(cervLogado);
-				} catch (Exception e1) {
-					lblMsgErroSenha.setForeground(Color.RED);
-					lblMsgErroSenha.setText("Erro ao Alterar senha");
-					return;
-				}
-
-				lblMsgErroSenha.setForeground(Color.GREEN);
-				lblMsgErroSenha.setText("Senha Alterada com Sucesso!");
-				textFieldSenhaNova.setText("");
-				textFieldASenhaConfirmar.setText("");
-				textFieldSenhaAtual.setText("");
+				alterarSenha(cbo, cervLogado);
 			}
 
 			@Override
@@ -549,17 +375,17 @@ public class TelaGerenciarDadosCervejeiro {
 		lblConfirmarNovaSenha.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblConfirmarNovaSenha.setBounds(546, 526, 134, 14);
 		panel.add(lblConfirmarNovaSenha);
-		
+
 		lblMsgErroSenhaDeletarConta = new JLabel("");
 		lblMsgErroSenhaDeletarConta.setHorizontalAlignment(SwingConstants.CENTER);
 		lblMsgErroSenhaDeletarConta.setBounds(22, 578, 327, 14);
 		panel.add(lblMsgErroSenhaDeletarConta);
-		
+
 		JLabel lblSenhaAtualTelefone = new JLabel("Senha atual:");
 		lblSenhaAtualTelefone.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblSenhaAtualTelefone.setBounds(577, 336, 103, 14);
 		panel.add(lblSenhaAtualTelefone);
-		
+
 		passwordFieldTelefone = new JPasswordField();
 		passwordFieldTelefone.setToolTipText("email");
 		passwordFieldTelefone.setForeground(Color.BLACK);
@@ -567,12 +393,12 @@ public class TelaGerenciarDadosCervejeiro {
 		passwordFieldTelefone.setBackground(Color.WHITE);
 		passwordFieldTelefone.setBounds(698, 333, 175, 20);
 		panel.add(passwordFieldTelefone);
-		
+
 		JLabel lblSenhaAtualEmail = new JLabel("Senha atual:");
 		lblSenhaAtualEmail.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblSenhaAtualEmail.setBounds(577, 136, 103, 14);
 		panel.add(lblSenhaAtualEmail);
-		
+
 		passwordFieldEmail = new JPasswordField();
 		passwordFieldEmail.setToolTipText("email");
 		passwordFieldEmail.setForeground(Color.BLACK);
@@ -580,7 +406,7 @@ public class TelaGerenciarDadosCervejeiro {
 		passwordFieldEmail.setBackground(Color.WHITE);
 		passwordFieldEmail.setBounds(698, 133, 175, 20);
 		panel.add(passwordFieldEmail);
-		
+
 		JLabel lblGerenciarSeusDados = new JLabel("Gerenciar seus Dados!");
 		lblGerenciarSeusDados.setForeground(new Color(255, 102, 51));
 		lblGerenciarSeusDados.setFont(new Font("Tahoma", Font.BOLD, 11));
@@ -596,5 +422,162 @@ public class TelaGerenciarDadosCervejeiro {
 		lblMsgErroEmail.setText("");
 		lblMsgErroSenha.setText("");
 		lblMsgErroSenhaDeletarConta.setText("");
+	}
+
+	@SuppressWarnings("deprecation")
+	private static void alterarTelefone(CervejeiroBO cbo, Cervejeiro cervLogado, JLabel lblCervejeiroTelefone) {
+		String regexN = "[0-9]+";
+		if (!passwordFieldTelefone.getText().equals(cervLogado.getSenha())) {
+			lblMsgErroTelefone.setForeground(Color.RED);
+			lblMsgErroTelefone.setText("Senha incorreta");
+			return;
+		}
+		if (!textFieldTelefoneNovo.getText().matches(regexN)
+				&& !textFieldTelefoneNovoConfirmar.getText().matches(regexN)) {
+			lblMsgErroTelefone.setForeground(Color.RED);
+			lblMsgErroTelefone.setText("Telefones só podem conter números");
+			return;
+		}
+
+		if (!textFieldTelefoneNovo.getText().equals(textFieldTelefoneNovoConfirmar.getText())) {
+			lblMsgErroTelefone.setForeground(Color.RED);
+			lblMsgErroTelefone.setText("Telefones devem ser iguais");
+			return;
+		}
+		Cervejeiro cervejeiro = cervLogado;
+		cervejeiro.setTelefone(textFieldTelefoneNovo.getText());
+		try {
+			cbo.alterar(cervejeiro);
+		} catch (Exception e1) {
+			lblMsgErroTelefone.setForeground(Color.RED);
+			lblMsgErroTelefone.setText("Erro ao Alterar Telefone");
+			return;
+		}
+		cervLogado.setTelefone(textFieldTelefoneNovo.getText());
+		lblMsgErroTelefone.setForeground(Color.GREEN);
+		lblMsgErroTelefone.setText("Telefone Alterado com Sucesso!");
+		lblCervejeiroTelefone.setText(cervLogado.getTelefone());
+	}
+
+	@SuppressWarnings("deprecation")
+	private static void alterarEmail(CervejeiroBO cbo, Cervejeiro cervLogado, JLabel lblCervejeiroEmail) {
+		String regexEmail = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$";
+		String emaillogado = ((Cervejeiro) TelaLogin.usuarioLogado).getEmail();
+
+		if (textFieldEmailAtual.getText().equalsIgnoreCase(emaillogado)) {
+
+			if (!passwordFieldEmail.getText().equals(cervLogado.getSenha())) {
+				lblMsgErroEmail.setForeground(Color.RED);
+				lblMsgErroEmail.setText("Senha incorreta");
+				return;
+			}
+
+			if (!textFieldEmailNovo.getText().matches(regexEmail)) {
+				lblMsgErroEmail.setForeground(Color.RED);
+				lblMsgErroEmail.setText("Dados Invalidos");
+				return;
+			}
+
+			if (cbo.autenticarEmail(textFieldEmailNovo.getText())) {
+				lblMsgErroEmail.setForeground(Color.RED);
+				lblMsgErroEmail.setText("Novo Email Inválido");
+				return;
+			}
+
+			Cervejeiro cervejeiro = new Cervejeiro();
+			cervejeiro.setEmail(textFieldEmailAtual.getText());
+
+			Cervejeiro novocerv = (Cervejeiro) cbo.findCervejeiro(cervejeiro);
+
+			novocerv.setEmail(textFieldEmailNovo.getText());
+			try {
+				cbo.alterar(novocerv);
+			} catch (Exception e1) {
+
+				e1.printStackTrace();
+				return;
+			}
+			((Cervejeiro) TelaLogin.usuarioLogado).setEmail(textFieldEmailNovo.getText());
+			lblMsgErroEmail.setForeground(Color.GREEN);
+			lblMsgErroEmail.setText("Email Alterado com Sucesso!");
+			lblCervejeiroEmail.setText(textFieldEmailNovo.getText());
+		} else {
+			lblMsgErroEmail.setForeground(Color.RED);
+			lblMsgErroEmail.setText("Dados Invalidos");
+			return;
+		}
+	}
+
+	@SuppressWarnings("deprecation")
+	private static void desativarConta(CervejeiroBO cbo, Cervejeiro cervLogado)  {
+		if (!passwordField.getText().equals(cervLogado.getSenha())) {
+			lblMsgErroSenhaDeletarConta.setForeground(Color.RED);
+			lblMsgErroSenhaDeletarConta.setText("Senha incorreta");
+			return;
+		}
+
+		int confirmar = JOptionPane.showConfirmDialog(null,
+				"Ao Desativar sua conta, Você perde o acesso ao Sistema com essa Conta. Deseja continuar mesmo assim?",
+				null, 0);
+		if (confirmar == 0) {
+				try {
+					cervLogado.setStatus("Desativado");
+					cbo.alterar(cervLogado);
+				} catch (Exception e) {
+					lblMsgErroSenhaDeletarConta.setForeground(Color.RED);
+					lblMsgErroSenhaDeletarConta.setText("Erro ao Desativar sua Conta");
+					e.printStackTrace();
+					return;
+				}
+				
+				try {
+					TelaLogin.telaInicial();
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				framePrincipal.dispose();
+
+			} else{
+				lblMsgErroSenhaDeletarConta.setText("Operação Cancelada");
+				return;
+			}
+		
+	}
+
+	@SuppressWarnings("deprecation")
+	private static void alterarSenha(CervejeiroBO cbo, Cervejeiro cervLogado) {
+		if (!textFieldSenhaAtual.getText().equals(cervLogado.getSenha())) {
+			lblMsgErroSenha.setForeground(Color.RED);
+			lblMsgErroSenha.setText("Senha incorreta");
+			return;
+		}
+
+		if (textFieldSenhaNova.getText().length() < 6) {
+			lblMsgErroSenha.setForeground(Color.RED);
+			lblMsgErroSenha.setText("Senha deve conter no minimo 6 caracteries");
+			return;
+		}
+
+		if (!textFieldSenhaNova.getText().equals(textFieldASenhaConfirmar.getText())) {
+			lblMsgErroSenha.setForeground(Color.RED);
+			lblMsgErroSenha.setText("Erro ao confirmar nova senha");
+			return;
+		}
+
+		cervLogado.setSenha(textFieldSenhaNova.getText());
+		try {
+			cbo.alterar(cervLogado);
+		} catch (Exception e1) {
+			lblMsgErroSenha.setForeground(Color.RED);
+			lblMsgErroSenha.setText("Erro ao Alterar senha");
+			return;
+		}
+
+		lblMsgErroSenha.setForeground(Color.GREEN);
+		lblMsgErroSenha.setText("Senha Alterada com Sucesso!");
+		textFieldSenhaNova.setText("");
+		textFieldASenhaConfirmar.setText("");
+		textFieldSenhaAtual.setText("");
 	}
 }

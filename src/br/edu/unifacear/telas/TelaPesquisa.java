@@ -9,38 +9,29 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
 
-import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
-import javax.swing.JEditorPane;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.JTextPane;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
 
 import br.edu.unifacear.bo.CervejaBO;
 import br.edu.unifacear.bo.ColoracaoBO;
-import br.edu.unifacear.bo.IngredientesBO;
 import br.edu.unifacear.bo.PaisBO;
 import br.edu.unifacear.bo.SaborBO;
 import br.edu.unifacear.bo.TipoCervejaBO;
 import br.edu.unifacear.classes.Cerveja;
 import br.edu.unifacear.classes.Coloracao;
-import br.edu.unifacear.classes.Ingredientes;
 import br.edu.unifacear.classes.Pais;
 import br.edu.unifacear.classes.Sabor;
 import br.edu.unifacear.classes.TipoCerveja;
-import br.edu.unifacear.classes.Apreciador;
-import br.edu.unifacear.validators.CervejaValidator;
-import br.edu.unifacear.validators.IngredientesValidator;
 import javax.swing.JComboBox;
 
 public class TelaPesquisa {
@@ -49,7 +40,6 @@ public class TelaPesquisa {
 	private static JFrame framePesquisa;
 	private static JTextField textFieldNome;
 	private static JTable tblCervejas;
-	private static JLabel lblCerveja;
 	private static JButton btnVerDetalhes;
 
 	/**
@@ -325,16 +315,20 @@ public class TelaPesquisa {
 			List<Cerveja>  lista  = pesquisarCervejas(nome, tipo, sabor, coloracao, pais);
 			
 			for (Cerveja c : lista) {
-				modelo.addRow(
-						new Object[] {
-								c.getNome(),
-								c.getType(),
-								c.getColoracao(),
-								c.getFlavor(),
-								c.getCountryOrigin()
-								
-						}
-					);
+				
+				if(c.getCervejeiro().getStatus().contentEquals("Ativo")) {
+					modelo.addRow(
+							new Object[] {
+									c.getNome(),
+									c.getType(),
+									c.getColoracao(),
+									c.getFlavor(),
+									c.getCountryOrigin()
+									
+							}
+						);
+				}
+				
 			}
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null,  "Erro consultando: "+e.getMessage());

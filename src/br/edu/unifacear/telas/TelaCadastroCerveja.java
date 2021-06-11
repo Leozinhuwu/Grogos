@@ -29,7 +29,6 @@ import br.edu.unifacear.bo.TipoCervejaBO;
 import br.edu.unifacear.classes.Cerveja;
 import br.edu.unifacear.classes.Cervejeiro;
 import br.edu.unifacear.classes.Coloracao;
-import br.edu.unifacear.classes.Estado;
 import br.edu.unifacear.classes.Fermento;
 import br.edu.unifacear.classes.Ingredientes;
 import br.edu.unifacear.classes.Lupulo;
@@ -37,7 +36,6 @@ import br.edu.unifacear.classes.Malte;
 import br.edu.unifacear.classes.Pais;
 import br.edu.unifacear.classes.Sabor;
 import br.edu.unifacear.classes.TipoCerveja;
-import br.edu.unifacear.classes.Apreciador;
 import br.edu.unifacear.validators.CervejaValidator;
 import br.edu.unifacear.validators.IngredientesValidator;
 
@@ -45,12 +43,11 @@ import javax.swing.JRadioButton;
 import javax.swing.SwingConstants;
 import javax.swing.JTextPane;
 import javax.swing.JCheckBox;
-import javax.swing.JFormattedTextField;
 import javax.swing.JEditorPane;
 import javax.swing.JComboBox;
 
 public class TelaCadastroCerveja {
-	private static final long serialVersionUID = 1L;
+
 	private static JFrame frameCadastro;
 	private static JTextField nameField;
 	private static JTextField textFieldTipoCerveja;
@@ -200,6 +197,7 @@ public class TelaCadastroCerveja {
 
 		JRadioButton rdbtnAlchool = new JRadioButton("Sem Alcool");
 		rdbtnAlchool.addMouseListener(new MouseAdapter() {
+			@SuppressWarnings("deprecation")
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				rdbtnComAlchool.setSelected(false);
@@ -231,6 +229,7 @@ public class TelaCadastroCerveja {
 		rdbtnComAlchool = new JRadioButton("Com Alcool");
 		rdbtnComAlchool.setSelected(true);
 		rdbtnComAlchool.addMouseListener(new MouseAdapter() {
+			@SuppressWarnings("deprecation")
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				rdbtnAlchool.setSelected(false);
@@ -470,41 +469,13 @@ public class TelaCadastroCerveja {
 					return;
 				}
 				// ingredientes - extrair metodo
-				if (textAlchool.isEnabled() == true) {
-					float alchool = Float.parseFloat(textAlchool.getText());
-					ingredientes.setAlcool(true);
-					ingredientes.setTeorAlcoolico(alchool);
-				} else {
-					ingredientes.setAlcool(false);
-					ingredientes.setTeorAlcoolico(0);
-				}
+				setAlcoolAndCeveda(chckbxSim, ingredientes);
 
-				ingredientes.setCevada(Float.parseFloat(textCevada.getText()));
-
-				if (chckbxSim.isSelected() == true) {
-					ingredientes.setPuroMalte(true);
-				} else {
-					ingredientes.setPuroMalte(false);
-				}
-
-				ingredientes.setLupulo((Lupulo) comboBoxLupulo.getSelectedItem());
-				ingredientes.setFermento((Fermento) comboBoxFermento.getSelectedItem());
-				ingredientes.setMalte((Malte) comboBoxMalte.getSelectedItem());
-				ingredientes.setEspeciarias(especiariaPane.getText());
-				ingredientes.setNome(nameField.getText());
+				setIngredientes(especiariaPane, comboBoxLupulo, comboBoxFermento, comboBoxMalte, ingredientes);
 
 				// cerveja - extrair metodo
 
-				cerveja.setNome(nameField.getText());
-				cerveja.setType((TipoCerveja) comboBoxTipo.getSelectedItem());
-				cerveja.setFlavor((Sabor) comboBoxSabor.getSelectedItem());
-				cerveja.setCountryOrigin((Pais) comboBoxPais.getSelectedItem());
-				cerveja.setColoracao((Coloracao) comboBoxColoracao.getSelectedItem());
-				cerveja.setDescription(descricaoPane.getText());
-				CervejeiroBO cervejeirobo = new CervejeiroBO();
-				Cervejeiro cervejeiro = new Cervejeiro();
-				cervejeiro.setEmail(((Cervejeiro) TelaLogin.usuarioLogado).getEmail());
-				cerveja.setCervejeiro((Cervejeiro) cervejeirobo.findCervejeiro(cervejeiro));
+				setCerveja(descricaoPane, comboBoxTipo, comboBoxSabor, comboBoxPais, comboBoxColoracao, cerveja);
 
 				boolean cadastrar = false;
 				boolean cadastrarIngredientes = false;
@@ -542,5 +513,48 @@ public class TelaCadastroCerveja {
 
 		frameCadastro.setVisible(true);
 
+	}
+
+	private static void setIngredientes(JEditorPane especiariaPane, JComboBox<Lupulo> comboBoxLupulo,
+			JComboBox<Fermento> comboBoxFermento, JComboBox<Malte> comboBoxMalte, Ingredientes ingredientes) {
+		ingredientes.setLupulo((Lupulo) comboBoxLupulo.getSelectedItem());
+		ingredientes.setFermento((Fermento) comboBoxFermento.getSelectedItem());
+		ingredientes.setMalte((Malte) comboBoxMalte.getSelectedItem());
+		ingredientes.setEspeciarias(especiariaPane.getText());
+		ingredientes.setNome(nameField.getText());
+	}
+
+	private static void setCerveja(JEditorPane descricaoPane, JComboBox<TipoCerveja> comboBoxTipo,
+			JComboBox<Sabor> comboBoxSabor, JComboBox<Pais> comboBoxPais, JComboBox<Coloracao> comboBoxColoracao,
+			Cerveja cerveja) {
+		cerveja.setNome(nameField.getText());
+		cerveja.setType((TipoCerveja) comboBoxTipo.getSelectedItem());
+		cerveja.setFlavor((Sabor) comboBoxSabor.getSelectedItem());
+		cerveja.setCountryOrigin((Pais) comboBoxPais.getSelectedItem());
+		cerveja.setColoracao((Coloracao) comboBoxColoracao.getSelectedItem());
+		cerveja.setDescription(descricaoPane.getText());
+		CervejeiroBO cervejeirobo = new CervejeiroBO();
+		Cervejeiro cervejeiro = new Cervejeiro();
+		cervejeiro.setEmail(((Cervejeiro) TelaLogin.usuarioLogado).getEmail());
+		cerveja.setCervejeiro((Cervejeiro) cervejeirobo.findCervejeiro(cervejeiro));
+	}
+
+	private static void setAlcoolAndCeveda(JCheckBox chckbxSim, Ingredientes ingredientes) {
+		if (textAlchool.isEnabled() == true) {
+			float alchool = Float.parseFloat(textAlchool.getText());
+			ingredientes.setAlcool(true);
+			ingredientes.setTeorAlcoolico(alchool);
+		} else {
+			ingredientes.setAlcool(false);
+			ingredientes.setTeorAlcoolico(0);
+		}
+
+		ingredientes.setCevada(Float.parseFloat(textCevada.getText()));
+
+		if (chckbxSim.isSelected() == true) {
+			ingredientes.setPuroMalte(true);
+		} else {
+			ingredientes.setPuroMalte(false);
+		}
 	}
 }

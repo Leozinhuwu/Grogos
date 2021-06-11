@@ -65,46 +65,7 @@ public class TelaLogin extends JFrame {
 		JButton btnLogar = new JButton("Logar");
 		btnLogar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Apreciador user = new Apreciador();
-				ApreciadorBO aprebo = new ApreciadorBO();
-				user.setEmail(txtEmail.getText());
-				user.setSenha(passwordField.getText());
-
-				Cervejeiro usercer = new Cervejeiro();
-				CervejeiroBO cerbo = new CervejeiroBO();
-				usercer.setEmail(txtEmail.getText());
-				usercer.setSenha(passwordField.getText());
-
-				boolean authapre = aprebo.login(user);
-				boolean authcerv = cerbo.login(usercer);
-
-				if (authapre == true || authcerv == true) {
-					if (authapre == true) {
-						try {
-							usuarioLogado = aprebo.findApreciador(user);
-							TelaPrincipalApreciador.telaPrincipal();
-						} catch (Exception e1) {
-							e1.printStackTrace();
-							lblLoginFail.setText("Erro ao logar, tente novamente");
-							return;
-						}
-						frameMain.dispose();
-					}
-					if (authcerv == true) {
-						usuarioLogado = cerbo.findCervejeiro(usercer);
-						try {
-
-							TelaMenuCervejeiro.telaMenuCervejeiro();
-						} catch (Exception e1) {
-							e1.printStackTrace();
-							lblLoginFail.setText("Erro ao logar, tente novamente");
-							return;
-						}
-						frameMain.dispose();
-					}
-				} else {
-					lblLoginFail.setText("Dados inválidos");
-				}
+				efetuarLogin(lblLoginFail);
 			}
 		});
 		btnLogar.setBounds(197, 160, 89, 23);
@@ -187,5 +148,62 @@ public class TelaLogin extends JFrame {
 
 		frameMain.setVisible(true);
 
+	}
+
+	@SuppressWarnings("deprecation")
+	private static void efetuarLogin(JLabel lblLoginFail) {
+		Apreciador user = new Apreciador();
+		ApreciadorBO aprebo = new ApreciadorBO();
+		user.setEmail(txtEmail.getText());
+		user.setSenha(passwordField.getText());
+		
+		Cervejeiro usercer = new Cervejeiro();
+		CervejeiroBO cerbo = new CervejeiroBO();
+		usercer.setEmail(txtEmail.getText());
+		usercer.setSenha(passwordField.getText());
+
+		boolean authapre = aprebo.login(user);
+		boolean authcerv = cerbo.login(usercer);
+
+		if (authapre == true || authcerv == true) {
+			
+			
+			
+			if (authapre == true) {
+				Apreciador usera =  (Apreciador) aprebo.findApreciador(user);
+				if(usera.getStatus().equals("Desativado")) {
+					JOptionPane.showInternalMessageDialog(null, "Conta Desativada. Entre em contato com a administração");
+					return;
+				}
+				try {
+					usuarioLogado = aprebo.findApreciador(user);
+					TelaPrincipalApreciador.telaPrincipal();
+				} catch (Exception e1) {
+					e1.printStackTrace();
+					lblLoginFail.setText("Erro ao logar, tente novamente");
+					return;
+				}
+				frameMain.dispose();
+			}
+			if (authcerv == true) {
+				
+				Cervejeiro usercera =  (Cervejeiro) cerbo.findCervejeiro(usercer);
+				if(usercera.getStatus().equals("Desativado")) {
+					JOptionPane.showInternalMessageDialog(null, "Conta Desativada. Entre em contato com a administração");
+					return;
+				}
+				try {
+					usuarioLogado = cerbo.findCervejeiro(usercer);
+					TelaMenuCervejeiro.telaMenuCervejeiro();
+				} catch (Exception e1) {
+					e1.printStackTrace();
+					lblLoginFail.setText("Erro ao logar, tente novamente");
+					return;
+				}
+				frameMain.dispose();
+			}
+		} else {
+			lblLoginFail.setText("Dados inválidos");
+		}
 	}
 }

@@ -2,10 +2,7 @@ package br.edu.unifacear.classes;
 
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
-
 import javax.persistence.*;
 
 
@@ -21,7 +18,7 @@ public class Apreciador implements IDBModel {
 	private String senha;
 	private int idade;
 	private String email;
-	
+	private String status;
 
 	@ManyToMany
     @JoinTable(name="Apreciador_TipoCerveja", joinColumns=
@@ -38,7 +35,7 @@ public class Apreciador implements IDBModel {
 
 
 	// constructors
-	public Apreciador(int id, String nome, String senha, int idade, String email) {
+	public Apreciador(int id, String nome, String senha, String status, int idade, String email) {
 		super();
 		this.setId(id);
 		this.nome = nome;
@@ -47,6 +44,7 @@ public class Apreciador implements IDBModel {
 		this.email = email;
 		this.tipoCervejas = new ArrayList<TipoCerveja>();
 		this.cervejasFavoritas = new ArrayList<Cerveja>();
+		this.status = "Ativo";
 	}
 
 	public List<TipoCerveja> getTipoCervejas() {
@@ -69,6 +67,7 @@ public class Apreciador implements IDBModel {
 	public Apreciador() {
 		this.tipoCervejas = new ArrayList<TipoCerveja>();
 		this.cervejasFavoritas = new ArrayList<Cerveja>();
+		this.status = "Ativo";
 	}
 
 	// get and setters
@@ -143,6 +142,13 @@ public class Apreciador implements IDBModel {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
 
 	// hash
 	@Override
@@ -187,7 +193,7 @@ public class Apreciador implements IDBModel {
 
 	@Override
 	public String toString() {
-		return "Usuario nome = " + nome + ", idade = " + idade + ", email = " + email;
+		return email;
 	}
 
 }

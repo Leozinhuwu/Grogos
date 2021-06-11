@@ -16,6 +16,8 @@ public class Cervejeiro implements IDBModel{
 	private int idade;
 	private String email;
 	private String telefone;
+	private String status;
+	
 	
 	@ManyToOne
 	@JoinColumn(name="cervejaria_id")
@@ -27,7 +29,7 @@ public class Cervejeiro implements IDBModel{
 	private List<Token> token;
 	
 	
-	public Cervejeiro(int id, String nome, String senha, int idade, String email, String telefone, Cervejaria cervejaria) {
+	public Cervejeiro(int id, String nome, String senha, int idade, String email, String status, String telefone, Cervejaria cervejaria) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -37,10 +39,12 @@ public class Cervejeiro implements IDBModel{
 		this.telefone = telefone;
 		this.cervejaria = cervejaria;
 		this.token = new ArrayList<Token>();
+		this.status = "Ativo";
 	}
 	public Cervejeiro() {
 		super();
 		this.token = new ArrayList<Token>();
+		this.status = "Ativo";
 	}
 	public List<Token> getToken() {
 		return token;
@@ -106,12 +110,16 @@ public class Cervejeiro implements IDBModel{
 		this.cervejaria = cervejaria;
 	}
 	
-	
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
 	
 	@Override
 	public String toString() {
-		return "Cervejeiro [id=" + id + ", nome=" + nome + ", senha=" + senha + ", idade=" + idade + ", email=" + email
-				+ ", telefone=" + telefone + ", cervejaria=" + cervejaria + "]";
+		return email;
 	}
 
 	

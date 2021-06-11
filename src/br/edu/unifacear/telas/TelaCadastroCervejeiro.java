@@ -8,7 +8,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -35,13 +34,10 @@ import br.edu.unifacear.validators.CervejeiroValidator;
 
 import javax.swing.SwingConstants;
 import javax.swing.JCheckBox;
-import javax.swing.JToggleButton;
-import javax.swing.JScrollBar;
 import javax.swing.JComboBox;
 
 public class TelaCadastroCervejeiro {
 
-	private static final long serialVersionUID = 1L;
 	private static JFrame frameCadastro;
 	private static JTextField textFieldEmail;
 	private static JPasswordField passwordField;
@@ -83,7 +79,7 @@ public class TelaCadastroCervejeiro {
 		lblCadastroMsg.setBounds(482, 594, 336, 23);
 		panel.add(lblCadastroMsg);
 
-		JComboBox<Cidade> comboBoxCidade = new JComboBox();
+		JComboBox<Cidade> comboBoxCidade = new JComboBox<Cidade>();
 		comboBoxCidade.setBounds(113, 586, 175, 22);
 		panel.add(comboBoxCidade);
 
@@ -326,16 +322,16 @@ public class TelaCadastroCervejeiro {
 				TokenBO tkbo = new TokenBO();
 				token.setNome(textToken.getText());
 				token = (Token) tkbo.findToken(token);
-				
-				if(token == null || token.getStatus() == "invalid") {
+
+				if (token == null || token.getStatus() == "invalid") {
 					lblCadastroMsg.setText("Passe invalido");
 					return;
 				}
-				
+
 				if (chckbxAutonomo.isSelected()) {
 					cadastrarCervejeiro(cadastro, lblCadastroMsg, comboBoxEstado, null, token);
 				} else {
-					
+
 					Estado estado = (Estado) comboBoxEstado.getSelectedItem();
 					Cidade cidade = (Cidade) comboBoxCidade.getSelectedItem();
 					String nomeCervejaria = textNomeCervejaria.getText();
@@ -345,6 +341,7 @@ public class TelaCadastroCervejeiro {
 
 					String nome = textFieldNome.getText();
 					String email = textFieldEmail.getText();
+					@SuppressWarnings("deprecation")
 					String senha = passwordField.getText();
 					String idadeS = textFieldIdade.getText();
 					String telefone = textFieldTelefone.getText();
@@ -374,86 +371,6 @@ public class TelaCadastroCervejeiro {
 
 			}
 
-			private void cadastrarCervejeiro(CervejeiroBO cadastro, JLabel lblCadastroMsg,
-					JComboBox<Estado> comboBoxEstado, Cervejaria cervejaria, Token token) {
-				String nome = textFieldNome.getText();
-				String email = textFieldEmail.getText();
-				String senha = passwordField.getText();
-				String idadeS = textFieldIdade.getText();
-				String telefone = textFieldTelefone.getText();
-
-				int idade = 0;
-				boolean cadastrar = false;
-				if (CervejeiroValidator.validar(nome, idadeS, email, senha, telefone)) {
-					idade = Integer.parseInt(textFieldIdade.getText());
-					if (idade < 18) {
-						lblCadastroMsg.setText("Aplicativo destinado a usúarios maiores de 18 anos");
-						return;
-					}
-
-					Cervejeiro newCervejeiro = new Cervejeiro();
-					newCervejeiro.setEmail(email);
-					newCervejeiro.setIdade(idade);
-					newCervejeiro.setNome(nome);
-					newCervejeiro.setSenha(senha);
-					newCervejeiro.setTelefone(telefone);
-					
-					if (cervejaria != null) {
-						EnderecoBO endbo = new EnderecoBO();
-						try {
-							endbo.saveEndereco(cervejaria.getEndereco());
-						} catch (Exception e1) {
-							lblCadastroMsg.setText("Endereço invalido");
-						}
-
-						CervejariaBO cbo = new CervejariaBO();
-						try {
-							cbo.saveCervejaria(cervejaria);
-						} catch (Exception e) {
-							lblCadastroMsg.setText("Cervejaria invalida");
-							return;
-						}
-						newCervejeiro.setCervejaria(cervejaria);
-
-					}
-
-					try {
-						cadastrar = cadastro.registerCervejeiro(newCervejeiro);
-					} catch (Exception e1) {
-						lblCadastroMsg.setText("Erro ao salvar Cervejeiro");
-						return;
-					}
-					if (cadastrar == true) {
-						
-						token.setStatus("invalid");
-						TokenBO tkbo = new TokenBO();
-						try {
-							tkbo.alterar(token);
-						} catch (Exception e1) {
-							
-						}
-						newCervejeiro.addToken(token);
-						try {
-							cadastro.alterar(newCervejeiro);
-						} catch (Exception e) {
-							
-						}
-						JOptionPane.showInternalMessageDialog(null, "Cadastrado com sucesso!");
-						try {
-							TelaLogin.telaInicial();
-						} catch (Exception e1) {
-							lblCadastroMsg.setText("Erro ao voltar a tela inicial, clique no botão voltar");
-							return;
-						}
-						frameCadastro.dispose();
-					} else {
-						lblCadastroMsg.setText("Esse email já existe");
-					}
-				}else {
-					lblCadastroMsg.setText("Dados de Cervejeiro Inválidos");
-				}
-			}
-
 		});
 
 		btnCadastrar.setBounds(655, 560, 154, 23);
@@ -461,5 +378,86 @@ public class TelaCadastroCervejeiro {
 
 		frameCadastro.setVisible(true);
 
+	}
+
+	private static void cadastrarCervejeiro(CervejeiroBO cadastro, JLabel lblCadastroMsg,
+			JComboBox<Estado> comboBoxEstado, Cervejaria cervejaria, Token token) {
+		String nome = textFieldNome.getText();
+		String email = textFieldEmail.getText();
+		@SuppressWarnings("deprecation")
+		String senha = passwordField.getText();
+		String idadeS = textFieldIdade.getText();
+		String telefone = textFieldTelefone.getText();
+
+		int idade = 0;
+		boolean cadastrar = false;
+		if (CervejeiroValidator.validar(nome, idadeS, email, senha, telefone)) {
+			idade = Integer.parseInt(textFieldIdade.getText());
+			if (idade < 18) {
+				lblCadastroMsg.setText("Aplicativo destinado a usúarios maiores de 18 anos");
+				return;
+			}
+
+			Cervejeiro newCervejeiro = new Cervejeiro();
+			newCervejeiro.setEmail(email);
+			newCervejeiro.setIdade(idade);
+			newCervejeiro.setNome(nome);
+			newCervejeiro.setSenha(senha);
+			newCervejeiro.setTelefone(telefone);
+
+			if (cervejaria != null) {
+				EnderecoBO endbo = new EnderecoBO();
+				try {
+					endbo.saveEndereco(cervejaria.getEndereco());
+				} catch (Exception e1) {
+					lblCadastroMsg.setText("Endereço invalido");
+				}
+
+				CervejariaBO cbo = new CervejariaBO();
+				try {
+					cbo.saveCervejaria(cervejaria);
+				} catch (Exception e) {
+					lblCadastroMsg.setText("Cervejaria invalida");
+					return;
+				}
+				newCervejeiro.setCervejaria(cervejaria);
+
+			}
+
+			try {
+				cadastrar = cadastro.registerCervejeiro(newCervejeiro);
+			} catch (Exception e1) {
+				lblCadastroMsg.setText("Erro ao salvar Cervejeiro");
+				return;
+			}
+			if (cadastrar == true) {
+
+				token.setStatus("invalid");
+				TokenBO tkbo = new TokenBO();
+				try {
+					tkbo.alterar(token);
+				} catch (Exception e1) {
+
+				}
+				newCervejeiro.addToken(token);
+				try {
+					cadastro.alterar(newCervejeiro);
+				} catch (Exception e) {
+
+				}
+				JOptionPane.showInternalMessageDialog(null, "Cadastrado com sucesso!");
+				try {
+					TelaLogin.telaInicial();
+				} catch (Exception e1) {
+					lblCadastroMsg.setText("Erro ao voltar a tela inicial, clique no botão voltar");
+					return;
+				}
+				frameCadastro.dispose();
+			} else {
+				lblCadastroMsg.setText("Esse email já existe");
+			}
+		} else {
+			lblCadastroMsg.setText("Dados de Cervejeiro Inválidos");
+		}
 	}
 }

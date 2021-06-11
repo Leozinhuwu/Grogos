@@ -1,5 +1,7 @@
 package br.edu.unifacear.bo;
 
+import java.util.List;
+
 import br.edu.unifacear.classes.Cervejeiro;
 import br.edu.unifacear.dao.CervejeiroDao;
 
@@ -52,5 +54,12 @@ public class CervejeiroBO {
 	public boolean autenticarEmail(String email) {
 		return cervejeiroCrud.autenticarEmail(email);
 	}
+
+	public List<Cervejeiro> listar() {
+		// TODO Auto-generated method stub
+		return cervejeiroCrud.list(Cervejeiro.class);
+	}
+
+	
 
 }

@@ -24,4 +24,13 @@ public class TipoCervejaBO {
 		return tipoCervejaCrud.list(TipoCerveja.class);
 		
 	}
+
+	public TipoCerveja findById(TipoCerveja tipo) {
+		return tipoCervejaCrud.findById(TipoCerveja.class, tipo.getId());
+	}
+
+	public void alterar(TipoCerveja tipo) throws Exception {
+		tipoCervejaCrud.alterar(tipo);
+		
+	}
 }

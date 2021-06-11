@@ -9,7 +9,6 @@ import javax.swing.*;
 import br.edu.unifacear.bo.ApreciadorBO;
 import br.edu.unifacear.bo.TipoCervejaBO;
 import br.edu.unifacear.classes.Apreciador;
-import br.edu.unifacear.classes.Estado;
 import br.edu.unifacear.classes.TipoCerveja;
 import br.edu.unifacear.validators.ApreciadorValidator;
 
@@ -63,6 +62,7 @@ public class TelaCadastroApreciador extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				String nome = nameField.getText();
 				String email = emailField.getText();
+				@SuppressWarnings("deprecation")
 				String senha = passwordField.getText();
 				String idadeS = ageField.getText();
 

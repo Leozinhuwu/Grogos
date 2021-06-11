@@ -13,10 +13,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import br.edu.unifacear.bo.ApreciadorBO;
-import br.edu.unifacear.bo.CervejeiroBO;
 import br.edu.unifacear.classes.Apreciador;
-import br.edu.unifacear.classes.Cervejeiro;
-
 import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
@@ -131,57 +128,7 @@ public class TelaGerenciarDadosApreciador {
 		JButton btnEmailAlterar = new JButton("Alterar Email");
 		btnEmailAlterar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String regexEmail = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$";
-				String emaillogado = ((Apreciador) TelaLogin.usuarioLogado).getEmail();
-
-				if (textFieldEmailAtual.getText().equalsIgnoreCase(emaillogado)) {
-
-					if (!passwordFieldEmail.getText().equals(apreLogado.getSenha())) {
-						lblMsgErroEmail.setForeground(Color.RED);
-						lblMsgErroEmail.setText("Senha incorreta");
-						return;
-					}
-
-					if (!textFieldEmailNovo.getText().matches(regexEmail)) {
-						lblMsgErroEmail.setForeground(Color.RED);
-						lblMsgErroEmail.setText("Dados Invalidos");
-						return;
-					}
-
-					if (abo.autenticarEmail(textFieldEmailNovo.getText())) {
-						lblMsgErroEmail.setForeground(Color.RED);
-						lblMsgErroEmail.setText("Novo email inválido");
-						return;
-					}
-
-					Apreciador apreciador = new Apreciador();
-					apreciador.setEmail(textFieldEmailAtual.getText());
-
-					Apreciador novoapre = (Apreciador) abo.findApreciador(apreciador);
-
-					novoapre.setEmail(textFieldEmailNovo.getText());
-
-					try {
-						abo.alterar(novoapre);
-					} catch (Exception e1) {
-						lblMsgErroEmail.setForeground(Color.RED);
-						lblMsgErroEmail.setText("Erro ao alterar email");
-						
-						e1.printStackTrace();
-						return;
-					}
-
-					System.out.println("ue");
-					((Apreciador) TelaLogin.usuarioLogado).setEmail(textFieldEmailNovo.getText());
-					lblMsgErroEmail.setForeground(Color.GREEN);
-					lblMsgErroEmail.setText("Email Alterado com Sucesso!");
-					lblApreciadorEmail.setText(textFieldEmailNovo.getText());
-
-				} else {
-					lblMsgErroEmail.setForeground(Color.RED);
-					lblMsgErroEmail.setText("Dados Invalidos");
-					return;
-				}
+				trocarEmail(apreLogado, abo, lblApreciadorEmail);
 
 			}
 		});
@@ -230,81 +177,20 @@ public class TelaGerenciarDadosApreciador {
 		JButton btnAlterarSenha = new JButton("Alterar Senha");
 		btnAlterarSenha.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (!textFieldSenhaAtual.getText().equals(apreLogado.getSenha())) {
-					lblMsgErroSenha.setForeground(Color.RED);
-					lblMsgErroSenha.setText("Senha incorreta");
-					return;
-				}
-
-				if (textFieldSenhaNova.getText().length() < 6) {
-					lblMsgErroSenha.setForeground(Color.RED);
-					lblMsgErroSenha.setText("Senha deve conter no minimo 6 caracteries");
-					return;
-				}
-
-				if (!textFieldSenhaNova.getText().equals(textFieldASenhaConfirmar.getText())) {
-					lblMsgErroSenha.setForeground(Color.RED);
-					lblMsgErroSenha.setText("Erro ao confirmar nova senha");
-					return;
-				}
-
-				apreLogado.setSenha(textFieldSenhaNova.getText());
-				try {
-					abo.alterar(apreLogado);
-				} catch (Exception e1) {
-					lblMsgErroSenha.setForeground(Color.RED);
-					lblMsgErroSenha.setText("Erro ao Alterar senha");
-					return;
-				}
-
-				lblMsgErroSenha.setForeground(Color.GREEN);
-				lblMsgErroSenha.setText("Senha Alterada com Sucesso!");
-				textFieldSenhaNova.setText("");
-				textFieldASenhaConfirmar.setText("");
-				textFieldSenhaAtual.setText("");
+				alterarSenha(apreLogado, abo);
 			}
 		});
 		btnAlterarSenha.setBounds(172, 547, 153, 23);
 		panel.add(btnAlterarSenha);
 
-		JButton btnDeletar = new JButton("Deletar");
-		btnDeletar.addActionListener(new ActionListener() {
+		JButton btnDesativar = new JButton("Desativar");
+		btnDesativar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (!passwordField.getText().equals(apreLogado.getSenha())) {
-					lblMsgErroSenhaDeletarConta.setForeground(Color.RED);
-					lblMsgErroSenhaDeletarConta.setText("Senha incorreta");
-					return;
-				}
-				
-				int confirmar = JOptionPane.showConfirmDialog(null,
-						"Ao DELETAR sua conta, Você perde o acesso ao sistema com este Email. Deseja continuar mesmo assim?",
-						null, 0);
-				if (confirmar == 0) {
-					try {
-						abo.deletar(apreLogado);
-					} catch (Exception e1) {
-						lblMsgErroSenha.setForeground(Color.RED);
-						lblMsgErroSenha.setText("Erro ao Deletar Conta");
-						
-						e1.printStackTrace();
-						return;
-					}
-					
-					try {
-						TelaLogin.telaInicial();
-					} catch (Exception e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-					framePrincipal.dispose();
-					
-				}else {
-					return;
-				}
+				deletarConta(apreLogado, abo);
 			}
 		});
-		btnDeletar.setBounds(737, 699, 89, 23);
-		panel.add(btnDeletar);
+		btnDesativar.setBounds(737, 699, 89, 23);
+		panel.add(btnDesativar);
 
 		passwordField = new JPasswordField();
 		passwordField.setBounds(701, 670, 160, 20);
@@ -314,10 +200,10 @@ public class TelaGerenciarDadosApreciador {
 		lblSenha.setBounds(654, 670, 46, 14);
 		panel.add(lblSenha);
 
-		JLabel lblDeletarConta = new JLabel("Voc\u00EA deseja deletar sua conta?");
-		lblDeletarConta.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblDeletarConta.setBounds(666, 645, 279, 14);
-		panel.add(lblDeletarConta);
+		JLabel lblDesativarConta = new JLabel("Voc\u00EA deseja Desativar sua conta?");
+		lblDesativarConta.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblDesativarConta.setBounds(666, 645, 279, 14);
+		panel.add(lblDesativarConta);
 
 		JLabel lblEmail = new JLabel("Email:");
 		lblEmail.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -366,5 +252,132 @@ public class TelaGerenciarDadosApreciador {
 
 		framePrincipal.setVisible(true);
 
+	}
+
+	@SuppressWarnings("deprecation")
+	private static void trocarEmail(Apreciador apreLogado, ApreciadorBO abo, JLabel lblApreciadorEmail) {
+		String regexEmail = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$";
+		String emaillogado = ((Apreciador) TelaLogin.usuarioLogado).getEmail();
+
+		if (textFieldEmailAtual.getText().equalsIgnoreCase(emaillogado)) {
+
+			if (!passwordFieldEmail.getText().equals(apreLogado.getSenha())) {
+				lblMsgErroEmail.setForeground(Color.RED);
+				lblMsgErroEmail.setText("Senha incorreta");
+				return;
+			}
+
+			if (!textFieldEmailNovo.getText().matches(regexEmail)) {
+				lblMsgErroEmail.setForeground(Color.RED);
+				lblMsgErroEmail.setText("Dados Invalidos");
+				return;
+			}
+
+			if (abo.autenticarEmail(textFieldEmailNovo.getText())) {
+				lblMsgErroEmail.setForeground(Color.RED);
+				lblMsgErroEmail.setText("Novo email inválido");
+				return;
+			}
+
+			Apreciador apreciador = new Apreciador();
+			apreciador.setEmail(textFieldEmailAtual.getText());
+
+			Apreciador novoapre = (Apreciador) abo.findApreciador(apreciador);
+
+			novoapre.setEmail(textFieldEmailNovo.getText());
+
+			try {
+				abo.alterar(novoapre);
+			} catch (Exception e1) {
+				lblMsgErroEmail.setForeground(Color.RED);
+				lblMsgErroEmail.setText("Erro ao alterar email");
+				
+				e1.printStackTrace();
+				return;
+			}
+
+
+			((Apreciador) TelaLogin.usuarioLogado).setEmail(textFieldEmailNovo.getText());
+			lblMsgErroEmail.setForeground(Color.GREEN);
+			lblMsgErroEmail.setText("Email Alterado com Sucesso!");
+			lblApreciadorEmail.setText(textFieldEmailNovo.getText());
+
+		} else {
+			lblMsgErroEmail.setForeground(Color.RED);
+			lblMsgErroEmail.setText("Dados Invalidos");
+			return;
+		}
+	}
+
+	@SuppressWarnings("deprecation")
+	private static void alterarSenha(Apreciador apreLogado, ApreciadorBO abo) {
+		if (!textFieldSenhaAtual.getText().equals(apreLogado.getSenha())) {
+			lblMsgErroSenha.setForeground(Color.RED);
+			lblMsgErroSenha.setText("Senha incorreta");
+			return;
+		}
+
+		if (textFieldSenhaNova.getText().length() < 6) {
+			lblMsgErroSenha.setForeground(Color.RED);
+			lblMsgErroSenha.setText("Senha deve conter no minimo 6 caracteries");
+			return;
+		}
+
+		if (!textFieldSenhaNova.getText().equals(textFieldASenhaConfirmar.getText())) {
+			lblMsgErroSenha.setForeground(Color.RED);
+			lblMsgErroSenha.setText("Erro ao confirmar nova senha");
+			return;
+		}
+
+		apreLogado.setSenha(textFieldSenhaNova.getText());
+		try {
+			abo.alterar(apreLogado);
+		} catch (Exception e1) {
+			lblMsgErroSenha.setForeground(Color.RED);
+			lblMsgErroSenha.setText("Erro ao Alterar senha");
+			return;
+		}
+
+		lblMsgErroSenha.setForeground(Color.GREEN);
+		lblMsgErroSenha.setText("Senha Alterada com Sucesso!");
+		textFieldSenhaNova.setText("");
+		textFieldASenhaConfirmar.setText("");
+		textFieldSenhaAtual.setText("");
+	}
+
+	@SuppressWarnings("deprecation")
+	private static void deletarConta(Apreciador apreLogado, ApreciadorBO abo) {
+		if (!passwordField.getText().equals(apreLogado.getSenha())) {
+			lblMsgErroSenhaDeletarConta.setForeground(Color.RED);
+			lblMsgErroSenhaDeletarConta.setText("Senha incorreta");
+			return;
+		}
+		
+		int confirmar = JOptionPane.showConfirmDialog(null,
+				"Ao Desativar sua conta, Você perde o acesso ao sistema com este Email. Deseja continuar mesmo assim?",
+				null, 0);
+		if (confirmar == 0) {
+			try {
+				apreLogado.setStatus("Desativado");
+				abo.alterar(apreLogado);
+			} catch (Exception e1) {
+				lblMsgErroSenha.setForeground(Color.RED);
+				lblMsgErroSenha.setText("Erro ao Desativar Conta");
+				
+				e1.printStackTrace();
+				return;
+			}
+			
+			try {
+				TelaLogin.telaInicial();
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			framePrincipal.dispose();
+			
+		}else {
+			return;
+		}
 	}
 }

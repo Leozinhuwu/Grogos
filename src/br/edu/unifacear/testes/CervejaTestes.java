@@ -114,7 +114,7 @@ public class CervejaTestes {
 		cerveja.setCountryOrigin(pais2);
 		cerveja.setDescription("Essa Ceveja tem um sabor levemente amargo e uma coloração escura");
 		cerveja.setFlavor(sabor2);
-		cerveja.setType(tipocerveja2);
+		cerveja.setType(tipocerveja);
 		
 		CervejaBO cbo = new CervejaBO();
 		cbo.salvar(cerveja);

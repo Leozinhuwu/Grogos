@@ -2,19 +2,13 @@ package br.edu.unifacear.telas;
 
 import java.awt.Color;
 import java.awt.Toolkit;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import br.edu.unifacear.bo.ApreciadorBO;
-import br.edu.unifacear.bo.CervejeiroBO;
 import br.edu.unifacear.classes.Apreciador;
 import br.edu.unifacear.classes.Cerveja;
-import br.edu.unifacear.classes.Cervejeiro;
-
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.JEditorPane;

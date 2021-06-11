@@ -2,6 +2,8 @@ package br.edu.unifacear.bo;
 
 
 
+import java.util.List;
+
 import br.edu.unifacear.classes.Apreciador;
 
 import br.edu.unifacear.dao.*;
@@ -51,6 +53,11 @@ public class ApreciadorBO {
 	
 			userCrud.alterar(user);
 	
+	}
+
+	public List<Apreciador> listar() {
+		// TODO Auto-generated method stub
+		return userCrud.list(Apreciador.class);
 	}
 
 }

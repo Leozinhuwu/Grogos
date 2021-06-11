@@ -22,7 +22,6 @@ import br.edu.unifacear.bo.ApreciadorBO;
 import br.edu.unifacear.bo.CervejaBO;
 import br.edu.unifacear.classes.Apreciador;
 import br.edu.unifacear.classes.Cerveja;
-import br.edu.unifacear.classes.Cervejeiro;
 
 public class TelaCervejasFavoritas {
 	private static JFrame frameCervejasFavoritas;
