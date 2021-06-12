@@ -31,7 +31,7 @@ public class TelaLogin extends JFrame {
 
 		JPanel panel = new JPanel();
 		panel.setForeground(Color.RED);
-		panel.setBackground(new Color(255, 204, 153));
+		panel.setBackground(new Color(244, 164, 96));
 		frameMain = new JFrame();
 		frameMain.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\leo4_\\Desktop\\GrogosPesq.jpg"));
 		frameMain.setSize(931, 537);
@@ -132,7 +132,7 @@ public class TelaLogin extends JFrame {
 		panel.add(btnCadastrarCervejeiro);
 
 		JTextPane txtpnVocUm = new JTextPane();
-		txtpnVocUm.setBackground(new Color(255, 204, 153));
+		txtpnVocUm.setBackground(new Color(244, 164, 96));
 		txtpnVocUm.setEditable(false);
 		txtpnVocUm.setFont(new Font("Tahoma", Font.BOLD, 11));
 		txtpnVocUm.setText(
@@ -141,9 +141,9 @@ public class TelaLogin extends JFrame {
 		panel.add(txtpnVocUm);
 
 		JLabel lblEfetueSeuLogin = new JLabel("Efetue seu Login");
-		lblEfetueSeuLogin.setForeground(new Color(255, 102, 51));
+		lblEfetueSeuLogin.setForeground(new Color(0, 0, 0));
 		lblEfetueSeuLogin.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblEfetueSeuLogin.setBounds(146, 50, 228, 14);
+		lblEfetueSeuLogin.setBounds(168, 51, 228, 14);
 		panel.add(lblEfetueSeuLogin);
 
 		frameMain.setVisible(true);

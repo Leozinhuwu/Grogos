@@ -73,10 +73,10 @@ public class TelaCadastroCerveja {
 		// labels e botoes do jFrame
 		JPanel panel = new JPanel();
 		panel.setForeground(Color.RED);
-		panel.setBackground(Color.WHITE);
+		panel.setBackground(new Color(244, 164, 96));
 		frameCadastro = new JFrame();
 		frameCadastro.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\leo4_\\Desktop\\GrogosPesq.jpg"));
-		frameCadastro.setSize(1000, 700);
+		frameCadastro.setSize(1000, 722);
 		frameCadastro.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frameCadastro.setLocation(500, 150);
 
@@ -85,7 +85,7 @@ public class TelaCadastroCerveja {
 
 		JButton btnVolta = new JButton("Voltar");
 		btnVolta.setForeground(Color.BLACK);
-		btnVolta.setFont(new Font("Trebuchet MS", Font.PLAIN, 11));
+		btnVolta.setFont(new Font("Arial Black", Font.BOLD, 12));
 		btnVolta.setBackground(Color.LIGHT_GRAY);
 		btnVolta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -104,9 +104,9 @@ public class TelaCadastroCerveja {
 		panel.add(btnVolta);
 
 		JLabel lblTitle = new JLabel("Cadastre sua Cerveja");
-		lblTitle.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblTitle.setForeground(new Color(255, 102, 51));
-		lblTitle.setBounds(394, 25, 218, 14);
+		lblTitle.setFont(new Font("Bookman Old Style", Font.BOLD, 14));
+		lblTitle.setForeground(new Color(255, 69, 0));
+		lblTitle.setBounds(367, 20, 218, 23);
 		panel.add(lblTitle);
 
 		nameField = new JTextField();
@@ -142,42 +142,50 @@ public class TelaCadastroCerveja {
 		panel.add(textFieldColoracao);
 		textFieldColoracao.setColumns(10);
 
-		JLabel lblName = new JLabel("Nome:");
+		JLabel lblName = new JLabel("*Nome:");
+		lblName.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblName.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblName.setBounds(89, 126, 46, 14);
 		panel.add(lblName);
 
-		JLabel lblType = new JLabel("Tipo:");
+		JLabel lblType = new JLabel("*Tipo:");
+		lblType.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblType.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblType.setBounds(89, 157, 46, 14);
 		panel.add(lblType);
 
-		JLabel lblFlavor = new JLabel("Sabor:");
+		JLabel lblFlavor = new JLabel("*Sabor:");
+		lblFlavor.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblFlavor.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblFlavor.setBounds(89, 194, 46, 14);
 		panel.add(lblFlavor);
 
-		JLabel lblOrigin = new JLabel("Pais de Origem:");
+		JLabel lblOrigin = new JLabel("*Pais de Origem:");
+		lblOrigin.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblOrigin.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblOrigin.setBounds(26, 225, 109, 14);
 		panel.add(lblOrigin);
 
-		JLabel lblColoracao = new JLabel("Colora\u00E7\u00E3o:");
+		JLabel lblColoracao = new JLabel("*Colora\u00E7\u00E3o:");
+		lblColoracao.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblColoracao.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblColoracao.setBounds(62, 260, 73, 14);
 		panel.add(lblColoracao);
 
-		JLabel lblDescription = new JLabel("Descri\u00E7\u00E3o:");
+		JLabel lblDescription = new JLabel("*Descri\u00E7\u00E3o:");
+		lblDescription.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblDescription.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblDescription.setBounds(62, 319, 89, 14);
+		lblDescription.setBounds(82, 378, 89, 14);
 		panel.add(lblDescription);
 
 		JLabel lblCerveja = new JLabel("Sobre a sua Cerveja");
-		lblCerveja.setBounds(145, 81, 178, 14);
+		lblCerveja.setFont(new Font("Arial Black", Font.PLAIN, 12));
+		lblCerveja.setBounds(145, 73, 178, 31);
 		panel.add(lblCerveja);
 
 		JLabel lblIngredientes = new JLabel("Ingredientes");
-		lblIngredientes.setBounds(671, 81, 178, 14);
+		lblIngredientes.setFont(new Font("Arial Black", Font.BOLD, 12));
+		lblIngredientes.setBounds(671, 81, 178, 23);
 		panel.add(lblIngredientes);
 
 		textCevada = new JTextField();
@@ -186,16 +194,20 @@ public class TelaCadastroCerveja {
 		panel.add(textCevada);
 		textCevada.setColumns(10);
 
-		JLabel lblCevada = new JLabel("Cevada:");
+		JLabel lblCevada = new JLabel("*Cevada:");
+		lblCevada.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblCevada.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblCevada.setBounds(613, 194, 46, 14);
+		lblCevada.setBounds(576, 194, 83, 14);
 		panel.add(lblCevada);
 
 		JLabel lblPorcentagem = new JLabel("%");
+		lblPorcentagem.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblPorcentagem.setBounds(725, 194, 22, 14);
 		panel.add(lblPorcentagem);
 
 		JRadioButton rdbtnAlchool = new JRadioButton("Sem Alcool");
+		rdbtnAlchool.setFont(new Font("Tahoma", Font.BOLD, 11));
+		rdbtnAlchool.setBackground(new Color(244, 164, 96));
 		rdbtnAlchool.addMouseListener(new MouseAdapter() {
 			@SuppressWarnings("deprecation")
 			@Override
@@ -211,6 +223,7 @@ public class TelaCadastroCerveja {
 		panel.add(rdbtnAlchool);
 
 		JLabel lblAlchool = new JLabel("Teor Alco\u00F3lico:");
+		lblAlchool.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblAlchool.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblAlchool.setBounds(570, 156, 89, 14);
 		panel.add(lblAlchool);
@@ -223,10 +236,13 @@ public class TelaCadastroCerveja {
 		textAlchool.setText("0");
 
 		JLabel lblPorcentagem_1 = new JLabel("%");
+		lblPorcentagem_1.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblPorcentagem_1.setBounds(725, 156, 22, 14);
 		panel.add(lblPorcentagem_1);
 
 		rdbtnComAlchool = new JRadioButton("Com Alcool");
+		rdbtnComAlchool.setFont(new Font("Tahoma", Font.BOLD, 11));
+		rdbtnComAlchool.setBackground(new Color(244, 164, 96));
 		rdbtnComAlchool.setSelected(true);
 		rdbtnComAlchool.addMouseListener(new MouseAdapter() {
 			@SuppressWarnings("deprecation")
@@ -242,8 +258,9 @@ public class TelaCadastroCerveja {
 		panel.add(rdbtnComAlchool);
 
 		JLabel lblLupo = new JLabel("Tipo de Lupulo:");
+		lblLupo.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblLupo.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblLupo.setBounds(570, 260, 89, 14);
+		lblLupo.setBounds(550, 260, 109, 14);
 		panel.add(lblLupo);
 
 		textFieldLupulo = new JTextField();
@@ -254,6 +271,7 @@ public class TelaCadastroCerveja {
 		textFieldLupulo.setColumns(10);
 
 		JLabel lblTipoDeFermento = new JLabel("Tipo de Fermento:");
+		lblTipoDeFermento.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblTipoDeFermento.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblTipoDeFermento.setBounds(550, 291, 109, 14);
 		panel.add(lblTipoDeFermento);
@@ -265,14 +283,15 @@ public class TelaCadastroCerveja {
 		textFieldFermento.setBounds(671, 288, 167, 20);
 		panel.add(textFieldFermento);
 
-		JLabel lblEspeciariasAdicionais = new JLabel("Especiarias Adicionais:");
+		JLabel lblEspeciariasAdicionais = new JLabel("*Especiarias Adicionais:");
+		lblEspeciariasAdicionais.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblEspeciariasAdicionais.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblEspeciariasAdicionais.setBounds(539, 378, 145, 14);
 		panel.add(lblEspeciariasAdicionais);
 
 		JEditorPane descricaoPane = new JEditorPane();
 		descricaoPane.setBackground(Color.WHITE);
-		descricaoPane.setBounds(101, 344, 252, 141);
+		descricaoPane.setBounds(123, 403, 252, 141);
 		descricaoPane.setBorder(BorderFactory.createLineBorder(Color.black));
 		panel.add(descricaoPane);
 
@@ -283,17 +302,24 @@ public class TelaCadastroCerveja {
 		panel.add(especiariaPane);
 
 		JTextPane txtpnTodosOuCampos = new JTextPane();
+		txtpnTodosOuCampos.setFont(new Font("Tahoma", Font.BOLD, 12));
+		txtpnTodosOuCampos.setForeground(new Color(0, 0, 0));
+		txtpnTodosOuCampos.setEditable(false);
+		txtpnTodosOuCampos.setBackground(new Color(244, 164, 96));
 		txtpnTodosOuCampos.setText(
-				"Forjar informa\u00E7\u00F5es ou atribuir informa\u00E7\u00F5es n\u00E3o relacionadas a cerveja ou ingredientes podem levar ao banimento da plataforma!!!\r\n\r\nCADASTRE CONSCIENTE!\r\n\r\n");
-		txtpnTodosOuCampos.setBounds(572, 568, 277, 93);
+				"Forjar informa\u00E7\u00F5es ou atribuir informa\u00E7\u00F5es n\u00E3o relacionadas a Cerveja ou ingredientes podem levar ao banimento da plataforma!!!\r\n\r\nCADASTRE CONSCIENTE!\r\n\r\n");
+		txtpnTodosOuCampos.setBounds(576, 556, 277, 93);
 		panel.add(txtpnTodosOuCampos);
 
 		JLabel lblMalte = new JLabel("Puro Malte:");
+		lblMalte.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblMalte.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblMalte.setBounds(550, 225, 109, 14);
 		panel.add(lblMalte);
 
 		JCheckBox chckbxSim = new JCheckBox("Sim");
+		chckbxSim.setFont(new Font("Tahoma", Font.BOLD, 11));
+		chckbxSim.setBackground(new Color(244, 164, 96));
 		chckbxSim.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -306,6 +332,8 @@ public class TelaCadastroCerveja {
 		panel.add(chckbxSim);
 
 		chckbxNao = new JCheckBox("N\u00E3o");
+		chckbxNao.setFont(new Font("Tahoma", Font.BOLD, 11));
+		chckbxNao.setBackground(new Color(244, 164, 96));
 		chckbxNao.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -319,11 +347,15 @@ public class TelaCadastroCerveja {
 		chckbxNao.setSelected(true);
 
 		JLabel lblCadastro = new JLabel("");
-		lblCadastro.setBounds(10, 598, 552, 14);
+		lblCadastro.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblCadastro.setHorizontalAlignment(SwingConstants.CENTER);
+		lblCadastro.setBounds(10, 582, 509, 23);
 		panel.add(lblCadastro);
 
 		
 		JComboBox<TipoCerveja> comboBoxTipo = new JComboBox<TipoCerveja>();
+		comboBoxTipo.setFont(new Font("Tahoma", Font.BOLD, 11));
+		comboBoxTipo.setBackground(new Color(248, 248, 255));
 		comboBoxTipo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				textFieldTipoCerveja.setText(((TipoCerveja) comboBoxTipo.getSelectedItem()).getNome());
@@ -340,6 +372,8 @@ public class TelaCadastroCerveja {
 		}
 
 		JComboBox<Sabor> comboBoxSabor = new JComboBox<Sabor>();
+		comboBoxSabor.setFont(new Font("Tahoma", Font.BOLD, 11));
+		comboBoxSabor.setBackground(new Color(255, 255, 255));
 		comboBoxSabor.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				textFieldSabor.setText(((Sabor) comboBoxSabor.getSelectedItem()).getNome());
@@ -356,6 +390,8 @@ public class TelaCadastroCerveja {
 		}
 
 		JComboBox<Pais> comboBoxPais = new JComboBox<Pais>();
+		comboBoxPais.setBackground(new Color(255, 255, 255));
+		comboBoxPais.setFont(new Font("Tahoma", Font.BOLD, 11));
 		comboBoxPais.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				textFieldPais.setText(((Pais) comboBoxPais.getSelectedItem()).getNome());
@@ -372,6 +408,8 @@ public class TelaCadastroCerveja {
 		}
 		
 		JComboBox<Coloracao> comboBoxColoracao = new JComboBox<Coloracao>();
+		comboBoxColoracao.setBackground(new Color(255, 255, 255));
+		comboBoxColoracao.setFont(new Font("Tahoma", Font.BOLD, 11));
 		comboBoxColoracao.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				textFieldColoracao.setText(((Coloracao) comboBoxColoracao.getSelectedItem()).getNome());
@@ -420,6 +458,7 @@ public class TelaCadastroCerveja {
 		}
 
 		JLabel lblTipoDeMalte = new JLabel("Tipo de Malte:");
+		lblTipoDeMalte.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblTipoDeMalte.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblTipoDeMalte.setBounds(550, 325, 109, 14);
 		panel.add(lblTipoDeMalte);
@@ -448,6 +487,7 @@ public class TelaCadastroCerveja {
 		}
 
 		JButton btnCadastrar = new JButton("Cadastrar");
+		btnCadastrar.setFont(new Font("Arial Black", Font.BOLD, 11));
 		btnCadastrar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -465,7 +505,7 @@ public class TelaCadastroCerveja {
 				if (!IngredientesValidator.validar(textAlchool.getText(), textCevada.getText(),
 						especiariaPane.getText())) {
 					lblCadastro.setText(
-							"Dados invalidos, verifique se todos os campos foram preenchidos e tente novamente");
+							"Dados invalidos, verifique se todos os campos foram preenchidos corretamente e tente novamente");
 					return;
 				}
 				// ingredientes - extrair metodo
@@ -498,16 +538,17 @@ public class TelaCadastroCerveja {
 				}
 
 				if (cadastrar && cadastrarIngredientes) {
-					lblCadastro.setText("Cerveja Cadastrada Com Sucesso");
+					lblCadastro.setForeground(Color.GREEN);
+					lblCadastro.setText("Cerveja Cadastrada Com Sucesso!!!");
 				} else {
 					lblCadastro.setText("Já existe uma cerveja com este nome, tente um nome diferente");
 				}
 
 			}
 		});
-		btnCadastrar.setBackground(Color.LIGHT_GRAY);
+		btnCadastrar.setBackground(new Color(248, 248, 255));
 		btnCadastrar.setForeground(Color.BLACK);
-		btnCadastrar.setBounds(168, 548, 124, 23);
+		btnCadastrar.setBounds(198, 555, 124, 23);
 		panel.add(btnCadastrar);
 
 
