@@ -169,9 +169,9 @@ public class TelaCadastroApreciador extends JFrame {
 		passwordField.setToolTipText("password");
 		passwordField.setBounds(146, 214, 175, 20);
 		panel.add(passwordField);
-
-		JLabel lblGrogosImg = new JLabel("");
-		lblGrogosImg.setIcon(new ImageIcon("C:\\Users\\leo4_\\Desktop\\gragas.png"));
+		
+		ImageIcon grogos = new ImageIcon(TelaAdmManterCadastroCervejeiroCervejaria.class.getResource("/Grogos_Final_Edition.png")); 
+		JLabel lblGrogosImg = new JLabel(grogos);
 		lblGrogosImg.setBounds(453, 37, 204, 263);
 		panel.add(lblGrogosImg);
 

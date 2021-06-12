@@ -21,6 +21,8 @@ import br.edu.unifacear.classes.Token;
 import javax.swing.JComboBox;
 import javax.swing.SwingConstants;
 import java.awt.Font;
+import java.awt.Image;
+
 import javax.swing.ImageIcon;
 
 public class TelaAdmManterCadastroCervejeiroCervejaria {
@@ -36,6 +38,7 @@ public class TelaAdmManterCadastroCervejeiroCervejaria {
 	private static JLabel lblCadastroMsgFermento = new JLabel("");
 	private static JLabel lblCadastroMsgMalte = new JLabel("");
 	private static JLabel lblCadastroMsgSabor = new JLabel("");
+	
 
 	/**
 	 * @throws Exception
@@ -48,7 +51,7 @@ public class TelaAdmManterCadastroCervejeiroCervejaria {
 
 		JPanel panel = new JPanel();
 		panel.setForeground(Color.RED);
-		panel.setBackground(Color.WHITE);
+		panel.setBackground(new Color(244, 164, 96));
 		frameMain = new JFrame();
 		frameMain.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\leo4_\\Desktop\\GrogosPesq.jpg"));
 		frameMain.setSize(904, 647);
@@ -259,9 +262,10 @@ public class TelaAdmManterCadastroCervejeiroCervejaria {
 		lblAdicionarInforamesCerveja.setBounds(10, 272, 318, 30);
 		panel.add(lblAdicionarInforamesCerveja);
 		
-		JLabel lblGrogosImg = new JLabel("");
-		lblGrogosImg.setIcon(new ImageIcon("C:\\Users\\leo4_\\Desktop\\JavaProjects\\Projeto3\\assests\\GrogosPesq.jpg"));
-		lblGrogosImg.setBounds(199, 80, 632, 452);
+		
+		ImageIcon grogos = new ImageIcon(TelaAdmManterCadastroCervejeiroCervejaria.class.getResource("/Grogos_Final_Edition.png")); 
+		JLabel lblGrogosImg = new JLabel(grogos);
+		lblGrogosImg.setBounds(242, 90, 632, 452);
 		panel.add(lblGrogosImg);
 		frameMain.setVisible(true);
 	}

@@ -34,7 +34,7 @@ public class TelaLogin extends JFrame {
 		panel.setBackground(new Color(244, 164, 96));
 		frameMain = new JFrame();
 		frameMain.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\leo4_\\Desktop\\GrogosPesq.jpg"));
-		frameMain.setSize(931, 537);
+		frameMain.setSize(963, 644);
 		frameMain.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frameMain.setLocation(500, 250);
 
@@ -55,7 +55,7 @@ public class TelaLogin extends JFrame {
 
 		});
 
-		btnCadastrarApreciador.setBounds(35, 436, 131, 23);
+		btnCadastrarApreciador.setBounds(159, 535, 131, 23);
 		panel.add(btnCadastrarApreciador);
 
 		JLabel lblLoginFail = new JLabel("");
@@ -68,7 +68,7 @@ public class TelaLogin extends JFrame {
 				efetuarLogin(lblLoginFail);
 			}
 		});
-		btnLogar.setBounds(197, 160, 89, 23);
+		btnLogar.setBounds(166, 235, 89, 23);
 		panel.add(btnLogar);
 
 		txtEmail = new JTextField();
@@ -81,36 +81,36 @@ public class TelaLogin extends JFrame {
 		txtEmail.setToolTipText("email");
 		txtEmail.setForeground(Color.BLACK);
 		txtEmail.setBackground(new Color(255, 255, 255));
-		txtEmail.setBounds(146, 84, 175, 20);
+		txtEmail.setBounds(115, 159, 175, 20);
 		panel.add(txtEmail);
 		txtEmail.setColumns(10);
 
 		JLabel lblCadastrarApreciador = new JLabel("Novo Apreciador?  Cadastre-se aqui");
 		lblCadastrarApreciador.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblCadastrarApreciador.setBounds(10, 410, 237, 14);
+		lblCadastrarApreciador.setBounds(105, 510, 237, 14);
 		panel.add(lblCadastrarApreciador);
 
 		JLabel lblEmail = new JLabel("Email:");
-		lblEmail.setBounds(105, 87, 46, 14);
+		lblEmail.setBounds(74, 162, 46, 14);
 		panel.add(lblEmail);
 
 		JLabel lblPassword = new JLabel("Password:");
-		lblPassword.setBounds(80, 132, 71, 14);
+		lblPassword.setBounds(49, 207, 71, 14);
 		panel.add(lblPassword);
 
 		passwordField = new JPasswordField();
-		passwordField.setBounds(146, 129, 175, 20);
+		passwordField.setBounds(115, 204, 175, 20);
 		panel.add(passwordField);
-
-		JLabel lblGrogosImg = new JLabel("");
+		
+		ImageIcon grogos = new ImageIcon(TelaLogin.class.getResource("/Grogos_Final_Edition.png"));
+		JLabel lblGrogosImg = new JLabel(grogos);
 		lblGrogosImg.setBackground(new Color(255, 204, 153));
-		lblGrogosImg.setIcon(new ImageIcon("C:\\Users\\leo4_\\Desktop\\gragas.png"));
-		lblGrogosImg.setBounds(644, 25, 204, 263);
+		lblGrogosImg.setBounds(470, 11, 467, 386);
 		panel.add(lblGrogosImg);
 
 		JLabel lblJPossuiPasse = new JLabel("J\u00E1 possui passe de Cervejeiro?  Cadastre-se aqui");
 		lblJPossuiPasse.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblJPossuiPasse.setBounds(590, 411, 300, 14);
+		lblJPossuiPasse.setBounds(609, 510, 300, 14);
 		panel.add(lblJPossuiPasse);
 
 		JButton btnCadastrarCervejeiro = new JButton("Cadastrar");
@@ -128,7 +128,7 @@ public class TelaLogin extends JFrame {
 
 			}
 		});
-		btnCadastrarCervejeiro.setBounds(708, 436, 131, 23);
+		btnCadastrarCervejeiro.setBounds(727, 535, 131, 23);
 		panel.add(btnCadastrarCervejeiro);
 
 		JTextPane txtpnVocUm = new JTextPane();
@@ -137,13 +137,13 @@ public class TelaLogin extends JFrame {
 		txtpnVocUm.setFont(new Font("Tahoma", Font.BOLD, 11));
 		txtpnVocUm.setText(
 				"Voc\u00EA \u00E9 um novo Cervejeiro?\r\nEntre em contato via email \r\npara solicitar\r\nseu Passe Cervejeiro!\r\n\r\nemail: grogosadm@email.com");
-		txtpnVocUm.setBounds(644, 256, 217, 128);
+		txtpnVocUm.setBounds(651, 395, 217, 128);
 		panel.add(txtpnVocUm);
 
 		JLabel lblEfetueSeuLogin = new JLabel("Efetue seu Login");
 		lblEfetueSeuLogin.setForeground(new Color(0, 0, 0));
 		lblEfetueSeuLogin.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblEfetueSeuLogin.setBounds(168, 51, 228, 14);
+		lblEfetueSeuLogin.setBounds(137, 126, 228, 14);
 		panel.add(lblEfetueSeuLogin);
 
 		frameMain.setVisible(true);

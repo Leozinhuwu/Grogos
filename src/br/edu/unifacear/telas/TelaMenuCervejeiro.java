@@ -93,9 +93,9 @@ public class TelaMenuCervejeiro extends JFrame {
 		});
 		btnLogout.setBounds(23, 27, 89, 23);
 		panel.add(btnLogout);
-
-		JLabel lblGrogosImg = new JLabel("");
-		lblGrogosImg.setIcon(new ImageIcon("C:\\Users\\leo4_\\Desktop\\gragas.png"));
+		
+		ImageIcon grogos = new ImageIcon(TelaMenuCervejeiro.class.getResource("/Grogos_Final_Edition.png"));
+		JLabel lblGrogosImg = new JLabel(grogos);
 		lblGrogosImg.setBounds(395, 100, 204, 263);
 		panel.add(lblGrogosImg);
 		

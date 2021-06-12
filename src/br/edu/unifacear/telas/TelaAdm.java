@@ -105,8 +105,8 @@ public class TelaAdm {
 		btnCervejeiroEApreciador.setBounds(60, 322, 210, 23);
 		panel.add(btnCervejeiroEApreciador);
 		
-		JLabel lblGrogosImg = new JLabel("");
-		lblGrogosImg.setIcon(new ImageIcon("C:\\Users\\leo4_\\Desktop\\JavaProjects\\Projeto3\\assests\\GrogosPesq.jpg"));
+		ImageIcon grogos = new ImageIcon(TelaAdmManterCadastroCervejeiroCervejaria.class.getResource("/Grogos_Final_Edition.png")); 
+		JLabel lblGrogosImg = new JLabel(grogos);
 		lblGrogosImg.setBounds(265, 51, 632, 452);
 		panel.add(lblGrogosImg);
 		frameMain.setVisible(true);

@@ -6,6 +6,7 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="imgs"/>
 	<classpathentry kind="lib" path="C:/Users/leo4_/Desktop/JavaProjects/Projeto_Integrador_III/mysql-connector-java-8.0.23.jar"/>
 	<classpathentry kind="lib" path="C:/Users/leo4_/Desktop/JavaProjects/hibernate-release-5.4.30.Final/lib/required/antlr-2.7.7.jar"/>
 	<classpathentry kind="lib" path="C:/Users/leo4_/Desktop/JavaProjects/hibernate-release-5.4.30.Final/lib/required/byte-buddy-1.10.21.jar"/>

@@ -245,8 +245,8 @@ public class TelaGerenciarDadosApreciador {
 		lblVocDesejaAlterar_2.setBounds(120, 409, 279, 14);
 		panel.add(lblVocDesejaAlterar_2);
 		
-		JLabel lblGrogosImg = new JLabel("");
-		lblGrogosImg.setIcon(new ImageIcon("C:\\Users\\leo4_\\Desktop\\GrogosPesq.jpg"));
+		ImageIcon grogos = new ImageIcon(TelaAdmManterCadastroCervejeiroCervejaria.class.getResource("/Grogos_Final_Edition.png"));
+		JLabel lblGrogosImg = new JLabel(grogos);
 		lblGrogosImg.setBounds(313, 142, 632, 452);
 		panel.add(lblGrogosImg);
 
