@@ -52,7 +52,7 @@ public class TelaAdmManterCadastroCerveja {
 	 * @wbp.parser.entryPoint
 	 */
 
-	public static void telaAdmCerveja() throws Exception {
+	public void telaAdmCerveja() throws Exception {
 
 		JPanel panel = new JPanel();
 		panel.setForeground(Color.RED);

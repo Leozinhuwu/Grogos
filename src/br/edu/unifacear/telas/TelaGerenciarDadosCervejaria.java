@@ -48,7 +48,7 @@ public class TelaGerenciarDadosCervejaria {
 	 * @wbp.parser.entryPoint
 	 */
 
-	public static void telaGerenciarDadosCervejaria() throws Exception {
+	public void telaGerenciarDadosCervejaria() throws Exception {
 		Cervejeiro cervLogado = (Cervejeiro) TelaLogin.usuarioLogado;
 		CervejariaBO cbo = new CervejariaBO();
 		CidadeBO cidadebo = new CidadeBO();
@@ -71,7 +71,8 @@ public class TelaGerenciarDadosCervejaria {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				try {
-					TelaGerenciarDadosCervejeiro.telaGerenciarDadosCervejeiro();
+					TelaGerenciarDadosCervejeiro tgDadosCervejeiro = new TelaGerenciarDadosCervejeiro();
+					tgDadosCervejeiro.telaGerenciarDadosCervejeiro();
 				} catch (Exception e1) {
 					// erro ao voltar
 					e1.printStackTrace();

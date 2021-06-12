@@ -26,7 +26,7 @@ public class TelaDetalhesCerveja {
 	 * @wbp.parser.entryPoint
 	 */
 
-	public static void telaDetalhesCerveja(Cerveja cerveja) throws Exception {
+	public void telaDetalhesCerveja(Cerveja cerveja) throws Exception {
 		ApreciadorBO aprebo = new ApreciadorBO();
 	
 

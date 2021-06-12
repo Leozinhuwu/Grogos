@@ -67,7 +67,7 @@ public class TelaCadastroCerveja {
 	 * @wbp.parser.entryPoint
 	 */
 
-	public static void telaCadastro() throws Exception {
+	public void telaCadastro() throws Exception {
 		TipoCervejaBO tipocervejabo = new TipoCervejaBO();
 
 		// labels e botoes do jFrame
@@ -90,7 +90,8 @@ public class TelaCadastroCerveja {
 		btnVolta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					TelaMenuCervejeiro.telaMenuCervejeiro();
+					TelaMenuCervejeiro telaMenuCervejeiros = new TelaMenuCervejeiro();
+					telaMenuCervejeiros.telaMenuCervejeiro();
 
 				} catch (Exception e1) {
 
@@ -347,6 +348,7 @@ public class TelaCadastroCerveja {
 		chckbxNao.setSelected(true);
 
 		JLabel lblCadastro = new JLabel("");
+		lblCadastro.setForeground(new Color(0, 128, 0));
 		lblCadastro.setFont(new Font("Tahoma", Font.BOLD, 13));
 		lblCadastro.setHorizontalAlignment(SwingConstants.CENTER);
 		lblCadastro.setBounds(10, 582, 509, 23);
@@ -537,10 +539,11 @@ public class TelaCadastroCerveja {
 					}
 				}
 
-				if (cadastrar && cadastrarIngredientes) {
-					lblCadastro.setForeground(Color.GREEN);
+				if (cadastrar || cadastrarIngredientes) {
+					lblCadastro.setForeground(Color.green.darker());;
 					lblCadastro.setText("Cerveja Cadastrada Com Sucesso!!!");
-				} else {
+				}else {
+					lblCadastro.setForeground(Color.RED);
 					lblCadastro.setText("Já existe uma cerveja com este nome, tente um nome diferente");
 				}
 

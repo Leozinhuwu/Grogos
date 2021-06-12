@@ -34,7 +34,7 @@ public class TelaAdmGerenciarBanimentos {
 	 * @wbp.parser.entryPoint
 	 */
 
-	public static void telaAdmDesativarCervejeiroApreciador() throws Exception {
+	public void telaAdmDesativarCervejeiroApreciador() throws Exception {
 		
 		JPanel panel = new JPanel();
 		panel.setForeground(Color.RED);

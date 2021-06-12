@@ -30,7 +30,7 @@ public class TelaCadastroApreciador extends JFrame {
 	 * @wbp.parser.entryPoint
 	 */
 
-	public static void telaCadastro() throws Exception {
+	public void telaCadastro() throws Exception {
 
 		ApreciadorBO cadastro = new ApreciadorBO();
 		TipoCervejaBO tipocervejabo = new TipoCervejaBO();
@@ -90,7 +90,8 @@ public class TelaCadastroApreciador extends JFrame {
 					if (cadastrar == true) {
 						JOptionPane.showInternalMessageDialog(null, "Cadastrado com sucesso!");
 						try {
-							TelaLogin.telaInicial();
+							TelaLogin telaIanicial = new TelaLogin();
+							telaIanicial.telaInicial();
 						} catch (Exception e1) {
 							lblCadastroMsg.setText("Erro ao voltar a tela inicial, clique no botão voltar");
 							return;
@@ -118,7 +119,8 @@ public class TelaCadastroApreciador extends JFrame {
 		btnVolta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					TelaLogin.telaInicial();
+					TelaLogin telaIanicial = new TelaLogin();
+					telaIanicial.telaInicial();
 
 				} catch (Exception e1) {
 

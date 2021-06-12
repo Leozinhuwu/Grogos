@@ -55,7 +55,7 @@ public class TelaCadastroCervejeiro {
 	 * @wbp.parser.entryPoint
 	 */
 
-	public static void telaCadastro() throws Exception {
+	public void telaCadastro() throws Exception {
 
 		CervejeiroBO cadastro = new CervejeiroBO();
 		EstadoBO estadobo = new EstadoBO();
@@ -111,7 +111,8 @@ public class TelaCadastroCervejeiro {
 		btnVolta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					TelaLogin.telaInicial();
+					TelaLogin telaIanicial = new TelaLogin();
+					telaIanicial.telaInicial();
 
 				} catch (Exception e1) {
 
@@ -449,7 +450,8 @@ public class TelaCadastroCervejeiro {
 				}
 				JOptionPane.showInternalMessageDialog(null, "Cadastrado com sucesso!");
 				try {
-					TelaLogin.telaInicial();
+					TelaLogin telaIanicial = new TelaLogin();
+					telaIanicial.telaInicial();
 				} catch (Exception e1) {
 					lblCadastroMsg.setText("Erro ao voltar a tela inicial, clique no botão voltar");
 					return;

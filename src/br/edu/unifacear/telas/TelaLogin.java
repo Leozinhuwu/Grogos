@@ -20,14 +20,14 @@ public class TelaLogin extends JFrame {
 	private static JFrame frameMain;
 	private static JTextField txtEmail;
 	private static JPasswordField passwordField;
-	public static Object usuarioLogado;
+	public static Object usuarioLogado = new Object();
 
 	/**
 	 * @throws Exception
 	 * @wbp.parser.entryPoint
 	 */
 
-	public static void telaInicial() throws Exception {
+	public void telaInicial() throws Exception {
 
 		JPanel panel = new JPanel();
 		panel.setForeground(Color.RED);
@@ -45,7 +45,8 @@ public class TelaLogin extends JFrame {
 		btnCadastrarApreciador.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					TelaCadastroApreciador.telaCadastro();
+					TelaCadastroApreciador tCadastro = new TelaCadastroApreciador();
+					tCadastro.telaCadastro();
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -118,7 +119,8 @@ public class TelaLogin extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				try {
-					TelaCadastroCervejeiro.telaCadastro();
+					TelaCadastroCervejeiro tCadastro = new TelaCadastroCervejeiro();
+					tCadastro.telaCadastro();
 				} catch (Exception e1) {
 
 					e1.printStackTrace();
@@ -177,7 +179,8 @@ public class TelaLogin extends JFrame {
 				}
 				try {
 					usuarioLogado = aprebo.findApreciador(user);
-					TelaPrincipalApreciador.telaPrincipal();
+					TelaPrincipalApreciador tPrincipal = new TelaPrincipalApreciador();
+					tPrincipal.telaPrincipal();
 				} catch (Exception e1) {
 					e1.printStackTrace();
 					lblLoginFail.setText("Erro ao logar, tente novamente");
@@ -194,7 +197,8 @@ public class TelaLogin extends JFrame {
 				}
 				try {
 					usuarioLogado = cerbo.findCervejeiro(usercer);
-					TelaMenuCervejeiro.telaMenuCervejeiro();
+					TelaMenuCervejeiro telaMenuCervejeiros = new TelaMenuCervejeiro();
+					telaMenuCervejeiros.telaMenuCervejeiro();
 				} catch (Exception e1) {
 					e1.printStackTrace();
 					lblLoginFail.setText("Erro ao logar, tente novamente");

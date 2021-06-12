@@ -40,7 +40,7 @@ public class TelaGerenciarDadosCervejeiro {
 	 * @wbp.parser.entryPoint
 	 */
 
-	public static void telaGerenciarDadosCervejeiro() throws Exception {
+	public void telaGerenciarDadosCervejeiro() throws Exception {
 		CervejeiroBO cbo = new CervejeiroBO();
 		Cervejeiro cervLogado = (Cervejeiro) TelaLogin.usuarioLogado;
 		JPanel panel = new JPanel();
@@ -59,7 +59,8 @@ public class TelaGerenciarDadosCervejeiro {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				try {
-					TelaMenuCervejeiro.telaMenuCervejeiro();
+					TelaMenuCervejeiro telaMenuCervejeiros = new TelaMenuCervejeiro();
+					telaMenuCervejeiros.telaMenuCervejeiro();
 				} catch (Exception e1) {
 					// erro ao voltar
 					e1.printStackTrace();
@@ -136,7 +137,9 @@ public class TelaGerenciarDadosCervejeiro {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				try {
-					TelaGerenciarDadosCervejaria.telaGerenciarDadosCervejaria();
+					TelaGerenciarDadosCervejaria tGerenciarDadosCervejaria = new TelaGerenciarDadosCervejaria();
+					tGerenciarDadosCervejaria.telaGerenciarDadosCervejaria();
+					
 				} catch (Exception e1) {
 					// error
 					return;
@@ -531,7 +534,8 @@ public class TelaGerenciarDadosCervejeiro {
 				}
 				
 				try {
-					TelaLogin.telaInicial();
+					TelaLogin telaIanicial = new TelaLogin();
+					telaIanicial.telaInicial();
 				} catch (Exception e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

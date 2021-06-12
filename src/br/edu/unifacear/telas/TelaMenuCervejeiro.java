@@ -16,7 +16,7 @@ public class TelaMenuCervejeiro extends JFrame {
 	 * @wbp.parser.entryPoint
 	 */
 
-	public static void telaMenuCervejeiro() throws Exception {
+	public void telaMenuCervejeiro() throws Exception {
 
 		// labels e botoes do jFrame
 		JPanel panel = new JPanel();
@@ -35,7 +35,8 @@ public class TelaMenuCervejeiro extends JFrame {
 		btnGerenciarDados.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					TelaGerenciarDadosCervejeiro.telaGerenciarDadosCervejeiro();
+					TelaGerenciarDadosCervejeiro tPrincipal = new TelaGerenciarDadosCervejeiro();
+					tPrincipal.telaGerenciarDadosCervejeiro();
 				} catch (Exception e1) {
 				
 					e1.printStackTrace();
@@ -50,9 +51,10 @@ public class TelaMenuCervejeiro extends JFrame {
 		btnMinhasCerveja.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					TelaCervejasCervejeiro.telaMinhasCervejas();
+					TelaCervejasCervejeiro tMinhasCervejas = new TelaCervejasCervejeiro();
+					tMinhasCervejas.telaMinhasCervejas();
 				} catch (Exception e1) {
-					System.out.println("ye");
+
 					e1.printStackTrace();
 					return;
 				}
@@ -67,7 +69,8 @@ public class TelaMenuCervejeiro extends JFrame {
 		btnCadastrarCerveja.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					TelaCadastroCerveja.telaCadastro();
+					TelaCadastroCerveja tCadastro = new TelaCadastroCerveja();
+					tCadastro.telaCadastro();
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -82,7 +85,8 @@ public class TelaMenuCervejeiro extends JFrame {
 		btnLogout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					TelaLogin.telaInicial();
+					TelaLogin telaIanicial = new TelaLogin();
+					telaIanicial.telaInicial();
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();

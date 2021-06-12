@@ -36,7 +36,7 @@ public class TelaCervejasFavoritas {
 	 * @wbp.parser.entryPoint
 	 */
 
-	public static void telaCervejasFavoritas() throws Exception {
+	public void telaCervejasFavoritas() throws Exception {
 
 		JPanel contentPane = new JPanel();
 		contentPane.setForeground(Color.RED);
@@ -108,7 +108,8 @@ public class TelaCervejasFavoritas {
 					return;
 				}
 				try {
-					TelaDetalhesCerveja.telaDetalhesCerveja(cerveja);
+					TelaDetalhesCerveja detalhesCerveja = new TelaDetalhesCerveja();
+					detalhesCerveja.telaDetalhesCerveja(cerveja);
 				} catch (Exception e1) {
 
 					e1.printStackTrace();

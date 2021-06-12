@@ -45,7 +45,7 @@ public class TelaCervejasCervejeiro {
 	 * @wbp.parser.entryPoint
 	 */
 
-	public static void telaMinhasCervejas() throws Exception {
+	public void telaMinhasCervejas() throws Exception {
 		
 		
 		
@@ -117,7 +117,8 @@ public class TelaCervejasCervejeiro {
 				cerveja.setId(codigo);
 				cerveja = cbo.findById(cerveja);
 				try {
-					TelaDetalhesCerveja.telaDetalhesCerveja(cerveja);
+					TelaDetalhesCerveja detalhesCerveja = new TelaDetalhesCerveja();
+					detalhesCerveja.telaDetalhesCerveja(cerveja);
 				} catch (Exception e1) {
 					
 					e1.printStackTrace();
@@ -159,7 +160,8 @@ public class TelaCervejasCervejeiro {
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					TelaMenuCervejeiro.telaMenuCervejeiro();
+					TelaMenuCervejeiro telaMenuCervejeiros = new TelaMenuCervejeiro();
+					telaMenuCervejeiros.telaMenuCervejeiro();
 				} catch (Exception e1) {
 					System.out.println("erro ao voltar");
 					e1.printStackTrace();

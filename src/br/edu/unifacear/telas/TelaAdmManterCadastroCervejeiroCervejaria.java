@@ -45,7 +45,7 @@ public class TelaAdmManterCadastroCervejeiroCervejaria {
 	 * @wbp.parser.entryPoint
 	 */
 
-	public static void telaManterCervejeiro() throws Exception {
+	public void telaManterCervejeiro() throws Exception {
 
 		EstadoBO estadobo = new EstadoBO();
 

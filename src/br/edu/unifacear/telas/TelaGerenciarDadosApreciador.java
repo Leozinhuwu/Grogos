@@ -39,7 +39,7 @@ public class TelaGerenciarDadosApreciador {
 	 * @wbp.parser.entryPoint
 	 */
 
-	public static void telaGerenciarDadosApreciador() throws Exception {
+	public void telaGerenciarDadosApreciador() throws Exception {
 
 		Apreciador apreLogado = (Apreciador) TelaLogin.usuarioLogado;
 		ApreciadorBO abo = new ApreciadorBO();
@@ -61,7 +61,8 @@ public class TelaGerenciarDadosApreciador {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				try {
-					TelaPrincipalApreciador.telaPrincipal();
+					TelaPrincipalApreciador tPrincipal = new TelaPrincipalApreciador();
+					tPrincipal.telaPrincipal();
 				} catch (Exception e1) {
 					// erro ao voltar
 					e1.printStackTrace();
@@ -369,7 +370,8 @@ public class TelaGerenciarDadosApreciador {
 			}
 			
 			try {
-				TelaLogin.telaInicial();
+				TelaLogin telaIanicial = new TelaLogin();
+				telaIanicial.telaInicial();
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();

@@ -47,7 +47,7 @@ public class TelaPesquisa {
 	 * @wbp.parser.entryPoint
 	 */
 
-	public static void telaPesquisa() throws Exception {
+	public void telaPesquisa() throws Exception {
 
 		// labels e botoes do jFrame
 		JPanel panel = new JPanel();
@@ -69,7 +69,8 @@ public class TelaPesquisa {
 		btnVolta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					TelaPrincipalApreciador.telaPrincipal();
+					TelaPrincipalApreciador tPrincipal = new TelaPrincipalApreciador();
+					tPrincipal.telaPrincipal();
 
 				} catch (Exception e1) {
 
@@ -285,7 +286,8 @@ public class TelaPesquisa {
 					e2.printStackTrace();
 				}
 				try {
-					TelaDetalhesCerveja.telaDetalhesCerveja(cerveja);
+					TelaDetalhesCerveja detalhesCerveja = new TelaDetalhesCerveja();
+					detalhesCerveja.telaDetalhesCerveja(cerveja);
 				} catch (Exception e1) {
 					
 					e1.printStackTrace();

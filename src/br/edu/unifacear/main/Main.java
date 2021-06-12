@@ -19,9 +19,11 @@ public class Main {
 		
 		//TelaCadastroApreciador.telaCadastro();
 		//TelaCadastroCervejeiro.telaCadastro();
-		TelaLogin.telaInicial();
+		TelaLogin telaIanicial = new TelaLogin();
+		telaIanicial.telaInicial();
 		//TelaCadastroCerveja.telaCadastro();
-		TelaAdm.telaAdm();
+		TelaAdm tAdm = new TelaAdm();
+		tAdm.telaAdm();
 		
 	}
 

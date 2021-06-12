@@ -22,7 +22,7 @@ public class TelaAdm {
 	 * @wbp.parser.entryPoint
 	 */
 
-	public static void telaAdm() throws Exception {
+	public void telaAdm() throws Exception {
 
 		JPanel panel = new JPanel();
 		panel.setForeground(Color.RED);
@@ -57,7 +57,8 @@ public class TelaAdm {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					TelaAdmManterCadastroCerveja.telaAdmCerveja();
+					TelaAdmManterCadastroCerveja tAdmCerveja = new TelaAdmManterCadastroCerveja();
+					tAdmCerveja.telaAdmCerveja();
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -71,7 +72,8 @@ public class TelaAdm {
 		btnCervejeiroECervejaria.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					TelaAdmManterCadastroCervejeiroCervejaria.telaManterCervejeiro();
+					TelaAdmManterCadastroCervejeiroCervejaria tManterCervejeiro =  new TelaAdmManterCadastroCervejeiroCervejaria();
+					tManterCervejeiro.telaManterCervejeiro();
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -93,7 +95,8 @@ public class TelaAdm {
 		btnCervejeiroEApreciador.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					TelaAdmGerenciarBanimentos.telaAdmDesativarCervejeiroApreciador();
+					TelaAdmGerenciarBanimentos tAdmDesativarCervejeiroApreciador = new TelaAdmGerenciarBanimentos();
+					tAdmDesativarCervejeiroApreciador.telaAdmDesativarCervejeiroApreciador();
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
