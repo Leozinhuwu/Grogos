@@ -64,7 +64,7 @@ public class TelaCadastroCervejeiro {
 		// labels e botoes do jFrame
 		JPanel panel = new JPanel();
 		panel.setForeground(Color.RED);
-		panel.setBackground(Color.WHITE);
+		panel.setBackground(new Color(244, 164, 96));
 		frameCadastro = new JFrame();
 		frameCadastro.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\leo4_\\Desktop\\GrogosPesq.jpg"));
 		frameCadastro.setSize(923, 751);
@@ -76,11 +76,11 @@ public class TelaCadastroCervejeiro {
 
 		JLabel lblCadastroMsg = new JLabel("");
 		lblCadastroMsg.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblCadastroMsg.setBounds(482, 594, 336, 23);
+		lblCadastroMsg.setBounds(518, 651, 336, 23);
 		panel.add(lblCadastroMsg);
 
 		JComboBox<Cidade> comboBoxCidade = new JComboBox<Cidade>();
-		comboBoxCidade.setBounds(113, 586, 175, 22);
+		comboBoxCidade.setBounds(134, 585, 175, 22);
 		panel.add(comboBoxCidade);
 
 		JComboBox<Estado> comboBoxEstado = new JComboBox<Estado>();
@@ -96,7 +96,7 @@ public class TelaCadastroCervejeiro {
 				}
 			}
 		});
-		comboBoxEstado.setBounds(113, 554, 175, 22);
+		comboBoxEstado.setBounds(134, 553, 175, 22);
 		panel.add(comboBoxEstado);
 
 		for (Estado e : estadobo.estados()) {
@@ -106,7 +106,7 @@ public class TelaCadastroCervejeiro {
 
 		JButton btnVolta = new JButton("Voltar");
 		btnVolta.setForeground(Color.BLACK);
-		btnVolta.setFont(new Font("Trebuchet MS", Font.PLAIN, 11));
+		btnVolta.setFont(new Font("Arial Black", Font.BOLD, 12));
 		btnVolta.setBackground(Color.LIGHT_GRAY);
 		btnVolta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -126,7 +126,9 @@ public class TelaCadastroCervejeiro {
 		panel.add(btnVolta);
 
 		JLabel lblTitle = new JLabel("Cadastrar-se ");
-		lblTitle.setForeground(Color.RED);
+		lblTitle.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTitle.setForeground(new Color(255, 69, 0));
 		lblTitle.setBounds(343, 25, 281, 14);
 		panel.add(lblTitle);
 
@@ -144,14 +146,16 @@ public class TelaCadastroCervejeiro {
 		panel.add(textFieldEmail);
 		textFieldEmail.setColumns(10);
 
-		JLabel lblEmail = new JLabel("Email:");
+		JLabel lblEmail = new JLabel("*Email:");
+		lblEmail.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblEmail.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblEmail.setBounds(82, 189, 46, 14);
+		lblEmail.setBounds(67, 189, 61, 14);
 		panel.add(lblEmail);
 
-		JLabel lblPassword = new JLabel("Password:");
+		JLabel lblPassword = new JLabel("*Password:");
+		lblPassword.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblPassword.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblPassword.setBounds(57, 217, 71, 14);
+		lblPassword.setBounds(49, 217, 79, 14);
 		panel.add(lblPassword);
 
 		passwordField = new JPasswordField();
@@ -169,7 +173,7 @@ public class TelaCadastroCervejeiro {
 
 		JLabel lblGrogosImg = new JLabel(grogos);
 		
-		lblGrogosImg.setBounds(485, 36, 398, 404);
+		lblGrogosImg.setBounds(499, 78, 398, 404);
 		panel.add(lblGrogosImg);
 
 		textFieldIdade = new JTextField();
@@ -201,17 +205,20 @@ public class TelaCadastroCervejeiro {
 		textFieldNome.setBounds(146, 122, 175, 20);
 		panel.add(textFieldNome);
 
-		JLabel lblAge = new JLabel("Idade:");
+		JLabel lblAge = new JLabel("*Idade:");
+		lblAge.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblAge.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblAge.setBounds(82, 156, 46, 14);
+		lblAge.setBounds(57, 156, 71, 14);
 		panel.add(lblAge);
 
-		JLabel lblName = new JLabel("Nome:");
+		JLabel lblName = new JLabel("*Nome:");
+		lblName.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblName.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblName.setBounds(82, 125, 46, 14);
+		lblName.setBounds(49, 125, 79, 14);
 		panel.add(lblName);
 
-		JLabel lblTelefone = new JLabel("Telefone:");
+		JLabel lblTelefone = new JLabel("*Telefone:");
+		lblTelefone.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblTelefone.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblTelefone.setBounds(57, 248, 71, 14);
 		panel.add(lblTelefone);
@@ -229,29 +236,36 @@ public class TelaCadastroCervejeiro {
 		textToken.setForeground(Color.BLACK);
 		textToken.setColumns(10);
 		textToken.setBackground(Color.WHITE);
-		textToken.setBounds(643, 529, 175, 20);
+		textToken.setBounds(679, 586, 175, 20);
 		panel.add(textToken);
 
-		JLabel lblToken = new JLabel("Passe:");
-		lblToken.setBounds(596, 532, 46, 14);
+		JLabel lblToken = new JLabel("*Passe:");
+		lblToken.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblToken.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblToken.setBounds(599, 589, 71, 14);
 		panel.add(lblToken);
 
 		JLabel lblAutonomo = new JLabel(
 				"Caso n\u00E3o tenha/trabalhe em uma cervejaria, selecione a op\u00E7\u00E3o Aut\u00F4nomo");
+		lblAutonomo.setFont(new Font("Arial", Font.BOLD, 11));
 		lblAutonomo.setBounds(67, 339, 487, 14);
 		panel.add(lblAutonomo);
 
-		JCheckBox chckbxAutonomo = new JCheckBox("Aut\u00F4nomo");
-		chckbxAutonomo.setBounds(66, 367, 97, 23);
+		JCheckBox chckbxAutonomo = new JCheckBox("Sou Aut\u00F4nomo");
+		chckbxAutonomo.setFont(new Font("Tahoma", Font.BOLD, 11));
+		chckbxAutonomo.setBounds(66, 367, 126, 23);
 		panel.add(chckbxAutonomo);
 
 		JLabel lblDadosCervejaria = new JLabel("Dados da Cervejaria \r");
-		lblDadosCervejaria.setBounds(146, 426, 160, 14);
+		lblDadosCervejaria.setHorizontalAlignment(SwingConstants.CENTER);
+		lblDadosCervejaria.setFont(new Font("Arial Black", Font.PLAIN, 12));
+		lblDadosCervejaria.setBounds(122, 425, 183, 23);
 		panel.add(lblDadosCervejaria);
 
-		JLabel lblNomeCervejaria = new JLabel("Nome Cervejaria:");
+		JLabel lblNomeCervejaria = new JLabel("*Nome Cervejaria:");
+		lblNomeCervejaria.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblNomeCervejaria.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblNomeCervejaria.setBounds(0, 469, 103, 14);
+		lblNomeCervejaria.setBounds(10, 468, 114, 14);
 		panel.add(lblNomeCervejaria);
 
 		textNomeCervejaria = new JTextField();
@@ -259,12 +273,13 @@ public class TelaCadastroCervejeiro {
 		textNomeCervejaria.setForeground(Color.BLACK);
 		textNomeCervejaria.setColumns(10);
 		textNomeCervejaria.setBackground(Color.WHITE);
-		textNomeCervejaria.setBounds(113, 466, 175, 20);
+		textNomeCervejaria.setBounds(134, 465, 175, 20);
 		panel.add(textNomeCervejaria);
 
-		JLabel lblEmailCervejaria = new JLabel("Email:");
+		JLabel lblEmailCervejaria = new JLabel("*Email:");
+		lblEmailCervejaria.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblEmailCervejaria.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblEmailCervejaria.setBounds(49, 500, 46, 14);
+		lblEmailCervejaria.setBounds(49, 499, 67, 14);
 		panel.add(lblEmailCervejaria);
 
 		textFieldEmailCervejaria = new JTextField();
@@ -272,32 +287,36 @@ public class TelaCadastroCervejeiro {
 		textFieldEmailCervejaria.setForeground(Color.BLACK);
 		textFieldEmailCervejaria.setColumns(10);
 		textFieldEmailCervejaria.setBackground(Color.WHITE);
-		textFieldEmailCervejaria.setBounds(113, 497, 175, 20);
+		textFieldEmailCervejaria.setBounds(134, 496, 175, 20);
 		panel.add(textFieldEmailCervejaria);
 
-		JLabel lblEstado = new JLabel("Estado:");
+		JLabel lblEstado = new JLabel("*Estado:");
+		lblEstado.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblEstado.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblEstado.setBounds(53, 558, 46, 14);
+		lblEstado.setBounds(49, 557, 71, 14);
 		panel.add(lblEstado);
 
-		JLabel lblCidade = new JLabel("Cidade:");
+		JLabel lblCidade = new JLabel("*Cidade:");
+		lblCidade.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblCidade.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblCidade.setBounds(53, 590, 46, 14);
+		lblCidade.setBounds(49, 589, 71, 14);
 		panel.add(lblCidade);
 
-		JLabel lblEndereco = new JLabel("Endere\u00E7o:");
+		JLabel lblEndereco = new JLabel("*Endere\u00E7o:");
+		lblEndereco.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblEndereco.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblEndereco.setBounds(28, 615, 71, 14);
+		lblEndereco.setBounds(37, 614, 83, 14);
 		panel.add(lblEndereco);
 
 		textFieldEndereco = new JTextField();
-		textFieldEndereco.setBounds(113, 612, 359, 20);
+		textFieldEndereco.setBounds(134, 611, 359, 20);
 		panel.add(textFieldEndereco);
 		textFieldEndereco.setColumns(10);
 
-		JLabel lblTelefoneCervejaria = new JLabel("Telefone:");
+		JLabel lblTelefoneCervejaria = new JLabel("*Telefone:");
+		lblTelefoneCervejaria.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblTelefoneCervejaria.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblTelefoneCervejaria.setBounds(24, 528, 71, 14);
+		lblTelefoneCervejaria.setBounds(37, 527, 79, 14);
 		panel.add(lblTelefoneCervejaria);
 
 		textFieldTelefoneCervejaria = new JTextField();
@@ -305,10 +324,11 @@ public class TelaCadastroCervejeiro {
 		textFieldTelefoneCervejaria.setForeground(Color.BLACK);
 		textFieldTelefoneCervejaria.setColumns(10);
 		textFieldTelefoneCervejaria.setBackground(Color.WHITE);
-		textFieldTelefoneCervejaria.setBounds(113, 525, 175, 20);
+		textFieldTelefoneCervejaria.setBounds(134, 524, 175, 20);
 		panel.add(textFieldTelefoneCervejaria);
 
 		JButton btnCadastrar = new JButton("Cadastrar");
+		btnCadastrar.setFont(new Font("Arial Black", Font.BOLD, 12));
 		btnCadastrar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -376,7 +396,7 @@ public class TelaCadastroCervejeiro {
 
 		});
 
-		btnCadastrar.setBounds(655, 560, 154, 23);
+		btnCadastrar.setBounds(691, 617, 154, 23);
 		panel.add(btnCadastrar);
 
 		frameCadastro.setVisible(true);

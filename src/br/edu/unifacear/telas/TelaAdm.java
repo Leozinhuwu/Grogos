@@ -26,7 +26,7 @@ public class TelaAdm {
 
 		JPanel panel = new JPanel();
 		panel.setForeground(Color.RED);
-		panel.setBackground(Color.WHITE);
+		panel.setBackground(new Color(244, 164, 96));
 		frameMain = new JFrame();
 		frameMain.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\leo4_\\Desktop\\GrogosPesq.jpg"));
 		frameMain.setSize(923, 574);
@@ -39,7 +39,7 @@ public class TelaAdm {
 		JLabel lblTitle = new JLabel("Gerenciamento do Sistema");
 		lblTitle.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
-		lblTitle.setForeground(new Color(255, 102, 0));
+		lblTitle.setForeground(new Color(255, 69, 0));
 		lblTitle.setBounds(302, 11, 286, 14);
 		panel.add(lblTitle);
 
@@ -88,7 +88,7 @@ public class TelaAdm {
 		JLabel lblBanimentoCervejeiroE = new JLabel("Desativar Contas");
 		lblBanimentoCervejeiroE.setHorizontalAlignment(SwingConstants.CENTER);
 		lblBanimentoCervejeiroE.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblBanimentoCervejeiroE.setBounds(10, 298, 286, 20);
+		lblBanimentoCervejeiroE.setBounds(10, 294, 286, 20);
 		panel.add(lblBanimentoCervejeiroE);
 		
 		JButton btnCervejeiroEApreciador = new JButton("Cervejeiro e Apreciador");

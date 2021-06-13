@@ -64,7 +64,7 @@ public class TelaAdmManterCadastroCervejeiroCervejaria {
 		JLabel lblTitle = new JLabel("Gerenciamento Cadastro de Cerveja e Cervejaria");
 		lblTitle.setFont(new Font("Yu Gothic", Font.BOLD, 13));
 		lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
-		lblTitle.setForeground(new Color(255, 102, 0));
+		lblTitle.setForeground(new Color(255, 69, 0));
 		lblTitle.setBounds(242, 22, 418, 32);
 		panel.add(lblTitle);
 
@@ -80,6 +80,7 @@ public class TelaAdmManterCadastroCervejeiroCervejaria {
 		textToken.setColumns(10);
 
 		JButton btnGerar = new JButton("Gerar");
+		btnGerar.setFont(new Font("Arial Black", Font.PLAIN, 12));
 		btnGerar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -114,6 +115,7 @@ public class TelaAdmManterCadastroCervejeiroCervejaria {
 		panel.add(btnGerar);
 
 		JLabel lblTokenText = new JLabel("Token:");
+		lblTokenText.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblTokenText.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblTokenText.setBounds(54, 147, 46, 14);
 		panel.add(lblTokenText);
@@ -140,6 +142,7 @@ public class TelaAdmManterCadastroCervejeiroCervejaria {
 		panel.add(lblCadastroMsgEstado);
 
 		JButton btnNovoEstado = new JButton("Cadastrar");
+		btnNovoEstado.setFont(new Font("Arial Black", Font.BOLD, 12));
 		btnNovoEstado.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -170,6 +173,7 @@ public class TelaAdmManterCadastroCervejeiroCervejaria {
 		panel.add(lblCadastrarNoEstado);
 
 		JLabel lblNovoEstado = new JLabel("Novo Estado:");
+		lblNovoEstado.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblNovoEstado.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblNovoEstado.setBounds(21, 342, 89, 14);
 		panel.add(lblNovoEstado);
@@ -181,6 +185,7 @@ public class TelaAdmManterCadastroCervejeiroCervejaria {
 		panel.add(lblCadastrarNovaCidade);
 
 		JLabel lblNovaCidade = new JLabel("Nova Cidade:");
+		lblNovaCidade.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblNovaCidade.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblNovaCidade.setBounds(15, 501, 89, 14);
 		panel.add(lblNovaCidade);
@@ -227,6 +232,7 @@ public class TelaAdmManterCadastroCervejeiroCervejaria {
 		}
 
 		JButton btnNovaCidade = new JButton("Cadastrar");
+		btnNovaCidade.setFont(new Font("Arial Black", Font.BOLD, 12));
 		btnNovaCidade.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -252,6 +258,7 @@ public class TelaAdmManterCadastroCervejeiroCervejaria {
 		panel.add(btnNovaCidade);
 
 		JLabel lblSelecioneEstado = new JLabel("Selecione Estado:");
+		lblSelecioneEstado.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblSelecioneEstado.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblSelecioneEstado.setBounds(0, 474, 106, 14);
 		panel.add(lblSelecioneEstado);

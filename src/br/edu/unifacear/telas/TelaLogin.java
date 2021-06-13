@@ -42,6 +42,7 @@ public class TelaLogin extends JFrame {
 		panel.setLayout(null);
 
 		JButton btnCadastrarApreciador = new JButton("Cadastrar");
+		btnCadastrarApreciador.setFont(new Font("Arial Black", Font.BOLD, 11));
 		btnCadastrarApreciador.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
@@ -56,20 +57,22 @@ public class TelaLogin extends JFrame {
 
 		});
 
-		btnCadastrarApreciador.setBounds(159, 535, 131, 23);
+		btnCadastrarApreciador.setBounds(88, 535, 138, 23);
 		panel.add(btnCadastrarApreciador);
 
 		JLabel lblLoginFail = new JLabel("");
-		lblLoginFail.setBounds(146, 194, 196, 45);
+		lblLoginFail.setHorizontalAlignment(SwingConstants.CENTER);
+		lblLoginFail.setBounds(105, 267, 213, 36);
 		panel.add(lblLoginFail);
 
 		JButton btnLogar = new JButton("Logar");
+		btnLogar.setFont(new Font("Arial Black", Font.BOLD, 12));
 		btnLogar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				efetuarLogin(lblLoginFail);
 			}
 		});
-		btnLogar.setBounds(166, 235, 89, 23);
+		btnLogar.setBounds(155, 235, 89, 23);
 		panel.add(btnLogar);
 
 		txtEmail = new JTextField();
@@ -87,16 +90,21 @@ public class TelaLogin extends JFrame {
 		txtEmail.setColumns(10);
 
 		JLabel lblCadastrarApreciador = new JLabel("Novo Apreciador?  Cadastre-se aqui");
+		lblCadastrarApreciador.setHorizontalAlignment(SwingConstants.CENTER);
 		lblCadastrarApreciador.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblCadastrarApreciador.setBounds(105, 510, 237, 14);
+		lblCadastrarApreciador.setBounds(53, 510, 237, 14);
 		panel.add(lblCadastrarApreciador);
 
 		JLabel lblEmail = new JLabel("Email:");
-		lblEmail.setBounds(74, 162, 46, 14);
+		lblEmail.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblEmail.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblEmail.setBounds(56, 162, 46, 14);
 		panel.add(lblEmail);
 
 		JLabel lblPassword = new JLabel("Password:");
-		lblPassword.setBounds(49, 207, 71, 14);
+		lblPassword.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblPassword.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblPassword.setBounds(32, 207, 71, 14);
 		panel.add(lblPassword);
 
 		passwordField = new JPasswordField();
@@ -110,11 +118,13 @@ public class TelaLogin extends JFrame {
 		panel.add(lblGrogosImg);
 
 		JLabel lblJPossuiPasse = new JLabel("J\u00E1 possui passe de Cervejeiro?  Cadastre-se aqui");
+		lblJPossuiPasse.setHorizontalAlignment(SwingConstants.CENTER);
 		lblJPossuiPasse.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblJPossuiPasse.setBounds(609, 510, 300, 14);
 		panel.add(lblJPossuiPasse);
 
 		JButton btnCadastrarCervejeiro = new JButton("Cadastrar");
+		btnCadastrarCervejeiro.setFont(new Font("Arial Black", Font.BOLD, 11));
 		btnCadastrarCervejeiro.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -144,8 +154,8 @@ public class TelaLogin extends JFrame {
 
 		JLabel lblEfetueSeuLogin = new JLabel("Efetue seu Login");
 		lblEfetueSeuLogin.setForeground(new Color(0, 0, 0));
-		lblEfetueSeuLogin.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblEfetueSeuLogin.setBounds(137, 126, 228, 14);
+		lblEfetueSeuLogin.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblEfetueSeuLogin.setBounds(115, 108, 227, 23);
 		panel.add(lblEfetueSeuLogin);
 
 		frameMain.setVisible(true);

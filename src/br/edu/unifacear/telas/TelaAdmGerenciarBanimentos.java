@@ -38,7 +38,7 @@ public class TelaAdmGerenciarBanimentos {
 		
 		JPanel panel = new JPanel();
 		panel.setForeground(Color.RED);
-		panel.setBackground(Color.WHITE);
+		panel.setBackground(new Color(244, 164, 96));
 		frameMain = new JFrame();
 		frameMain.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\leo4_\\Desktop\\GrogosPesq.jpg"));
 		frameMain.setSize(977, 636);
@@ -51,7 +51,7 @@ public class TelaAdmGerenciarBanimentos {
 		JLabel lblTitle = new JLabel("Gerenciamento de Contas");
 		lblTitle.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
-		lblTitle.setForeground(new Color(255, 102, 0));
+		lblTitle.setForeground(new Color(255, 69, 0));
 		lblTitle.setBounds(336, 11, 238, 23);
 		panel.add(lblTitle);
 
@@ -62,8 +62,9 @@ public class TelaAdmGerenciarBanimentos {
 		panel.add(lblGerenciarStatusCervejeiro);
 
 		JLabel lblEmailCervejeiro = new JLabel("Selecionar Cervejeiro:");
+		lblEmailCervejeiro.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblEmailCervejeiro.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblEmailCervejeiro.setBounds(37, 181, 148, 14);
+		lblEmailCervejeiro.setBounds(26, 181, 159, 14);
 		panel.add(lblEmailCervejeiro);
 		lblMsgCervejeiro.setHorizontalAlignment(SwingConstants.CENTER);
 
@@ -77,6 +78,7 @@ public class TelaAdmGerenciarBanimentos {
 		panel.add(lblMsgApreciador);
 		
 		JLabel lblCervejeiroSelecionado = new JLabel("Cervejeiro Selecionado:");
+		lblCervejeiroSelecionado.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblCervejeiroSelecionado.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblCervejeiroSelecionado.setBounds(26, 219, 159, 14);
 		panel.add(lblCervejeiroSelecionado);
@@ -97,6 +99,8 @@ public class TelaAdmGerenciarBanimentos {
 		panel.add(comboBox);
 		
 		JButton btnReativar = new JButton("Reativar");
+		btnReativar.setFont(new Font("Arial Black", Font.BOLD, 11));
+		btnReativar.setForeground(new Color(0, 128, 0));
 		btnReativar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				CervejeiroBO cbo = new CervejeiroBO();
@@ -134,6 +138,8 @@ public class TelaAdmGerenciarBanimentos {
 		
 		
 		JButton btnDeletarCervejeiro = new JButton("Desativar");
+		btnDeletarCervejeiro.setFont(new Font("Arial Black", Font.BOLD, 11));
+		btnDeletarCervejeiro.setForeground(new Color(255, 0, 0));
 		btnDeletarCervejeiro.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -170,6 +176,7 @@ public class TelaAdmGerenciarBanimentos {
 		panel.add(lblGerenciarStatusApreciador);
 		
 		JLabel lblEmailApreciador = new JLabel("Selecionar Apreciador:");
+		lblEmailApreciador.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblEmailApreciador.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblEmailApreciador.setBounds(48, 420, 148, 14);
 		panel.add(lblEmailApreciador);
@@ -194,6 +201,8 @@ public class TelaAdmGerenciarBanimentos {
 
 		
 		JButton btnReativarApreciador = new JButton("Reativar");
+		btnReativarApreciador.setForeground(new Color(0, 128, 0));
+		btnReativarApreciador.setFont(new Font("Arial Black", Font.BOLD, 11));
 		btnReativarApreciador.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ApreciadorBO abo = new ApreciadorBO();
@@ -222,6 +231,8 @@ public class TelaAdmGerenciarBanimentos {
 	
 		
 		JButton btnDesativarApreciador = new JButton("Desativar");
+		btnDesativarApreciador.setForeground(new Color(255, 0, 0));
+		btnDesativarApreciador.setFont(new Font("Arial Black", Font.BOLD, 11));
 		btnDesativarApreciador.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ApreciadorBO abo = new ApreciadorBO();
@@ -256,6 +267,7 @@ public class TelaAdmGerenciarBanimentos {
 		panel.add(textFieldApreciador);
 		
 		JLabel lblApreciadorSelecionado = new JLabel("Apreciador Selecionado:");
+		lblApreciadorSelecionado.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblApreciadorSelecionado.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblApreciadorSelecionado.setBounds(37, 458, 159, 14);
 		panel.add(lblApreciadorSelecionado);

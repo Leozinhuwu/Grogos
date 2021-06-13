@@ -81,7 +81,7 @@ public class TelaMenuCervejeiro extends JFrame {
 		btnCadastrarCerveja.setBounds(98, 183, 172, 23);
 		panel.add(btnCadastrarCerveja);
 
-		JButton btnLogout = new JButton("Logout");
+		JButton btnLogout = new JButton("Sair");
 		btnLogout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
@@ -100,13 +100,14 @@ public class TelaMenuCervejeiro extends JFrame {
 		
 		ImageIcon grogos = new ImageIcon(TelaMenuCervejeiro.class.getResource("/Grogos_Final_Edition.png"));
 		JLabel lblGrogosImg = new JLabel(grogos);
-		lblGrogosImg.setBounds(395, 100, 204, 263);
+		lblGrogosImg.setBounds(326, 76, 387, 342);
 		panel.add(lblGrogosImg);
 		
 		JLabel lblBemvindoCervejeiro = new JLabel("Bem-vindo Cervejeiro");
-		lblBemvindoCervejeiro.setForeground(new Color(255, 102, 51));
+		lblBemvindoCervejeiro.setHorizontalAlignment(SwingConstants.CENTER);
+		lblBemvindoCervejeiro.setForeground(new Color(255, 69, 0));
 		lblBemvindoCervejeiro.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblBemvindoCervejeiro.setBounds(431, 31, 228, 14);
+		lblBemvindoCervejeiro.setBounds(273, 27, 228, 14);
 		panel.add(lblBemvindoCervejeiro);
 
 		frameMenuUser.setVisible(true);

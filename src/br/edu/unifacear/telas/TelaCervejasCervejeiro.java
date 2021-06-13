@@ -26,6 +26,7 @@ import br.edu.unifacear.bo.CervejaBO;
 import br.edu.unifacear.classes.Cerveja;
 import br.edu.unifacear.classes.Cervejeiro;
 import java.awt.Font;
+import javax.swing.SwingConstants;
 
 
 
@@ -53,7 +54,7 @@ public class TelaCervejasCervejeiro {
 		// labels e botoes do jFrame
 		JPanel contentPane = new JPanel();
 		contentPane.setForeground(Color.RED);
-		contentPane.setBackground(Color.WHITE);
+		contentPane.setBackground(new Color(244, 164, 96));
 		frameMinhasCervejas = new JFrame();
 		frameMinhasCervejas.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\leo4_\\Desktop\\GrogosPesq.jpg"));
 		frameMinhasCervejas.setSize(1000, 700);
@@ -67,7 +68,8 @@ public class TelaCervejasCervejeiro {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(null);
 		
-		lblCerveja = new JLabel("Suas Cervejas");
+		lblCerveja = new JLabel("Cervejas Adicionadas");
+		lblCerveja.setFont(new Font("Tahoma", Font.BOLD, 13));
 		lblCerveja.setBounds(40, 78, 206, 14);
 		contentPane.add(lblCerveja);
 		
@@ -102,6 +104,7 @@ public class TelaCervejasCervejeiro {
 		contentPane.add(scroll);
 
 		btnVerDetalhes = new JButton("Ver Detalhes");
+		btnVerDetalhes.setFont(new Font("Arial Black", Font.BOLD, 12));
 		btnVerDetalhes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Cerveja cerveja = new Cerveja();
@@ -126,10 +129,11 @@ public class TelaCervejasCervejeiro {
 				}
 			}
 		});
-		btnVerDetalhes.setBounds(695, 136, 115, 23);
+		btnVerDetalhes.setBounds(695, 136, 139, 23);
 		contentPane.add(btnVerDetalhes);
 
 		btnExcluir = new JButton("Excluir");
+		btnExcluir.setFont(new Font("Arial Black", Font.BOLD, 12));
 		btnExcluir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Cerveja cerveja = new Cerveja();
@@ -153,10 +157,11 @@ public class TelaCervejasCervejeiro {
 				pesquisarGrupo();
 			}
 		});
-		btnExcluir.setBounds(695, 170, 115, 23);
+		btnExcluir.setBounds(695, 170, 139, 23);
 		contentPane.add(btnExcluir);
 		
 		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.setFont(new Font("Arial Black", Font.BOLD, 12));
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
@@ -174,9 +179,10 @@ public class TelaCervejasCervejeiro {
 		contentPane.add(btnVoltar);
 		
 		JLabel lblNewLabel = new JLabel("Suas Cervejas");
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblNewLabel.setForeground(new Color(255, 102, 51));
-		lblNewLabel.setBounds(343, 20, 190, 14);
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblNewLabel.setForeground(new Color(255, 69, 0));
+		lblNewLabel.setBounds(325, 15, 206, 19);
 		contentPane.add(lblNewLabel);
 		
 		frameMinhasCervejas.setVisible(true);
