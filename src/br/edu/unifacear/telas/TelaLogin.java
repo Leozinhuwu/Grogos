@@ -96,15 +96,15 @@ public class TelaLogin extends JFrame {
 		panel.add(lblCadastrarApreciador);
 
 		JLabel lblEmail = new JLabel("Email:");
-		lblEmail.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblEmail.setFont(new Font("Arial Black", Font.BOLD, 11));
 		lblEmail.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblEmail.setBounds(56, 162, 46, 14);
+		lblEmail.setBounds(53, 162, 49, 14);
 		panel.add(lblEmail);
 
 		JLabel lblPassword = new JLabel("Password:");
-		lblPassword.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblPassword.setFont(new Font("Arial Black", Font.BOLD, 11));
 		lblPassword.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblPassword.setBounds(32, 207, 71, 14);
+		lblPassword.setBounds(10, 204, 93, 17);
 		panel.add(lblPassword);
 
 		passwordField = new JPasswordField();

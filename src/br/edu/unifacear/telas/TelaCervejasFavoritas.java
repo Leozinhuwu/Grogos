@@ -22,6 +22,7 @@ import br.edu.unifacear.bo.ApreciadorBO;
 import br.edu.unifacear.bo.CervejaBO;
 import br.edu.unifacear.classes.Apreciador;
 import br.edu.unifacear.classes.Cerveja;
+import javax.swing.SwingConstants;
 
 public class TelaCervejasFavoritas {
 	private static JFrame frameCervejasFavoritas;
@@ -40,7 +41,7 @@ public class TelaCervejasFavoritas {
 
 		JPanel contentPane = new JPanel();
 		contentPane.setForeground(Color.RED);
-		contentPane.setBackground(Color.WHITE);
+		contentPane.setBackground(new Color(244, 164, 96));
 		frameCervejasFavoritas = new JFrame();
 		frameCervejasFavoritas
 				.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\leo4_\\Desktop\\GrogosPesq.jpg"));
@@ -51,15 +52,16 @@ public class TelaCervejasFavoritas {
 		frameCervejasFavoritas.getContentPane().add(contentPane);
 		contentPane.setLayout(null);
 
-		lblCerveja = new JLabel("Cervejas Favoritas");
-		lblCerveja.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblCerveja = new JLabel("Suas Cervejas Favoritas");
+		lblCerveja.setFont(new Font("Tahoma", Font.BOLD, 12));
 		lblCerveja.setBounds(40, 78, 206, 14);
 		contentPane.add(lblCerveja);
 
 		tblCervejas = new JTable();
+		tblCervejas.setFont(new Font("Tahoma", Font.BOLD, 11));
 		tblCervejas.getTableHeader().setReorderingAllowed(false);
 
-		tblCervejas.setModel(new DefaultTableModel(new Object[][] {}, new String[] { "Nome", "Tipo" , "Coloração", "Sabor" , "Pais" }) {
+		tblCervejas.setModel(new DefaultTableModel(new Object[][] {}, new String[] { "Nome", "Tipo" , "Coloração", "Sabor" , "País" }) {
 			/**
 				 * 
 				 */
@@ -85,6 +87,7 @@ public class TelaCervejasFavoritas {
 		contentPane.add(scroll);
 
 		btnVerDetalhes = new JButton("Ver Detalhes");
+		btnVerDetalhes.setFont(new Font("Arial Black", Font.BOLD, 12));
 		
 		btnVerDetalhes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -117,10 +120,11 @@ public class TelaCervejasFavoritas {
 				}
 			}
 		});
-		btnVerDetalhes.setBounds(695, 136, 115, 23);
+		btnVerDetalhes.setBounds(695, 136, 142, 23);
 		contentPane.add(btnVerDetalhes);
 
 		btnRemoverFavoritos = new JButton("Remover");
+		btnRemoverFavoritos.setFont(new Font("Arial Black", Font.BOLD, 12));
 		
 		btnRemoverFavoritos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -164,13 +168,14 @@ public class TelaCervejasFavoritas {
 				cervejasFavoritas();
 			}
 		});
-		btnRemoverFavoritos.setBounds(695, 170, 115, 23);
+		btnRemoverFavoritos.setBounds(695, 170, 142, 23);
 		contentPane.add(btnRemoverFavoritos);
 
-		JLabel lblNewLabel = new JLabel("Suas Cervejas Favoritas");
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblNewLabel.setForeground(new Color(255, 102, 51));
-		lblNewLabel.setBounds(343, 20, 190, 14);
+		JLabel lblNewLabel = new JLabel("Gerenciar Cervejas Favoritas");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblNewLabel.setForeground(new Color(255, 69, 0));
+		lblNewLabel.setBounds(296, 20, 237, 14);
 		contentPane.add(lblNewLabel);
 		
 		lblMsgRemover = new JLabel("");
