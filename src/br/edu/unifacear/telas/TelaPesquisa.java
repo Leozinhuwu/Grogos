@@ -52,7 +52,7 @@ public class TelaPesquisa {
 		// labels e botoes do jFrame
 		JPanel panel = new JPanel();
 		panel.setForeground(Color.RED);
-		panel.setBackground(Color.WHITE);
+		panel.setBackground(new Color(244, 164, 96));
 		framePesquisa = new JFrame();
 		framePesquisa.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\leo4_\\Desktop\\GrogosPesq.jpg"));
 		framePesquisa.setSize(1000, 893);
@@ -84,25 +84,30 @@ public class TelaPesquisa {
 		panel.add(btnVolta);
 		
 		JLabel lblNome = new JLabel("Nome:");
+		lblNome.setFont(new Font("Arial Black", Font.BOLD, 11));
 		lblNome.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblNome.setBounds(10, 154, 60, 14);
 		panel.add(lblNome);
 		
 		JCheckBox rdbtnPorNome = new JCheckBox("Por Nome");
+		rdbtnPorNome.setFont(new Font("Arial", Font.BOLD, 11));
 		rdbtnPorNome.setBounds(80, 107, 113, 23);
 		panel.add(rdbtnPorNome);
 		
 		JCheckBox rdbtnPorTipo = new JCheckBox("Por Tipo");
+		rdbtnPorTipo.setFont(new Font("Arial", Font.BOLD, 11));
 		
 		rdbtnPorTipo.setBounds(329, 107, 108, 23);
 		panel.add(rdbtnPorTipo);
 		
 		JLabel lblTipo = new JLabel("Tipo:");
+		lblTipo.setFont(new Font("Arial Black", Font.BOLD, 11));
 		lblTipo.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblTipo.setBounds(256, 154, 60, 14);
 		panel.add(lblTipo);
 		
 		JCheckBox rdbtnPorPais = new JCheckBox("Por Pa\u00EDs");
+		rdbtnPorPais.setFont(new Font("Arial", Font.BOLD, 11));
 		rdbtnPorPais.setBounds(594, 107, 108, 23);
 		panel.add(rdbtnPorPais);
 		
@@ -132,16 +137,18 @@ public class TelaPesquisa {
 		}
 		
 		JLabel lblPais = new JLabel("Pa\u00EDs:");
+		lblPais.setFont(new Font("Arial Black", Font.BOLD, 11));
 		lblPais.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblPais.setBounds(522, 154, 60, 14);
 		panel.add(lblPais);
 		
 		JCheckBox rdbtnPorSabor = new JCheckBox("Por Sabor");
-		rdbtnPorSabor.setBounds(85, 201, 108, 23);
+		rdbtnPorSabor.setFont(new Font("Arial", Font.BOLD, 11));
+		rdbtnPorSabor.setBounds(80, 201, 108, 23);
 		panel.add(rdbtnPorSabor);
 		
 		JComboBox<Sabor> comboBoxSabor = new JComboBox<Sabor>();
-		comboBoxSabor.setBounds(85, 240, 118, 22);
+		comboBoxSabor.setBounds(80, 240, 118, 22);
 		panel.add(comboBoxSabor);
 		
 		SaborBO saborbo = new SaborBO();
@@ -150,11 +157,13 @@ public class TelaPesquisa {
 		}
 		
 		JLabel lblSabor = new JLabel("Sabor:");
+		lblSabor.setFont(new Font("Arial Black", Font.BOLD, 11));
 		lblSabor.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblSabor.setBounds(10, 244, 60, 14);
 		panel.add(lblSabor);
 		
 		JLabel lblColoracao = new JLabel("Colora\u00E7\u00E3o:");
+		lblColoracao.setFont(new Font("Arial Black", Font.BOLD, 11));
 		lblColoracao.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblColoracao.setBounds(230, 244, 89, 14);
 		panel.add(lblColoracao);
@@ -169,6 +178,7 @@ public class TelaPesquisa {
 		}
 		
 		JCheckBox rdbtnPorColoracao = new JCheckBox("Por Colora\u00E7\u00E3o");
+		rdbtnPorColoracao.setFont(new Font("Arial", Font.BOLD, 11));
 		rdbtnPorColoracao.setBounds(329, 201, 108, 23);
 		panel.add(rdbtnPorColoracao);
 		
