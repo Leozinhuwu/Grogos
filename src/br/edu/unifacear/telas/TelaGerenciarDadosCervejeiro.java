@@ -45,7 +45,7 @@ public class TelaGerenciarDadosCervejeiro {
 		Cervejeiro cervLogado = (Cervejeiro) TelaLogin.usuarioLogado;
 		JPanel panel = new JPanel();
 		panel.setForeground(Color.RED);
-		panel.setBackground(Color.WHITE);
+		panel.setBackground(new Color(244, 164, 96));
 		framePrincipal = new JFrame();
 		framePrincipal.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\leo4_\\Desktop\\GrogosPesq.jpg"));
 		framePrincipal.setSize(971, 772);
@@ -133,6 +133,7 @@ public class TelaGerenciarDadosCervejeiro {
 		panel.add(lblCervejariaNome);
 
 		JButton btnDadosCervejaria = new JButton("Gerenciar Dados  da Cervejaria");
+		btnDadosCervejaria.setFont(new Font("Arial Black", Font.BOLD, 11));
 		btnDadosCervejaria.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -190,10 +191,12 @@ public class TelaGerenciarDadosCervejeiro {
 		panel.add(lblDeletarConta);
 
 		JLabel lblSenha = new JLabel("Senha:");
+		lblSenha.setFont(new Font("Arial Black", Font.BOLD, 11));
 		lblSenha.setBounds(39, 515, 46, 14);
 		panel.add(lblSenha);
 
 		JButton btnDeletar = new JButton("Desativar");
+		btnDeletar.setFont(new Font("Arial Black", Font.BOLD, 11));
 		btnDeletar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -205,7 +208,7 @@ public class TelaGerenciarDadosCervejeiro {
 				clearMsg();
 			}
 		});
-		btnDeletar.setBounds(122, 544, 89, 23);
+		btnDeletar.setBounds(108, 546, 103, 23);
 		panel.add(btnDeletar);
 
 		passwordField = new JPasswordField();
@@ -218,6 +221,7 @@ public class TelaGerenciarDadosCervejeiro {
 		panel.add(lblVocDesejaAlterar);
 
 		JLabel lblEmailAlterar = new JLabel("Email Atual:");
+		lblEmailAlterar.setFont(new Font("Arial Black", Font.BOLD, 11));
 		lblEmailAlterar.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblEmailAlterar.setBounds(546, 81, 134, 14);
 		panel.add(lblEmailAlterar);
@@ -231,6 +235,7 @@ public class TelaGerenciarDadosCervejeiro {
 		panel.add(textFieldEmailAtual);
 
 		JLabel lblNovoEmail = new JLabel("Novo Email:");
+		lblNovoEmail.setFont(new Font("Arial Black", Font.BOLD, 11));
 		lblNovoEmail.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblNovoEmail.setBounds(591, 106, 89, 14);
 		panel.add(lblNovoEmail);
@@ -249,6 +254,7 @@ public class TelaGerenciarDadosCervejeiro {
 		panel.add(lblMsgErroEmail);
 
 		JButton btnEmailAlterar = new JButton("Alterar Email");
+		btnEmailAlterar.setFont(new Font("Arial Black", Font.BOLD, 11));
 		btnEmailAlterar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -277,11 +283,13 @@ public class TelaGerenciarDadosCervejeiro {
 		panel.add(textFieldTelefoneNovo);
 
 		JLabel lblNovoTelefone = new JLabel("Novo Telefone:");
+		lblNovoTelefone.setFont(new Font("Arial Black", Font.BOLD, 11));
 		lblNovoTelefone.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblNovoTelefone.setBounds(546, 273, 134, 14);
 		panel.add(lblNovoTelefone);
 
 		JLabel lblConfirmarTelefone = new JLabel("Confirmar novo Telefone:");
+		lblConfirmarTelefone.setFont(new Font("Arial Black", Font.BOLD, 11));
 		lblConfirmarTelefone.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblConfirmarTelefone.setBounds(482, 304, 198, 14);
 		panel.add(lblConfirmarTelefone);
@@ -300,6 +308,7 @@ public class TelaGerenciarDadosCervejeiro {
 		panel.add(lblMsgErroTelefone);
 
 		JButton btnTelefoneAlterar = new JButton("Alterar Telefone");
+		btnTelefoneAlterar.setFont(new Font("Arial Black", Font.BOLD, 11));
 		btnTelefoneAlterar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -321,6 +330,7 @@ public class TelaGerenciarDadosCervejeiro {
 		panel.add(lblAlterarSenha);
 
 		JLabel lblSenhaAtual = new JLabel("Senha atual:");
+		lblSenhaAtual.setFont(new Font("Arial Black", Font.BOLD, 11));
 		lblSenhaAtual.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblSenhaAtual.setBounds(577, 464, 103, 14);
 		panel.add(lblSenhaAtual);
@@ -342,6 +352,7 @@ public class TelaGerenciarDadosCervejeiro {
 		panel.add(textFieldSenhaNova);
 
 		JLabel lblNovaSenha = new JLabel("Nova Senha:");
+		lblNovaSenha.setFont(new Font("Arial Black", Font.BOLD, 11));
 		lblNovaSenha.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblNovaSenha.setBounds(546, 495, 134, 14);
 		panel.add(lblNovaSenha);
@@ -352,6 +363,7 @@ public class TelaGerenciarDadosCervejeiro {
 		panel.add(lblMsgErroSenha);
 
 		JButton btnAlterarSenha = new JButton("Alterar Senha");
+		btnAlterarSenha.setFont(new Font("Arial Black", Font.BOLD, 11));
 		btnAlterarSenha.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -363,7 +375,7 @@ public class TelaGerenciarDadosCervejeiro {
 				clearMsg();
 			}
 		});
-		btnAlterarSenha.setBounds(708, 554, 153, 23);
+		btnAlterarSenha.setBounds(710, 553, 153, 23);
 		panel.add(btnAlterarSenha);
 
 		textFieldASenhaConfirmar = new JPasswordField();
@@ -375,8 +387,9 @@ public class TelaGerenciarDadosCervejeiro {
 		panel.add(textFieldASenhaConfirmar);
 
 		JLabel lblConfirmarNovaSenha = new JLabel("Confirmar nova Senha:");
+		lblConfirmarNovaSenha.setFont(new Font("Arial Black", Font.BOLD, 11));
 		lblConfirmarNovaSenha.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblConfirmarNovaSenha.setBounds(546, 526, 134, 14);
+		lblConfirmarNovaSenha.setBounds(527, 526, 153, 14);
 		panel.add(lblConfirmarNovaSenha);
 
 		lblMsgErroSenhaDeletarConta = new JLabel("");
@@ -385,6 +398,7 @@ public class TelaGerenciarDadosCervejeiro {
 		panel.add(lblMsgErroSenhaDeletarConta);
 
 		JLabel lblSenhaAtualTelefone = new JLabel("Senha atual:");
+		lblSenhaAtualTelefone.setFont(new Font("Arial Black", Font.BOLD, 11));
 		lblSenhaAtualTelefone.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblSenhaAtualTelefone.setBounds(577, 336, 103, 14);
 		panel.add(lblSenhaAtualTelefone);
@@ -398,6 +412,7 @@ public class TelaGerenciarDadosCervejeiro {
 		panel.add(passwordFieldTelefone);
 
 		JLabel lblSenhaAtualEmail = new JLabel("Senha atual:");
+		lblSenhaAtualEmail.setFont(new Font("Arial Black", Font.BOLD, 11));
 		lblSenhaAtualEmail.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblSenhaAtualEmail.setBounds(577, 136, 103, 14);
 		panel.add(lblSenhaAtualEmail);
@@ -411,7 +426,7 @@ public class TelaGerenciarDadosCervejeiro {
 		panel.add(passwordFieldEmail);
 
 		JLabel lblGerenciarSeusDados = new JLabel("Gerenciar seus Dados!");
-		lblGerenciarSeusDados.setForeground(new Color(255, 102, 51));
+		lblGerenciarSeusDados.setForeground(new Color(255, 69, 0));
 		lblGerenciarSeusDados.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblGerenciarSeusDados.setBounds(350, 15, 228, 14);
 		panel.add(lblGerenciarSeusDados);

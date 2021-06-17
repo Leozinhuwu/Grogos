@@ -46,7 +46,7 @@ public class TelaGerenciarDadosApreciador {
 
 		JPanel panel = new JPanel();
 		panel.setForeground(Color.RED);
-		panel.setBackground(Color.WHITE);
+		panel.setBackground(new Color(244, 164, 96));
 		framePrincipal = new JFrame();
 		framePrincipal.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\leo4_\\Desktop\\GrogosPesq.jpg"));
 		framePrincipal.setSize(971, 772);
@@ -75,6 +75,7 @@ public class TelaGerenciarDadosApreciador {
 		panel.add(btnVoltar);
 
 		JLabel lblBemVindo = new JLabel("Bem vindo " + apreLogado.getNome());
+		lblBemVindo.setFont(new Font("Arial Black", Font.BOLD, 11));
 		lblBemVindo.setBounds(31, 59, 323, 14);
 		panel.add(lblBemVindo);
 
@@ -84,6 +85,7 @@ public class TelaGerenciarDadosApreciador {
 		panel.add(lblVocDesejaAlterar);
 
 		JLabel lblEmailAlterar = new JLabel("Email Atual:");
+		lblEmailAlterar.setFont(new Font("Arial Black", Font.BOLD, 11));
 		lblEmailAlterar.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblEmailAlterar.setBounds(0, 266, 134, 14);
 		panel.add(lblEmailAlterar);
@@ -97,6 +99,7 @@ public class TelaGerenciarDadosApreciador {
 		panel.add(textFieldEmailAtual);
 
 		JLabel lblNovoEmail = new JLabel("Novo Email:");
+		lblNovoEmail.setFont(new Font("Arial Black", Font.BOLD, 11));
 		lblNovoEmail.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblNovoEmail.setBounds(45, 291, 89, 14);
 		panel.add(lblNovoEmail);
@@ -110,6 +113,7 @@ public class TelaGerenciarDadosApreciador {
 		panel.add(textFieldEmailNovo);
 
 		JLabel lblSenhaAtualEmail = new JLabel("Senha atual:");
+		lblSenhaAtualEmail.setFont(new Font("Arial Black", Font.BOLD, 11));
 		lblSenhaAtualEmail.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblSenhaAtualEmail.setBounds(31, 321, 103, 14);
 		panel.add(lblSenhaAtualEmail);
@@ -127,6 +131,7 @@ public class TelaGerenciarDadosApreciador {
 		panel.add(lblApreciadorEmail);
 
 		JButton btnEmailAlterar = new JButton("Alterar Email");
+		btnEmailAlterar.setFont(new Font("Arial Black", Font.BOLD, 11));
 		btnEmailAlterar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				trocarEmail(apreLogado, abo, lblApreciadorEmail);
@@ -137,6 +142,7 @@ public class TelaGerenciarDadosApreciador {
 		panel.add(btnEmailAlterar);
 
 		JLabel lblSenhaAtual = new JLabel("Senha atual:");
+		lblSenhaAtual.setFont(new Font("Arial Black", Font.BOLD, 11));
 		lblSenhaAtual.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblSenhaAtual.setBounds(41, 457, 103, 14);
 		panel.add(lblSenhaAtual);
@@ -146,10 +152,11 @@ public class TelaGerenciarDadosApreciador {
 		textFieldSenhaAtual.setForeground(Color.BLACK);
 		textFieldSenhaAtual.setColumns(10);
 		textFieldSenhaAtual.setBackground(Color.WHITE);
-		textFieldSenhaAtual.setBounds(162, 454, 175, 20);
+		textFieldSenhaAtual.setBounds(152, 455, 175, 20);
 		panel.add(textFieldSenhaAtual);
 
 		JLabel lblNovaSenha = new JLabel("Nova Senha:");
+		lblNovaSenha.setFont(new Font("Arial Black", Font.BOLD, 11));
 		lblNovaSenha.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblNovaSenha.setBounds(10, 488, 134, 14);
 		panel.add(lblNovaSenha);
@@ -159,12 +166,13 @@ public class TelaGerenciarDadosApreciador {
 		textFieldSenhaNova.setForeground(Color.BLACK);
 		textFieldSenhaNova.setColumns(10);
 		textFieldSenhaNova.setBackground(Color.WHITE);
-		textFieldSenhaNova.setBounds(162, 485, 175, 20);
+		textFieldSenhaNova.setBounds(152, 486, 175, 20);
 		panel.add(textFieldSenhaNova);
 
 		JLabel lblConfirmarNovaSenha = new JLabel("Confirmar nova Senha:");
+		lblConfirmarNovaSenha.setFont(new Font("Arial Black", Font.BOLD, 11));
 		lblConfirmarNovaSenha.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblConfirmarNovaSenha.setBounds(10, 519, 134, 14);
+		lblConfirmarNovaSenha.setBounds(10, 519, 142, 14);
 		panel.add(lblConfirmarNovaSenha);
 
 		textFieldASenhaConfirmar = new JPasswordField();
@@ -172,25 +180,27 @@ public class TelaGerenciarDadosApreciador {
 		textFieldASenhaConfirmar.setForeground(Color.BLACK);
 		textFieldASenhaConfirmar.setColumns(10);
 		textFieldASenhaConfirmar.setBackground(Color.WHITE);
-		textFieldASenhaConfirmar.setBounds(162, 516, 175, 20);
+		textFieldASenhaConfirmar.setBounds(152, 517, 175, 20);
 		panel.add(textFieldASenhaConfirmar);
 
 		JButton btnAlterarSenha = new JButton("Alterar Senha");
+		btnAlterarSenha.setFont(new Font("Arial Black", Font.BOLD, 11));
 		btnAlterarSenha.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				alterarSenha(apreLogado, abo);
 			}
 		});
-		btnAlterarSenha.setBounds(172, 547, 153, 23);
+		btnAlterarSenha.setBounds(164, 547, 153, 23);
 		panel.add(btnAlterarSenha);
 
 		JButton btnDesativar = new JButton("Desativar");
+		btnDesativar.setFont(new Font("Arial Black", Font.BOLD, 11));
 		btnDesativar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				deletarConta(apreLogado, abo);
 			}
 		});
-		btnDesativar.setBounds(737, 699, 89, 23);
+		btnDesativar.setBounds(727, 699, 103, 23);
 		panel.add(btnDesativar);
 
 		passwordField = new JPasswordField();
@@ -221,8 +231,9 @@ public class TelaGerenciarDadosApreciador {
 		panel.add(lblApreciadorNome);
 
 		JLabel lblGerenciarSeusDados = new JLabel("Gerenciar seus Dados!");
-		lblGerenciarSeusDados.setForeground(new Color(255, 102, 51));
-		lblGerenciarSeusDados.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblGerenciarSeusDados.setHorizontalAlignment(SwingConstants.CENTER);
+		lblGerenciarSeusDados.setForeground(new Color(255, 69, 0));
+		lblGerenciarSeusDados.setFont(new Font("Tahoma", Font.BOLD, 13));
 		lblGerenciarSeusDados.setBounds(332, 11, 228, 14);
 		panel.add(lblGerenciarSeusDados);
 
