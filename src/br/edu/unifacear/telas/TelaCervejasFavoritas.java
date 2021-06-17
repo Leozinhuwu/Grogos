@@ -62,7 +62,7 @@ public class TelaCervejasFavoritas {
 		tblCervejas.getTableHeader().setReorderingAllowed(false);
 
 		tblCervejas.setModel(new DefaultTableModel(new Object[][] {},
-				new String[] { "Nome", "Tipo", "Coloraï¿½ï¿½o", "Sabor", "Paï¿½s" }) {
+				new String[] { "Nome", "Tipo", "Coloração", "Sabor", "País" }) {
 			/**
 				 * 
 				 */
@@ -185,7 +185,7 @@ public class TelaCervejasFavoritas {
 			e1.printStackTrace();
 			return;
 		}
-		lblMsgRemover.setForeground(Color.GREEN);
+		lblMsgRemover.setForeground(Color.GREEN.darker());
 		lblMsgRemover.setText("Cerveja Removida!!!");
 		cervejasFavoritas();
 	}

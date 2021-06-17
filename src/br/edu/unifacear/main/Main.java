@@ -12,19 +12,23 @@ import br.edu.unifacear.testes.CervejeiroTestes;
 public class Main {
 
 	public static void main(String[] args) throws Exception {
+		getConnectionAndRunTests();
+		runGrogos();
+		
+	}
+
+	private static void runGrogos() throws Exception {
+		TelaLogin telaIanicial = new TelaLogin();
+		telaIanicial.telaInicial();
+		TelaAdm tAdm = new TelaAdm();
+		tAdm.telaAdm();
+	}
+
+	private static void getConnectionAndRunTests() throws Exception {
 		CBanco.getConnection();
 		CervejeiroTestes.saveCervejeiro();
 		CervejaTestes.saveCerveja();
 		ApreciadorTestes.saveUsuario();
-		
-		//TelaCadastroApreciador.telaCadastro();
-		//TelaCadastroCervejeiro.telaCadastro();
-		TelaLogin telaIanicial = new TelaLogin();
-		telaIanicial.telaInicial();
-		//TelaCadastroCerveja.telaCadastro();
-		TelaAdm tAdm = new TelaAdm();
-		tAdm.telaAdm();
-		
 	}
 
 }

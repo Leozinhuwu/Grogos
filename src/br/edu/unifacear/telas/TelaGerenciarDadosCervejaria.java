@@ -91,21 +91,25 @@ public class TelaGerenciarDadosCervejaria {
 		panel.add(lblDadosCervejaria);
 
 		JLabel lblNomeCervejaria = new JLabel("Nome Cervejaria:");
+		lblNomeCervejaria.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblNomeCervejaria.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblNomeCervejaria.setBounds(21, 99, 103, 14);
 		panel.add(lblNomeCervejaria);
 
 		JLabel lblEmailCervejaria = new JLabel("Email:");
+		lblEmailCervejaria.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblEmailCervejaria.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblEmailCervejaria.setBounds(78, 123, 46, 14);
 		panel.add(lblEmailCervejaria);
 
 		JLabel lblTelefoneCervejaria = new JLabel("Telefone:");
+		lblTelefoneCervejaria.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblTelefoneCervejaria.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblTelefoneCervejaria.setBounds(53, 148, 71, 14);
 		panel.add(lblTelefoneCervejaria);
 
 		JLabel lblEndereco = new JLabel("Endere\u00E7o:");
+		lblEndereco.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblEndereco.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblEndereco.setBounds(53, 173, 71, 14);
 		panel.add(lblEndereco);
@@ -226,7 +230,7 @@ public class TelaGerenciarDadosCervejaria {
 		panel.add(lblMsgErroEmail);
 
 		lblMsgErroTelefone.setHorizontalAlignment(SwingConstants.CENTER);
-		lblMsgErroTelefone.setBounds(586, 448, 327, 14);
+		lblMsgErroTelefone.setBounds(620, 448, 259, 14);
 		panel.add(lblMsgErroTelefone);
 
 		JButton btnTelefoneAlterar = new JButton("Alterar Telefone");
@@ -333,7 +337,7 @@ public class TelaGerenciarDadosCervejaria {
 		JLabel lblSenhaAtualEndereco = new JLabel("Senha atual:");
 		lblSenhaAtualEndereco.setFont(new Font("Arial Black", Font.BOLD, 11));
 		lblSenhaAtualEndereco.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblSenhaAtualEndereco.setBounds(41, 626, 103, 14);
+		lblSenhaAtualEndereco.setBounds(41, 625, 103, 14);
 		panel.add(lblSenhaAtualEndereco);
 
 		passwordFieldEndereco = new JPasswordField();
@@ -369,7 +373,7 @@ public class TelaGerenciarDadosCervejaria {
 
 		lblMsgErroEndereco = new JLabel("");
 		lblMsgErroEndereco.setHorizontalAlignment(SwingConstants.CENTER);
-		lblMsgErroEndereco.setBounds(90, 688, 327, 14);
+		lblMsgErroEndereco.setBounds(118, 688, 259, 14);
 		panel.add(lblMsgErroEndereco);
 
 		JLabel lblNewLabel = new JLabel("Gerenciar Cervejaria!");

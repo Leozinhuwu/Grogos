@@ -359,7 +359,7 @@ public class TelaGerenciarDadosCervejeiro {
 
 		lblMsgErroSenha = new JLabel("");
 		lblMsgErroSenha.setHorizontalAlignment(SwingConstants.CENTER);
-		lblMsgErroSenha.setBounds(546, 587, 327, 14);
+		lblMsgErroSenha.setBounds(641, 589, 265, 14);
 		panel.add(lblMsgErroSenha);
 
 		JButton btnAlterarSenha = new JButton("Alterar Senha");
@@ -394,7 +394,7 @@ public class TelaGerenciarDadosCervejeiro {
 
 		lblMsgErroSenhaDeletarConta = new JLabel("");
 		lblMsgErroSenhaDeletarConta.setHorizontalAlignment(SwingConstants.CENTER);
-		lblMsgErroSenhaDeletarConta.setBounds(22, 578, 327, 14);
+		lblMsgErroSenhaDeletarConta.setBounds(32, 578, 279, 14);
 		panel.add(lblMsgErroSenhaDeletarConta);
 
 		JLabel lblSenhaAtualTelefone = new JLabel("Senha atual:");

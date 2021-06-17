@@ -50,7 +50,8 @@ public class TelaCadastroApreciador extends JFrame {
 		panel.setLayout(null);
 
 		JLabel lblCadastroMsg = new JLabel("");
-		lblCadastroMsg.setBounds(404, 586, 488, 50);
+		lblCadastroMsg.setHorizontalAlignment(SwingConstants.CENTER);
+		lblCadastroMsg.setBounds(608, 586, 284, 23);
 		panel.add(lblCadastroMsg);
 
 		JButton btnCadastrar = new JButton("Cadastrar");

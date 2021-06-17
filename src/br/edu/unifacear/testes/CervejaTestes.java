@@ -112,7 +112,7 @@ public class CervejaTestes {
 
 		cerveja.setColoracao(coloracao2);
 		cerveja.setCountryOrigin(pais2);
-		cerveja.setDescription("Essa Ceveja tem um sabor levemente amargo e uma coloração escura");
+		cerveja.setDescription("Cerveja americana de coloração forte");
 		cerveja.setFlavor(sabor2);
 		cerveja.setType(tipocerveja);
 
@@ -130,7 +130,7 @@ public class CervejaTestes {
 		ingre2.setMalte(malte2);
 		ingre2.setPuroMalte(true);
 		ingre2.setTeorAlcoolico(2);
-		ingre2.setEspeciarias("Essa cerveja contém cogumelos");
+		ingre2.setEspeciarias("Sem especiarias adicionais");
 
 		ingbro.salvar(ingre2);
 
@@ -157,7 +157,7 @@ public class CervejaTestes {
 		ingre3.setMalte(malte2);
 		ingre3.setPuroMalte(true);
 		ingre3.setTeorAlcoolico(2);
-		ingre3.setEspeciarias("Essa cerveja contém peixe");
+		ingre3.setEspeciarias("Toque adicional de madeira de carvalho");
 
 		ingbro.salvar(ingre3);
 
@@ -184,7 +184,7 @@ public class CervejaTestes {
 		ingre4.setMalte(malte2);
 		ingre4.setPuroMalte(true);
 		ingre4.setTeorAlcoolico(2);
-		ingre4.setEspeciarias("Essa cerveja monster");
+		ingre4.setEspeciarias("Valores energeticos");
 
 		ingbro.salvar(ingre4);
 

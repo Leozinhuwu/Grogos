@@ -75,8 +75,8 @@ public class TelaCadastroCervejeiro {
 		panel.setLayout(null);
 
 		JLabel lblCadastroMsg = new JLabel("");
-		lblCadastroMsg.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblCadastroMsg.setBounds(518, 651, 336, 23);
+		lblCadastroMsg.setHorizontalAlignment(SwingConstants.CENTER);
+		lblCadastroMsg.setBounds(627, 651, 270, 22);
 		panel.add(lblCadastroMsg);
 
 		JComboBox<Cidade> comboBoxCidade = new JComboBox<Cidade>();

@@ -119,6 +119,13 @@ public class TelaCervejasCervejeiro {
 
 					return;
 				}
+				
+				int confirmar = JOptionPane.showConfirmDialog(null,
+						"Você realmente deseja remover essa Cerveja do sistema?",
+						null, 0);
+				if(!(confirmar == 0)) {
+					return;
+				}
 
 				int linha = tblCervejas.getSelectedRow();
 				int codigo = (int) tblCervejas.getValueAt(linha, 0);
