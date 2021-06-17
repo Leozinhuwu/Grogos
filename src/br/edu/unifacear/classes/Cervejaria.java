@@ -3,17 +3,17 @@ package br.edu.unifacear.classes;
 import javax.persistence.*;
 
 @Entity
-public class Cervejaria implements IDBModel{
+public class Cervejaria implements IDBModel {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	private String nome;
 	private String email;
 	private String telefone;
-	
+
 	@ManyToOne
-	@JoinColumn(name="endereco_id")
+	@JoinColumn(name = "endereco_id")
 	private Endereco endereco;
 
 	public Cervejaria(int id, String email, String telefone, Endereco endereco, String nome) {
@@ -61,7 +61,7 @@ public class Cervejaria implements IDBModel{
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
 	}
-	
+
 	public String getNome() {
 		return nome;
 	}
@@ -72,11 +72,7 @@ public class Cervejaria implements IDBModel{
 
 	@Override
 	public String toString() {
-		return "Cervejaria [id=" + id + ", email=" + email + ", telefone=" + telefone
-				+ ", endereco=" + endereco + "]";
+		return "Cervejaria [id=" + id + ", email=" + email + ", telefone=" + telefone + ", endereco=" + endereco + "]";
 	}
-	
-	
-	
 
 }

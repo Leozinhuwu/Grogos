@@ -3,7 +3,6 @@ package br.edu.unifacear.dao;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import br.edu.unifacear.classes.TipoCerveja;
 import br.edu.unifacear.classes.Token;
 
 public class TokenDao extends DefaultDAO<Token> {

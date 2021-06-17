@@ -4,20 +4,19 @@ import javax.persistence.*;
 
 @Entity
 public class Sabor implements IDBModel {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
-	
+
 	private String nome;
-	
+
 	public Sabor(int id, String nome) {
 		super();
 		this.id = id;
 		this.nome = nome;
 	}
-	
+
 	public Sabor() {
 		super();
 	}
@@ -37,18 +36,16 @@ public class Sabor implements IDBModel {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	
-	
+
 	@Override
 	public String toString() {
-		return  nome;
+		return nome;
 	}
-
 
 	@Override
 	public String getEmail() {
 
 		return null;
 	}
-	
+
 }

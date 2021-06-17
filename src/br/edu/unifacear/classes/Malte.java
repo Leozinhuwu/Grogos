@@ -7,7 +7,7 @@ public class Malte implements IDBModel {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	private String nome;
 
 	public Malte(int id, String nome) {
@@ -39,7 +39,7 @@ public class Malte implements IDBModel {
 
 	@Override
 	public String toString() {
-		return  nome;
+		return nome;
 	}
 
 	@Override
@@ -47,6 +47,5 @@ public class Malte implements IDBModel {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
-	
+
 }

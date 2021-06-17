@@ -49,7 +49,7 @@ public class TelaGerenciarDadosApreciador {
 		panel.setBackground(new Color(244, 164, 96));
 		framePrincipal = new JFrame();
 		framePrincipal.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\leo4_\\Desktop\\GrogosPesq.jpg"));
-		framePrincipal.setSize(971, 772);
+		framePrincipal.setSize(998, 772);
 		framePrincipal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		framePrincipal.setLocation(500, 250);
 
@@ -57,6 +57,7 @@ public class TelaGerenciarDadosApreciador {
 		panel.setLayout(null);
 
 		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.setFont(new Font("Tahoma", Font.BOLD, 11));
 		btnVoltar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -169,10 +170,10 @@ public class TelaGerenciarDadosApreciador {
 		textFieldSenhaNova.setBounds(152, 486, 175, 20);
 		panel.add(textFieldSenhaNova);
 
-		JLabel lblConfirmarNovaSenha = new JLabel("Confirmar nova Senha:");
+		JLabel lblConfirmarNovaSenha = new JLabel("Confirmar Senha:");
 		lblConfirmarNovaSenha.setFont(new Font("Arial Black", Font.BOLD, 11));
 		lblConfirmarNovaSenha.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblConfirmarNovaSenha.setBounds(10, 519, 142, 14);
+		lblConfirmarNovaSenha.setBounds(2, 519, 142, 14);
 		panel.add(lblConfirmarNovaSenha);
 
 		textFieldASenhaConfirmar = new JPasswordField();
@@ -208,6 +209,7 @@ public class TelaGerenciarDadosApreciador {
 		panel.add(passwordField);
 
 		JLabel lblSenha = new JLabel("Senha:");
+		lblSenha.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblSenha.setBounds(654, 670, 46, 14);
 		panel.add(lblSenha);
 
@@ -251,15 +253,16 @@ public class TelaGerenciarDadosApreciador {
 		lblMsgErroEmail.setHorizontalAlignment(SwingConstants.CENTER);
 		lblMsgErroEmail.setBounds(101, 383, 265, 14);
 		panel.add(lblMsgErroEmail);
-		
+
 		JLabel lblVocDesejaAlterar_2 = new JLabel("Voc\u00EA deseja alterar sua Senha?");
 		lblVocDesejaAlterar_2.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblVocDesejaAlterar_2.setBounds(120, 409, 279, 14);
 		panel.add(lblVocDesejaAlterar_2);
-		
-		ImageIcon grogos = new ImageIcon(TelaAdmManterCadastroCervejeiroCervejaria.class.getResource("/Grogos_Final_Edition.png"));
+
+		ImageIcon grogos = new ImageIcon(
+				TelaAdmManterCadastroCervejeiroCervejaria.class.getResource("/Grogos_Final_Edition.png"));
 		JLabel lblGrogosImg = new JLabel(grogos);
-		lblGrogosImg.setBounds(313, 142, 632, 452);
+		lblGrogosImg.setBounds(523, 170, 459, 452);
 		panel.add(lblGrogosImg);
 
 		framePrincipal.setVisible(true);
@@ -303,11 +306,10 @@ public class TelaGerenciarDadosApreciador {
 			} catch (Exception e1) {
 				lblMsgErroEmail.setForeground(Color.RED);
 				lblMsgErroEmail.setText("Erro ao alterar email");
-				
+
 				e1.printStackTrace();
 				return;
 			}
-
 
 			((Apreciador) TelaLogin.usuarioLogado).setEmail(textFieldEmailNovo.getText());
 			lblMsgErroEmail.setForeground(Color.GREEN);
@@ -364,7 +366,7 @@ public class TelaGerenciarDadosApreciador {
 			lblMsgErroSenhaDeletarConta.setText("Senha incorreta");
 			return;
 		}
-		
+
 		int confirmar = JOptionPane.showConfirmDialog(null,
 				"Ao Desativar sua conta, Você perde o acesso ao sistema com este Email. Deseja continuar mesmo assim?",
 				null, 0);
@@ -375,11 +377,11 @@ public class TelaGerenciarDadosApreciador {
 			} catch (Exception e1) {
 				lblMsgErroSenha.setForeground(Color.RED);
 				lblMsgErroSenha.setText("Erro ao Desativar Conta");
-				
+
 				e1.printStackTrace();
 				return;
 			}
-			
+
 			try {
 				TelaLogin telaIanicial = new TelaLogin();
 				telaIanicial.telaInicial();
@@ -388,8 +390,8 @@ public class TelaGerenciarDadosApreciador {
 				e1.printStackTrace();
 			}
 			framePrincipal.dispose();
-			
-		}else {
+
+		} else {
 			return;
 		}
 	}

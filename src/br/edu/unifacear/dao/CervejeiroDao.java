@@ -3,10 +3,9 @@ package br.edu.unifacear.dao;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import br.edu.unifacear.classes.Apreciador;
 import br.edu.unifacear.classes.Cervejeiro;
 
-public class CervejeiroDao extends DefaultDAO<Cervejeiro>{
+public class CervejeiroDao extends DefaultDAO<Cervejeiro> {
 
 	@Override
 	protected Query getAutenticarObj(EntityManager con, Cervejeiro obj) {
@@ -38,14 +37,14 @@ public class CervejeiroDao extends DefaultDAO<Cervejeiro>{
 	public boolean autenticarEmail(String email) {
 		Query q = con.createQuery("select a from Apreciador a" + " where email = :nome");
 		q.setParameter("nome", email);
-		
-		if(q.getResultList().size() > 0) {
+
+		if (q.getResultList().size() > 0) {
 			return true;
 		}
-		
+
 		q = con.createQuery("select c from Cervejeiro c" + " where email = :nome");
 		q.setParameter("nome", email);
-		if(q.getResultList().size() > 0) {
+		if (q.getResultList().size() > 0) {
 			return true;
 		}
 		return false;

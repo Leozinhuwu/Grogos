@@ -3,11 +3,11 @@ package br.edu.unifacear.classes;
 import javax.persistence.*;
 
 @Entity
-public class Coloracao implements IDBModel{
+public class Coloracao implements IDBModel {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	private String nome;
 
 	public Coloracao(int id, String nome) {
@@ -47,6 +47,5 @@ public class Coloracao implements IDBModel{
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
-	
+
 }

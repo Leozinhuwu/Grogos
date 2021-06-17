@@ -3,16 +3,16 @@ package br.edu.unifacear.classes;
 import javax.persistence.*;
 
 @Entity
-public class Endereco implements IDBModel{
+public class Endereco implements IDBModel {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	@ManyToOne
-	@JoinColumn(name="cidade_id")
+	@JoinColumn(name = "cidade_id")
 	private Cidade cidade;
 	private String nome;
-	
+
 	public Endereco(int id, Cidade cidade, String nome) {
 		super();
 		this.id = id;
@@ -59,7 +59,5 @@ public class Endereco implements IDBModel{
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
-	
-	
+
 }

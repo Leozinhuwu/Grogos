@@ -10,14 +10,14 @@ public class EnderecoBO {
 
 		enderecoCrud.save(endereco);
 	}
-	
+
 	public void deletar(Endereco endereco) throws Exception {
 		enderecoCrud.delete(endereco);
-		
+
 	}
 
 	public void alterar(Endereco endereco) throws Exception {
 		enderecoCrud.alterar(endereco);
-		
+
 	}
 }

@@ -3,11 +3,11 @@ package br.edu.unifacear.classes;
 import javax.persistence.*;
 
 @Entity
-public class Estado implements IDBModel{
+public class Estado implements IDBModel {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	private String nome;
 
 	public Estado(int id, String nome) {
@@ -39,7 +39,7 @@ public class Estado implements IDBModel{
 
 	@Override
 	public String toString() {
-		return nome ;
+		return nome;
 	}
 
 	@Override
@@ -47,6 +47,5 @@ public class Estado implements IDBModel{
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
-	
+
 }

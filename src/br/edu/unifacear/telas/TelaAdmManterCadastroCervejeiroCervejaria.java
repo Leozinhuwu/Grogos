@@ -1,7 +1,6 @@
 package br.edu.unifacear.telas;
 
 import java.awt.Color;
-import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Random;
@@ -21,7 +20,6 @@ import br.edu.unifacear.classes.Token;
 import javax.swing.JComboBox;
 import javax.swing.SwingConstants;
 import java.awt.Font;
-import java.awt.Image;
 
 import javax.swing.ImageIcon;
 
@@ -38,7 +36,6 @@ public class TelaAdmManterCadastroCervejeiroCervejaria {
 	private static JLabel lblCadastroMsgFermento = new JLabel("");
 	private static JLabel lblCadastroMsgMalte = new JLabel("");
 	private static JLabel lblCadastroMsgSabor = new JLabel("");
-	
 
 	/**
 	 * @throws Exception
@@ -53,7 +50,6 @@ public class TelaAdmManterCadastroCervejeiroCervejaria {
 		panel.setForeground(Color.RED);
 		panel.setBackground(new Color(244, 164, 96));
 		frameMain = new JFrame();
-		frameMain.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\leo4_\\Desktop\\GrogosPesq.jpg"));
 		frameMain.setSize(904, 647);
 		frameMain.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frameMain.setLocation(500, 100);
@@ -262,15 +258,15 @@ public class TelaAdmManterCadastroCervejeiroCervejaria {
 		lblSelecioneEstado.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblSelecioneEstado.setBounds(0, 474, 106, 14);
 		panel.add(lblSelecioneEstado);
-		
+
 		JLabel lblAdicionarInforamesCerveja = new JLabel("Adicionar Novo Estado e Cidade");
 		lblAdicionarInforamesCerveja.setHorizontalAlignment(SwingConstants.CENTER);
 		lblAdicionarInforamesCerveja.setFont(new Font("Tahoma", Font.BOLD, 13));
 		lblAdicionarInforamesCerveja.setBounds(10, 272, 318, 30);
 		panel.add(lblAdicionarInforamesCerveja);
-		
-		
-		ImageIcon grogos = new ImageIcon(TelaAdmManterCadastroCervejeiroCervejaria.class.getResource("/Grogos_Final_Edition.png")); 
+
+		ImageIcon grogos = new ImageIcon(
+				TelaAdmManterCadastroCervejeiroCervejaria.class.getResource("/Grogos_Final_Edition.png"));
 		JLabel lblGrogosImg = new JLabel(grogos);
 		lblGrogosImg.setBounds(242, 90, 632, 452);
 		panel.add(lblGrogosImg);
@@ -278,7 +274,7 @@ public class TelaAdmManterCadastroCervejeiroCervejaria {
 	}
 
 	protected static void clearmsg() {
-		
+
 		lblCadastroMsgCidade.setText("");
 		lblCadastroMsgEstado.setText("");
 		lblCadastroMsgColoracao.setText("");
@@ -286,6 +282,6 @@ public class TelaAdmManterCadastroCervejeiroCervejaria {
 		lblCadastroMsgFermento.setText("");
 		lblCadastroMsgMalte.setText("");
 		lblCadastroMsgSabor.setText("");
-		
+
 	}
 }

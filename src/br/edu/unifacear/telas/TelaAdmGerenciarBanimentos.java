@@ -35,7 +35,7 @@ public class TelaAdmGerenciarBanimentos {
 	 */
 
 	public void telaAdmDesativarCervejeiroApreciador() throws Exception {
-		
+
 		JPanel panel = new JPanel();
 		panel.setForeground(Color.RED);
 		panel.setBackground(new Color(244, 164, 96));
@@ -72,21 +72,19 @@ public class TelaAdmGerenciarBanimentos {
 		panel.add(lblMsgCervejeiro);
 		lblMsgApreciador.setHorizontalAlignment(SwingConstants.CENTER);
 
-		
-
 		lblMsgApreciador.setBounds(167, 495, 301, 14);
 		panel.add(lblMsgApreciador);
-		
+
 		JLabel lblCervejeiroSelecionado = new JLabel("Cervejeiro Selecionado:");
 		lblCervejeiroSelecionado.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblCervejeiroSelecionado.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblCervejeiroSelecionado.setBounds(26, 219, 159, 14);
 		panel.add(lblCervejeiroSelecionado);
-		
+
 		JComboBox<Cervejeiro> comboBox = new JComboBox<Cervejeiro>();
 		CervejeiroBO cbo = new CervejeiroBO();
-		
-		for(Cervejeiro c: cbo.listar()) {
+
+		for (Cervejeiro c : cbo.listar()) {
 			comboBox.addItem(c);
 		}
 		comboBox.addActionListener(new ActionListener() {
@@ -97,7 +95,7 @@ public class TelaAdmGerenciarBanimentos {
 		});
 		comboBox.setBounds(200, 177, 227, 22);
 		panel.add(comboBox);
-		
+
 		JButton btnReativar = new JButton("Reativar");
 		btnReativar.setFont(new Font("Arial Black", Font.BOLD, 11));
 		btnReativar.setForeground(new Color(0, 128, 0));
@@ -105,14 +103,14 @@ public class TelaAdmGerenciarBanimentos {
 			public void actionPerformed(ActionEvent e) {
 				CervejeiroBO cbo = new CervejeiroBO();
 				Cervejeiro cerv = (Cervejeiro) comboBox.getSelectedItem();
-				
-				if(cerv.getStatus().contentEquals("Ativo")) {
+
+				if (cerv.getStatus().contentEquals("Ativo")) {
 					lblMsgCervejeiro.setText("Este Cervejeiro já está Ativo");
 					return;
 				}
-				
+
 				cerv.setStatus("Ativo");
-				
+
 				try {
 					cbo.alterar(cerv);
 				} catch (Exception e1) {
@@ -120,23 +118,20 @@ public class TelaAdmGerenciarBanimentos {
 					e1.printStackTrace();
 					return;
 				}
-				
+
 				lblMsgCervejeiro.setText("Cervejeiro Reativado com Sucesso!!!");
 
 			}
 		});
 		btnReativar.setBounds(439, 177, 124, 23);
 		panel.add(btnReativar);
-		
+
 		textField = new JTextField();
 		textField.setEditable(false);
 		textField.setBounds(199, 212, 230, 23);
 		panel.add(textField);
 		textField.setColumns(10);
-		
-		
-		
-		
+
 		JButton btnDeletarCervejeiro = new JButton("Desativar");
 		btnDeletarCervejeiro.setFont(new Font("Arial Black", Font.BOLD, 11));
 		btnDeletarCervejeiro.setForeground(new Color(255, 0, 0));
@@ -146,14 +141,14 @@ public class TelaAdmGerenciarBanimentos {
 
 				CervejeiroBO cbo = new CervejeiroBO();
 				Cervejeiro cerv = (Cervejeiro) comboBox.getSelectedItem();
-				
-				if(cerv.getStatus().contentEquals("Desativado")) {
+
+				if (cerv.getStatus().contentEquals("Desativado")) {
 					lblMsgCervejeiro.setText("Este Cervejeiro já está Desativado");
 					return;
 				}
-				
+
 				cerv.setStatus("Desativado");
-				
+
 				try {
 					cbo.alterar(cerv);
 				} catch (Exception e1) {
@@ -161,35 +156,33 @@ public class TelaAdmGerenciarBanimentos {
 					e1.printStackTrace();
 					return;
 				}
-				
+
 				lblMsgCervejeiro.setText("Cervejeiro Desativado com Sucesso!!!");
 
 			}
 		});
 		btnDeletarCervejeiro.setBounds(439, 211, 124, 23);
 		panel.add(btnDeletarCervejeiro);
-		
+
 		JLabel lblGerenciarStatusApreciador = new JLabel("Gerenciar Status Apreciador");
 		lblGerenciarStatusApreciador.setHorizontalAlignment(SwingConstants.CENTER);
 		lblGerenciarStatusApreciador.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblGerenciarStatusApreciador.setBounds(135, 378, 396, 14);
 		panel.add(lblGerenciarStatusApreciador);
-		
+
 		JLabel lblEmailApreciador = new JLabel("Selecionar Apreciador:");
 		lblEmailApreciador.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblEmailApreciador.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblEmailApreciador.setBounds(48, 420, 148, 14);
 		panel.add(lblEmailApreciador);
-		
-		
-		
+
 		JComboBox<Apreciador> comboBoxApreciador = new JComboBox<Apreciador>();
 		ApreciadorBO abo = new ApreciadorBO();
-		
-		for(Apreciador a: abo.listar()) {
+
+		for (Apreciador a : abo.listar()) {
 			comboBoxApreciador.addItem(a);
 		}
-		
+
 		comboBoxApreciador.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				lblMsgApreciador.setText("");
@@ -199,7 +192,6 @@ public class TelaAdmGerenciarBanimentos {
 		comboBoxApreciador.setBounds(211, 416, 227, 22);
 		panel.add(comboBoxApreciador);
 
-		
 		JButton btnReativarApreciador = new JButton("Reativar");
 		btnReativarApreciador.setForeground(new Color(0, 128, 0));
 		btnReativarApreciador.setFont(new Font("Arial Black", Font.BOLD, 11));
@@ -207,14 +199,14 @@ public class TelaAdmGerenciarBanimentos {
 			public void actionPerformed(ActionEvent e) {
 				ApreciadorBO abo = new ApreciadorBO();
 				Apreciador apre = (Apreciador) comboBoxApreciador.getSelectedItem();
-				
-				if(apre.getStatus().contentEquals("Ativo")) {
+
+				if (apre.getStatus().contentEquals("Ativo")) {
 					lblMsgApreciador.setText("Este Apreciador já está Ativo");
 					return;
 				}
-				
+
 				apre.setStatus("Ativo");
-				
+
 				try {
 					abo.alterar(apre);
 				} catch (Exception e1) {
@@ -222,14 +214,13 @@ public class TelaAdmGerenciarBanimentos {
 					e1.printStackTrace();
 					return;
 				}
-				
+
 				lblMsgApreciador.setText("Apreciador Reativado com Sucesso!!!");
 			}
 		});
 		btnReativarApreciador.setBounds(450, 416, 124, 23);
 		panel.add(btnReativarApreciador);
-	
-		
+
 		JButton btnDesativarApreciador = new JButton("Desativar");
 		btnDesativarApreciador.setForeground(new Color(255, 0, 0));
 		btnDesativarApreciador.setFont(new Font("Arial Black", Font.BOLD, 11));
@@ -237,14 +228,14 @@ public class TelaAdmGerenciarBanimentos {
 			public void actionPerformed(ActionEvent e) {
 				ApreciadorBO abo = new ApreciadorBO();
 				Apreciador apre = (Apreciador) comboBoxApreciador.getSelectedItem();
-				
-				if(apre.getStatus().contentEquals("Desativado")) {
+
+				if (apre.getStatus().contentEquals("Desativado")) {
 					lblMsgApreciador.setText("Este Apreciador já está Desativado");
 					return;
 				}
-				
+
 				apre.setStatus("Desativado");
-				
+
 				try {
 					abo.alterar(apre);
 				} catch (Exception e1) {
@@ -252,29 +243,27 @@ public class TelaAdmGerenciarBanimentos {
 					e1.printStackTrace();
 					return;
 				}
-				
+
 				lblMsgApreciador.setText("Apreciador Desativado com Sucesso!!!");
-				
+
 			}
 		});
 		btnDesativarApreciador.setBounds(450, 450, 124, 23);
 		panel.add(btnDesativarApreciador);
-		
+
 		textFieldApreciador = new JTextField();
 		textFieldApreciador.setEditable(false);
 		textFieldApreciador.setColumns(10);
 		textFieldApreciador.setBounds(210, 451, 230, 23);
 		panel.add(textFieldApreciador);
-		
+
 		JLabel lblApreciadorSelecionado = new JLabel("Apreciador Selecionado:");
 		lblApreciadorSelecionado.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblApreciadorSelecionado.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblApreciadorSelecionado.setBounds(37, 458, 159, 14);
 		panel.add(lblApreciadorSelecionado);
-		
-		
-		
+
 		frameMain.setVisible(true);
-		
+
 	}
 }

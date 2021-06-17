@@ -216,7 +216,7 @@ public class TelaCadastroCerveja {
 				rdbtnComAlchool.setSelected(false);
 				textAlchool.setText("0");
 				textAlchool.disable();
-		
+
 			}
 		});
 
@@ -251,7 +251,7 @@ public class TelaCadastroCerveja {
 			public void mouseClicked(MouseEvent e) {
 				rdbtnAlchool.setSelected(false);
 				textAlchool.enable();
-				
+
 			}
 		});
 
@@ -354,7 +354,6 @@ public class TelaCadastroCerveja {
 		lblCadastro.setBounds(10, 582, 509, 23);
 		panel.add(lblCadastro);
 
-		
 		JComboBox<TipoCerveja> comboBoxTipo = new JComboBox<TipoCerveja>();
 		comboBoxTipo.setFont(new Font("Tahoma", Font.BOLD, 11));
 		comboBoxTipo.setBackground(new Color(248, 248, 255));
@@ -363,10 +362,10 @@ public class TelaCadastroCerveja {
 				textFieldTipoCerveja.setText(((TipoCerveja) comboBoxTipo.getSelectedItem()).getNome());
 			}
 		});
-		
+
 		comboBoxTipo.setBounds(338, 153, 112, 22);
 		panel.add(comboBoxTipo);
-		
+
 		for (TipoCerveja tc : tipocervejabo.tipos()) {
 
 			comboBoxTipo.addItem(tc);
@@ -401,14 +400,14 @@ public class TelaCadastroCerveja {
 		});
 		comboBoxPais.setBounds(338, 221, 112, 22);
 		panel.add(comboBoxPais);
-		
+
 		PaisBO paisbo = new PaisBO();
 		for (Pais p : paisbo.paises()) {
 
 			comboBoxPais.addItem(p);
 
 		}
-		
+
 		JComboBox<Coloracao> comboBoxColoracao = new JComboBox<Coloracao>();
 		comboBoxColoracao.setBackground(new Color(255, 255, 255));
 		comboBoxColoracao.setFont(new Font("Tahoma", Font.BOLD, 11));
@@ -419,7 +418,7 @@ public class TelaCadastroCerveja {
 		});
 		comboBoxColoracao.setBounds(338, 256, 112, 22);
 		panel.add(comboBoxColoracao);
-		
+
 		ColoracaoBO coloracaobo = new ColoracaoBO();
 		for (Coloracao c : coloracaobo.cores()) {
 
@@ -435,7 +434,7 @@ public class TelaCadastroCerveja {
 		});
 		comboBoxLupulo.setBounds(848, 256, 112, 22);
 		panel.add(comboBoxLupulo);
-		
+
 		LupuloBO lupulobo = new LupuloBO();
 		for (Lupulo l : lupulobo.lupulos()) {
 
@@ -451,7 +450,7 @@ public class TelaCadastroCerveja {
 		});
 		comboBoxFermento.setBounds(848, 287, 112, 22);
 		panel.add(comboBoxFermento);
-		
+
 		FermentoBO fermentobo = new FermentoBO();
 		for (Fermento f : fermentobo.fermentos()) {
 
@@ -480,7 +479,7 @@ public class TelaCadastroCerveja {
 		});
 		comboBoxMalte.setBounds(848, 315, 112, 22);
 		panel.add(comboBoxMalte);
-		
+
 		MalteBO maltebo = new MalteBO();
 		for (Malte m : maltebo.maltes()) {
 
@@ -495,7 +494,6 @@ public class TelaCadastroCerveja {
 			public void mouseClicked(MouseEvent e) {
 				Ingredientes ingredientes = new Ingredientes();
 				Cerveja cerveja = new Cerveja();
-			
 
 				CervejaBO cbo = new CervejaBO();
 				IngredientesBO ibo = new IngredientesBO();
@@ -540,9 +538,10 @@ public class TelaCadastroCerveja {
 				}
 
 				if (cadastrar || cadastrarIngredientes) {
-					lblCadastro.setForeground(Color.green.darker());;
+					lblCadastro.setForeground(Color.green.darker());
+					;
 					lblCadastro.setText("Cerveja Cadastrada Com Sucesso!!!");
-				}else {
+				} else {
 					lblCadastro.setForeground(Color.RED);
 					lblCadastro.setText("Já existe uma cerveja com este nome, tente um nome diferente");
 				}
@@ -553,7 +552,6 @@ public class TelaCadastroCerveja {
 		btnCadastrar.setForeground(Color.BLACK);
 		btnCadastrar.setBounds(198, 555, 124, 23);
 		panel.add(btnCadastrar);
-
 
 		frameCadastro.setVisible(true);
 

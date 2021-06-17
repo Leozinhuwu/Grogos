@@ -50,7 +50,7 @@ public class CervejaBO {
 
 	public List<Cerveja> findLikedCervejas(List<TipoCerveja> tipoCervejas) {
 		List<Cerveja> cervejas = cervejaDao.list(Cerveja.class);
-		List<Cerveja>cervejasLiked = cervejaDao.getLikedCervejas(tipoCervejas);
+		List<Cerveja> cervejasLiked = cervejaDao.getLikedCervejas(tipoCervejas);
 		if (tipoCervejas.isEmpty()) {
 			return cervejas;
 		}

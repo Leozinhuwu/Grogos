@@ -2,7 +2,6 @@ package br.edu.unifacear.bo;
 
 import java.util.List;
 
-import br.edu.unifacear.classes.Estado;
 import br.edu.unifacear.classes.TipoCerveja;
 import br.edu.unifacear.dao.TipoCervejaDao;
 
@@ -19,10 +18,10 @@ public class TipoCervejaBO {
 		}
 		return true;
 	}
-	
-	public List<TipoCerveja> tipos()throws Exception {
+
+	public List<TipoCerveja> tipos() throws Exception {
 		return tipoCervejaCrud.list(TipoCerveja.class);
-		
+
 	}
 
 	public TipoCerveja findById(TipoCerveja tipo) {
@@ -31,6 +30,6 @@ public class TipoCervejaBO {
 
 	public void alterar(TipoCerveja tipo) throws Exception {
 		tipoCervejaCrud.alterar(tipo);
-		
+
 	}
 }

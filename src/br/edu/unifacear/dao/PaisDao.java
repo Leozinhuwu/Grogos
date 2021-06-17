@@ -5,9 +5,8 @@ import javax.persistence.Query;
 
 import br.edu.unifacear.classes.Pais;
 
-
 public class PaisDao extends DefaultDAO<Pais> {
-	
+
 	@Override
 	protected Query getAutenticarObj(EntityManager con, Pais obj) {
 		Query q = con.createQuery("select p from Pais p" + " where nome = :nome");
@@ -17,11 +16,11 @@ public class PaisDao extends DefaultDAO<Pais> {
 
 	@Override
 	protected Query getFindIdQuery(EntityManager con, Pais obj) {
-		
+
 		Query q = con.createQuery("select id from Pais where nome = :nome");
 		q.setParameter("nome", obj.getNome());
 		return q;
-	
+
 	}
 
 	@Override

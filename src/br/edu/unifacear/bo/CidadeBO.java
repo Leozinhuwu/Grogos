@@ -10,7 +10,7 @@ public class CidadeBO {
 	private static CidadeDao cidadeCrud = new CidadeDao();
 
 	public Boolean saveCidade(Cidade cidade) throws Exception {
-		
+
 		if (cidadeCrud.autenticarObj(cidade)) {
 			return false;
 

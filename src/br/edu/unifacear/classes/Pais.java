@@ -7,7 +7,7 @@ public class Pais implements IDBModel {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	private String nome;
 
 	public Pais(int id, String nome) {
@@ -46,6 +46,5 @@ public class Pais implements IDBModel {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
-	
+
 }

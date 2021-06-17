@@ -110,7 +110,7 @@ public class TelaLogin extends JFrame {
 		passwordField = new JPasswordField();
 		passwordField.setBounds(115, 204, 175, 20);
 		panel.add(passwordField);
-		
+
 		ImageIcon grogos = new ImageIcon(TelaLogin.class.getResource("/Grogos_Final_Edition.png"));
 		JLabel lblGrogosImg = new JLabel(grogos);
 		lblGrogosImg.setBackground(new Color(255, 204, 153));
@@ -168,7 +168,7 @@ public class TelaLogin extends JFrame {
 		ApreciadorBO aprebo = new ApreciadorBO();
 		user.setEmail(txtEmail.getText());
 		user.setSenha(passwordField.getText());
-		
+
 		Cervejeiro usercer = new Cervejeiro();
 		CervejeiroBO cerbo = new CervejeiroBO();
 		usercer.setEmail(txtEmail.getText());
@@ -178,13 +178,12 @@ public class TelaLogin extends JFrame {
 		boolean authcerv = cerbo.login(usercer);
 
 		if (authapre == true || authcerv == true) {
-			
-			
-			
+
 			if (authapre == true) {
-				Apreciador usera =  (Apreciador) aprebo.findApreciador(user);
-				if(usera.getStatus().equals("Desativado")) {
-					JOptionPane.showInternalMessageDialog(null, "Conta Desativada. Entre em contato com a administração");
+				Apreciador usera = (Apreciador) aprebo.findApreciador(user);
+				if (usera.getStatus().equals("Desativado")) {
+					JOptionPane.showInternalMessageDialog(null,
+							"Conta Desativada. Entre em contato com a administração");
 					return;
 				}
 				try {
@@ -199,10 +198,11 @@ public class TelaLogin extends JFrame {
 				frameMain.dispose();
 			}
 			if (authcerv == true) {
-				
-				Cervejeiro usercera =  (Cervejeiro) cerbo.findCervejeiro(usercer);
-				if(usercera.getStatus().equals("Desativado")) {
-					JOptionPane.showInternalMessageDialog(null, "Conta Desativada. Entre em contato com a administração");
+
+				Cervejeiro usercera = (Cervejeiro) cerbo.findCervejeiro(usercer);
+				if (usercera.getStatus().equals("Desativado")) {
+					JOptionPane.showInternalMessageDialog(null,
+							"Conta Desativada. Entre em contato com a administração");
 					return;
 				}
 				try {

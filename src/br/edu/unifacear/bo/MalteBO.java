@@ -6,10 +6,10 @@ import br.edu.unifacear.classes.Malte;
 import br.edu.unifacear.dao.MalteDao;
 
 public class MalteBO {
-private static MalteDao  malteCrud = new MalteDao();
-	
+	private static MalteDao malteCrud = new MalteDao();
+
 	public boolean saveMalte(Malte malte) throws Exception {
-		
+
 		if (malteCrud.autenticarObj(malte)) {
 			return false;
 
@@ -17,10 +17,10 @@ private static MalteDao  malteCrud = new MalteDao();
 			malteCrud.save(malte);
 		}
 		return true;
-		
+
 	}
-	
-	public List<Malte> maltes()throws Exception {
+
+	public List<Malte> maltes() throws Exception {
 		return malteCrud.list(Malte.class);
 	}
 }

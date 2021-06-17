@@ -61,7 +61,8 @@ public class TelaCervejasFavoritas {
 		tblCervejas.setFont(new Font("Tahoma", Font.BOLD, 11));
 		tblCervejas.getTableHeader().setReorderingAllowed(false);
 
-		tblCervejas.setModel(new DefaultTableModel(new Object[][] {}, new String[] { "Nome", "Tipo" , "Coloração", "Sabor" , "País" }) {
+		tblCervejas.setModel(new DefaultTableModel(new Object[][] {},
+				new String[] { "Nome", "Tipo", "Coloraï¿½ï¿½o", "Sabor", "Paï¿½s" }) {
 			/**
 				 * 
 				 */
@@ -88,7 +89,7 @@ public class TelaCervejasFavoritas {
 
 		btnVerDetalhes = new JButton("Ver Detalhes");
 		btnVerDetalhes.setFont(new Font("Arial Black", Font.BOLD, 12));
-		
+
 		btnVerDetalhes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Cerveja cerveja = new Cerveja();
@@ -100,13 +101,13 @@ public class TelaCervejasFavoritas {
 				}
 
 				int linha = tblCervejas.getSelectedRow();
-				String nome = (String)tblCervejas.getValueAt(linha, 0);
-				System.out.println(nome);
+				String nome = (String) tblCervejas.getValueAt(linha, 0);
+
 				cerveja.setNome(nome);
 				try {
 					cerveja = cbo.findByName(nome);
 				} catch (Exception e2) {
-					
+
 					e2.printStackTrace();
 					return;
 				}
@@ -125,47 +126,10 @@ public class TelaCervejasFavoritas {
 
 		btnRemoverFavoritos = new JButton("Remover");
 		btnRemoverFavoritos.setFont(new Font("Arial Black", Font.BOLD, 12));
-		
+
 		btnRemoverFavoritos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Cerveja cerveja = new Cerveja();
-				CervejaBO cbo = new CervejaBO();
-				ApreciadorBO abo = new ApreciadorBO();
-				if (tblCervejas.getSelectedRow() == -1) {
-					lblMsgRemover.setForeground(Color.RED);
-					lblMsgRemover.setText("Nenhuma Cerveja Selecionada");
-					return;
-				}
-
-				int linha = tblCervejas.getSelectedRow();
-				String nome = (String)tblCervejas.getValueAt(linha, 0);
-				System.out.println(nome);
-				cerveja.setNome(nome);
-				
-				try {
-					cerveja = cbo.findByName(nome);
-				} catch (Exception e2) {
-					lblMsgRemover.setForeground(Color.RED);
-					lblMsgRemover.setText("Erro ao buscar Cerveja");
-					e2.printStackTrace();
-					return;
-				}
-				
-				Apreciador apreLogado = (Apreciador) TelaLogin.usuarioLogado;
-				apreLogado.removeCervejaFavoritas(cerveja);
-				
-				try {
-					abo.alterar(apreLogado);
-				} catch (Exception e1) {
-					lblMsgRemover.setForeground(Color.RED);
-					lblMsgRemover.setText("Erro ao remover Cerveja");
-					
-					e1.printStackTrace();
-					return;
-				}
-				lblMsgRemover.setForeground(Color.GREEN);
-				lblMsgRemover.setText("Cerveja Removida!!!");
-				cervejasFavoritas();
+				removerCerveja();
 			}
 		});
 		btnRemoverFavoritos.setBounds(695, 170, 142, 23);
@@ -177,12 +141,52 @@ public class TelaCervejasFavoritas {
 		lblNewLabel.setForeground(new Color(255, 69, 0));
 		lblNewLabel.setBounds(296, 20, 237, 14);
 		contentPane.add(lblNewLabel);
-		
+
 		lblMsgRemover = new JLabel("");
 		lblMsgRemover.setBounds(695, 204, 190, 14);
 		contentPane.add(lblMsgRemover);
 
 		frameCervejasFavoritas.setVisible(true);
+		cervejasFavoritas();
+	}
+
+	private void removerCerveja() {
+		Cerveja cerveja = new Cerveja();
+		CervejaBO cbo = new CervejaBO();
+		ApreciadorBO abo = new ApreciadorBO();
+		if (tblCervejas.getSelectedRow() == -1) {
+			lblMsgRemover.setForeground(Color.RED);
+			lblMsgRemover.setText("Nenhuma Cerveja Selecionada");
+			return;
+		}
+
+		int linha = tblCervejas.getSelectedRow();
+		String nome = (String) tblCervejas.getValueAt(linha, 0);
+		cerveja.setNome(nome);
+
+		try {
+			cerveja = cbo.findByName(nome);
+		} catch (Exception e2) {
+			lblMsgRemover.setForeground(Color.RED);
+			lblMsgRemover.setText("Erro ao buscar Cerveja");
+			e2.printStackTrace();
+			return;
+		}
+
+		Apreciador apreLogado = (Apreciador) TelaLogin.usuarioLogado;
+		apreLogado.removeCervejaFavoritas(cerveja);
+
+		try {
+			abo.alterar(apreLogado);
+		} catch (Exception e1) {
+			lblMsgRemover.setForeground(Color.RED);
+			lblMsgRemover.setText("Erro ao remover Cerveja");
+
+			e1.printStackTrace();
+			return;
+		}
+		lblMsgRemover.setForeground(Color.GREEN);
+		lblMsgRemover.setText("Cerveja Removida!!!");
 		cervejasFavoritas();
 	}
 
@@ -197,14 +201,11 @@ public class TelaCervejasFavoritas {
 			List<Cerveja> lista = apreLogado.getCervejasFavoritas();
 
 			for (Cerveja c : lista) {
-				modelo.addRow(new Object[] { c.getNome(),
-						c.getType(),
-						c.getColoracao(),
-						c.getFlavor(),
+				modelo.addRow(new Object[] { c.getNome(), c.getType(), c.getColoracao(), c.getFlavor(),
 						c.getCountryOrigin() });
 			}
 		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null, "Erro consultando: " + e.getMessage());
+			JOptionPane.showMessageDialog(null, "Erro ao consultar Cerveja: " + e.getMessage());
 		}
 	}
 

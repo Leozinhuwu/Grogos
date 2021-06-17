@@ -10,14 +10,13 @@ public class Token implements IDBModel {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	private String nome;
 	private String status;
-	
-	@ManyToMany(mappedBy="token", cascade = CascadeType.ALL)
+
+	@ManyToMany(mappedBy = "token", cascade = CascadeType.ALL)
 	private List<Cervejeiro> cervejeiros;
-	
-	
+
 	public Token(int id, String nome, String status) {
 		super();
 		this.id = id;
@@ -30,29 +29,28 @@ public class Token implements IDBModel {
 		super();
 		this.cervejeiros = new ArrayList<Cervejeiro>();
 	}
-	
+
 	public List<Cervejeiro> getCervejeiro() {
 		return this.cervejeiros;
 	}
 
-
 	public void setCervejeiro(List<Cervejeiro> cervejeiros) {
 		this.cervejeiros = cervejeiros;
 	}
-	
+
 	public void addCervejeiro(Cervejeiro cervejeiro) {
 		this.cervejeiros.add(cervejeiro);
-		
+
 	}
-	
+
 	public void removeCervejeiro(Cervejeiro cervejeiro) {
 		this.cervejeiros.remove(cervejeiro);
 	}
-	
+
 	public Cervejeiro getCervejeiro(int id) {
 		return this.cervejeiros.get(id);
 	}
-	
+
 	public int getId() {
 		return id;
 	}
@@ -84,9 +82,7 @@ public class Token implements IDBModel {
 
 	@Override
 	public String getEmail() {
-		// TODO Auto-generated method stub
 		return null;
 	}
-	
-	
+
 }

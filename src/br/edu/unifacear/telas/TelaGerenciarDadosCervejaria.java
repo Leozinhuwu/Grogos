@@ -371,7 +371,7 @@ public class TelaGerenciarDadosCervejaria {
 		lblMsgErroEndereco.setHorizontalAlignment(SwingConstants.CENTER);
 		lblMsgErroEndereco.setBounds(90, 688, 327, 14);
 		panel.add(lblMsgErroEndereco);
-		
+
 		JLabel lblNewLabel = new JLabel("Gerenciar Cervejaria!");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblNewLabel.setForeground(new Color(255, 102, 51));
@@ -392,7 +392,6 @@ public class TelaGerenciarDadosCervejaria {
 	private static void alterarEmail(Cervejeiro cervLogado, CervejariaBO cbo, JLabel lblCervejariaEmail) {
 		String regexEmail = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$";
 
-		
 		if (!textFieldEmailAtual.getText().equalsIgnoreCase(cervLogado.getCervejaria().getEmail())) {
 			lblMsgErroEmail.setForeground(Color.RED);
 			lblMsgErroEmail.setText("Dados Invalidos");

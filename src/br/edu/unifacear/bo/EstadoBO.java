@@ -9,7 +9,7 @@ public class EstadoBO {
 	private static EstadoDao estadoCrud = new EstadoDao();
 
 	public Boolean saveEstado(Estado estado) throws Exception {
-		
+
 		if (estadoCrud.autenticarObj(estado)) {
 			return false;
 
@@ -18,9 +18,9 @@ public class EstadoBO {
 		}
 		return true;
 	}
-	
-	public List<Estado> estados()throws Exception {
+
+	public List<Estado> estados() throws Exception {
 		return estadoCrud.list(Estado.class);
-		
+
 	}
 }

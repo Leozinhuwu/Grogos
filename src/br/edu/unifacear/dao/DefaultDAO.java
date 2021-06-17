@@ -24,7 +24,7 @@ public abstract class DefaultDAO<T extends IDBModel> {
 			throw new Exception("Erro salvando : " + e.getMessage());
 		}
 	}
-	
+
 	public boolean alterar(T obj) throws Exception {
 
 		try {
@@ -37,25 +37,22 @@ public abstract class DefaultDAO<T extends IDBModel> {
 
 		} catch (Exception e) {
 			throw new Exception("Erro alterando : " + e.getMessage());
-			
+
 		}
-		
+
 	}
-	
-	
+
 	// remove
 	public void delete(T obj) throws Exception {
-		
-	
-			try {
-				con.getTransaction().begin();
-				con.remove(obj);
-				con.getTransaction().commit();
 
-			} catch (Exception e) {
-				throw new Exception("Erro deletando : " + e.getMessage());
-			}
-		
+		try {
+			con.getTransaction().begin();
+			con.remove(obj);
+			con.getTransaction().commit();
+
+		} catch (Exception e) {
+			throw new Exception("Erro deletando : " + e.getMessage());
+		}
 
 	}
 
@@ -63,21 +60,22 @@ public abstract class DefaultDAO<T extends IDBModel> {
 		return con.find(classe, id);
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<T> list(Class<T> classe) {
 		Query q = con.createQuery("select t from " + classe.getSimpleName().toString() + " t");
 		return q.getResultList();
-		
+
 	}
 
 	public boolean autenticarObj(T obj) {
-		
+
 		return getAutenticarObj(con, obj).getResultList().size() > 0;
 	}
 
 	protected abstract Query getAutenticarObj(EntityManager con, T obj);
 
 	public int findId(T obj) throws Exception {
-		
+
 		List a = getFindIdQuery(con, obj).getResultList();
 		Object b = a.get(0);
 		int id = Integer.parseInt(b.toString());
@@ -86,28 +84,28 @@ public abstract class DefaultDAO<T extends IDBModel> {
 	}
 
 	protected abstract Query getFindIdQuery(EntityManager con, T obj);
-	
+
 	public String findName(T obj) {
-		
+
 		List a = getFindName(con, obj).getResultList();
 		Object b = a.get(0);
 		String name = b.toString();
 		return name;
 	}
+
 	protected abstract Query getFindName(EntityManager con, T obj);
-	
+
 	public Object findSingleObj(T obj) {
 		Object b;
-		if(getFindSingleObj(con, obj).getResultList().size() > 0) {
+		if (getFindSingleObj(con, obj).getResultList().size() > 0) {
 			List a = getFindSingleObj(con, obj).getResultList();
 			b = a.get(0);
 			return b;
-		}else {
+		} else {
 			return null;
 		}
-		
-		
+
 	}
-	
+
 	protected abstract Query getFindSingleObj(EntityManager con, T obj);
 }

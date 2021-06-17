@@ -5,14 +5,14 @@ import javax.persistence.Query;
 
 import br.edu.unifacear.classes.Estado;
 
-public class EstadoDao extends DefaultDAO<Estado>{
+public class EstadoDao extends DefaultDAO<Estado> {
 
 	@Override
 	protected Query getAutenticarObj(EntityManager con, Estado obj) {
 		Query q = con.createQuery("select e from Estado e" + " where nome = :nome");
 		q.setParameter("nome", obj.getNome());
 		return q;
-		
+
 	}
 
 	@Override

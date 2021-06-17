@@ -177,8 +177,9 @@ public class TelaCadastroApreciador extends JFrame {
 		passwordField.setToolTipText("minimo 6 caracteries");
 		passwordField.setBounds(146, 214, 175, 20);
 		panel.add(passwordField);
-		
-		ImageIcon grogos = new ImageIcon(TelaAdmManterCadastroCervejeiroCervejaria.class.getResource("/Grogos_Final_Edition.png")); 
+
+		ImageIcon grogos = new ImageIcon(
+				TelaAdmManterCadastroCervejeiroCervejaria.class.getResource("/Grogos_Final_Edition.png"));
 		JLabel lblGrogosImg = new JLabel(grogos);
 		lblGrogosImg.setBounds(487, 76, 405, 375);
 		panel.add(lblGrogosImg);
@@ -230,7 +231,6 @@ public class TelaCadastroApreciador extends JFrame {
 		listTipos.setBounds(104, 468, 149, 119);
 		panel.add(listTipos);
 		listTipos.setEnabled(false);
-		
 
 		JLabel lbltipomsg = new JLabel("");
 		lbltipomsg.setHorizontalAlignment(SwingConstants.LEFT);
@@ -252,7 +252,7 @@ public class TelaCadastroApreciador extends JFrame {
 				if (!tipos.contains(tc)) {
 					tipos.add(tc);
 					listTipos.add(tc.getNome());
-					
+
 				} else {
 					lbltipomsg.setText("item ja adicionado");
 				}
@@ -266,7 +266,7 @@ public class TelaCadastroApreciador extends JFrame {
 		});
 		btnAddTipoCerveja.setBounds(263, 404, 122, 23);
 		panel.add(btnAddTipoCerveja);
-		
+
 		JButton btnRemoverTipo = new JButton("Remover-");
 		btnRemoverTipo.setForeground(new Color(255, 0, 0));
 		btnRemoverTipo.setFont(new Font("Arial Black", Font.BOLD, 12));
@@ -281,6 +281,7 @@ public class TelaCadastroApreciador extends JFrame {
 					lbltipomsg.setText("Item não está na lista");
 				}
 			}
+
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				lbltipomsg.setText("");
@@ -288,13 +289,13 @@ public class TelaCadastroApreciador extends JFrame {
 		});
 		btnRemoverTipo.setBounds(262, 437, 123, 23);
 		panel.add(btnRemoverTipo);
-		
+
 		JLabel lblCadastrar = new JLabel("Cadastrar Conta e Prefer\u00EAncias\r\n\r\n");
 		lblCadastrar.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblCadastrar.setHorizontalAlignment(SwingConstants.CENTER);
 		lblCadastrar.setBounds(628, 539, 230, 14);
 		panel.add(lblCadastrar);
-		
+
 		JLabel lblAdicionarTipos = new JLabel("Escolha alguns Tipos de Cerveja de sua prefer\u00EAncia\r\n");
 		lblAdicionarTipos.setHorizontalAlignment(SwingConstants.CENTER);
 		lblAdicionarTipos.setFont(new Font("Tahoma", Font.BOLD, 11));

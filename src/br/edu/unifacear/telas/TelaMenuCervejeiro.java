@@ -39,7 +39,7 @@ public class TelaMenuCervejeiro extends JFrame {
 					TelaGerenciarDadosCervejeiro tPrincipal = new TelaGerenciarDadosCervejeiro();
 					tPrincipal.telaGerenciarDadosCervejeiro();
 				} catch (Exception e1) {
-				
+
 					e1.printStackTrace();
 				}
 				frameMenuUser.dispose();
@@ -61,7 +61,7 @@ public class TelaMenuCervejeiro extends JFrame {
 					return;
 				}
 				frameMenuUser.dispose();
-					
+
 			}
 		});
 		btnMinhasCerveja.setBounds(98, 149, 172, 23);
@@ -101,12 +101,12 @@ public class TelaMenuCervejeiro extends JFrame {
 		});
 		btnLogout.setBounds(23, 27, 89, 23);
 		panel.add(btnLogout);
-		
+
 		ImageIcon grogos = new ImageIcon(TelaMenuCervejeiro.class.getResource("/Grogos_Final_Edition.png"));
 		JLabel lblGrogosImg = new JLabel(grogos);
 		lblGrogosImg.setBounds(326, 76, 387, 342);
 		panel.add(lblGrogosImg);
-		
+
 		JLabel lblBemvindoCervejeiro = new JLabel("Bem-vindo Cervejeiro");
 		lblBemvindoCervejeiro.setHorizontalAlignment(SwingConstants.CENTER);
 		lblBemvindoCervejeiro.setForeground(new Color(255, 69, 0));

@@ -7,20 +7,19 @@ public class CervejariaValidator {
 
 	public static boolean validar(String nome, String email, String telefone, String endereco) {
 
-		
-		if(nome == null || !nome.matches(regexFields)) {
-			return false;
-		}
-		
-		if(email == null || !email.matches(regexEmail)) {
+		if (nome == null || !nome.matches(regexFields)) {
 			return false;
 		}
 
-		if(telefone == null || !telefone.matches(regexNumeros)) {
+		if (email == null || !email.matches(regexEmail)) {
 			return false;
 		}
-		
-		if(endereco == null || endereco.isBlank()) {
+
+		if (telefone == null || !telefone.matches(regexNumeros)) {
+			return false;
+		}
+
+		if (endereco == null || endereco.isBlank()) {
 			return false;
 		}
 

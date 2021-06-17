@@ -168,11 +168,11 @@ public class TelaCadastroCervejeiro {
 		passwordField.setToolTipText("password");
 		passwordField.setBounds(146, 214, 175, 20);
 		panel.add(passwordField);
-		
-		ImageIcon grogos = new ImageIcon(TelaCadastroCervejeiro.class.getResource("/Grogos_Final_Edition.png")); 
+
+		ImageIcon grogos = new ImageIcon(TelaCadastroCervejeiro.class.getResource("/Grogos_Final_Edition.png"));
 
 		JLabel lblGrogosImg = new JLabel(grogos);
-		
+
 		lblGrogosImg.setBounds(499, 78, 398, 404);
 		panel.add(lblGrogosImg);
 

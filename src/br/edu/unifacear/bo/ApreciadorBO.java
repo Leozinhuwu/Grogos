@@ -1,7 +1,5 @@
 package br.edu.unifacear.bo;
 
-
-
 import java.util.List;
 
 import br.edu.unifacear.classes.Apreciador;
@@ -21,38 +19,38 @@ public class ApreciadorBO {
 		}
 		return true;
 	}
-	
-	public String findUserName(Apreciador user) throws Exception{
+
+	public String findUserName(Apreciador user) throws Exception {
 		String name = userCrud.findName(user);
 		return name;
 	}
-	
+
 	public Boolean login(Apreciador apreciador) {
 		if (userCrud.autenticarObj(apreciador)) {
 			return true;
 		}
 		return false;
-		
+
 	}
+
 	public Object findApreciador(Apreciador apreciador) {
-		
+
 		return userCrud.findSingleObj(apreciador);
 	}
 
 	public void deletar(Apreciador apre) throws Exception {
 		userCrud.delete(apre);
-		
+
 	}
-	
+
 	public boolean autenticarEmail(String email) {
 		return userCrud.autenticarEmail(email);
 	}
-	
-	
+
 	public void alterar(Apreciador user) throws Exception {
-	
-			userCrud.alterar(user);
-	
+
+		userCrud.alterar(user);
+
 	}
 
 	public List<Apreciador> listar() {

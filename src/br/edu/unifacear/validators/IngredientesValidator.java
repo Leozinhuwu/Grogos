@@ -6,14 +6,14 @@ public class IngredientesValidator {
 
 	public static boolean validar(String teorAlcoolico, String cevada, String especiarias) {
 
-		if(teorAlcoolico == null || !teorAlcoolico.matches(regex)) {
+		if (teorAlcoolico == null || !teorAlcoolico.matches(regex)) {
 			return false;
 		}
-		if(cevada == null || !cevada.matches(regex)) {
+		if (cevada == null || !cevada.matches(regex)) {
 			return false;
 		}
-		
-		if(especiarias == null || especiarias.isBlank()) {
+
+		if (especiarias == null || especiarias.isBlank()) {
 			return false;
 		}
 

@@ -7,7 +7,7 @@ public class Lupulo implements IDBModel {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	private String nome;
 
 	public Lupulo(int id, String nome) {
@@ -47,6 +47,5 @@ public class Lupulo implements IDBModel {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
-	
+
 }

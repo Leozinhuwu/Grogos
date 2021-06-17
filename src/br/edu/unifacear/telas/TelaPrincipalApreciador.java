@@ -36,7 +36,6 @@ public class TelaPrincipalApreciador {
 		Apreciador apreLogado = (Apreciador) TelaLogin.usuarioLogado;
 
 		List<Cerveja> aprelike = getCervejasLiked();
-		System.out.println(aprelike.size());
 
 		JPanel panel = new JPanel();
 		panel.setForeground(Color.RED);
@@ -51,6 +50,7 @@ public class TelaPrincipalApreciador {
 		panel.setLayout(null);
 
 		JButton btnLogout = new JButton("Sair");
+		btnLogout.setFont(new Font("Arial Black", Font.BOLD, 11));
 		btnLogout.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -60,7 +60,6 @@ public class TelaPrincipalApreciador {
 					framePrincipal.dispose();
 					return;
 				} catch (Exception e1) {
-					// erro ao voltar
 					e1.printStackTrace();
 					return;
 				}
@@ -71,10 +70,14 @@ public class TelaPrincipalApreciador {
 		panel.add(btnLogout);
 
 		JLabel lblBemVindo = new JLabel("Bem vindo " + apreLogado.getNome());
-		lblBemVindo.setBounds(423, 15, 362, 14);
+		lblBemVindo.setForeground(new Color(255, 69, 0));
+		lblBemVindo.setHorizontalAlignment(SwingConstants.CENTER);
+		lblBemVindo.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblBemVindo.setBounds(389, 15, 362, 14);
 		panel.add(lblBemVindo);
 
 		JButton btnPesquisar = new JButton("Realizar uma pesquisa");
+		btnPesquisar.setFont(new Font("Tahoma", Font.BOLD, 11));
 		btnPesquisar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -82,7 +85,6 @@ public class TelaPrincipalApreciador {
 					TelaPesquisa telaPesquisar = new TelaPesquisa();
 					telaPesquisar.telaPesquisa();
 				} catch (Exception e1) {
-					// mensagem erro
 					return;
 				}
 				framePrincipal.dispose();
@@ -92,6 +94,7 @@ public class TelaPrincipalApreciador {
 		panel.add(btnPesquisar);
 
 		JButton btnGerenciarDados = new JButton("Gerenciar meus Dados");
+		btnGerenciarDados.setFont(new Font("Tahoma", Font.BOLD, 11));
 		btnGerenciarDados.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -114,12 +117,14 @@ public class TelaPrincipalApreciador {
 		panel.add(lblCervejasGosto);
 
 		JLabel lblNomeCerveja1 = new JLabel();
+		lblNomeCerveja1.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblNomeCerveja1.setHorizontalAlignment(SwingConstants.LEFT);
 		lblNomeCerveja1.setBounds(64, 233, 308, 14);
 		panel.add(lblNomeCerveja1);
 		lblNomeCerveja1.setText(aprelike.get(0).getNome());
 
 		JEditorPane descricao1 = new JEditorPane();
+		descricao1.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 11));
 		descricao1.setEditable(false);
 		descricao1.setText(" " + aprelike.get(0).getDescription());
 		descricao1.setBorder(new LineBorder(new Color(210, 105, 30)));
@@ -128,21 +133,25 @@ public class TelaPrincipalApreciador {
 		panel.add(descricao1);
 
 		JLabel lblDescricao = new JLabel("Descri\u00E7\u00E3o:");
+		lblDescricao.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblDescricao.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblDescricao.setBounds(21, 271, 89, 14);
 		panel.add(lblDescricao);
 
 		JLabel lblNomeCerveja2 = new JLabel();
+		lblNomeCerveja2.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblNomeCerveja2.setHorizontalAlignment(SwingConstants.LEFT);
 		lblNomeCerveja2.setBounds(64, 486, 308, 14);
 		panel.add(lblNomeCerveja2);
 		lblNomeCerveja2.setText(aprelike.get(1).getNome());
 		JLabel lblDescricao_1 = new JLabel("Descri\u00E7\u00E3o:");
+		lblDescricao_1.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblDescricao_1.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblDescricao_1.setBounds(21, 510, 89, 14);
 		panel.add(lblDescricao_1);
 
 		JEditorPane descricao2 = new JEditorPane();
+		descricao2.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 11));
 		descricao2.setForeground(new Color(0, 0, 0));
 		descricao2.setText(" " + aprelike.get(1).getDescription());
 		descricao2.setEditable(false);
@@ -152,17 +161,20 @@ public class TelaPrincipalApreciador {
 		panel.add(descricao2);
 
 		JLabel lblNomeCerveja3 = new JLabel();
+		lblNomeCerveja3.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblNomeCerveja3.setHorizontalAlignment(SwingConstants.LEFT);
 		lblNomeCerveja3.setBounds(625, 233, 331, 14);
 		panel.add(lblNomeCerveja3);
 		lblNomeCerveja3.setText(aprelike.get(2).getNome());
 
 		JLabel lblDescricao_2 = new JLabel("Descri\u00E7\u00E3o:");
+		lblDescricao_2.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblDescricao_2.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblDescricao_2.setBounds(582, 271, 89, 14);
 		panel.add(lblDescricao_2);
 
 		JEditorPane descricao3 = new JEditorPane();
+		descricao3.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 11));
 		descricao3.setText(" " + aprelike.get(2).getDescription());
 		descricao3.setEditable(false);
 		descricao3.setBorder(new LineBorder(new Color(210, 105, 30)));
@@ -171,17 +183,20 @@ public class TelaPrincipalApreciador {
 		panel.add(descricao3);
 
 		JLabel lblNomeCerveja4 = new JLabel();
+		lblNomeCerveja4.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblNomeCerveja4.setHorizontalAlignment(SwingConstants.LEFT);
 		lblNomeCerveja4.setBounds(625, 486, 331, 14);
 		panel.add(lblNomeCerveja4);
 		lblNomeCerveja4.setText(aprelike.get(3).getNome());
 
 		JLabel lblDescricao_3 = new JLabel("Descri\u00E7\u00E3o:");
+		lblDescricao_3.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblDescricao_3.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblDescricao_3.setBounds(582, 510, 89, 14);
 		panel.add(lblDescricao_3);
 
 		JEditorPane descricao4 = new JEditorPane();
+		descricao4.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 11));
 		descricao4.setText(" " + aprelike.get(3).getDescription());
 		descricao4.setEditable(false);
 		descricao4.setBorder(new LineBorder(new Color(210, 105, 30)));
@@ -211,7 +226,7 @@ public class TelaPrincipalApreciador {
 		JPanel panelCerveja1 = new JPanel();
 		panelCerveja1.setBackground(new Color(255, 218, 185));
 		panelCerveja1.setBorder(new LineBorder(new Color(255, 165, 0)));
-		panelCerveja1.setBounds(50, 212, 393, 253);
+		panelCerveja1.setBounds(31, 212, 412, 253);
 		panel.add(panelCerveja1);
 
 		JButton btnDetalhesCerveja2 = new JButton("Ver Detalhes");
@@ -234,7 +249,7 @@ public class TelaPrincipalApreciador {
 		JPanel panelCerveja2 = new JPanel();
 		panelCerveja2.setBorder(new LineBorder(new Color(255, 140, 0)));
 		panelCerveja2.setBackground(new Color(255, 218, 185));
-		panelCerveja2.setBounds(50, 476, 393, 230);
+		panelCerveja2.setBounds(31, 476, 412, 230);
 		panel.add(panelCerveja2);
 
 		JButton btnDetalhesCerveja4 = new JButton("Ver Detalhes");
@@ -284,13 +299,13 @@ public class TelaPrincipalApreciador {
 		panel.add(panelCerveja3);
 
 		JButton btnCervejasFavoritas = new JButton("Ver Cervejas Favoritas");
+		btnCervejasFavoritas.setFont(new Font("Tahoma", Font.BOLD, 11));
 		btnCervejasFavoritas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					TelaCervejasFavoritas telaCervejasFavorita = new TelaCervejasFavoritas();
 					telaCervejasFavorita.telaCervejasFavoritas();
 				} catch (Exception e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 					return;
 				}

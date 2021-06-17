@@ -42,6 +42,7 @@ public class TelaDetalhesCerveja {
 		panel.setLayout(null);
 
 		JLabel lblDetalhesCerveja = new JLabel("Detalhes " + cerveja.getNome());
+		lblDetalhesCerveja.setForeground(new Color(255, 69, 0));
 		lblDetalhesCerveja.setFont(new Font("Arial Black", Font.BOLD, 13));
 		lblDetalhesCerveja.setHorizontalAlignment(SwingConstants.CENTER);
 		lblDetalhesCerveja.setBounds(297, 25, 389, 14);

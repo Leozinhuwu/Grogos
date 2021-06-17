@@ -13,20 +13,19 @@ public class Ingredientes implements IDBModel {
 	private float teorAlcoolico;
 	private float cevada;
 	private Boolean puroMalte;
-	
+
 	@ManyToOne
-	@JoinColumn(name="malte_id")
+	@JoinColumn(name = "malte_id")
 	private Malte malte;
-	
-	
+
 	@ManyToOne
-	@JoinColumn(name="lupulo_id")
+	@JoinColumn(name = "lupulo_id")
 	private Lupulo lupulo;
-	
+
 	@ManyToOne
-	@JoinColumn(name="fermento_id")
+	@JoinColumn(name = "fermento_id")
 	private Fermento fermento;
-	
+
 	private String especiarias;
 
 	@OneToOne(mappedBy = "ingredientes")
@@ -129,7 +128,7 @@ public class Ingredientes implements IDBModel {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	
+
 	public Malte getMalte() {
 		return malte;
 	}
@@ -148,7 +147,5 @@ public class Ingredientes implements IDBModel {
 				+ ", cevada=" + cevada + ", puroMalte=" + puroMalte + ", malte=" + malte + ", lupulo=" + lupulo
 				+ ", fermento=" + fermento + ", especiarias=" + especiarias + ", cerveja=" + cerveja + "]";
 	}
-
-
 
 }

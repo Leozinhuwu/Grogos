@@ -5,9 +5,8 @@ import javax.persistence.Query;
 
 import br.edu.unifacear.classes.Lupulo;
 
-
 public class LupuloDao extends DefaultDAO<Lupulo> {
-	
+
 	@Override
 	protected Query getAutenticarObj(EntityManager con, Lupulo obj) {
 		Query q = con.createQuery("select l from Lupulo l" + " where nome = :nome");

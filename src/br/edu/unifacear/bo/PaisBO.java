@@ -7,10 +7,10 @@ import br.edu.unifacear.classes.Pais;
 import br.edu.unifacear.dao.PaisDao;
 
 public class PaisBO {
-	private static PaisDao  paisCrud = new PaisDao();
-	
+	private static PaisDao paisCrud = new PaisDao();
+
 	public boolean savePais(Pais pais) throws Exception {
-		
+
 		if (paisCrud.autenticarObj(pais)) {
 			return false;
 
@@ -18,15 +18,15 @@ public class PaisBO {
 			paisCrud.save(pais);
 		}
 		return true;
-		
+
 	}
-	
-	public List<Pais> paises()throws Exception {
+
+	public List<Pais> paises() throws Exception {
 		return paisCrud.list(Pais.class);
 	}
 
 	public void deletar(Pais pais) throws Exception {
 		paisCrud.delete(pais);
-		
+
 	}
 }

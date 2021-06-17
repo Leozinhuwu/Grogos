@@ -140,7 +140,7 @@ public class TelaGerenciarDadosCervejeiro {
 				try {
 					TelaGerenciarDadosCervejaria tGerenciarDadosCervejaria = new TelaGerenciarDadosCervejaria();
 					tGerenciarDadosCervejaria.telaGerenciarDadosCervejaria();
-					
+
 				} catch (Exception e1) {
 					// error
 					return;
@@ -527,7 +527,7 @@ public class TelaGerenciarDadosCervejeiro {
 	}
 
 	@SuppressWarnings("deprecation")
-	private static void desativarConta(CervejeiroBO cbo, Cervejeiro cervLogado)  {
+	private static void desativarConta(CervejeiroBO cbo, Cervejeiro cervLogado) {
 		if (!passwordField.getText().equals(cervLogado.getSenha())) {
 			lblMsgErroSenhaDeletarConta.setForeground(Color.RED);
 			lblMsgErroSenhaDeletarConta.setText("Senha incorreta");
@@ -538,30 +538,30 @@ public class TelaGerenciarDadosCervejeiro {
 				"Ao Desativar sua conta, Você perde o acesso ao Sistema com essa Conta. Deseja continuar mesmo assim?",
 				null, 0);
 		if (confirmar == 0) {
-				try {
-					cervLogado.setStatus("Desativado");
-					cbo.alterar(cervLogado);
-				} catch (Exception e) {
-					lblMsgErroSenhaDeletarConta.setForeground(Color.RED);
-					lblMsgErroSenhaDeletarConta.setText("Erro ao Desativar sua Conta");
-					e.printStackTrace();
-					return;
-				}
-				
-				try {
-					TelaLogin telaIanicial = new TelaLogin();
-					telaIanicial.telaInicial();
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				framePrincipal.dispose();
-
-			} else{
-				lblMsgErroSenhaDeletarConta.setText("Operação Cancelada");
+			try {
+				cervLogado.setStatus("Desativado");
+				cbo.alterar(cervLogado);
+			} catch (Exception e) {
+				lblMsgErroSenhaDeletarConta.setForeground(Color.RED);
+				lblMsgErroSenhaDeletarConta.setText("Erro ao Desativar sua Conta");
+				e.printStackTrace();
 				return;
 			}
-		
+
+			try {
+				TelaLogin telaIanicial = new TelaLogin();
+				telaIanicial.telaInicial();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			framePrincipal.dispose();
+
+		} else {
+			lblMsgErroSenhaDeletarConta.setText("Operação Cancelada");
+			return;
+		}
+
 	}
 
 	@SuppressWarnings("deprecation")

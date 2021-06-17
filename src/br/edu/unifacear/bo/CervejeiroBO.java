@@ -60,6 +60,4 @@ public class CervejeiroBO {
 		return cervejeiroCrud.list(Cervejeiro.class);
 	}
 
-	
-
 }

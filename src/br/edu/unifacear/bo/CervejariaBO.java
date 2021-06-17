@@ -17,11 +17,10 @@ public class CervejariaBO {
 	}
 
 	public boolean alterar(Cervejaria cervejaria) throws Exception {
-		if(!cervejariaCrud.alterar(cervejaria)) {
+		if (!cervejariaCrud.alterar(cervejaria)) {
 			return false;
 		}
 		return true;
 	}
-
 
 }

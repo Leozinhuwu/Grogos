@@ -1,11 +1,8 @@
 package br.edu.unifacear.classes;
 
-
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.*;
-
-
 
 @Entity
 public class Apreciador implements IDBModel {
@@ -21,18 +18,14 @@ public class Apreciador implements IDBModel {
 	private String status;
 
 	@ManyToMany
-    @JoinTable(name="Apreciador_TipoCerveja", joinColumns=
-    {@JoinColumn(name="apreciador_id")}, inverseJoinColumns=
-      {@JoinColumn(name="TipoCerveja_id")})
+	@JoinTable(name = "Apreciador_TipoCerveja", joinColumns = {
+			@JoinColumn(name = "apreciador_id") }, inverseJoinColumns = { @JoinColumn(name = "TipoCerveja_id") })
 	private List<TipoCerveja> tipoCervejas;
-	
+
 	@ManyToMany
-    @JoinTable(name="Apreciador_Cerveja", joinColumns=
-    {@JoinColumn(name="apreciador_id")}, inverseJoinColumns=
-      {@JoinColumn(name="Cerveja_id")})
+	@JoinTable(name = "Apreciador_Cerveja", joinColumns = {
+			@JoinColumn(name = "apreciador_id") }, inverseJoinColumns = { @JoinColumn(name = "Cerveja_id") })
 	private List<Cerveja> cervejasFavoritas;
-
-
 
 	// constructors
 	public Apreciador(int id, String nome, String senha, String status, int idade, String email) {
@@ -54,7 +47,7 @@ public class Apreciador implements IDBModel {
 	public void setTipoCervejas(List<TipoCerveja> tipoCervejas) {
 		this.tipoCervejas = tipoCervejas;
 	}
-	
+
 	// cervejas
 	public List<Cerveja> getCervejasFavoritas() {
 		return cervejasFavoritas;
@@ -73,39 +66,39 @@ public class Apreciador implements IDBModel {
 	// get and setters
 	@Override
 	public int getId() {
-		
+
 		return id;
 	}
 
-	//cervejas
+	// cervejas
 	public void addCervejaFavoritas(Cerveja cervejasFavorita) {
 		this.cervejasFavoritas.add(cervejasFavorita);
-		
+
 	}
-	
+
 	public void removeCervejaFavoritas(Cerveja cervejasFavorita) {
 		this.cervejasFavoritas.remove(cervejasFavorita);
 	}
-	
+
 	public Cerveja getCervejasFavorita(int id) {
 		return this.cervejasFavoritas.get(id);
 	}
-	
-	//tipos
-	
+
+	// tipos
+
 	public void addTipoCerveja(TipoCerveja tipoCerveja) {
 		this.tipoCervejas.add(tipoCerveja);
-		
+
 	}
-	
+
 	public void removeTipoCerveja(TipoCerveja tipoCerveja) {
 		this.tipoCervejas.remove(tipoCerveja);
 	}
-	
+
 	public TipoCerveja getTipoCerveja(int id) {
 		return this.tipoCervejas.get(id);
 	}
-	
+
 	public void setId(int id) {
 
 		this.id = id;
@@ -142,10 +135,11 @@ public class Apreciador implements IDBModel {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
+
 	public String getStatus() {
 		return status;
 	}
+
 	public void setStatus(String status) {
 		this.status = status;
 	}

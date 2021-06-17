@@ -9,7 +9,7 @@ public class SaborDao extends DefaultDAO<Sabor> {
 
 	@Override
 	protected Query getAutenticarObj(EntityManager con, Sabor obj) {
-		
+
 		Query q = con.createQuery("select s from Sabor s" + " where nome = :nome");
 		q.setParameter("nome", obj.getNome());
 		return q;

@@ -5,7 +5,6 @@ import javax.persistence.Query;
 
 import br.edu.unifacear.classes.Coloracao;
 
-
 public class ColoracaoDao extends DefaultDAO<Coloracao> {
 
 	@Override

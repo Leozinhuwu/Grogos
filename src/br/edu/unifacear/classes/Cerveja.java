@@ -14,36 +14,36 @@ public class Cerveja implements IDBModel {
 
 	private String nome;
 	private String descricao;
-	
+
 	@ManyToOne
-	@JoinColumn(name="tipocerveja_id")
+	@JoinColumn(name = "tipocerveja_id")
 	private TipoCerveja tipo;
-	
+
 	@ManyToOne
-	@JoinColumn(name="sabor_id")
+	@JoinColumn(name = "sabor_id")
 	private Sabor sabor;
-	
+
 	@ManyToOne
-	@JoinColumn(name="coloracao_id")
+	@JoinColumn(name = "coloracao_id")
 	private Coloracao coloracao;
-	
+
 	@ManyToOne
-	@JoinColumn(name="pais_id")
+	@JoinColumn(name = "pais_id")
 	private Pais paisOrigem;
 
 	@ManyToOne
-	@JoinColumn(name="cervejeiro_id")
+	@JoinColumn(name = "cervejeiro_id")
 	private Cervejeiro cervejeiro;
 
 	@OneToOne
-	@JoinColumn(name="ingredientes_id")
+	@JoinColumn(name = "ingredientes_id")
 	private Ingredientes ingredientes;
-	
-	@ManyToMany(mappedBy="cervejasFavoritas", cascade = CascadeType.ALL)
+
+	@ManyToMany(mappedBy = "cervejasFavoritas", cascade = CascadeType.ALL)
 	private List<Apreciador> apreciadores;
 
-	public Cerveja(int id, String name, String description, TipoCerveja type, Sabor flavor,
-			Cervejeiro cervejeiro, Coloracao coloracao, Ingredientes ingredientes) {
+	public Cerveja(int id, String name, String description, TipoCerveja type, Sabor flavor, Cervejeiro cervejeiro,
+			Coloracao coloracao, Ingredientes ingredientes) {
 		super();
 		this.setId(id);
 		this.nome = name;
@@ -52,7 +52,6 @@ public class Cerveja implements IDBModel {
 		this.sabor = flavor;
 		this.coloracao = coloracao;
 
-
 		this.cervejeiro = cervejeiro;
 		this.apreciadores = new ArrayList<Apreciador>();
 	}
@@ -60,25 +59,24 @@ public class Cerveja implements IDBModel {
 	public Cerveja() {
 		this.apreciadores = new ArrayList<Apreciador>();
 	}
-	
+
 	public List<Apreciador> getApreciadores() {
 		return this.apreciadores;
 	}
 
-
 	public void setApreciadores(List<Apreciador> apreciadores) {
 		this.apreciadores = apreciadores;
 	}
-	
+
 	public void addApreciador(Apreciador apreciador) {
 		this.apreciadores.add(apreciador);
-		
+
 	}
-	
+
 	public void removeApreciador(Apreciador apreciador) {
 		this.apreciadores.remove(apreciador);
 	}
-	
+
 	public Apreciador getApreciador(int id) {
 		return this.apreciadores.get(id);
 	}
@@ -123,7 +121,6 @@ public class Cerveja implements IDBModel {
 		this.sabor = flavor;
 	}
 
-
 	public Cervejeiro getCervejeiro() {
 		return cervejeiro;
 	}
@@ -166,7 +163,5 @@ public class Cerveja implements IDBModel {
 				+ sabor + ", coloracao=" + coloracao + ", paisOrigem=" + paisOrigem + ", cervejeiro=" + cervejeiro
 				+ ", ingredientes=" + ingredientes + "]";
 	}
-
-	
 
 }
