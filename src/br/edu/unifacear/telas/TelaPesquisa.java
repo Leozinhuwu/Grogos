@@ -189,6 +189,7 @@ public class TelaPesquisa {
 		
 		
 		JButton btnPesquisar = new JButton("Pesquisar");
+		btnPesquisar.setFont(new Font("Arial Black", Font.BOLD, 11));
 		btnPesquisar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -237,7 +238,7 @@ public class TelaPesquisa {
 		panel.add(btnPesquisar);
 		
 		JLabel lblPesquiseUmaCerveja = new JLabel("Pesquise uma Cerveja!");
-		lblPesquiseUmaCerveja.setForeground(new Color(255, 102, 51));
+		lblPesquiseUmaCerveja.setForeground(new Color(255, 69, 0));
 		lblPesquiseUmaCerveja.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblPesquiseUmaCerveja.setBounds(329, 25, 228, 14);
 		panel.add(lblPesquiseUmaCerveja);
@@ -276,6 +277,7 @@ public class TelaPesquisa {
 		panel.add(scroll);
 
 		btnVerDetalhes = new JButton("Ver Detalhes");
+		btnVerDetalhes.setFont(new Font("Arial Black", Font.BOLD, 11));
 		btnVerDetalhes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Cerveja cerveja = new Cerveja();

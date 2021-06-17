@@ -21,7 +21,7 @@ public class TelaMenuCervejeiro extends JFrame {
 		// labels e botoes do jFrame
 		JPanel panel = new JPanel();
 		panel.setForeground(Color.RED);
-		panel.setBackground(Color.WHITE);
+		panel.setBackground(new Color(244, 164, 96));
 		frameMenuUser = new JFrame();
 		frameMenuUser.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\leo4_\\Desktop\\GrogosPesq.jpg"));
 		frameMenuUser.setSize(750, 500);
@@ -32,6 +32,7 @@ public class TelaMenuCervejeiro extends JFrame {
 		panel.setLayout(null);
 
 		JButton btnGerenciarDados = new JButton("Gerenciar Dados");
+		btnGerenciarDados.setFont(new Font("Arial Black", Font.BOLD, 11));
 		btnGerenciarDados.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
@@ -48,6 +49,7 @@ public class TelaMenuCervejeiro extends JFrame {
 		panel.add(btnGerenciarDados);
 
 		JButton btnMinhasCerveja = new JButton("Minhas Cervejas");
+		btnMinhasCerveja.setFont(new Font("Arial Black", Font.BOLD, 11));
 		btnMinhasCerveja.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
@@ -66,6 +68,7 @@ public class TelaMenuCervejeiro extends JFrame {
 		panel.add(btnMinhasCerveja);
 
 		JButton btnCadastrarCerveja = new JButton("Cadastrar Cervejas");
+		btnCadastrarCerveja.setFont(new Font("Arial Black", Font.BOLD, 11));
 		btnCadastrarCerveja.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
@@ -82,6 +85,7 @@ public class TelaMenuCervejeiro extends JFrame {
 		panel.add(btnCadastrarCerveja);
 
 		JButton btnLogout = new JButton("Sair");
+		btnLogout.setFont(new Font("Arial Black", Font.BOLD, 12));
 		btnLogout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
