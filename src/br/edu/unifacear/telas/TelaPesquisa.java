@@ -41,6 +41,7 @@ public class TelaPesquisa {
 	private static JTextField textFieldNome;
 	private static JTable tblCervejas;
 	private static JButton btnVerDetalhes;
+	private static JLabel lblMsgPesquisar = new JLabel("Selecione no m\u00EDnimo 1 campo realizar a pesquisa\r");
 
 	/**
 	 * @throws Exception
@@ -182,7 +183,7 @@ public class TelaPesquisa {
 		rdbtnPorColoracao.setBounds(329, 201, 108, 23);
 		panel.add(rdbtnPorColoracao);
 		
-		JLabel lblMsgPesquisar = new JLabel("Selecione no m\u00EDnimo 1 campo realizar a pesquisa\r");
+		
 		lblMsgPesquisar.setHorizontalAlignment(SwingConstants.CENTER);
 		lblMsgPesquisar.setBounds(298, 335, 363, 14);
 		panel.add(lblMsgPesquisar);
@@ -192,6 +193,7 @@ public class TelaPesquisa {
 		btnPesquisar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				lblMsgPesquisar.setText("");
 				String nome = null; 
 				String tipo = null; 
 				String sabor = null; 
@@ -230,15 +232,16 @@ public class TelaPesquisa {
 					return;
 				}
 				
-				pesquisarGrupo(nome, tipo, sabor, coloracao, pais);
+				montarResultadoPesquisa(nome, tipo, sabor, coloracao, pais);
 			}
 		});
 		btnPesquisar.setBounds(386, 301, 171, 23);
 		panel.add(btnPesquisar);
 		
 		JLabel lblPesquiseUmaCerveja = new JLabel("Pesquise uma Cerveja!");
-		lblPesquiseUmaCerveja.setForeground(new Color(255, 102, 51));
-		lblPesquiseUmaCerveja.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblPesquiseUmaCerveja.setHorizontalAlignment(SwingConstants.CENTER);
+		lblPesquiseUmaCerveja.setForeground(new Color(255, 69, 0));
+		lblPesquiseUmaCerveja.setFont(new Font("Tahoma", Font.BOLD, 12));
 		lblPesquiseUmaCerveja.setBounds(329, 25, 228, 14);
 		panel.add(lblPesquiseUmaCerveja);
 		
@@ -315,7 +318,7 @@ public class TelaPesquisa {
 
 	}
 	
-	private static void pesquisarGrupo(String nome, String tipo, String sabor, String coloracao, String pais) {
+	private static void montarResultadoPesquisa(String nome, String tipo, String sabor, String coloracao, String pais) {
 		
 		
 		DefaultTableModel modelo = (DefaultTableModel)tblCervejas.getModel();
@@ -325,7 +328,10 @@ public class TelaPesquisa {
 
 		try {
 			List<Cerveja>  lista  = pesquisarCervejas(nome, tipo, sabor, coloracao, pais);
-			
+			if(lista.isEmpty()) {
+				lblMsgPesquisar.setText("nenhuma Cerveja encontrada");
+				return;
+			}
 			for (Cerveja c : lista) {
 				
 				if(c.getCervejeiro().getStatus().contentEquals("Ativo")) {
@@ -343,7 +349,7 @@ public class TelaPesquisa {
 				
 			}
 		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null,  "Erro consultando: "+e.getMessage());
+			JOptionPane.showMessageDialog(null,  "Erro ao Pesquisar: "+e.getMessage());
 		}
 	}
 
