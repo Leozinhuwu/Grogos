@@ -74,7 +74,7 @@ public class TelaCadastroCerveja {
 		panel.setForeground(Color.RED);
 		panel.setBackground(new Color(244, 164, 96));
 		frameCadastro = new JFrame();
-		frameCadastro.setSize(1000, 722);
+		frameCadastro.setSize(1000, 734);
 		frameCadastro.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		frameCadastro.setLocation(500, 150);
 
@@ -285,7 +285,7 @@ public class TelaCadastroCerveja {
 		JLabel lblEspeciariasAdicionais = new JLabel("*Especiarias Adicionais:");
 		lblEspeciariasAdicionais.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblEspeciariasAdicionais.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblEspeciariasAdicionais.setBounds(539, 378, 145, 14);
+		lblEspeciariasAdicionais.setBounds(633, 378, 145, 14);
 		panel.add(lblEspeciariasAdicionais);
 
 		JEditorPane descricaoPane = new JEditorPane();
@@ -296,7 +296,7 @@ public class TelaCadastroCerveja {
 
 		JEditorPane especiariaPane = new JEditorPane();
 		especiariaPane.setBackground(Color.WHITE);
-		especiariaPane.setBounds(576, 403, 269, 141);
+		especiariaPane.setBounds(670, 403, 269, 141);
 		especiariaPane.setBorder(BorderFactory.createLineBorder(Color.black));
 		panel.add(especiariaPane);
 
@@ -306,8 +306,8 @@ public class TelaCadastroCerveja {
 		txtpnTodosOuCampos.setEditable(false);
 		txtpnTodosOuCampos.setBackground(new Color(244, 164, 96));
 		txtpnTodosOuCampos.setText(
-				"Forjar informa\u00E7\u00F5es ou atribuir informa\u00E7\u00F5es n\u00E3o relacionadas a Cerveja ou ingredientes podem levar ao banimento da plataforma!!!\r\n\r\nCADASTRE CONSCIENTE!\r\n\r\n");
-		txtpnTodosOuCampos.setBounds(576, 556, 277, 93);
+				"N\u00E3o encontrou alguma caracter\u00EDstica da cerveja ou ingredientes para efetuar o cadastro da cerveja? \r\n\r\nEntre em contato com a administra\u00E7\u00E3o via email!\r\n\r\nemail : GROGOSADM@EMAIL.COM\r\n\r\n");
+		txtpnTodosOuCampos.setBounds(670, 556, 277, 128);
 		panel.add(txtpnTodosOuCampos);
 
 		JLabel lblMalte = new JLabel("Puro Malte:");

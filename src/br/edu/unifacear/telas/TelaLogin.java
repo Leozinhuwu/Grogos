@@ -33,7 +33,6 @@ public class TelaLogin extends JFrame {
 		panel.setForeground(Color.RED);
 		panel.setBackground(new Color(244, 164, 96));
 		frameMain = new JFrame();
-		frameMain.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\leo4_\\Desktop\\GrogosPesq.jpg"));
 		frameMain.setSize(963, 644);
 		frameMain.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frameMain.setLocation(500, 150);

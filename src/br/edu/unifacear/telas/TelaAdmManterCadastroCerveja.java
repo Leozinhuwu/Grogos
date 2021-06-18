@@ -1,7 +1,6 @@
 package br.edu.unifacear.telas;
 
 import java.awt.Color;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -61,7 +60,6 @@ public class TelaAdmManterCadastroCerveja {
 		panel.setForeground(Color.RED);
 		panel.setBackground(new Color(244, 164, 96));
 		frameMain = new JFrame();
-		frameMain.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\leo4_\\Desktop\\GrogosPesq.jpg"));
 		frameMain.setSize(936, 776);
 		frameMain.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frameMain.setLocation(500, 150);
