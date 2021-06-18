@@ -76,7 +76,8 @@ public abstract class DefaultDAO<T extends IDBModel> {
 
 	public int findId(T obj) throws Exception {
 
-		List a = getFindIdQuery(con, obj).getResultList();
+		@SuppressWarnings("unchecked")
+		List<T> a = getFindIdQuery(con, obj).getResultList();
 		Object b = a.get(0);
 		int id = Integer.parseInt(b.toString());
 
@@ -87,7 +88,8 @@ public abstract class DefaultDAO<T extends IDBModel> {
 
 	public String findName(T obj) {
 
-		List a = getFindName(con, obj).getResultList();
+		@SuppressWarnings("unchecked")
+		List<T> a = getFindName(con, obj).getResultList();
 		Object b = a.get(0);
 		String name = b.toString();
 		return name;
@@ -98,7 +100,8 @@ public abstract class DefaultDAO<T extends IDBModel> {
 	public Object findSingleObj(T obj) {
 		Object b;
 		if (getFindSingleObj(con, obj).getResultList().size() > 0) {
-			List a = getFindSingleObj(con, obj).getResultList();
+			@SuppressWarnings("unchecked")
+			List<T> a = getFindSingleObj(con, obj).getResultList();
 			b = a.get(0);
 			return b;
 		} else {

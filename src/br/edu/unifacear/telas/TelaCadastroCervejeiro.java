@@ -2,7 +2,6 @@ package br.edu.unifacear.telas;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -66,9 +65,8 @@ public class TelaCadastroCervejeiro {
 		panel.setForeground(Color.RED);
 		panel.setBackground(new Color(244, 164, 96));
 		frameCadastro = new JFrame();
-		frameCadastro.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\leo4_\\Desktop\\GrogosPesq.jpg"));
 		frameCadastro.setSize(923, 751);
-		frameCadastro.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frameCadastro.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		frameCadastro.setLocation(500, 150);
 
 		frameCadastro.getContentPane().add(panel);

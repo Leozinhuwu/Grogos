@@ -15,10 +15,10 @@ public class Main {
 	}
 
 	private static void runGrogos() throws Exception {
-		TelaLogin telaIanicial = new TelaLogin();
-		telaIanicial.telaInicial();
 		TelaAdm tAdm = new TelaAdm();
 		tAdm.telaAdm();
+		TelaLogin telaIanicial = new TelaLogin();
+		telaIanicial.telaInicial();	
 	}
 
 	private static void getConnectionAndRunTests() throws Exception {

@@ -36,6 +36,7 @@ public class CidadeDao extends DefaultDAO<Cidade> {
 		return null;
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<Cidade> listByEstado(Estado estado) {
 		Query q = con.createQuery("select c from Cidade c" + " where estado_id = :id");
 		q.setParameter("id", estado.getId());

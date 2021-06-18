@@ -54,7 +54,7 @@ public class TelaPesquisa {
 		panel.setBackground(new Color(244, 164, 96));
 		framePesquisa = new JFrame();
 		framePesquisa.setSize(1000, 893);
-		framePesquisa.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		framePesquisa.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		framePesquisa.setLocation(500, 150);
 
 		framePesquisa.getContentPane().add(panel);

@@ -2,7 +2,6 @@ package br.edu.unifacear.telas;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -43,8 +42,6 @@ public class TelaCervejasFavoritas {
 		contentPane.setForeground(Color.RED);
 		contentPane.setBackground(new Color(244, 164, 96));
 		frameCervejasFavoritas = new JFrame();
-		frameCervejasFavoritas
-				.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\leo4_\\Desktop\\GrogosPesq.jpg"));
 		frameCervejasFavoritas.setSize(971, 772);
 		frameCervejasFavoritas.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frameCervejasFavoritas.setLocation(500, 150);

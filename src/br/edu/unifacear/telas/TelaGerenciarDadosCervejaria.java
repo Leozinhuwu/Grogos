@@ -1,7 +1,6 @@
 package br.edu.unifacear.telas;
 
 import java.awt.Color;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -58,7 +57,6 @@ public class TelaGerenciarDadosCervejaria {
 		panel.setForeground(Color.RED);
 		panel.setBackground(new Color(244, 164, 96));
 		framePrincipal = new JFrame();
-		framePrincipal.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\leo4_\\Desktop\\GrogosPesq.jpg"));
 		framePrincipal.setSize(971, 772);
 		framePrincipal.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		framePrincipal.setLocation(500, 150);
