@@ -44,7 +44,7 @@ public class TelaCadastroApreciador extends JFrame {
 		frameCadastro.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\leo4_\\Desktop\\GrogosPesq.jpg"));
 		frameCadastro.setSize(918, 686);
 		frameCadastro.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frameCadastro.setLocation(500, 250);
+		frameCadastro.setLocation(500, 150);
 
 		frameCadastro.getContentPane().add(panel);
 		panel.setLayout(null);

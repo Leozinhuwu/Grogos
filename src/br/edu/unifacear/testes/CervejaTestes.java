@@ -97,7 +97,7 @@ public class CervejaTestes {
 		ingre1.setMalte(malte2);
 		ingre1.setPuroMalte(true);
 		ingre1.setTeorAlcoolico(2);
-		ingre1.setEspeciarias("Essa cerveja contém madeira de carvalho torrado");
+		ingre1.setEspeciarias("Essa cerveja tem um adicional \n madeira de carvalho torrado");
 
 		IngredientesBO ingbro = new IngredientesBO();
 		ingbro.salvar(ingre1);
@@ -112,7 +112,7 @@ public class CervejaTestes {
 
 		cerveja.setColoracao(coloracao2);
 		cerveja.setCountryOrigin(pais2);
-		cerveja.setDescription("Cerveja americana de coloração forte");
+		cerveja.setDescription("Cerveja americana");
 		cerveja.setFlavor(sabor2);
 		cerveja.setType(tipocerveja);
 

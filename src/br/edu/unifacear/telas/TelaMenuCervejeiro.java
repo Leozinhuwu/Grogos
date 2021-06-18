@@ -26,7 +26,7 @@ public class TelaMenuCervejeiro extends JFrame {
 		frameMenuUser.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\leo4_\\Desktop\\GrogosPesq.jpg"));
 		frameMenuUser.setSize(750, 500);
 		frameMenuUser.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		frameMenuUser.setLocation(500, 250);
+		frameMenuUser.setLocation(500, 150);
 
 		frameMenuUser.getContentPane().add(panel);
 		panel.setLayout(null);

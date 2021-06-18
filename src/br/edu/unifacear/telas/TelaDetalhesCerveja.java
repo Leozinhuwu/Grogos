@@ -36,7 +36,7 @@ public class TelaDetalhesCerveja {
 		framePrincipal.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\leo4_\\Desktop\\GrogosPesq.jpg"));
 		framePrincipal.setSize(996, 789);
 		framePrincipal.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		framePrincipal.setLocation(500, 250);
+		framePrincipal.setLocation(500, 150);
 
 		framePrincipal.getContentPane().add(panel);
 		panel.setLayout(null);

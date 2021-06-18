@@ -52,7 +52,7 @@ public class TelaAdmManterCadastroCervejeiroCervejaria {
 		frameMain = new JFrame();
 		frameMain.setSize(904, 647);
 		frameMain.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		frameMain.setLocation(500, 100);
+		frameMain.setLocation(500, 150);
 
 		frameMain.getContentPane().add(panel);
 		panel.setLayout(null);

@@ -50,7 +50,7 @@ public class TelaGerenciarDadosCervejeiro {
 		framePrincipal.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\leo4_\\Desktop\\GrogosPesq.jpg"));
 		framePrincipal.setSize(971, 772);
 		framePrincipal.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-		framePrincipal.setLocation(500, 250);
+		framePrincipal.setLocation(500, 150);
 		framePrincipal.getContentPane().add(panel);
 		panel.setLayout(null);
 

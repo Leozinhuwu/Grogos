@@ -43,7 +43,7 @@ public class TelaAdmGerenciarBanimentos {
 		frameMain.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\leo4_\\Desktop\\GrogosPesq.jpg"));
 		frameMain.setSize(977, 636);
 		frameMain.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		frameMain.setLocation(500, 100);
+		frameMain.setLocation(500, 150);
 
 		frameMain.getContentPane().add(panel);
 		panel.setLayout(null);

@@ -36,7 +36,7 @@ public class TelaLogin extends JFrame {
 		frameMain.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\leo4_\\Desktop\\GrogosPesq.jpg"));
 		frameMain.setSize(963, 644);
 		frameMain.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frameMain.setLocation(500, 250);
+		frameMain.setLocation(500, 150);
 
 		frameMain.getContentPane().add(panel);
 		panel.setLayout(null);

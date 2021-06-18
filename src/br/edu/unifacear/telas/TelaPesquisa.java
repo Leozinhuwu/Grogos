@@ -54,7 +54,6 @@ public class TelaPesquisa {
 		panel.setForeground(Color.RED);
 		panel.setBackground(new Color(244, 164, 96));
 		framePesquisa = new JFrame();
-		framePesquisa.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\leo4_\\Desktop\\GrogosPesq.jpg"));
 		framePesquisa.setSize(1000, 893);
 		framePesquisa.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		framePesquisa.setLocation(500, 150);

@@ -47,7 +47,7 @@ public class TelaCervejasFavoritas {
 				.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\leo4_\\Desktop\\GrogosPesq.jpg"));
 		frameCervejasFavoritas.setSize(971, 772);
 		frameCervejasFavoritas.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		frameCervejasFavoritas.setLocation(500, 250);
+		frameCervejasFavoritas.setLocation(500, 150);
 
 		frameCervejasFavoritas.getContentPane().add(contentPane);
 		contentPane.setLayout(null);
