@@ -51,7 +51,7 @@ public class TelaCadastroApreciador extends JFrame {
 
 		JLabel lblCadastroMsg = new JLabel("");
 		lblCadastroMsg.setHorizontalAlignment(SwingConstants.CENTER);
-		lblCadastroMsg.setBounds(608, 586, 284, 23);
+		lblCadastroMsg.setBounds(608, 586, 284, 50);
 		panel.add(lblCadastroMsg);
 
 		JButton btnCadastrar = new JButton("Cadastrar");
@@ -62,50 +62,7 @@ public class TelaCadastroApreciador extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String nome = nameField.getText();
-				String email = emailField.getText();
-				@SuppressWarnings("deprecation")
-				String senha = passwordField.getText();
-				String idadeS = ageField.getText();
-
-				int idade = 0;
-				boolean cadastrar = false;
-				if (ApreciadorValidator.validar(nome, idadeS, email, senha)) {
-					idade = Integer.parseInt(ageField.getText());
-					if (idade < 18) {
-						lblCadastroMsg.setText("Aplicativo destinado a usúarios maiores de 18 anos");
-						return;
-					}
-
-					Apreciador newUser = new Apreciador();
-					newUser.setEmail(email);
-					newUser.setIdade(idade);
-					newUser.setNome(nome);
-					newUser.setSenha(senha);
-					newUser.setTipoCervejas(tipos);
-					try {
-						cadastrar = cadastro.registerUser(newUser);
-					} catch (Exception e1) {
-						JOptionPane.showInternalMessageDialog(null, "Erro ao cadastrar, tente novamente!");
-						return;
-					}
-					if (cadastrar == true) {
-						JOptionPane.showInternalMessageDialog(null, "Cadastrado com sucesso!");
-						try {
-							TelaLogin telaIanicial = new TelaLogin();
-							telaIanicial.telaInicial();
-						} catch (Exception e1) {
-							lblCadastroMsg.setText("Erro ao voltar a tela inicial, clique no botão voltar");
-							return;
-						}
-						frameCadastro.dispose();
-					} else {
-						lblCadastroMsg.setText("Esse email já existe");
-					}
-
-				} else {
-					lblCadastroMsg.setText("dados invalidos");
-				}
+				cadastrarApreciador(cadastro, tipos, lblCadastroMsg);
 
 			}
 
@@ -311,5 +268,57 @@ public class TelaCadastroApreciador extends JFrame {
 
 		frameCadastro.setVisible(true);
 
+	}
+
+	private void cadastrarApreciador(ApreciadorBO cadastro, ArrayList<TipoCerveja> tipos, JLabel lblCadastroMsg) {
+		String nome = nameField.getText();
+		String email = emailField.getText();
+		@SuppressWarnings("deprecation")
+		String senha = passwordField.getText();
+		String idadeS = ageField.getText();
+
+		int idade = 0;
+		boolean cadastrar = false;
+		if (ApreciadorValidator.validar(nome, idadeS, email, senha)) {
+			idade = Integer.parseInt(ageField.getText());
+			if (idade < 18) {
+				lblCadastroMsg.setText("Apenas usúarios maiores de 18 anos");
+				return;
+			}
+			
+			if(senha.length() < 6) {
+				lblCadastroMsg.setText("Senha deve conter 6 dígitos ou mais");
+				return;
+			}
+
+			Apreciador newUser = new Apreciador();
+			newUser.setEmail(email);
+			newUser.setIdade(idade);
+			newUser.setNome(nome);
+			newUser.setSenha(senha);
+			newUser.setTipoCervejas(tipos);
+			try {
+				cadastrar = cadastro.registerUser(newUser);
+			} catch (Exception e1) {
+				JOptionPane.showInternalMessageDialog(null, "Erro ao cadastrar, tente novamente!");
+				return;
+			}
+			if (cadastrar == true) {
+				JOptionPane.showInternalMessageDialog(null, "Cadastrado com sucesso!");
+				try {
+					TelaLogin telaIanicial = new TelaLogin();
+					telaIanicial.telaInicial();
+				} catch (Exception e1) {
+					lblCadastroMsg.setText("Erro ao voltar a tela inicial, clique no botão voltar");
+					return;
+				}
+				frameCadastro.dispose();
+			} else {
+				lblCadastroMsg.setText("Esse email já existe");
+			}
+
+		} else {
+			lblCadastroMsg.setText("dados invalidos");
+		}
 	}
 }

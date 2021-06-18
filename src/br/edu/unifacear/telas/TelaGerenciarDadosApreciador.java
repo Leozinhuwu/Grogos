@@ -312,7 +312,7 @@ public class TelaGerenciarDadosApreciador {
 			}
 
 			((Apreciador) TelaLogin.usuarioLogado).setEmail(textFieldEmailNovo.getText());
-			lblMsgErroEmail.setForeground(Color.GREEN);
+			lblMsgErroEmail.setForeground(Color.GREEN.darker());
 			lblMsgErroEmail.setText("Email Alterado com Sucesso!");
 			lblApreciadorEmail.setText(textFieldEmailNovo.getText());
 
@@ -352,7 +352,7 @@ public class TelaGerenciarDadosApreciador {
 			return;
 		}
 
-		lblMsgErroSenha.setForeground(Color.GREEN);
+		lblMsgErroSenha.setForeground(Color.GREEN.darker());
 		lblMsgErroSenha.setText("Senha Alterada com Sucesso!");
 		textFieldSenhaNova.setText("");
 		textFieldASenhaConfirmar.setText("");

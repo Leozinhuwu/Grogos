@@ -519,32 +519,7 @@ public class TelaCadastroCerveja {
 
 				boolean cadastrar = false;
 				boolean cadastrarIngredientes = false;
-				try {
-					cadastrarIngredientes = ibo.salvar(ingredientes);
-
-					cerveja.setIngredientes(ingredientes);
-
-				} catch (Exception e1) {
-
-					lblCadastro.setText("Erro Ao salvar ingredientes");
-				} finally {
-					try {
-						cadastrar = cbo.salvar(cerveja);
-					} catch (Exception e1) {
-
-						lblCadastro.setText("Erro Ao salvar cervejas");
-
-					}
-				}
-
-				if (cadastrar || cadastrarIngredientes) {
-					lblCadastro.setForeground(Color.green.darker());
-					;
-					lblCadastro.setText("Cerveja Cadastrada Com Sucesso!!!");
-				} else {
-					lblCadastro.setForeground(Color.RED);
-					lblCadastro.setText("Já existe uma cerveja com este nome, tente um nome diferente");
-				}
+				cadastrarCerveja(lblCadastro, ingredientes, cerveja, cbo, ibo, cadastrar, cadastrarIngredientes);
 
 			}
 		});
@@ -555,6 +530,36 @@ public class TelaCadastroCerveja {
 
 		frameCadastro.setVisible(true);
 
+	}
+
+	private void cadastrarCerveja(JLabel lblCadastro, Ingredientes ingredientes, Cerveja cerveja, CervejaBO cbo,
+			IngredientesBO ibo, boolean cadastrar, boolean cadastrarIngredientes) {
+		try {
+			cadastrarIngredientes = ibo.salvar(ingredientes);
+
+			cerveja.setIngredientes(ingredientes);
+
+		} catch (Exception e1) {
+
+			lblCadastro.setText("Erro Ao salvar ingredientes");
+		} finally {
+			try {
+				cadastrar = cbo.salvar(cerveja);
+			} catch (Exception e1) {
+
+				lblCadastro.setText("Erro Ao salvar cervejas");
+
+			}
+		}
+
+		if (cadastrar || cadastrarIngredientes) {
+			lblCadastro.setForeground(Color.green.darker());
+			;
+			lblCadastro.setText("Cerveja Cadastrada Com Sucesso!!!");
+		} else {
+			lblCadastro.setForeground(Color.RED);
+			lblCadastro.setText("Já existe uma cerveja com este nome, tente um nome diferente");
+		}
 	}
 
 	private static void setIngredientes(JEditorPane especiariaPane, JComboBox<Lupulo> comboBoxLupulo,
